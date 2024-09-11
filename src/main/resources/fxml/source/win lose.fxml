@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="451.0" prefWidth="677.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="451.0" fitWidth="683.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Bar.jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane prefHeight="79.0" prefWidth="676.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#383636eb" height="79.0" stroke="TRANSPARENT" strokeType="INSIDE" width="677.0" />
+            <Label layoutX="14.0" layoutY="24.0" text="Time Left: X:XX" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman" size="28.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutY="78.0" prefHeight="374.0" prefWidth="675.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#383636eb" height="374.0" stroke="TRANSPARENT" strokeType="INSIDE" width="677.0" />
+            <ImageView fitHeight="250.0" fitWidth="175.0" layoutX="55.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@man%201.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="314.0" layoutY="14.0" text="You won" textFill="#afff9d">
+               <font>
+                  <Font name="Times New Roman" size="48.0" />
+               </font>
+            </Label>
+            <Label layoutX="313.0" layoutY="-27.0" text="You Lost" textFill="#ff9e9e">
+               <font>
+                  <Font name="Times New Roman" size="48.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="231.0" layoutY="89.0" prefHeight="243.0" prefWidth="369.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="Times New Roman" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="229.0" layoutY="70.0" text="Reason:" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman Bold" size="26.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</Pane>
