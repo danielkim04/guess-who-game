@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="451.0" prefWidth="677.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="451.0" fitWidth="683.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Bar.jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane prefHeight="79.0" prefWidth="676.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#383636eb" height="79.0" stroke="TRANSPARENT" strokeType="INSIDE" width="677.0" />
+            <Label layoutX="14.0" layoutY="24.0" text="Time Left: X:XX" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman" size="28.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutY="78.0" prefHeight="374.0" prefWidth="675.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#383636eb" height="374.0" stroke="TRANSPARENT" strokeType="INSIDE" width="677.0" />
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="227.0" layoutY="5.0" prefHeight="92.0" prefWidth="422.0" text="Why do you think it is this suspect?" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="Times New Roman" size="40.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="250.0" fitWidth="175.0" layoutX="45.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+               <image>
+                  <Image url="@man%201.png" />
+               </image>
+            </ImageView>
+            <TextArea layoutX="220.0" layoutY="123.0" prefHeight="175.0" prefWidth="437.0" promptText="Type your reason here" />
+         </children>
+      </AnchorPane>
+   </children>
+</Pane>

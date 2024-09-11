@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="676.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="722.0" layoutX="-25.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@stock%20casino.jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane prefHeight="79.0" prefWidth="676.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#393737f7" height="79.0" stroke="TRANSPARENT" strokeType="INSIDE" width="676.0" />
+            <Label layoutX="14.0" layoutY="24.0" text="Time Left: X:XX" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman" size="28.0" />
+               </font>
+            </Label>
+            <AnchorPane layoutX="509.0" layoutY="21.0" prefHeight="41.0" prefWidth="128.0">
+               <children>
+                  <Rectangle arcHeight="25.0" arcWidth="25.0" fill="#adadadc7" height="43.0" stroke="TRANSPARENT" strokeType="INSIDE" width="127.0" />
+                  <Label layoutX="1.0" prefHeight="43.0" prefWidth="128.0" text="Choose Suspect Now" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="Times New Roman" size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="608.0" layoutY="79.0" prefHeight="259.0" prefWidth="302.0">
+         <children>
+            <AnchorPane layoutX="49.0" layoutY="58.0" prefHeight="97.0" prefWidth="21.0">
+               <children>
+                  <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#adadadeb" height="110.0" stroke="TRANSPARENT" strokeType="INSIDE" width="38.0" />
+                  <Label alignment="CENTER" layoutX="4.0" layoutY="37.0" prefHeight="23.0" prefWidth="18.0" rotate="-90.0" text="^" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <ImageView fitHeight="323.0" fitWidth="233.0" layoutX="68.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@notepad.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</Pane>
