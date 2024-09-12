@@ -7,6 +7,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.GameStateContext;
 
@@ -20,7 +22,10 @@ public class CrimeSceneController {
   @FXML private Rectangle rectClueBook;
   @FXML private Rectangle rectClueNote;
   @FXML private Label labelTimer;
-  @FXML private Button btnGuess;
+  @FXML private AnchorPane paneNoteWindow;
+  @FXML private Button buttonCloseNotes;
+  @FXML private AnchorPane paneOpenChat;
+  @FXML private Pane paneBase;
 
   private static boolean isFirstTimeInit = true;
   private static GameStateContext context = new GameStateContext();
@@ -75,5 +80,15 @@ public class CrimeSceneController {
   @FXML
   private void handleGuessClick(ActionEvent event) throws IOException {
     context.handleGuessClick();
+  }
+
+  @FXML
+  private void handleOpenButtonClick(MouseEvent event) throws IOException {
+    paneNoteWindow.setVisible(true);
+  }
+
+  @FXML
+  private void handleCloseButtonClick(MouseEvent event) throws IOException {
+    paneNoteWindow.setVisible(false);
   }
 }
