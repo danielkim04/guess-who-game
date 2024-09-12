@@ -15,67 +15,28 @@ import nz.ac.auckland.se206.prompts.PromptEngineering;
 import nz.ac.auckland.se206.speech.TextToSpeech;
 
 public class Suspect {
+
   private String name;
-  private String job;
   private String role;
-  private String note;
+
+  // Varible that stores hitbox as a rectangle
   private Rectangle rect;
+
+  // chat generation varibles
   private ChatCompletionRequest chatCompletionRequest;
   private volatile ChatMessage currentChatMessage;
+
+  // String that stores chat history
   private String chatHistory = "";
 
-  public Suspect(String name, String job, String role, String note) {
+  Suspect(String name, String role) {
     this.name = name;
-    this.job = job;
-    this.note = note;
     setRole(role);
+    setProfession();
   }
 
-  public Suspect(Rectangle rect) {
-    setRectProp(rect);
-  }
-
-  public Suspect(String name, Rectangle rect) {
+  public void setName(String name) {
     this.name = name;
-    setRectProp(rect);
-  }
-
-  public Suspect(String name, String job, Rectangle rect) {
-    this.name = name;
-    this.job = job;
-    setRectProp(rect);
-  }
-
-  private void setRectProp(Rectangle rect) {
-    this.rect = rect;
-  }
-
-  public String getNote() {
-    return (this.note);
-  }
-
-  public String getJob() {
-    return (job);
-  }
-
-  public Rectangle getRect() {
-    return (this.rect);
-  }
-
-  public void addChatHistory(String text) {
-    this.chatHistory += text;
-  }
-
-  public void setChatHistory(String text) {
-    this.chatHistory = text;
-  }
-
-  public String getChatHistory() {
-    return (this.chatHistory);
-  }
-
-  public ChatCompletionRequest getCompletionRequest() {
-    return (this.chatCompletionRequest);
   }
 
   public void setRole(String role) {
@@ -86,7 +47,37 @@ public class Suspect {
     return (role);
   }
 
-  public void setProfession() {
+  public String getName() {
+    return (this.name);
+  }
+
+  // Set hitbox
+  public void setRect(Rectangle rect) {
+    this.rect = rect;
+  }
+
+  // Get hitbox
+  public Rectangle getRect() {
+    return (this.rect);
+  }
+
+  // Append to chat history
+  public void addChatHistory(String text) {
+    this.chatHistory += text;
+  }
+
+  // Reset chat history to a single string
+  public void setChatHistory(String text) {
+    this.chatHistory = text;
+  }
+
+  // Returns full chat history of this characters responses
+  public String getChatHistory() {
+    return (this.chatHistory);
+  }
+
+  // Initalies GPT settings
+  private void setProfession() {
     if (this.chatCompletionRequest == null) {
       try {
         ApiProxyConfig config = ApiProxyConfig.readConfig();
@@ -102,13 +93,15 @@ public class Suspect {
     }
   }
 
+  // Returns new GPT prompt message for GPT to process later
   private String getSystemPrompt() {
     Map<String, String> map = new HashMap<>();
     map.put("name", toString());
-    map.put("profession", getJob());
+    map.put("role", getRole());
     return PromptEngineering.getPrompt("chat.txt", map);
   }
 
+  // Returns chat message from suspect
   public String talk(ChatMessage msg) {
 
     if (msg == null) {
@@ -142,6 +135,7 @@ public class Suspect {
     return (this.currentChatMessage.getContent());
   }
 
+  // Returns GPT chat message
   private ChatMessage runGpt(ChatMessage msg) throws ApiProxyException {
     if (msg != null) {
       this.currentChatMessage = msg;
@@ -158,6 +152,7 @@ public class Suspect {
     }
   }
 
+  // Returns the name of the suspect whenever the suspect class is converted to string
   @Override
   public String toString() {
     return this.name;

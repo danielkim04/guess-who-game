@@ -20,7 +20,7 @@ import nz.ac.auckland.se206.speech.FreeTextToSpeech;
 public class App extends Application {
 
   private static Scene scene;
-  private static Controller currentController;
+  // private static Controller currentController;
   private static FXMLLoader fxmlHandler;
 
   /**
