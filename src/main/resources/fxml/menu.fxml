@@ -25,9 +25,11 @@
             </Label>
             <AnchorPane layoutX="173.0" layoutY="188.0" prefHeight="55.0" prefWidth="155.0">
                <children>
-                  <!-- Added fx:id and onMouseClicked event -->
-                  <Rectangle fx:id="StartRectangle" arcHeight="25.0" arcWidth="25.0" fill="#8c8c8cc4" height="57.0" stroke="TRANSPARENT" strokeType="INSIDE" width="155.0" onMouseClicked="#onStartRectangleClick" />
-                  <Label alignment="CENTER" layoutX="27.0" prefHeight="57.0" prefWidth="102.0" text="Start" textAlignment="CENTER" textFill="WHITE">
+                  <!-- Set the rectangle behind the label -->
+                  <Rectangle fx:id="StartRectangle" arcHeight="25.0" arcWidth="25.0" fill="#8c8c8cc4" height="57.0" onMouseClicked="#onStartRectangleClick" stroke="TRANSPARENT" strokeType="INSIDE" width="155.0" />
+                  
+                  <!-- Added pickOnBounds="true" to the label to ensure it captures clicks -->
+                  <Label fx:id="StartLabel" alignment="CENTER" layoutX="27.0" layoutY="0.0" prefHeight="57.0" prefWidth="102.0" text="Start" textAlignment="CENTER" textFill="WHITE" onMouseClicked="#onStartLabelClick" pickOnBounds="true">
                      <font>
                         <Font name="Times New Roman" size="40.0" />
                      </font>
