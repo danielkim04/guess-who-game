@@ -3,8 +3,8 @@ package nz.ac.auckland.se206.controllers;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -23,11 +23,11 @@ public class CrimeSceneController {
   @FXML private Rectangle rectClueNote;
   @FXML private Label labelTimer;
   @FXML private AnchorPane paneNoteWindow;
-  @FXML private Button buttonCloseNotes;
+  @FXML private Rectangle rectCloseNotes;
   @FXML private AnchorPane paneOpenChat;
   @FXML private Pane paneBase;
+  @FXML private ImageView imgMap;
 
-  private static boolean isFirstTimeInit = true;
   private static GameStateContext context = new GameStateContext();
 
   /**
@@ -90,5 +90,10 @@ public class CrimeSceneController {
   @FXML
   private void handleCloseButtonClick(MouseEvent event) throws IOException {
     paneNoteWindow.setVisible(false);
+  }
+
+  @FXML
+  private void handleMapClick(MouseEvent event) throws IOException {
+    // to be implemented
   }
 }
