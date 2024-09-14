@@ -14,6 +14,11 @@
             <Image url="@casinoexterior.jpeg" />
          </image>
       </ImageView>
+      <ImageView fitHeight="388.0" fitWidth="191.0" layoutX="366.0" layoutY="-9.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@gamblerdraft1.png" />
+         </image>
+      </ImageView>
       <AnchorPane fx:id="paneDialogueBox" layoutX="83.0" layoutY="245.0" onMouseClicked="#handleBoxClick" prefHeight="122.0" prefWidth="500.0">
          <children>
             <ImageView fitHeight="190.0" fitWidth="509.0" layoutY="-16.0" pickOnBounds="true" preserveRatio="true">
@@ -21,7 +26,7 @@
                   <Image url="@textbox1.png" />
                </image>
             </ImageView>
-            <Label fx:id="labelDialogue" layoutX="31.0" layoutY="35.0" prefHeight="51.0" prefWidth="407.0" text="Label" wrapText="true">
+            <Label fx:id="labelDialogue" layoutX="31.0" layoutY="35.0" prefHeight="84.0" prefWidth="437.0" text="Label" wrapText="true">
                <font>
                   <Font name="Calibri" size="17.0" />
                </font>
