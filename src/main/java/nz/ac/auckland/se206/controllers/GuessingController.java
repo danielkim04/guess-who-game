@@ -12,7 +12,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
-import nz.ac.auckland.se206.GameStateContext;
 
 public class GuessingController {
   @FXML private Label labelTimer;
@@ -28,8 +27,7 @@ public class GuessingController {
   @FXML private Label labelTitle;
   @FXML private ImageView imgChosenSuspect;
 
-  private static GameStateContext context = new GameStateContext();
-  private boolean isTheif;
+  private boolean isThief;
 
   /**
    * Initializes the room view. If it's the first time initialization, it will provide instructions
@@ -72,15 +70,15 @@ public class GuessingController {
     AnchorPane clickedSuspect = (AnchorPane) event.getSource();
     switch (clickedSuspect.getId()) {
       case "paneSuspectOne":
-        isTheif = false;
+        isThief = false;
         filename = "man 1.png"; // modify filename
         break;
       case "paneSuspectTwo":
-        isTheif = false;
+        isThief = false;
         filename = "man 1.png"; // modify filename
         break;
       case "paneSuspectThree":
-        isTheif = true;
+        isThief = true;
         filename = "man 1.png"; // modify filename
         break;
     }
@@ -97,6 +95,7 @@ public class GuessingController {
   @FXML
   private void sendExplanation() {
     // to be implemented
+    // evaluate user input using gpt and display the result
   }
 
   @FXML

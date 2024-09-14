@@ -48,7 +48,7 @@ public class App extends Application {
    * @throws IOException if the FXML file is not found
    */
   private static Parent loadFxml(final String fxml) throws IOException {
-    return new FXMLLoader(App.class.getResource("/fxml/source/" + fxml + ".fxml")).load();
+    return new FXMLLoader(App.class.getResource("/fxml/" + fxml + ".fxml")).load();
   }
 
   /**
@@ -79,7 +79,7 @@ public class App extends Application {
    */
   @Override
   public void start(final Stage stage) throws IOException {
-    Parent root = loadFxml("guessing");
+    Parent root = loadFxml("menu");
     scene = new Scene(root);
     stage.setScene(scene);
     stage.show();
