@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="paneBase" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="676.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.GuessingController">
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="836.0" layoutX="-17.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@interrogationroom1.jpeg" />
+         </image>
+      </ImageView>
+      <AnchorPane prefHeight="79.0" prefWidth="676.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#393737f7" height="79.0" stroke="TRANSPARENT" strokeType="INSIDE" width="676.0" />
+            <Circle fill="#ffffff00" layoutX="628.0" layoutY="40.0" radius="31.0" stroke="BLACK" strokeType="INSIDE" />
+            <Label fx:id="labelTimer" layoutX="604.0" layoutY="24.0" text="X:XX" textFill="WHITE">
+               <font>
+                  <Font name="Calibri" size="26.0" />
+               </font>
+            </Label>
+            <Label layoutX="226.0" layoutY="24.0" prefHeight="31.0" prefWidth="224.0" text="Who is the theif?" textFill="WHITE">
+               <font>
+                  <Font name="Algerian" size="25.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="paneOpenChat" layoutX="657.0" layoutY="79.0" onMouseClicked="#handleOpenButtonClick" prefHeight="97.0" prefWidth="21.0">
+         <children>
+            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#adadadeb" height="110.0" stroke="TRANSPARENT" strokeType="INSIDE" width="36.0" />
+            <Label alignment="CENTER" layoutX="4.0" layoutY="37.0" prefHeight="23.0" prefWidth="18.0" rotate="-90.0" text="^" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="paneNoteWindow" layoutX="396.0" layoutY="79.0" prefHeight="321.0" prefWidth="287.0" visible="false">
+         <children>
+            <Rectangle fx:id="rectCloseNotes" arcHeight="20.0" arcWidth="20.0" fill="#adadadeb" height="110.0" layoutX="11.0" onMouseClicked="#handleCloseButtonClick" stroke="TRANSPARENT" strokeType="INSIDE" width="36.0" />
+            <Label alignment="CENTER" layoutX="11.0" layoutY="37.0" prefHeight="23.0" prefWidth="18.0" text="&gt;" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="321.0" layoutX="29.0" stroke="TRANSPARENT" strokeType="INSIDE" width="249.0" />
+            <Label layoutX="46.0" layoutY="14.0" text="Notes" />
+            <TextArea layoutX="37.0" layoutY="47.0" prefHeight="273.0" prefWidth="234.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="paneSuspectOne" layoutX="64.0" layoutY="134.0" onMouseClicked="#handleSuspectClick" prefHeight="205.0" prefWidth="129.0">
+         <children>
+            <ImageView fitHeight="222.0" fitWidth="168.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@man%201.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="paneSuspectTwo" layoutX="226.0" layoutY="134.0" onMouseClicked="#handleSuspectClick" prefHeight="222.0" prefWidth="148.0">
+         <children>
+            <ImageView fitHeight="237.0" fitWidth="148.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@man%201.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="paneSuspectThree" layoutX="415.0" layoutY="98.0" onMouseClicked="#handleSuspectClick" prefHeight="284.0" prefWidth="148.0">
+         <children>
+            <ImageView fitHeight="273.0" fitWidth="213.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@man%201.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</Pane>
