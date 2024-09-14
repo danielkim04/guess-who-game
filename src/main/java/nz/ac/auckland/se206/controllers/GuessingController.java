@@ -1,8 +1,13 @@
 package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException;
+import java.net.URL;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -17,6 +22,11 @@ public class GuessingController {
   @FXML private AnchorPane paneSuspectOne;
   @FXML private AnchorPane paneSuspectTwo;
   @FXML private AnchorPane paneSuspectThree;
+  @FXML private TextArea txtaExplanation;
+  @FXML private Button btnSend;
+  @FXML private AnchorPane paneExplanation;
+  @FXML private Label labelTitle;
+  @FXML private ImageView imgChosenSuspect;
 
   private static GameStateContext context = new GameStateContext();
   private boolean isTheif;
@@ -58,18 +68,35 @@ public class GuessingController {
    */
   @FXML
   private void handleSuspectClick(MouseEvent event) throws IOException {
+    String filename = "";
     AnchorPane clickedSuspect = (AnchorPane) event.getSource();
     switch (clickedSuspect.getId()) {
       case "paneSuspectOne":
         isTheif = false;
+        filename = "man 1.png"; // modify filename
         break;
       case "paneSuspectTwo":
         isTheif = false;
+        filename = "man 1.png"; // modify filename
         break;
       case "paneSuspectThree":
         isTheif = true;
+        filename = "man 1.png"; // modify filename
         break;
     }
+    transitionToExplanation(getClass().getResource("/fxml/source/" + filename));
+  }
+
+  private void transitionToExplanation(URL url) {
+    paneExplanation.setVisible(true);
+    labelTitle.setText("Present Evidence");
+    Image image = new Image(url.toExternalForm());
+    imgChosenSuspect.setImage(image);
+  }
+
+  @FXML
+  private void sendExplanation() {
+    // to be implemented
   }
 
   @FXML
