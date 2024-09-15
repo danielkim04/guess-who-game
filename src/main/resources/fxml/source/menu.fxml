@@ -8,22 +8,22 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.MenuController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.MenuController">
    <children>
-      <ImageView fitHeight="409.0" fitWidth="714.0" layoutX="-57.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="409.0" fitWidth="714.0" layoutX="-13.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@casinoexterior.jpeg" />
          </image>
       </ImageView>
-      <AnchorPane layoutX="50.0" layoutY="47.0" prefHeight="306.0" prefWidth="499.0">
+      <AnchorPane layoutX="100.0" layoutY="47.0" prefHeight="306.0" prefWidth="499.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000000df" height="307.0" layoutY="-2.0" stroke="TRANSPARENT" strokeType="INSIDE" width="500.0" />
-            <Label alignment="CENTER" layoutX="79.0" layoutY="29.0" prefHeight="81.0" prefWidth="343.0" text="Game Name" textAlignment="RIGHT" textFill="WHITE" wrapText="true">
+            <Label alignment="CENTER" layoutX="79.0" layoutY="18.0" prefHeight="81.0" prefWidth="343.0" text="Game Name" textAlignment="RIGHT" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="Berlin Sans FB Demi Bold" size="31.0" />
                </font>
             </Label>
-            <AnchorPane layoutX="173.0" layoutY="188.0" prefHeight="55.0" prefWidth="155.0">
+            <AnchorPane layoutX="173.0" layoutY="215.0" prefHeight="55.0" prefWidth="155.0">
                <children>
                   <!-- Set the rectangle behind the label -->
                   <Rectangle fx:id="StartRectangle" arcHeight="25.0" arcWidth="25.0" fill="#777373c4" height="57.0" onMouseClicked="#onStartRectangleClick" stroke="TRANSPARENT" strokeType="INSIDE" width="155.0" />
