@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import nz.ac.auckland.se206.classes.*;
 import nz.ac.auckland.se206.controllers.ChatController;
 import nz.ac.auckland.se206.speech.FreeTextToSpeech;
 
@@ -19,6 +20,8 @@ import nz.ac.auckland.se206.speech.FreeTextToSpeech;
 public class App extends Application {
 
   private static Scene scene;
+  // private static Controller currentController;
+  private static FXMLLoader fxmlHandler;
 
   /**
    * The main method that launches the JavaFX application.
@@ -48,7 +51,8 @@ public class App extends Application {
    * @throws IOException if the FXML file is not found
    */
   private static Parent loadFxml(final String fxml) throws IOException {
-    return new FXMLLoader(App.class.getResource("/fxml/source/" + fxml + ".fxml")).load();
+    fxmlHandler = new FXMLLoader(App.class.getResource("/fxml/" + fxml + ".fxml"));
+    return (fxmlHandler.load());
   }
 
   /**
@@ -89,5 +93,9 @@ public class App extends Application {
 
   private void handleWindowClose(WindowEvent event) {
     FreeTextToSpeech.deallocateSynthesizer();
+  }
+
+  public static Controller getController() {
+    return (fxmlHandler.getController());
   }
 }
