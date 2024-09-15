@@ -53,7 +53,6 @@ public class CrimeSceneController implements Controller {
   @FXML private ImageView dark;
   @FXML private Button NoteExit;
   @FXML private ImageView blueLight;
-  @FXML private Label timerLabel;
 
   private static GameStateContext context = new GameStateContext();
 
@@ -286,6 +285,7 @@ public class CrimeSceneController implements Controller {
   // Method to update the MoneyCounter label
   private void updateMoneyCounter() {
     MoneyCounter.setText("Money Collected: " + moneyCollected);
+  }
 
   @Override
   public void onNewChat(String chat) {
@@ -294,6 +294,6 @@ public class CrimeSceneController implements Controller {
 
   @Override
   public void onTimerUpdate(String time) {
-    timerLabel.setText(time);
+    labelTimer.setText(time);
   }
 }
