@@ -25,13 +25,13 @@ public class IntroDialogueSceneController {
   @FXML
   public void initialize() {
     dialogues = new ArrayList<>();
-    dialogues.add("Ahhhhh! My winnings! They're gone!");
+    dialogues.add("NO! My winnings! They're gone!");
     dialogues.add(
-        "I won big at the casino tonight, and I was about to leave but the bag of cash they had"
-            + " given me was stolen!");
-    dialogues.add("Oh! the bag of cash was found?");
-    dialogues.add("But I still wanna know what kind of person would do such a thing!");
-    dialogues.add("PI Masters! Please help me get to the bottom of this!");
+        "I had just won big at the casino, a life-changing amount. But the moment I turned my back,"
+            + " the bag of cash disappeared.");
+    dialogues.add("You say they found the bag? that's ... something.");
+    dialogues.add("But you're still looking into me, aren't you? I can see it in your eyes.");
+    dialogues.add("Come on, I need you to find the real culprit. I had nothing to do with this.");
 
     showNextDialogue();
   }
