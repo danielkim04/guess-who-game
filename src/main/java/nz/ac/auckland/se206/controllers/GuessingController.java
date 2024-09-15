@@ -1,0 +1,174 @@
+package nz.ac.auckland.se206.controllers;
+
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import javafx.concurrent.Task;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Rectangle;
+import nz.ac.auckland.apiproxy.chat.openai.ChatCompletionRequest;
+import nz.ac.auckland.apiproxy.chat.openai.ChatCompletionResult;
+import nz.ac.auckland.apiproxy.chat.openai.ChatMessage;
+import nz.ac.auckland.apiproxy.chat.openai.Choice;
+import nz.ac.auckland.apiproxy.config.ApiProxyConfig;
+import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
+import nz.ac.auckland.se206.prompts.PromptEngineering;
+
+public class GuessingController {
+  @FXML private Label labelTimer;
+  @FXML private AnchorPane paneNoteWindow;
+  @FXML private Rectangle rectCloseNotes;
+  @FXML private AnchorPane paneOpenChat;
+  @FXML private AnchorPane paneSuspectOne;
+  @FXML private AnchorPane paneSuspectTwo;
+  @FXML private AnchorPane paneSuspectThree;
+  @FXML private TextArea txtaExplanation;
+  @FXML private Button btnSend;
+  @FXML private AnchorPane paneExplanation;
+  @FXML private Label labelTitle;
+  @FXML private ImageView imgChosenSuspect;
+
+  private boolean isThief;
+  private ChatCompletionRequest chatCompletionRequest;
+
+  /**
+   * Initializes the room view. If it's the first time initialization, it will provide instructions
+   * via text-to-speech.
+   */
+  @FXML
+  public void initialize() {
+    // to be implemented
+  }
+
+  /**
+   * Handles the key pressed event.
+   *
+   * @param event the key event
+   */
+  @FXML
+  public void onKeyPressed(KeyEvent event) {
+    System.out.println("Key " + event.getCode() + " pressed");
+  }
+
+  /**
+   * Handles the key released event.
+   *
+   * @param event the key event
+   */
+  @FXML
+  public void onKeyReleased(KeyEvent event) {
+    System.out.println("Key " + event.getCode() + " released");
+  }
+
+  /**
+   * Handles mouse clicks on rectangles representing people in the room.
+   *
+   * @param event the mouse event triggered by clicking a rectangle
+   * @throws IOException if there is an I/O error
+   */
+  @FXML
+  private void handleSuspectClick(MouseEvent event) throws IOException {
+    String filename = "";
+    AnchorPane clickedSuspect = (AnchorPane) event.getSource();
+    switch (clickedSuspect.getId()) {
+      case "paneSuspectOne":
+        isThief = false;
+        filename = "man 1.png"; // modify filename
+        break;
+      case "paneSuspectTwo":
+        isThief = false;
+        filename = "man 1.png"; // modify filename
+        break;
+      case "paneSuspectThree":
+        isThief = true;
+        filename = "man 1.png"; // modify filename
+        break;
+    }
+    transitionToExplanation(getClass().getResource("/fxml/source/" + filename));
+  }
+
+  private void transitionToExplanation(URL url) {
+    paneExplanation.setVisible(true);
+    labelTitle.setText("Present Evidence");
+    Image image = new Image(url.toExternalForm());
+    imgChosenSuspect.setImage(image);
+  }
+
+  private String loadSystemPrompt() throws IOException, URISyntaxException {
+    URL resourceUrl = PromptEngineering.class.getClassLoader().getResource("prompts/chat.txt");
+    return new String(Files.readAllBytes(Paths.get(resourceUrl.toURI())));
+  }
+
+  public void initialiseChat() {
+    try {
+      ApiProxyConfig config = ApiProxyConfig.readConfig();
+      chatCompletionRequest =
+          new ChatCompletionRequest(config)
+              .setN(1)
+              .setTemperature(0.2)
+              .setTopP(0.5)
+              .setMaxTokens(100);
+      runGpt(new ChatMessage("system", loadSystemPrompt()));
+    } catch (ApiProxyException | URISyntaxException | IOException e) { // ??????????
+      e.printStackTrace();
+    }
+  }
+
+  private void runGpt(ChatMessage msg) {
+    chatCompletionRequest.addMessage(msg);
+
+    Task<ChatMessage> task =
+        new Task<ChatMessage>() {
+          @Override
+          protected ChatMessage call() throws ApiProxyException {
+            try {
+              ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
+              Choice result = chatCompletionResult.getChoices().iterator().next();
+              chatCompletionRequest.addMessage(result.getChatMessage());
+              return result.getChatMessage();
+            } catch (ApiProxyException e) {
+              e.printStackTrace();
+              return null;
+            }
+          }
+        };
+
+    Thread backgroundThread = new Thread(task);
+    backgroundThread.start();
+  }
+
+  @FXML
+  private void sendExplanation(ActionEvent event) throws ApiProxyException, IOException {
+    // to be implemented
+    // evaluate user input using gpt and display the result
+
+    String message = txtaExplanation.getText().trim();
+    if (message.isEmpty()) {
+      return;
+    }
+    initialiseChat();
+    ChatMessage msg = new ChatMessage("user", message);
+    runGpt(msg);
+  }
+
+  @FXML
+  private void handleOpenButtonClick(MouseEvent event) throws IOException {
+    paneNoteWindow.setVisible(true);
+  }
+
+  @FXML
+  private void handleCloseButtonClick(MouseEvent event) throws IOException {
+    paneNoteWindow.setVisible(false);
+  }
+}
