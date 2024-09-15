@@ -51,49 +51,49 @@
                   <Image url="@../images/DuffelBag.png" />
                </image>
             </ImageView>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#393737" height="321.0" layoutY="79.0" stroke="#008663" strokeType="INSIDE" width="112.0" />
+            <Rectangle fx:id="BagCollectionRect" arcHeight="5.0" arcWidth="5.0" fill="#393737" height="321.0" layoutY="79.0" stroke="#008663" strokeType="INSIDE" width="112.0" />
             <!-- Restored ImageViews for cash images -->
-            <ImageView fitHeight="31.0" fitWidth="74.0" layoutX="404.0" layoutY="172.0" pickOnBounds="true" preserveRatio="true" rotate="13.6">
+            <ImageView fx:id="Money1" fitHeight="31.0" fitWidth="74.0" layoutX="404.0" layoutY="172.0" pickOnBounds="true" preserveRatio="true" rotate="13.6">
                <image>
                   <Image url="@../images/cash2.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="31.0" fitWidth="74.0" layoutX="416.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true" rotate="-61.6">
+            <ImageView fx:id="Money2" fitHeight="31.0" fitWidth="74.0" layoutX="416.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true" rotate="-61.6">
                <image>
                   <Image url="@../images/cash2.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="31.0" fitWidth="74.0" layoutX="373.0" layoutY="228.0" pickOnBounds="true" preserveRatio="true" rotate="-32.3">
+            <ImageView fx:id="Money3" fitHeight="31.0" fitWidth="74.0" layoutX="373.0" layoutY="228.0" pickOnBounds="true" preserveRatio="true" rotate="-32.3">
                <image>
                   <Image url="@../images/cash2.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="31.0" fitWidth="74.0" layoutX="394.0" layoutY="238.0" pickOnBounds="true" preserveRatio="true" rotate="-51.2">
+            <ImageView fx:id="Money4" fitHeight="31.0" fitWidth="74.0" layoutX="394.0" layoutY="238.0" pickOnBounds="true" preserveRatio="true" rotate="-51.2">
                <image>
                   <Image url="@../images/cash2.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="31.0" fitWidth="74.0" layoutX="379.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true" rotate="-38.5">
+            <ImageView fx:id="Money5" fitHeight="31.0" fitWidth="74.0" layoutX="379.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true" rotate="-38.5">
                <image>
                   <Image url="@../images/cash2.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="31.0" fitWidth="74.0" layoutX="358.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true" rotate="-39.4">
+            <ImageView fx:id="Money6" fitHeight="31.0" fitWidth="74.0" layoutX="358.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true" rotate="-39.4">
                <image>
                   <Image url="@../images/cash2.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="31.0" fitWidth="74.0" layoutX="339.0" layoutY="260.0" pickOnBounds="true" preserveRatio="true" rotate="18.4">
+            <ImageView fx:id="Money7" fitHeight="31.0" fitWidth="74.0" layoutX="339.0" layoutY="260.0" pickOnBounds="true" preserveRatio="true" rotate="18.4">
                <image>
                   <Image url="@../images/cash2.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="31.0" fitWidth="74.0" layoutX="330.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true" rotate="22.4">
+            <ImageView fx:id="Money8" fitHeight="31.0" fitWidth="74.0" layoutX="330.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true" rotate="22.4">
                <image>
                   <Image url="@../images/cash2.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="31.0" fitWidth="74.0" layoutX="315.0" layoutY="237.0" pickOnBounds="true" preserveRatio="true" rotate="-20.4">
+            <ImageView fx:id="Money9" fitHeight="31.0" fitWidth="74.0" layoutX="315.0" layoutY="237.0" pickOnBounds="true" preserveRatio="true" rotate="-20.4">
                <image>
                   <Image url="@../images/cash2.png" />
                </image>
@@ -103,7 +103,7 @@
                   <Image url="@../images/cash2.png" />
                </image>
             </ImageView>
-            <Button fx:id="BagExit" layoutX="10.0" layoutY="360.0" mnemonicParsing="false" text="Exit" />
+            <Button fx:id="BagExit" layoutX="10.0" layoutY="360.0" mnemonicParsing="false" onAction="#handleBagExitClick" text="Exit" />
          </children>
       </AnchorPane>
 
