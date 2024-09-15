@@ -93,12 +93,6 @@ public class GuessingController {
   }
 
   @FXML
-  private void sendExplanation() {
-    // to be implemented
-    // evaluate user input using gpt and display the result
-  }
-
-  @FXML
   private void handleOpenButtonClick(MouseEvent event) throws IOException {
     paneNoteWindow.setVisible(true);
   }
