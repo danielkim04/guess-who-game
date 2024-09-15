@@ -13,7 +13,7 @@
 
 <Pane fx:id="paneBase" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="676.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.CrimeSceneController">
    <children>
-      <ImageView fitHeight="400.0" fitWidth="722.0" layoutX="-24.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="400.0" fitWidth="722.0" layoutX="-25.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@CrimeScene.jpeg" />
          </image>
@@ -83,6 +83,11 @@
                   <Image url="@../images/cash2.png" />
                </image>
             </ImageView>
+            <ImageView fx:id="Hair" fitHeight="72.0" fitWidth="36.0" layoutX="425.0" layoutY="215.0" pickOnBounds="true" preserveRatio="true" rotate="62.2">
+               <image>
+                  <Image url="@../images/hair2.png" />
+               </image>
+            </ImageView>
             <ImageView fx:id="Money7" fitHeight="31.0" fitWidth="74.0" layoutX="339.0" layoutY="260.0" pickOnBounds="true" preserveRatio="true" rotate="18.4">
                <image>
                   <Image url="@../images/cash2.png" />
@@ -103,6 +108,16 @@
                   <Image url="@../images/cash2.png" />
                </image>
             </ImageView>
+            <AnchorPane fx:id="hairCollectedPane" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Label fx:id="hairText" stylesheets="@../css/style.css" text="Label" />
+                  <ImageView fitHeight="321.0" fitWidth="461.0" layoutX="110.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/frame2.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
             <Label fx:id="MoneyCounter" layoutX="5.0" layoutY="90.0" prefHeight="65.0" prefWidth="97.0" stylesheets="@../css/style.css" text="Money Collected: XXXXX " wrapText="true" />
             <Button fx:id="BagExit" layoutX="10.0" layoutY="360.0" mnemonicParsing="false" onAction="#handleBagExitClick" text="Exit" />
          </children>

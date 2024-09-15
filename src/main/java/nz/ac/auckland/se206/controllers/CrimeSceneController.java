@@ -26,6 +26,7 @@ public class CrimeSceneController {
   @FXML private AnchorPane paneOpenChat;
   @FXML private AnchorPane bagInteractPane;
   @FXML private Pane paneBase;
+  @FXML private Pane hairCollectedPane; // Pane that becomes visible when hair is collected
   @FXML private ImageView imgMap;
   @FXML private Button BagExit;
   @FXML private ImageView Money1;
@@ -38,6 +39,7 @@ public class CrimeSceneController {
   @FXML private ImageView Money8;
   @FXML private ImageView Money9;
   @FXML private ImageView Money10;
+  @FXML private ImageView Hair;
 
   private static GameStateContext context = new GameStateContext();
 
@@ -53,8 +55,9 @@ public class CrimeSceneController {
    */
   @FXML
   public void initialize() {
-    // Hide bagInteractPane initially
+    // Hide bagInteractPane and hairCollectedPane initially
     bagInteractPane.setVisible(false);
+    hairCollectedPane.setVisible(false);
 
     // Initialize money counter with zero
     updateMoneyCounter();
@@ -70,6 +73,7 @@ public class CrimeSceneController {
     makeImageViewDraggable(Money8);
     makeImageViewDraggable(Money9);
     makeImageViewDraggable(Money10);
+    makeImageViewDraggable(Hair);
   }
 
   /**
@@ -151,10 +155,11 @@ public class CrimeSceneController {
     imageView.setOnMouseDragged(event -> handleMouseDragged(event, imageView));
 
     // Handle mouse release event (when user releases the ImageView)
-    imageView.setOnMouseReleased(event -> {
-      // Check for intersection with the BagCollectionRect when dragging is finished
-      checkMoneyIntersectionAndHide(imageView);
-    });
+    imageView.setOnMouseReleased(
+        event -> {
+          // Check for intersection with the BagCollectionRect when dragging is finished
+          checkMoneyIntersectionAndHide(imageView);
+        });
   }
 
   // This method is triggered when the mouse is pressed on the ImageView
@@ -171,15 +176,23 @@ public class CrimeSceneController {
     imageView.setLayoutY(event.getSceneY() - initialY);
   }
 
-  // Method to check if the currently dragged money is within the BagCollectionRect area and hide it
-  private void checkMoneyIntersectionAndHide(ImageView draggedMoney) {
-    // Check if the dragged money intersects with the BagCollectionRect
-    if (draggedMoney.getBoundsInParent().intersects(BagCollectionRect.getBoundsInParent())) {
-      // If the money intersects with the bag collection rectangle, hide the money image
-      draggedMoney.setVisible(false);
-      moneyCollected += 1000;
-      updateMoneyCounter(); // Update the label when money is collected
-      System.out.println(moneyCollected);
+  // Method to check if the currently dragged item is within the BagCollectionRect area and hide it
+  private void checkMoneyIntersectionAndHide(ImageView draggedItem) {
+    // Check if the dragged item intersects with the BagCollectionRect
+    if (draggedItem.getBoundsInParent().intersects(BagCollectionRect.getBoundsInParent())) {
+
+      // If the dragged item is Hair, show the hairCollectedPane
+      if (draggedItem == Hair) {
+        System.out.println("Hair collected! No money gained.");
+        draggedItem.setVisible(false);
+        hairCollectedPane.setVisible(true); // Show hairCollectedPane
+      } else {
+        // For other items (like money), hide the item and collect money
+        draggedItem.setVisible(false);
+        moneyCollected += 1000;
+        updateMoneyCounter(); // Update the label when money is collected
+        System.out.println(moneyCollected);
+      }
     }
   }
 
