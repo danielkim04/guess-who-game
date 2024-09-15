@@ -45,7 +45,7 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="paneExplanation" layoutX="-16.0" layoutY="-1.0" prefHeight="400.0" prefWidth="676.0" visible="false">
+      <AnchorPane fx:id="paneExplanation" layoutX="-16.0" layoutY="-1.0" prefHeight="400.0" prefWidth="676.0">
          <children>
             <ImageView fitHeight="408.0" fitWidth="707.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -54,7 +54,7 @@
             </ImageView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fdfdfd" height="321.0" layoutX="14.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" width="391.0" />
             <TextArea fx:id="txtaExplanation" layoutX="24.0" layoutY="88.0" prefHeight="265.0" prefWidth="370.0" />
-            <Button fx:id="btnSend" layoutX="24.0" layoutY="353.0" mnemonicParsing="false" onMouseClicked="#sendExplanation" prefHeight="36.0" prefWidth="370.0" text="Send" />
+            <Button fx:id="btnSend" layoutX="24.0" layoutY="353.0" mnemonicParsing="false" onAction="#sendExplanation" prefHeight="36.0" prefWidth="370.0" text="Send" />
             <ImageView fx:id="imgChosenSuspect" fitHeight="305.0" fitWidth="200.0" layoutX="442.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>

@@ -1,7 +1,12 @@
 package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import javafx.concurrent.Task;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -12,6 +17,13 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
+import nz.ac.auckland.apiproxy.chat.openai.ChatCompletionRequest;
+import nz.ac.auckland.apiproxy.chat.openai.ChatCompletionResult;
+import nz.ac.auckland.apiproxy.chat.openai.ChatMessage;
+import nz.ac.auckland.apiproxy.chat.openai.Choice;
+import nz.ac.auckland.apiproxy.config.ApiProxyConfig;
+import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
+import nz.ac.auckland.se206.prompts.PromptEngineering;
 
 public class GuessingController {
   @FXML private Label labelTimer;
@@ -28,6 +40,7 @@ public class GuessingController {
   @FXML private ImageView imgChosenSuspect;
 
   private boolean isThief;
+  private ChatCompletionRequest chatCompletionRequest;
 
   /**
    * Initializes the room view. If it's the first time initialization, it will provide instructions
@@ -90,6 +103,63 @@ public class GuessingController {
     labelTitle.setText("Present Evidence");
     Image image = new Image(url.toExternalForm());
     imgChosenSuspect.setImage(image);
+  }
+
+  private String loadSystemPrompt() throws IOException, URISyntaxException {
+    URL resourceUrl = PromptEngineering.class.getClassLoader().getResource("prompts/chat.txt");
+    return new String(Files.readAllBytes(Paths.get(resourceUrl.toURI())));
+  }
+
+  public void initialiseChat() {
+    try {
+      ApiProxyConfig config = ApiProxyConfig.readConfig();
+      chatCompletionRequest =
+          new ChatCompletionRequest(config)
+              .setN(1)
+              .setTemperature(0.2)
+              .setTopP(0.5)
+              .setMaxTokens(100);
+      runGpt(new ChatMessage("system", loadSystemPrompt()));
+    } catch (ApiProxyException | URISyntaxException | IOException e) { // ??????????
+      e.printStackTrace();
+    }
+  }
+
+  private void runGpt(ChatMessage msg) {
+    chatCompletionRequest.addMessage(msg);
+
+    Task<ChatMessage> task =
+        new Task<ChatMessage>() {
+          @Override
+          protected ChatMessage call() throws ApiProxyException {
+            try {
+              ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
+              Choice result = chatCompletionResult.getChoices().iterator().next();
+              chatCompletionRequest.addMessage(result.getChatMessage());
+              return result.getChatMessage();
+            } catch (ApiProxyException e) {
+              e.printStackTrace();
+              return null;
+            }
+          }
+        };
+
+    Thread backgroundThread = new Thread(task);
+    backgroundThread.start();
+  }
+
+  @FXML
+  private void sendExplanation(ActionEvent event) throws ApiProxyException, IOException {
+    // to be implemented
+    // evaluate user input using gpt and display the result
+
+    String message = txtaExplanation.getText().trim();
+    if (message.isEmpty()) {
+      return;
+    }
+    initialiseChat();
+    ChatMessage msg = new ChatMessage("user", message);
+    runGpt(msg);
   }
 
   @FXML
