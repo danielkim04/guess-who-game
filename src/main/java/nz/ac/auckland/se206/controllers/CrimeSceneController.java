@@ -28,6 +28,7 @@ public class CrimeSceneController {
   @FXML private Rectangle rectCloseNotes;
   @FXML private AnchorPane paneOpenChat;
   @FXML private AnchorPane bagInteractPane;
+  @FXML private AnchorPane noteInteractPane;
   @FXML private Pane paneBase;
   @FXML private Pane hairCollectedPane; // Pane that becomes visible when hair is collected
   @FXML private Label hairText; // Label for hair collection message
@@ -44,6 +45,7 @@ public class CrimeSceneController {
   @FXML private ImageView Money9;
   @FXML private ImageView Money10;
   @FXML private ImageView Hair;
+  @FXML private ImageView dark;
 
   private static GameStateContext context = new GameStateContext();
 
@@ -78,6 +80,7 @@ public class CrimeSceneController {
     makeImageViewDraggable(Money9);
     makeImageViewDraggable(Money10);
     makeImageViewDraggable(Hair);
+    enableDarkToFollowCursor();
   }
 
   /**
@@ -143,11 +146,31 @@ public class CrimeSceneController {
     bagInteractPane.setVisible(false);
   }
 
+  @FXML
+  private void handleNoteClueClick(MouseEvent event) {
+    // Show the noteInteractPane when rectClueNote is clicked
+    noteInteractPane.setVisible(true);
+  }
+
   // New method to handle clicks on rectClueBag
   @FXML
   private void handleClueBagClick(MouseEvent event) {
     // Show the bagInteractPane when rectClueBag is clicked
     bagInteractPane.setVisible(true);
+  }
+
+  // Method to make the "dark" ImageView follow the mouse cursor
+  private void enableDarkToFollowCursor() {
+    // Define the offset values for right and down positioning
+    double offsetX = 25; // Move to the right by 20 pixels
+    double offsetY = 15; // Move down by 20 pixels
+
+    paneBase.setOnMouseMoved(
+        event -> {
+          // Set the ImageView's position slightly right and down from the cursor
+          dark.setLayoutX(event.getSceneX() - (dark.getFitWidth() / 2) + offsetX);
+          dark.setLayoutY(event.getSceneY() - (dark.getFitHeight() / 2) + offsetY);
+        });
   }
 
   // Method to make an ImageView draggable
@@ -204,37 +227,38 @@ public class CrimeSceneController {
   }
 
   // Method to display the text letter by letter with a small delay and hide pane after 3 seconds
-private void displayTextSlowly(String text) {
-  final StringBuilder displayedText = new StringBuilder();
-  hairText.setText(""); // Clear the label initially
+  private void displayTextSlowly(String text) {
+    final StringBuilder displayedText = new StringBuilder();
+    hairText.setText(""); // Clear the label initially
 
-  Timeline timeline = new Timeline();
-  for (int i = 0; i < text.length(); i++) {
+    Timeline timeline = new Timeline();
+    for (int i = 0; i < text.length(); i++) {
       final int index = i;
-      KeyFrame keyFrame = new KeyFrame(
-          Duration.millis(100 * index), // Delay each letter by 100ms
-          e -> {
-              displayedText.append(text.charAt(index));  // Append the current letter
-              hairText.setText(displayedText.toString()); // Update the label with the new text
-          }
-      );
+      KeyFrame keyFrame =
+          new KeyFrame(
+              Duration.millis(100 * index), // Delay each letter by 100ms
+              e -> {
+                displayedText.append(text.charAt(index)); // Append the current letter
+                hairText.setText(displayedText.toString()); // Update the label with the new text
+              });
       timeline.getKeyFrames().add(keyFrame);
+    }
+
+    // After the text has been fully displayed, hide the pane after 3 seconds
+    timeline.setOnFinished(
+        e -> {
+          Timeline hidePaneTimeline =
+              new Timeline(
+                  new KeyFrame(
+                      Duration.seconds(3), // Wait for 3 seconds
+                      ev -> hairCollectedPane.setVisible(false) // Hide the pane
+                      ));
+          hidePaneTimeline.play();
+        });
+
+    // Start the timeline animation
+    timeline.play();
   }
-
-  // After the text has been fully displayed, hide the pane after 3 seconds
-  timeline.setOnFinished(e -> {
-      Timeline hidePaneTimeline = new Timeline(new KeyFrame(
-          Duration.seconds(3), // Wait for 3 seconds
-          ev -> hairCollectedPane.setVisible(false) // Hide the pane
-      ));
-      hidePaneTimeline.play();
-  });
-
-  // Start the timeline animation
-  timeline.play();
-}
-
-
 
   // Method to update the MoneyCounter label
   private void updateMoneyCounter() {
