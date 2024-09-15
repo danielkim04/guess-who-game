@@ -46,6 +46,8 @@ public class CrimeSceneController {
   @FXML private ImageView Money10;
   @FXML private ImageView Hair;
   @FXML private ImageView dark;
+  @FXML private Button NoteExit;
+  @FXML private ImageView blueLight;
 
   private static GameStateContext context = new GameStateContext();
 
@@ -80,7 +82,7 @@ public class CrimeSceneController {
     makeImageViewDraggable(Money9);
     makeImageViewDraggable(Money10);
     makeImageViewDraggable(Hair);
-    enableDarkToFollowCursor();
+    enableBothLightsToFollowCursor();
   }
 
   /**
@@ -147,6 +149,12 @@ public class CrimeSceneController {
   }
 
   @FXML
+  private void handleNoteExit(ActionEvent event) {
+    // Hide the pane
+    noteInteractPane.setVisible(false);
+  }
+
+  @FXML
   private void handleNoteClueClick(MouseEvent event) {
     // Show the noteInteractPane when rectClueNote is clicked
     noteInteractPane.setVisible(true);
@@ -159,17 +167,24 @@ public class CrimeSceneController {
     bagInteractPane.setVisible(true);
   }
 
-  // Method to make the "dark" ImageView follow the mouse cursor
-  private void enableDarkToFollowCursor() {
-    // Define the offset values for right and down positioning
-    double offsetX = 25; // Move to the right by 20 pixels
-    double offsetY = 15; // Move down by 20 pixels
+  private void enableBothLightsToFollowCursor() {
+    // Define the offset values for both blueLight and dark
+    double darkOffsetX = 24; // Move dark slightly to the right
+    double darkOffsetY = 15; // Move dark slightly down
+    double blueLightOffsetX = 2; // No offset for blueLight
+    double blueLightOffsetY = 0; // No offset for blueLight
 
     paneBase.setOnMouseMoved(
         event -> {
-          // Set the ImageView's position slightly right and down from the cursor
-          dark.setLayoutX(event.getSceneX() - (dark.getFitWidth() / 2) + offsetX);
-          dark.setLayoutY(event.getSceneY() - (dark.getFitHeight() / 2) + offsetY);
+          // Set the dark ImageView's position
+          dark.setLayoutX(event.getSceneX() - (dark.getFitWidth() / 2) + darkOffsetX);
+          dark.setLayoutY(event.getSceneY() - (dark.getFitHeight() / 2) + darkOffsetY);
+
+          // Set the blueLight ImageView's position
+          blueLight.setLayoutX(
+              event.getSceneX() - (blueLight.getFitWidth() / 2) + blueLightOffsetX);
+          blueLight.setLayoutY(
+              event.getSceneY() - (blueLight.getFitHeight() / 2) + blueLightOffsetY);
         });
   }
 

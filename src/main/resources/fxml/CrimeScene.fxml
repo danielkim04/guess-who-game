@@ -108,13 +108,27 @@
                   <Image url="@../images/note2.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="dark" fitHeight="953.0" fitWidth="1718.0" layoutX="-508.0" layoutY="-334.0" opacity="0.9" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/darkness4.png" />
-               </image>
-            </ImageView>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ImageView fx:id="blueLight" fitHeight="43.0" fitWidth="54.0" layoutX="145.0" layoutY="236.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/BlueCircle2.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="62.0" fitWidth="54.0" layoutX="400.0" layoutY="200.0" opacity="0.3" pickOnBounds="true" preserveRatio="true" rotate="45.9">
+                     <image>
+                        <Image url="@../images/fingerprint2.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="dark" fitHeight="953.0" fitWidth="1718.0" opacity="0.95" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/darkness4.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
             <Rectangle fx:id="BagCollectionRect1" arcHeight="5.0" arcWidth="5.0" fill="#393737" height="321.0" layoutY="79.0" stroke="#008663" strokeType="INSIDE" width="112.0" />
-            <Button layoutX="10.0" layoutY="360.0" mnemonicParsing="false" text="Leave" />
+            <Button fx:id="NoteExit" layoutX="10.0" layoutY="360.0" mnemonicParsing="false" onAction="#handleNoteExit" text="Exit" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="79.0" prefWidth="676.0">
