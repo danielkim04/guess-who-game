@@ -108,17 +108,7 @@ public class CrimeSceneController implements Controller {
   }
 
   @Override
-  public void onTimerUpdate() {
-    throw new UnsupportedOperationException("Unimplemented method 'onTimerUpdate'");
-  }
-
-  @Override
   public void onTimerUpdate(String time) {
     timerLabel.setText(time);
-  }
-
-  @Override
-  public void onTimerStop() {
-    throw new UnsupportedOperationException("Unimplemented method 'onTimerStop'");
   }
 }
