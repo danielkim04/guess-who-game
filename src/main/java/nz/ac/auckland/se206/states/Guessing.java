@@ -1,8 +1,11 @@
 package nz.ac.auckland.se206.states;
 
 import java.io.IOException;
+import javafx.application.Platform;
 import javafx.scene.input.MouseEvent;
+import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameStateContext;
+import nz.ac.auckland.se206.classes.*;
 import nz.ac.auckland.se206.speech.TextToSpeech;
 
 /**
@@ -13,6 +16,24 @@ public class Guessing implements GameState {
 
   private final GameStateContext context;
 
+  private Thread updateThread =
+      new Thread(
+          () -> {
+            Platform.runLater(
+                () -> {
+                  App.getController().onTimerUpdate(this.timer.getTime().toString());
+                });
+          });
+  private Thread timeOutThread =
+      new Thread(
+          () -> {
+            Platform.runLater(
+                () -> {
+                  handleTimeOut();
+                });
+          });
+  private Timer timer = new Timer(10);
+
   /**
    * Constructs a new Guessing state with the given game state context.
    *
@@ -20,6 +41,9 @@ public class Guessing implements GameState {
    */
   public Guessing(GameStateContext context) {
     this.context = context;
+    timer.setExecution(updateThread);
+    timer.setTimeOutThread(timeOutThread);
+    timer.start();
   }
 
   /**
@@ -55,5 +79,9 @@ public class Guessing implements GameState {
   @Override
   public void handleGuessClick() throws IOException {
     TextToSpeech.speak("You have already guessed!");
+  }
+
+  public void handleTimeOut() {
+    System.out.println("No more Time");
   }
 }
