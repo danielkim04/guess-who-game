@@ -45,7 +45,7 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="paneExplanation" layoutX="-16.0" layoutY="-1.0" prefHeight="400.0" prefWidth="676.0">
+      <AnchorPane fx:id="paneExplanation" layoutX="-16.0" layoutY="-1.0" prefHeight="400.0" prefWidth="676.0" visible="false">
          <children>
             <ImageView fitHeight="408.0" fitWidth="707.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
                <image>
