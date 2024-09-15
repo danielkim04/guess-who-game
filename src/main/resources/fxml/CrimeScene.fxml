@@ -110,12 +110,12 @@
             </ImageView>
             <AnchorPane fx:id="hairCollectedPane" prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Label fx:id="hairText" stylesheets="@../css/style.css" text="Label" />
                   <ImageView fitHeight="321.0" fitWidth="461.0" layoutX="110.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/frame2.png" />
                      </image>
                   </ImageView>
+                  <Label fx:id="hairText" layoutX="170.0" layoutY="140.0" stylesheets="@../css/style.css" text="Label" />
                </children>
             </AnchorPane>
             <Label fx:id="MoneyCounter" layoutX="5.0" layoutY="90.0" prefHeight="65.0" prefWidth="97.0" stylesheets="@../css/style.css" text="Money Collected: XXXXX " wrapText="true" />

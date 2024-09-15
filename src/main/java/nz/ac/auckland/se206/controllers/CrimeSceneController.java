@@ -1,6 +1,8 @@
 package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -11,6 +13,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
+import javafx.util.Duration;
 import nz.ac.auckland.se206.GameStateContext;
 
 public class CrimeSceneController {
@@ -27,6 +30,7 @@ public class CrimeSceneController {
   @FXML private AnchorPane bagInteractPane;
   @FXML private Pane paneBase;
   @FXML private Pane hairCollectedPane; // Pane that becomes visible when hair is collected
+  @FXML private Label hairText; // Label for hair collection message
   @FXML private ImageView imgMap;
   @FXML private Button BagExit;
   @FXML private ImageView Money1;
@@ -181,11 +185,14 @@ public class CrimeSceneController {
     // Check if the dragged item intersects with the BagCollectionRect
     if (draggedItem.getBoundsInParent().intersects(BagCollectionRect.getBoundsInParent())) {
 
-      // If the dragged item is Hair, show the hairCollectedPane
+      // If the dragged item is Hair, show the hairCollectedPane and animate the text
       if (draggedItem == Hair) {
         System.out.println("Hair collected! No money gained.");
         draggedItem.setVisible(false);
         hairCollectedPane.setVisible(true); // Show hairCollectedPane
+
+        // Display the hairText slowly, letter by letter
+        displayTextSlowly("Hair Collected, Sample must be tested in the lab!");
       } else {
         // For other items (like money), hide the item and collect money
         draggedItem.setVisible(false);
@@ -195,6 +202,39 @@ public class CrimeSceneController {
       }
     }
   }
+
+  // Method to display the text letter by letter with a small delay and hide pane after 3 seconds
+private void displayTextSlowly(String text) {
+  final StringBuilder displayedText = new StringBuilder();
+  hairText.setText(""); // Clear the label initially
+
+  Timeline timeline = new Timeline();
+  for (int i = 0; i < text.length(); i++) {
+      final int index = i;
+      KeyFrame keyFrame = new KeyFrame(
+          Duration.millis(100 * index), // Delay each letter by 100ms
+          e -> {
+              displayedText.append(text.charAt(index));  // Append the current letter
+              hairText.setText(displayedText.toString()); // Update the label with the new text
+          }
+      );
+      timeline.getKeyFrames().add(keyFrame);
+  }
+
+  // After the text has been fully displayed, hide the pane after 3 seconds
+  timeline.setOnFinished(e -> {
+      Timeline hidePaneTimeline = new Timeline(new KeyFrame(
+          Duration.seconds(3), // Wait for 3 seconds
+          ev -> hairCollectedPane.setVisible(false) // Hide the pane
+      ));
+      hidePaneTimeline.play();
+  });
+
+  // Start the timeline animation
+  timeline.play();
+}
+
+
 
   // Method to update the MoneyCounter label
   private void updateMoneyCounter() {
