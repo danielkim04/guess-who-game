@@ -15,8 +15,13 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 import nz.ac.auckland.se206.GameStateContext;
+import nz.ac.auckland.se206.classes.*;
 
-public class CrimeSceneController {
+/**
+ * Controller class for the room view. Handles user interactions within the room where the user can
+ * chat with customers and guess their profession.
+ */
+public class CrimeSceneController implements Controller {
 
   @FXML private Rectangle rectClueBag;
   @FXML private Rectangle rectClueBook;
@@ -48,6 +53,7 @@ public class CrimeSceneController {
   @FXML private ImageView dark;
   @FXML private Button NoteExit;
   @FXML private ImageView blueLight;
+  @FXML private Label timerLabel;
 
   private static GameStateContext context = new GameStateContext();
 
@@ -130,11 +136,13 @@ public class CrimeSceneController {
 
   @FXML
   private void handleOpenButtonClick(MouseEvent event) throws IOException {
+    System.out.println("Box opened");
     paneNoteWindow.setVisible(true);
   }
 
   @FXML
   private void handleCloseButtonClick(MouseEvent event) throws IOException {
+    System.out.println("Box Closed");
     paneNoteWindow.setVisible(false);
   }
 
@@ -278,5 +286,14 @@ public class CrimeSceneController {
   // Method to update the MoneyCounter label
   private void updateMoneyCounter() {
     MoneyCounter.setText("Money Collected: " + moneyCollected);
+
+  @Override
+  public void onNewChat(String chat) {
+    throw new UnsupportedOperationException("Unimplemented method 'onNewChat'");
+  }
+
+  @Override
+  public void onTimerUpdate(String time) {
+    timerLabel.setText(time);
   }
 }
