@@ -83,7 +83,7 @@ public class App extends Application {
    */
   @Override
   public void start(final Stage stage) throws IOException {
-    Parent root = loadFxml("menu");
+    Parent root = loadFxml("CrimeScene");
     scene = new Scene(root);
     stage.setScene(scene);
     stage.show();
