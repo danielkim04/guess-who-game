@@ -82,16 +82,6 @@
                         </AnchorPane>
                   </content>
                 </Tab>
-                <Tab text="Chat">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <TextArea layoutY="2.0" prefHeight="196.0" prefWidth="232.0" promptText="Conversation will appear here" />
-                              <TextArea layoutY="202.0" prefHeight="72.0" prefWidth="232.0" promptText="Chat here" />
-                           </children>
-                        </AnchorPane>
-                  </content>
-                </Tab>
               </tabs>
             </TabPane>
          </children>
