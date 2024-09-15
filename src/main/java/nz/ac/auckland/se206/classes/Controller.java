@@ -9,7 +9,7 @@ public interface Controller {
   public void onTimerUpdate();
 
   // Runs when timer iterates and gives current time
-  public void onTimerUpdate(Time time);
+  public void onTimerUpdate(String time);
 
   // Runs when timer has timed out
   public void onTimerStop();

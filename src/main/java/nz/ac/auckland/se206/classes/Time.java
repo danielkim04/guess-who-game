@@ -112,6 +112,6 @@ public class Time {
   // Over rides toString() method to output minutes and seconds in format XX:XX
   @Override
   public String toString() {
-    return (this.minutes.toString() + ":" + this.seconds.toString());
+    return (this.minutes.toString() + ":" + (this.seconds / 10) + (this.seconds % 10));
   }
 }

@@ -12,7 +12,7 @@ public class Timer {
   private int interval = 1;
 
   // Amount to increment time by
-  private int increment = 1;
+  private int increment = -1;
 
   // Current value of counter
   private volatile Integer counter = 0;
@@ -23,29 +23,33 @@ public class Timer {
   // Task to execute
   private Thread executionThread;
 
+  private Thread timeOutThread;
+
   // Thread that waits interval and starts a new execution thread
   private Thread timerThread =
       new Thread(
           () -> {
-            while ((this.time.getTime() <= timeoutCount) & (!halt)) {
+            while (!halt) {
               if (executionThread != (null)) {
                 (new Thread(executionThread)).start();
               } else {
                 System.out.println("Null thread");
               }
               try {
-                Thread.sleep(interval);
+                Thread.sleep(interval * 1000);
               } catch (InterruptedException e) {
                 e.printStackTrace();
               }
 
+              System.out.println("Cur time: " + this.time.getTime());
+              if (this.time.getTime() <= 0) {
+                stop();
+              }
+
               this.count();
             }
-            stop();
-            if (executionThread != (null)) {
-              (new Thread(executionThread)).start();
-            }
-            // App.getContext().handleTimeOut();
+
+            handleTimeOut();
           });
 
   // Current timer thread executing
@@ -54,6 +58,15 @@ public class Timer {
   // Initialises class
   public Timer(int timeoutCount) {
     setTimeOut(timeoutCount);
+  }
+
+  private void handleTimeOut() {
+    System.out.println("timeout");
+    if (this.timeOutThread != null) {
+      this.activeTimerThread = new Thread(timeOutThread);
+      this.activeTimerThread.setDaemon(true);
+      this.activeTimerThread.start();
+    }
   }
 
   // Resets timer
@@ -71,6 +84,10 @@ public class Timer {
     } else if (increment < 0) {
       this.time.subSecs(increment * -1);
     }
+  }
+
+  public Time getTime() {
+    return (this.time);
   }
 
   // Returns value to count to
@@ -111,6 +128,7 @@ public class Timer {
   // Stop timer
   public void stop() {
     this.halt = true;
+    System.out.println("Stopping timer");
   }
 
   // Sets timeout of timer
@@ -122,5 +140,9 @@ public class Timer {
   // Sets thread to execute when after an interval
   public void setExecution(Thread exeuctableThread) {
     this.executionThread = exeuctableThread;
+  }
+
+  public void setTimeOutThread(Thread timeOutThread) {
+    this.timeOutThread = timeOutThread;
   }
 }
