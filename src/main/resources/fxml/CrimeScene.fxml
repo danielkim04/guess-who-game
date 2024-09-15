@@ -103,6 +103,7 @@
                   <Image url="@../images/cash2.png" />
                </image>
             </ImageView>
+            <Label fx:id="MoneyCounter" layoutX="5.0" layoutY="90.0" prefHeight="65.0" prefWidth="97.0" stylesheets="@../css/style.css" text="Money Collected: XXXXX " wrapText="true" />
             <Button fx:id="BagExit" layoutX="10.0" layoutY="360.0" mnemonicParsing="false" onAction="#handleBagExitClick" text="Exit" />
          </children>
       </AnchorPane>

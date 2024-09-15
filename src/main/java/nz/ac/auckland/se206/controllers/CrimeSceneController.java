@@ -18,14 +18,16 @@ public class CrimeSceneController {
   @FXML private Rectangle rectClueBag;
   @FXML private Rectangle rectClueBook;
   @FXML private Rectangle rectClueNote;
+  @FXML private Rectangle BagCollectionRect; // This is the collection rectangle for money
   @FXML private Label labelTimer;
+  @FXML private Label MoneyCounter; // Label to display the money collected
   @FXML private AnchorPane paneNoteWindow;
   @FXML private Rectangle rectCloseNotes;
   @FXML private AnchorPane paneOpenChat;
   @FXML private AnchorPane bagInteractPane;
   @FXML private Pane paneBase;
   @FXML private ImageView imgMap;
-  @FXML private Button BagExit; // Change Pane to Button and add @FXML
+  @FXML private Button BagExit;
   @FXML private ImageView Money1;
   @FXML private ImageView Money2;
   @FXML private ImageView Money3;
@@ -39,6 +41,8 @@ public class CrimeSceneController {
 
   private static GameStateContext context = new GameStateContext();
 
+  public static int moneyCollected = 0;
+
   // Variables to store the initial mouse click position
   private double initialX;
   private double initialY;
@@ -51,6 +55,9 @@ public class CrimeSceneController {
   public void initialize() {
     // Hide bagInteractPane initially
     bagInteractPane.setVisible(false);
+
+    // Initialize money counter with zero
+    updateMoneyCounter();
 
     // Add drag-and-drop functionality to Money
     makeImageViewDraggable(Money1);
@@ -142,6 +149,12 @@ public class CrimeSceneController {
 
     // Handle mouse drag event (when user drags the ImageView)
     imageView.setOnMouseDragged(event -> handleMouseDragged(event, imageView));
+
+    // Handle mouse release event (when user releases the ImageView)
+    imageView.setOnMouseReleased(event -> {
+      // Check for intersection with the BagCollectionRect when dragging is finished
+      checkMoneyIntersectionAndHide(imageView);
+    });
   }
 
   // This method is triggered when the mouse is pressed on the ImageView
@@ -156,5 +169,22 @@ public class CrimeSceneController {
     // Update the position of the ImageView to follow the mouse
     imageView.setLayoutX(event.getSceneX() - initialX);
     imageView.setLayoutY(event.getSceneY() - initialY);
+  }
+
+  // Method to check if the currently dragged money is within the BagCollectionRect area and hide it
+  private void checkMoneyIntersectionAndHide(ImageView draggedMoney) {
+    // Check if the dragged money intersects with the BagCollectionRect
+    if (draggedMoney.getBoundsInParent().intersects(BagCollectionRect.getBoundsInParent())) {
+      // If the money intersects with the bag collection rectangle, hide the money image
+      draggedMoney.setVisible(false);
+      moneyCollected += 1000;
+      updateMoneyCounter(); // Update the label when money is collected
+      System.out.println(moneyCollected);
+    }
+  }
+
+  // Method to update the MoneyCounter label
+  private void updateMoneyCounter() {
+    MoneyCounter.setText("Money Collected: " + moneyCollected);
   }
 }
