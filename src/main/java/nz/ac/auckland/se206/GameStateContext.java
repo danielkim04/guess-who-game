@@ -76,6 +76,8 @@ public class GameStateContext {
    */
   public void setState(GameState state) {
     this.gameState = state;
+    System.out.println("Set state" + state.toString());
+    this.gameState.start();
   }
 
   /**

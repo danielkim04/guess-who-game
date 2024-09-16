@@ -43,6 +43,10 @@ public class Investigating implements GameState {
     this.context = context;
     timer.setExecution(updateThread);
     timer.setTimeOutThread(timeOutThread);
+    System.out.println("Investigating state");
+  }
+
+  public void start() {
     timer.start();
   }
 

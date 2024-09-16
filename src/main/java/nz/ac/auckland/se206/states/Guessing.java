@@ -35,6 +35,10 @@ public class Guessing implements GameState {
     System.out.println("start guessing");
   }
 
+  public void start() {
+    timer.start();
+  }
+
   @Override
   public void handleRectangleClick(MouseEvent event, String rectangleId) throws IOException {
     // TODO Auto-generated method stub
