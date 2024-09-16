@@ -23,6 +23,7 @@ import nz.ac.auckland.apiproxy.chat.openai.ChatMessage;
 import nz.ac.auckland.apiproxy.chat.openai.Choice;
 import nz.ac.auckland.apiproxy.config.ApiProxyConfig;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
+import nz.ac.auckland.se206.classes.Suspect;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 
 public class GuessingController {
@@ -42,13 +43,10 @@ public class GuessingController {
   private boolean isThief;
   private ChatCompletionRequest chatCompletionRequest;
 
-  /**
-   * Initializes the room view. If it's the first time initialization, it will provide instructions
-   * via text-to-speech.
-   */
+
   @FXML
   public void initialize() {
-    // to be implemented
+
   }
 
   /**
@@ -136,6 +134,7 @@ public class GuessingController {
               ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
               Choice result = chatCompletionResult.getChoices().iterator().next();
               chatCompletionRequest.addMessage(result.getChatMessage());
+              System.out.println(result.getChatMessage().getContent());
               return result.getChatMessage();
             } catch (ApiProxyException e) {
               e.printStackTrace();
