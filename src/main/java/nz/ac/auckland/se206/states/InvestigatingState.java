@@ -12,7 +12,7 @@ import nz.ac.auckland.se206.speech.TextToSpeech;
  * The Guessing state of the game. Handles the logic for when the player is making a guess about the
  * profession of the characters in the game.
  */
-public class Guessing implements GameState {
+public class InvestigatingState implements GameState {
 
   private final GameStateContext context;
 
@@ -39,7 +39,7 @@ public class Guessing implements GameState {
    *
    * @param context the context of the game state
    */
-  public Guessing(GameStateContext context) {
+  public InvestigatingState(GameStateContext context) {
     this.context = context;
     timer.setExecution(updateThread);
     timer.setTimeOutThread(timeOutThread);
