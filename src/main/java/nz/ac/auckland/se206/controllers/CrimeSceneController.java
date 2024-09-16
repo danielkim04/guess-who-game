@@ -53,6 +53,8 @@ public class CrimeSceneController implements Controller {
   @FXML
   private Pane fingerCollectedPane;
   @FXML
+  private Pane cashbookPane;
+  @FXML
   private Pane hairCollectedPane; // Pane that becomes visible when hair is collected
   @FXML
   private Label hairText; // Label for hair collection message
@@ -62,6 +64,8 @@ public class CrimeSceneController implements Controller {
   private ImageView imgMap;
   @FXML
   private Button BagExit;
+  @FXML
+  private Button cashbookExit;
   @FXML
   private ImageView Money1;
   @FXML
@@ -191,6 +195,12 @@ public class CrimeSceneController implements Controller {
   }
 
   @FXML
+  private void handleBookClueClick(MouseEvent event) {
+    // Hide the bagInteractPane when rectClueBook is clicked
+    cashbookPane.setVisible(true);
+  }
+
+  @FXML
   private void handleMapClick(MouseEvent event) throws IOException {
     // to be implemented
   }
@@ -204,6 +214,12 @@ public class CrimeSceneController implements Controller {
   private void handleNoteExit(ActionEvent event) {
     // Hide the pane
     noteInteractPane.setVisible(false);
+  }
+
+  @FXML
+  private void handlecashbookExit(ActionEvent event) {
+    // Hide the pane
+    cashbookPane.setVisible(false);
   }
 
   @FXML
