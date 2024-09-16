@@ -32,7 +32,7 @@ public class GameStateContext {
     gameStartedState = new GameStarted(this);
     investigatingState = new Investigating(this);
     gameOverState = new GameOver(this);
-    guessingState = new Guessing();
+    guessingState = new Guessing(this);
 
     gameState = gameStartedState; // Initial state
     Map<String, Object> obj = null;
