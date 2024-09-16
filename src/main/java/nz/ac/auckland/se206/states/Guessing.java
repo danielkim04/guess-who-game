@@ -83,5 +83,11 @@ public class Guessing implements GameState {
 
   public void handleTimeOut() {
     System.out.println("No more Time");
+
+    try {
+      App.setRoot("Guessing");
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 }
