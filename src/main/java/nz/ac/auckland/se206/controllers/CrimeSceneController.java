@@ -49,6 +49,8 @@ public class CrimeSceneController implements Controller {
   @FXML
   private Pane paneBase;
   @FXML
+  private Pane lightPane;
+  @FXML
   private Pane hairCollectedPane; // Pane that becomes visible when hair is collected
   @FXML
   private Label hairText; // Label for hair collection message
@@ -82,6 +84,8 @@ public class CrimeSceneController implements Controller {
   private ImageView dark;
   @FXML
   private Button NoteExit;
+  @FXML
+  private Button toggleLight;
   @FXML
   private ImageView blueLight;
   @FXML
@@ -122,6 +126,7 @@ public class CrimeSceneController implements Controller {
     makeImageViewDraggable(Money10);
     makeImageViewDraggable(Hair);
     enableBothLightsToFollowCursor();
+    lightPane.setVisible(false);
   }
 
   /**
@@ -206,6 +211,12 @@ public class CrimeSceneController implements Controller {
   private void handleClueBagClick(MouseEvent event) {
     // Show the bagInteractPane when rectClueBag is clicked
     bagInteractPane.setVisible(true);
+  }
+
+  @FXML
+  private void handleToggleLightClick(ActionEvent event) {
+    // Toggle the visibility of the lightPane
+    lightPane.setVisible(!lightPane.isVisible());
   }
 
   @FXML
@@ -350,7 +361,7 @@ public class CrimeSceneController implements Controller {
     // Check if this smaller hitbox intersects with the fingerprint's bounds
     if (blueLightHitbox.intersects(fingerprint.getBoundsInParent())) {
       // If there is an intersection, make the fingerprint more visible
-      fingerprint.setOpacity(1.0); // Full opacity
+      fingerprint.setOpacity(0.5); // Full opacity
     } else {
       // If not, keep the fingerprint hidden
       fingerprint.setOpacity(0.0); // Fully hidden

@@ -108,7 +108,7 @@
                   <Image url="@../images/note2.png" />
                </image>
             </ImageView>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+            <AnchorPane fx:id="lightPane" prefHeight="200.0" prefWidth="200.0">
                <children>
                   <ImageView fx:id="blueLight" fitHeight="43.0" fitWidth="54.0" layoutX="145.0" layoutY="236.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -120,7 +120,7 @@
                         <Image url="@../images/fingerprint2.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="dark" fitHeight="953.0" fitWidth="1718.0" opacity="0.6" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="dark" fitHeight="953.0" fitWidth="1718.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/darkness4.png" />
                      </image>
@@ -128,6 +128,7 @@
                </children>
             </AnchorPane>
             <Rectangle fx:id="BagCollectionRect1" arcHeight="5.0" arcWidth="5.0" fill="#393737" height="321.0" layoutY="79.0" stroke="#008663" strokeType="INSIDE" width="112.0" />
+            <Button fx:id="toggleLight" layoutX="10.0" layoutY="100.0" mnemonicParsing="false" onAction="#handleToggleLightClick" text="Toggle Light" />
             <Button fx:id="NoteExit" layoutX="10.0" layoutY="360.0" mnemonicParsing="false" onAction="#handleNoteExit" text="Exit" />
          </children>
       </AnchorPane>
