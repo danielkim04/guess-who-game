@@ -9,10 +9,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 import javafx.scene.input.MouseEvent;
-import nz.ac.auckland.se206.states.GameOver;
-import nz.ac.auckland.se206.states.GameStarted;
-import nz.ac.auckland.se206.states.GameState;
-import nz.ac.auckland.se206.states.InvestigatingState;
+import nz.ac.auckland.se206.states.*;
 import org.yaml.snakeyaml.Yaml;
 
 /**
@@ -25,15 +22,17 @@ public class GameStateContext {
   private final String professionToGuess;
   private final Map<String, String> rectanglesToProfession;
   private final GameStarted gameStartedState;
-  private final InvestigatingState investigatingStateState;
+  private final Investigating investigatingState;
+  private final Guessing guessingState;
   private final GameOver gameOverState;
   private GameState gameState;
 
   /** Constructs a new GameStateContext and initializes the game states and professions. */
   public GameStateContext() {
     gameStartedState = new GameStarted(this);
-    investigatingStateState = new InvestigatingState(this);
+    investigatingState = new Investigating(this);
     gameOverState = new GameOver(this);
+    guessingState = new Guessing();
 
     gameState = gameStartedState; // Initial state
     Map<String, Object> obj = null;
@@ -93,8 +92,17 @@ public class GameStateContext {
    *
    * @return the investigating state
    */
-  public GameState getInvestigatingStateState() {
-    return investigatingStateState;
+  public GameState getInvestigatingState() {
+    return investigatingState;
+  }
+
+  /**
+   * Gets the guessing state.
+   *
+   * @return the guessing state
+   */
+  public GameState getGuessingState() {
+    return guessingState;
   }
 
   /**
