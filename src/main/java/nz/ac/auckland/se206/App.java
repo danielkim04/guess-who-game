@@ -83,8 +83,9 @@ public class App extends Application {
    */
   @Override
   public void start(final Stage stage) throws IOException {
-    Parent root = loadFxml("CrimeScene");
+    Parent root = loadFxml("Menu");
     scene = new Scene(root);
+    stage.setTitle("Pi Masters Detective Training");
     stage.setScene(scene);
     stage.show();
     stage.setOnCloseRequest(event -> handleWindowClose(event));
