@@ -115,7 +115,7 @@
                         <Image url="@../images/BlueCircle2.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="fingerprint" fitHeight="62.0" fitWidth="54.0" layoutX="400.0" layoutY="200.0" opacity="0.0" pickOnBounds="true" preserveRatio="true" rotate="45.9">
+                  <ImageView fx:id="fingerprint" fitHeight="62.0" fitWidth="54.0" layoutX="400.0" layoutY="200.0" onMouseClicked="#handleFingerprintClick" opacity="0.0" pickOnBounds="true" preserveRatio="true" rotate="45.9">
                      <image>
                         <Image url="@../images/fingerprint2.png" />
                      </image>
@@ -125,6 +125,16 @@
                         <Image url="@../images/darkness4.png" />
                      </image>
                   </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="fingerCollectedPane" prefHeight="400.0" prefWidth="676.0" visible="false">
+               <children>
+                  <ImageView fitHeight="321.0" fitWidth="461.0" layoutX="110.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/frame2.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="printLabel" layoutX="170.0" layoutY="140.0" stylesheets="@../css/style.css" text="poo" />
                </children>
             </AnchorPane>
             <Rectangle fx:id="BagCollectionRect1" arcHeight="5.0" arcWidth="5.0" fill="#393737" height="321.0" layoutY="79.0" stroke="#008663" strokeType="INSIDE" width="112.0" />

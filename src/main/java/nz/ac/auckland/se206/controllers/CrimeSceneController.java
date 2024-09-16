@@ -51,9 +51,13 @@ public class CrimeSceneController implements Controller {
   @FXML
   private Pane lightPane;
   @FXML
+  private Pane fingerCollectedPane;
+  @FXML
   private Pane hairCollectedPane; // Pane that becomes visible when hair is collected
   @FXML
   private Label hairText; // Label for hair collection message
+  @FXML
+  private Label printLabel;
   @FXML
   private ImageView imgMap;
   @FXML
@@ -127,6 +131,8 @@ public class CrimeSceneController implements Controller {
     makeImageViewDraggable(Hair);
     enableBothLightsToFollowCursor();
     lightPane.setVisible(false);
+    blueLight.setMouseTransparent(true);
+    dark.setMouseTransparent(true);
   }
 
   /**
@@ -239,6 +245,50 @@ public class CrimeSceneController implements Controller {
       // Check for intersection between blueLight and fingerprint
       checkFingerprintIntersection();
     });
+  }
+
+  @FXML
+  private void handleFingerprintClick(MouseEvent event) {
+    // Print a message to the console when the fingerprint is clicked
+    System.out.println("Fingerprint image clicked");
+
+    // Show the fingerCollectedPane when the fingerprint is clicked
+    fingerCollectedPane.setVisible(true);
+
+    // Display "Fingerprint Collected!" slowly
+    displayFingerprintTextSlowly("Fingerprint Collected, Sample must be tested in the lab!");
+  }
+
+  // Method to display "Fingerprint Collected!" slowly in the printLabel
+  private void displayFingerprintTextSlowly(String text) {
+    final StringBuilder displayedText = new StringBuilder();
+    printLabel.setText(""); // Clear the label initially
+
+    Timeline timeline = new Timeline();
+    for (int i = 0; i < text.length(); i++) {
+      final int index = i;
+      KeyFrame keyFrame = new KeyFrame(
+          Duration.millis(100 * index), // Delay each letter by 100ms
+          e -> {
+            displayedText.append(text.charAt(index)); // Append the current letter
+            printLabel.setText(displayedText.toString()); // Update the label with the new text
+          });
+      timeline.getKeyFrames().add(keyFrame);
+    }
+
+    // After the text has been fully displayed, hide the pane after 3 seconds
+    timeline.setOnFinished(e -> hideFingerprintPaneAfterDelay());
+    timeline.play();
+  }
+
+  // Method to hide the fingerCollectedPane after 3 seconds
+  private void hideFingerprintPaneAfterDelay() {
+    Timeline hidePaneTimeline = new Timeline(
+        new KeyFrame(
+            Duration.seconds(3), // Wait for 3 seconds
+            ev -> fingerCollectedPane.setVisible(false) // Hide the pane
+        ));
+    hidePaneTimeline.play();
   }
 
   // Method to make an ImageView draggable
