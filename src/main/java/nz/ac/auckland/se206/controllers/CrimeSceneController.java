@@ -18,41 +18,74 @@ import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.classes.*;
 
 /**
- * Controller class for the room view. Handles user interactions within the room where the user can
+ * Controller class for the room view. Handles user interactions within the room
+ * where the user can
  * chat with customers and guess their profession.
  */
 public class CrimeSceneController implements Controller {
 
-  @FXML private Rectangle rectClueBag;
-  @FXML private Rectangle rectClueBook;
-  @FXML private Rectangle rectClueNote;
-  @FXML private Rectangle BagCollectionRect; // This is the collection rectangle for money
-  @FXML private Label labelTimer;
-  @FXML private Label MoneyCounter; // Label to display the money collected
-  @FXML private AnchorPane paneNoteWindow;
-  @FXML private Rectangle rectCloseNotes;
-  @FXML private AnchorPane paneOpenChat;
-  @FXML private AnchorPane bagInteractPane;
-  @FXML private AnchorPane noteInteractPane;
-  @FXML private Pane paneBase;
-  @FXML private Pane hairCollectedPane; // Pane that becomes visible when hair is collected
-  @FXML private Label hairText; // Label for hair collection message
-  @FXML private ImageView imgMap;
-  @FXML private Button BagExit;
-  @FXML private ImageView Money1;
-  @FXML private ImageView Money2;
-  @FXML private ImageView Money3;
-  @FXML private ImageView Money4;
-  @FXML private ImageView Money5;
-  @FXML private ImageView Money6;
-  @FXML private ImageView Money7;
-  @FXML private ImageView Money8;
-  @FXML private ImageView Money9;
-  @FXML private ImageView Money10;
-  @FXML private ImageView Hair;
-  @FXML private ImageView dark;
-  @FXML private Button NoteExit;
-  @FXML private ImageView blueLight;
+  @FXML
+  private Rectangle rectClueBag;
+  @FXML
+  private Rectangle rectClueBook;
+  @FXML
+  private Rectangle rectClueNote;
+  @FXML
+  private Rectangle BagCollectionRect; // This is the collection rectangle for money
+  @FXML
+  private Label labelTimer;
+  @FXML
+  private Label MoneyCounter; // Label to display the money collected
+  @FXML
+  private AnchorPane paneNoteWindow;
+  @FXML
+  private Rectangle rectCloseNotes;
+  @FXML
+  private AnchorPane paneOpenChat;
+  @FXML
+  private AnchorPane bagInteractPane;
+  @FXML
+  private AnchorPane noteInteractPane;
+  @FXML
+  private Pane paneBase;
+  @FXML
+  private Pane hairCollectedPane; // Pane that becomes visible when hair is collected
+  @FXML
+  private Label hairText; // Label for hair collection message
+  @FXML
+  private ImageView imgMap;
+  @FXML
+  private Button BagExit;
+  @FXML
+  private ImageView Money1;
+  @FXML
+  private ImageView Money2;
+  @FXML
+  private ImageView Money3;
+  @FXML
+  private ImageView Money4;
+  @FXML
+  private ImageView Money5;
+  @FXML
+  private ImageView Money6;
+  @FXML
+  private ImageView Money7;
+  @FXML
+  private ImageView Money8;
+  @FXML
+  private ImageView Money9;
+  @FXML
+  private ImageView Money10;
+  @FXML
+  private ImageView Hair;
+  @FXML
+  private ImageView dark;
+  @FXML
+  private Button NoteExit;
+  @FXML
+  private ImageView blueLight;
+  @FXML
+  private ImageView fingerprint;
 
   private static GameStateContext context = new GameStateContext();
 
@@ -63,7 +96,8 @@ public class CrimeSceneController implements Controller {
   private double initialY;
 
   /**
-   * Initializes the room view. If it's the first time initialization, it will provide instructions
+   * Initializes the room view. If it's the first time initialization, it will
+   * provide instructions
    * via text-to-speech.
    */
   @FXML
@@ -174,6 +208,7 @@ public class CrimeSceneController implements Controller {
     bagInteractPane.setVisible(true);
   }
 
+  @FXML
   private void enableBothLightsToFollowCursor() {
     // Define the offset values for both blueLight and dark
     double darkOffsetX = 24; // Move dark slightly to the right
@@ -181,18 +216,18 @@ public class CrimeSceneController implements Controller {
     double blueLightOffsetX = 2; // No offset for blueLight
     double blueLightOffsetY = 0; // No offset for blueLight
 
-    paneBase.setOnMouseMoved(
-        event -> {
-          // Set the dark ImageView's position
-          dark.setLayoutX(event.getSceneX() - (dark.getFitWidth() / 2) + darkOffsetX);
-          dark.setLayoutY(event.getSceneY() - (dark.getFitHeight() / 2) + darkOffsetY);
+    paneBase.setOnMouseMoved(event -> {
+      // Set the dark ImageView's position
+      dark.setLayoutX(event.getSceneX() - (dark.getFitWidth() / 2) + darkOffsetX);
+      dark.setLayoutY(event.getSceneY() - (dark.getFitHeight() / 2) + darkOffsetY);
 
-          // Set the blueLight ImageView's position
-          blueLight.setLayoutX(
-              event.getSceneX() - (blueLight.getFitWidth() / 2) + blueLightOffsetX);
-          blueLight.setLayoutY(
-              event.getSceneY() - (blueLight.getFitHeight() / 2) + blueLightOffsetY);
-        });
+      // Set the blueLight ImageView's position
+      blueLight.setLayoutX(event.getSceneX() - (blueLight.getFitWidth() / 2) + blueLightOffsetX);
+      blueLight.setLayoutY(event.getSceneY() - (blueLight.getFitHeight() / 2) + blueLightOffsetY);
+
+      // Check for intersection between blueLight and fingerprint
+      checkFingerprintIntersection();
+    });
   }
 
   // Method to make an ImageView draggable
@@ -225,7 +260,8 @@ public class CrimeSceneController implements Controller {
     imageView.setLayoutY(event.getSceneY() - initialY);
   }
 
-  // Method to check if the currently dragged item is within the BagCollectionRect area and hide it
+  // Method to check if the currently dragged item is within the BagCollectionRect
+  // area and hide it
   private void checkMoneyIntersectionAndHide(ImageView draggedItem) {
     // Check if the dragged item intersects with the BagCollectionRect
     if (draggedItem.getBoundsInParent().intersects(BagCollectionRect.getBoundsInParent())) {
@@ -248,7 +284,8 @@ public class CrimeSceneController implements Controller {
     }
   }
 
-  // Method to display the text letter by letter with a small delay and hide pane after 3 seconds
+  // Method to display the text letter by letter with a small delay and hide pane
+  // after 3 seconds
   private void displayTextSlowly(String text) {
     final StringBuilder displayedText = new StringBuilder();
     hairText.setText(""); // Clear the label initially
@@ -256,25 +293,23 @@ public class CrimeSceneController implements Controller {
     Timeline timeline = new Timeline();
     for (int i = 0; i < text.length(); i++) {
       final int index = i;
-      KeyFrame keyFrame =
-          new KeyFrame(
-              Duration.millis(100 * index), // Delay each letter by 100ms
-              e -> {
-                displayedText.append(text.charAt(index)); // Append the current letter
-                hairText.setText(displayedText.toString()); // Update the label with the new text
-              });
+      KeyFrame keyFrame = new KeyFrame(
+          Duration.millis(100 * index), // Delay each letter by 100ms
+          e -> {
+            displayedText.append(text.charAt(index)); // Append the current letter
+            hairText.setText(displayedText.toString()); // Update the label with the new text
+          });
       timeline.getKeyFrames().add(keyFrame);
     }
 
     // After the text has been fully displayed, hide the pane after 3 seconds
     timeline.setOnFinished(
         e -> {
-          Timeline hidePaneTimeline =
-              new Timeline(
-                  new KeyFrame(
-                      Duration.seconds(3), // Wait for 3 seconds
-                      ev -> hairCollectedPane.setVisible(false) // Hide the pane
-                      ));
+          Timeline hidePaneTimeline = new Timeline(
+              new KeyFrame(
+                  Duration.seconds(3), // Wait for 3 seconds
+                  ev -> hairCollectedPane.setVisible(false) // Hide the pane
+          ));
           hidePaneTimeline.play();
         });
 
@@ -296,4 +331,30 @@ public class CrimeSceneController implements Controller {
   public void onTimerUpdate(String time) {
     labelTimer.setText(time);
   }
+
+  // Method to check for intersection between a smaller hitbox of blueLight and
+  // the fingerprint
+  private void checkFingerprintIntersection() {
+    // Define the smaller hitbox dimensions (adjust as needed)
+    double hitboxWidth = blueLight.getFitWidth() * 0.3; // 30% of the blueLight's width
+    double hitboxHeight = blueLight.getFitHeight() * 0.3; // 30% of the blueLight's height
+
+    // Create a smaller rectangle (hitbox) around the center of blueLight
+    double hitboxX = blueLight.getLayoutX() + (blueLight.getFitWidth() - hitboxWidth) / 2;
+    double hitboxY = blueLight.getLayoutY() + (blueLight.getFitHeight() - hitboxHeight) / 2;
+
+    // Create a temporary rectangle representing the hitbox
+    javafx.geometry.Bounds blueLightHitbox = new javafx.geometry.BoundingBox(hitboxX, hitboxY, hitboxWidth,
+        hitboxHeight);
+
+    // Check if this smaller hitbox intersects with the fingerprint's bounds
+    if (blueLightHitbox.intersects(fingerprint.getBoundsInParent())) {
+      // If there is an intersection, make the fingerprint more visible
+      fingerprint.setOpacity(1.0); // Full opacity
+    } else {
+      // If not, keep the fingerprint hidden
+      fingerprint.setOpacity(0.0); // Fully hidden
+    }
+  }
+
 }
