@@ -20,7 +20,10 @@ public class GameOver implements GameState {
    */
   public GameOver(GameStateContext context) {
     this.context = context;
+    System.out.println("Game Over state");
   }
+
+  public void start() {}
 
   /**
    * Handles the event when a rectangle is clicked. Informs the player that the game is over and

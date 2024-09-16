@@ -26,6 +26,7 @@ public class MenuController {
     if (StartLabel != null) {
       System.out.println("StartLabel is initialized.");
     }
+    App.setGameState(App.getContext().getGameStartedState());
   }
 
   @FXML
