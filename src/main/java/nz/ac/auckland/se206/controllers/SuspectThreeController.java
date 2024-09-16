@@ -13,7 +13,7 @@ import nz.ac.auckland.se206.classes.Suspect;
 
 import java.io.IOException;
 
-public class SuspectOneController {
+public class SuspectThreeController {
   @FXML private Label labelTimer;
   @FXML private Label labelResponse;
   @FXML private TextField txtMessage;
@@ -25,27 +25,27 @@ public class SuspectOneController {
   @FXML
   public void initialize() {
     // initialise dropdown menu
-    choicebox.getItems().addAll("Suspect 2", "Suspect 3");
+    choicebox.getItems().addAll("Suspect 1", "Suspect 2");
     // handle scene transition based on dropdown selection
     choicebox.setOnAction(
         event -> {
           String selected = choicebox.getValue();
-          if (selected.equals("Suspect 2")) {
+          if (selected.equals("Suspect 1")) {
             try {
-              App.setRoot("SuspectTwo");
+              App.setRoot("SuspectOne");
             } catch (IOException e) {
               e.printStackTrace();
             }
-          } else if (selected.equals("Suspect 3")) {
+          } else if (selected.equals("Suspect 2")) {
             try {
-              App.setRoot("SuspectThree");
+              App.setRoot("SuspectTwo");
             } catch (IOException e) {
               e.printStackTrace();
             }
           }
         });
 
-    this.suspect = new Suspect("Nas-ty", "Suspect", "suspect1.txt");
+    this.suspect = new Suspect("D", "Suspect", "suspect3.txt");
     // set the initial message by telling gpt to introduce itself
     suspect.getResponse(
         "Introduce yourself",

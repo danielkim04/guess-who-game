@@ -118,7 +118,8 @@ public class Suspect {
   // Loads system prompt from file
   private String loadSystemPrompt() throws IOException, URISyntaxException {
     System.out.println(this.promptFilename);
-    URL resourceUrl = PromptEngineering.class.getClassLoader().getResource("prompts/" + this.promptFilename);
+    URL resourceUrl =
+        PromptEngineering.class.getClassLoader().getResource("prompts/" + this.promptFilename);
     if (resourceUrl == null) {
       System.out.println("Prompt file not found: " + this.promptFilename);
     }
@@ -159,35 +160,39 @@ public class Suspect {
     return (this.currentChatMessage.getContent());
   }
 
-
-
   // Returns GPT chat message
-  private void runGptAsync(ChatMessage msg, Consumer<ChatMessage> callback) throws ApiProxyException {
+  private void runGptAsync(ChatMessage msg, Consumer<ChatMessage> callback)
+      throws ApiProxyException {
+    chatCompletionRequest.addMessage(
+        new ChatMessage("system", this.chatHistory)); // adds chat history? check if this works as intended
     if (msg != null) {
       this.currentChatMessage = msg;
+      addChatHistory("User: " + msg.getContent() + "\n");
     }
     chatCompletionRequest.addMessage(this.currentChatMessage);
 
     Task<ChatMessage> task =
-            new Task<ChatMessage>() {
-              @Override
-              protected ChatMessage call() throws ApiProxyException {
-                try {
-                  ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
-                  Choice result = chatCompletionResult.getChoices().iterator().next();
-                  chatCompletionRequest.addMessage(result.getChatMessage());
-                  return result.getChatMessage();
-                } catch (ApiProxyException e) {
-                  e.printStackTrace();
-                  return null;
-                }
-              }
-            };
+        new Task<ChatMessage>() {
+          @Override
+          protected ChatMessage call() throws ApiProxyException {
+            try {
+              ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
+              Choice result = chatCompletionResult.getChoices().iterator().next();
+              chatCompletionRequest.addMessage(result.getChatMessage());
+              return result.getChatMessage();
+            } catch (ApiProxyException e) {
+              e.printStackTrace();
+              return null;
+            }
+          }
+        };
 
-    task.setOnSucceeded(workerStateEvent -> {
-      ChatMessage response = task.getValue();
-      callback.accept(response);
-    });
+    task.setOnSucceeded(
+        workerStateEvent -> {
+          ChatMessage response = task.getValue();
+          addChatHistory("Suspect: " + response.getContent() + "\n");
+          callback.accept(response);
+        });
 
     Thread backgroundThread = new Thread(task);
     backgroundThread.start();
@@ -200,13 +205,14 @@ public class Suspect {
   }
 
   public void getResponse(String message, Consumer<String> callback) {
-    try{
-      ChatMessage systemMessage = new ChatMessage("system", getSystemPrompt());
+    try {
       ChatMessage msg = new ChatMessage("user", message);
 
-      runGptAsync(msg, response -> {
-        callback.accept(response.getContent());
-      });
+      runGptAsync(
+          msg,
+          response -> {
+            callback.accept(response.getContent());
+          });
     } catch (ApiProxyException e) {
       e.printStackTrace();
     }
