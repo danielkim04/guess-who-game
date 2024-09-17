@@ -17,14 +17,14 @@
    <children>
       <ImageView fitHeight="400.0" fitWidth="836.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@interrogationroom1.jpeg" />
+            <Image url="@../images/interrogationroom1.jpeg" />
          </image>
       </ImageView>
       <AnchorPane fx:id="paneSuspectOne" layoutX="64.0" layoutY="134.0" onMouseClicked="#handleSuspectClick" prefHeight="205.0" prefWidth="129.0">
          <children>
             <ImageView fitHeight="222.0" fitWidth="168.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@man%201.png" />
+                  <Image url="@../images/man 1.png" />
                </image>
             </ImageView>
          </children>
@@ -33,7 +33,7 @@
          <children>
             <ImageView fitHeight="237.0" fitWidth="148.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@man%201.png" />
+                  <Image url="@../images/man 1.png" />
                </image>
             </ImageView>
          </children>
@@ -42,7 +42,7 @@
          <children>
             <ImageView fitHeight="273.0" fitWidth="213.0" layoutX="-14.0" layoutY="-14.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@man%201.png" />
+                  <Image url="@../images/man 1.png" />
                </image>
             </ImageView>
          </children>
@@ -51,7 +51,7 @@
          <children>
             <ImageView fitHeight="408.0" fitWidth="707.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@interrogationroom1.jpeg" />
+                  <Image url="@../images/interrogationroom1.jpeg" />
                </image>
             </ImageView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fdfdfd" height="321.0" layoutX="14.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" width="391.0" />
@@ -63,7 +63,7 @@
       <AnchorPane layoutY="-1.0" prefHeight="79.0" prefWidth="700.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#393737f7" height="79.0" stroke="TRANSPARENT" strokeType="INSIDE" width="700.0" />
-            <Label layoutX="254.0" layoutY="22.0" prefHeight="36.0" prefWidth="192.0" text="Who is the thief?" textFill="WHITE">
+            <Label fx:id="labelTitle" alignment="CENTER" layoutX="218.0" layoutY="22.0" prefHeight="36.0" prefWidth="264.0" text="Who is the thief?" textFill="WHITE">
                <font>
                   <Font name="Algerian" size="25.0" />
                </font>
@@ -109,7 +109,7 @@
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="185.0" prefWidth="232.0">
                            <children>
-                              <TextArea layoutY="3.0" prefHeight="280.0" prefWidth="232.0" />
+                              <TextArea layoutY="3.0" prefHeight="280.0" prefWidth="232.0" text="Add notes here" />
                            </children>
                         </AnchorPane>
                      </content>

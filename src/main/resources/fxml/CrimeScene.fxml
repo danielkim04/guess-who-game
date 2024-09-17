@@ -17,7 +17,7 @@
    <children>
       <ImageView fitHeight="400.0" fitWidth="722.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@CrimeScene.jpeg" />
+            <Image url="@../images/CrimeScene.jpeg" />
          </image>
       </ImageView>
       <Rectangle fx:id="rectClueBag" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="126.0" layoutX="347.0" layoutY="152.0" onMouseClicked="#handleClueBagClick" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
@@ -217,7 +217,7 @@
             </Label>
             <ImageView fx:id="imgMap" fitHeight="72.0" fitWidth="74.0" layoutY="4.0" onMouseClicked="#handleMapClick" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@mapicon2.png" />
+                  <Image url="@../images/mapicon2.png" />
                </image>
             </ImageView>
             <AnchorPane layoutX="623.0" layoutY="6.0" prefHeight="65.0" prefWidth="63.0">
@@ -262,7 +262,7 @@
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="185.0" prefWidth="232.0">
                            <children>
-                              <TextArea layoutY="3.0" prefHeight="280.0" prefWidth="232.0" />
+                              <TextArea layoutY="3.0" prefHeight="280.0" prefWidth="232.0" text="Add notes here" />
                            </children>
                         </AnchorPane>
                   </content>

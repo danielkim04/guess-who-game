@@ -93,7 +93,7 @@ public class GuessingController implements Controller {
         filename = "man 1.png"; // modify filename
         break;
     }
-    transitionToExplanation(getClass().getResource("/fxml/source/" + filename));
+    transitionToExplanation(getClass().getResource("/images/" + filename));
   }
 
   private void transitionToExplanation(URL url) {

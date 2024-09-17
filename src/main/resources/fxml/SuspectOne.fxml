@@ -16,7 +16,7 @@
    <children>
       <ImageView fitHeight="400.0" fitWidth="700.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@casinoexterior.jpeg" />
+            <Image url="@../images/casinoexterior.jpeg" />
          </image>
       </ImageView>
       <AnchorPane prefHeight="79.0" prefWidth="700.0">
@@ -43,14 +43,14 @@
       </AnchorPane>
       <ImageView fitHeight="365.0" fitWidth="207.0" layoutX="385.0" layoutY="-29.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@gamblerdraft1.png" />
+            <Image url="@../images/gamblerdraft1.png" />
          </image>
       </ImageView>
       <AnchorPane layoutX="10.0" layoutY="182.0" prefHeight="204.0" prefWidth="685.0">
          <children>
             <ImageView fitHeight="165.0" fitWidth="566.0" layoutX="60.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@textbox1.png" />
+                  <Image url="@../images/textbox1.png" />
                </image>
             </ImageView>
             <Label fx:id="labelResponse" layoutX="82.0" layoutY="76.0" prefHeight="55.0" prefWidth="461.0" text="Label" wrapText="true" />
