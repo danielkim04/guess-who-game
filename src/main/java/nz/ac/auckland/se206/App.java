@@ -1,6 +1,9 @@
 package nz.ac.auckland.se206;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -20,8 +23,9 @@ import nz.ac.auckland.se206.speech.FreeTextToSpeech;
 public class App extends Application {
 
   private static Scene scene;
-  // private static Controller currentController;
+  private static Controller currentController;
   private static FXMLLoader fxmlHandler;
+  private static Map<String, Parent> sceneMap = new HashMap<>(); // stores the scenes that have been initialised
 
   /**
    * The main method that launches the JavaFX application.
@@ -39,7 +43,13 @@ public class App extends Application {
    * @throws IOException if the FXML file is not found
    */
   public static void setRoot(String fxml) throws IOException {
-    scene.setRoot(loadFxml(fxml));
+    if (!sceneMap.containsKey(fxml)) {
+      // if scene has not been initialised, load the FXML file and store it in the map
+      Parent root = loadFxml(fxml);
+      sceneMap.put(fxml, root);
+    }
+    // retrieve the scene from the map and set it as the root
+    scene.setRoot(sceneMap.get(fxml));
   }
 
   /**
@@ -51,7 +61,7 @@ public class App extends Application {
    * @throws IOException if the FXML file is not found
    */
   private static Parent loadFxml(final String fxml) throws IOException {
-    fxmlHandler = new FXMLLoader(App.class.getResource("/fxml/" + fxml + ".fxml"));
+    fxmlHandler = new FXMLLoader(App.class.getResource("/fxml/source/" + fxml + ".fxml"));
     return (fxmlHandler.load());
   }
 
@@ -83,7 +93,8 @@ public class App extends Application {
    */
   @Override
   public void start(final Stage stage) throws IOException {
-    Parent root = loadFxml("CrimeScene");
+    Parent root = loadFxml("SuspectOne");
+    sceneMap.put("SuspectOne", root); // add initial scene to sceneMap
     scene = new Scene(root);
     stage.setScene(scene);
     stage.show();
