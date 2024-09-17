@@ -1,9 +1,12 @@
 package nz.ac.auckland.se206.controllers;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
+import javafx.util.Duration;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.classes.Controller;
@@ -20,14 +23,17 @@ public class SuspectThreeController implements Controller {
   @FXML private MenuItem menuSuspectOne;
   @FXML private MenuItem menuCrimeScene;
   private Suspect suspect;
+  private Timeline timeline;
 
   @FXML
   public void initialize() {
     this.suspect = new Suspect("D", "Suspect", "suspect3.txt");
+    displayTextSlowly(". . .");
     // set the initial message by telling gpt to introduce itself
     suspect.getResponse(
         "Introduce yourself",
         response -> {
+          timeline.stop();
           labelResponse.setText(response);
         });
   }
@@ -38,11 +44,13 @@ public class SuspectThreeController implements Controller {
     if (message.isEmpty()) {
       return;
     }
+    displayTextSlowly(". . .");
     txtMessage.clear();
 
     suspect.getResponse(
         message,
         response -> {
+          timeline.stop();
           labelResponse.setText(response);
         });
   }
@@ -72,6 +80,28 @@ public class SuspectThreeController implements Controller {
     } catch (IOException e) {
       e.printStackTrace();
     }
+  }
+
+  private void displayTextSlowly(String text) {
+    final StringBuilder displayedText = new StringBuilder();
+    labelResponse.setText(""); // Clear the label initially
+    displayedText.append("Loading");
+
+    timeline = new Timeline();
+    for (int i = 0; i < text.length(); i++) {
+      final int index = i;
+      KeyFrame keyFrame =
+              new KeyFrame(
+                      Duration.millis(500 * index), // Delay each letter by 100ms
+                      e -> {
+                        displayedText.append(text.charAt(index)); // Append the current letter
+                        labelResponse.setText(displayedText.toString()); // Update the label with the new text
+                      });
+      timeline.getKeyFrames().add(keyFrame);
+    }
+
+    // Start the timeline animation
+    timeline.play();
   }
 
   /**

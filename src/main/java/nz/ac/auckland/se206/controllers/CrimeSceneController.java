@@ -31,7 +31,6 @@ public class CrimeSceneController implements Controller {
   @FXML private Label labelTimer;
   @FXML private Label MoneyCounter; // Label to display the money collected
   @FXML private AnchorPane paneNoteWindow;
-  @FXML private Rectangle rectCloseNotes;
   @FXML private AnchorPane paneOpenChat;
   @FXML private AnchorPane bagInteractPane;
   @FXML private AnchorPane noteInteractPane;
@@ -42,7 +41,6 @@ public class CrimeSceneController implements Controller {
   @FXML private Pane hairCollectedPane; // Pane that becomes visible when hair is collected
   @FXML private Label hairText; // Label for hair collection message
   @FXML private Label printLabel;
-  @FXML private ImageView imgMap;
   @FXML private Button BagExit;
   @FXML private Button cashbookExit;
   @FXML private ImageView Money1;
