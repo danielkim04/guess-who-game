@@ -6,18 +6,19 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.App;
+import nz.ac.auckland.se206.classes.Controller;
 import nz.ac.auckland.se206.classes.Suspect;
 
 import java.io.IOException;
 
-public class SuspectThreeController {
+public class SuspectThreeController implements Controller {
   @FXML private Label labelTimer;
   @FXML private Label labelResponse;
   @FXML private TextField txtMessage;
   @FXML private Button btnSend;
-  @FXML private ChoiceBox<String> choicebox;
   @FXML private MenuItem menuSuspectTwo;
   @FXML private MenuItem menuSuspectOne;
+  @FXML private MenuItem menuCrimeScene;
   private Suspect suspect;
 
   @FXML
@@ -64,6 +65,15 @@ public class SuspectThreeController {
     }
   }
 
+  @FXML
+  private void toCrimeScene(ActionEvent event) {
+    try {
+      App.setRoot("CrimeScene");
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
   /**
    * Handles the key pressed event.
    *
@@ -82,5 +92,15 @@ public class SuspectThreeController {
   @FXML
   public void onKeyReleased(KeyEvent event) {
     System.out.println("Key " + event.getCode() + " released");
+  }
+
+  @Override
+  public void onNewChat(String chat) {
+
+  }
+
+  @Override
+  public void onTimerUpdate(String time) {
+    labelTimer.setText(time);
   }
 }

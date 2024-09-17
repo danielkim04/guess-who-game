@@ -37,6 +37,7 @@
                <items>
                   <MenuItem fx:id="menuSuspectOne" mnemonicParsing="false" onAction="#toSuspectOne" text="Suspect 1" />
                   <MenuItem fx:id="menuSuspectTwo" mnemonicParsing="false" onAction="#toSuspectTwo" text="Suspect 2" />
+                  <MenuItem fx:id="menuCrimeScene" mnemonicParsing="false" onAction="#toCrimeScene" text="Crime Scene" />
                </items>
             </MenuButton>
             </children>
