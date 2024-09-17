@@ -23,10 +23,10 @@ import nz.ac.auckland.apiproxy.chat.openai.ChatMessage;
 import nz.ac.auckland.apiproxy.chat.openai.Choice;
 import nz.ac.auckland.apiproxy.config.ApiProxyConfig;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
-import nz.ac.auckland.se206.classes.Suspect;
+import nz.ac.auckland.se206.classes.*;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 
-public class GuessingController {
+public class GuessingController implements Controller {
   @FXML private Label labelTimer;
   @FXML private AnchorPane paneNoteWindow;
   @FXML private Rectangle rectCloseNotes;
@@ -169,5 +169,16 @@ public class GuessingController {
   @FXML
   private void handleCloseButtonClick(MouseEvent event) throws IOException {
     paneNoteWindow.setVisible(false);
+  }
+
+  @Override
+  public void onNewChat(String chat) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'onNewChat'");
+  }
+
+  @Override
+  public void onTimerUpdate(String time) {
+    labelTimer.setText(time);
   }
 }

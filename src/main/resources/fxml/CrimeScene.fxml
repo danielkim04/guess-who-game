@@ -13,15 +13,15 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="paneBase" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="676.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.CrimeSceneController">
+<Pane fx:id="paneBase" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.CrimeSceneController">
    <children>
-      <ImageView fitHeight="400.0" fitWidth="722.0" layoutX="-25.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="400.0" fitWidth="722.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@CrimeScene.jpeg" />
          </image>
       </ImageView>
       <Rectangle fx:id="rectClueBag" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="126.0" layoutX="347.0" layoutY="152.0" onMouseClicked="#handleClueBagClick" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
-      <Rectangle fx:id="rectClueBook" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="88.0" layoutX="228.0" layoutY="290.0" onMouseClicked="#handleRectangleClick" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="249.0" />
+      <Rectangle fx:id="rectClueBook" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="88.0" layoutX="228.0" layoutY="290.0" onMouseClicked="#handleBookClueClick" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="249.0" />
       <Rectangle fx:id="rectClueNote" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="31.0" layoutX="479.0" layoutY="299.0" onMouseClicked="#handleNoteClueClick" opacity="0.0" stroke="BLACK" width="74.0" />
       
       <!-- bagInteractPane initially hidden -->
@@ -110,38 +110,106 @@
                   <Image url="@../images/note2.png" />
                </image>
             </ImageView>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+            <AnchorPane fx:id="lightPane" prefHeight="200.0" prefWidth="200.0">
                <children>
                   <ImageView fx:id="blueLight" fitHeight="43.0" fitWidth="54.0" layoutX="145.0" layoutY="236.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/BlueCircle2.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="62.0" fitWidth="54.0" layoutX="400.0" layoutY="200.0" opacity="0.3" pickOnBounds="true" preserveRatio="true" rotate="45.9">
+                  <ImageView fx:id="fingerprint" fitHeight="62.0" fitWidth="54.0" layoutX="400.0" layoutY="200.0" onMouseClicked="#handleFingerprintClick" opacity="0.0" pickOnBounds="true" preserveRatio="true" rotate="45.9">
                      <image>
                         <Image url="@../images/fingerprint2.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="dark" fitHeight="953.0" fitWidth="1718.0" opacity="0.95" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="dark" fitHeight="953.0" fitWidth="1718.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/darkness4.png" />
                      </image>
                   </ImageView>
                </children>
             </AnchorPane>
+            <AnchorPane fx:id="fingerCollectedPane" prefHeight="400.0" prefWidth="676.0" visible="false">
+               <children>
+                  <ImageView fitHeight="321.0" fitWidth="461.0" layoutX="110.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/frame2.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="printLabel" layoutX="170.0" layoutY="140.0" stylesheets="@../css/style.css" text="poo" />
+               </children>
+            </AnchorPane>
             <Rectangle fx:id="BagCollectionRect1" arcHeight="5.0" arcWidth="5.0" fill="#393737" height="321.0" layoutY="79.0" stroke="#008663" strokeType="INSIDE" width="112.0" />
+            <Button fx:id="toggleLight" layoutX="10.0" layoutY="100.0" mnemonicParsing="false" onAction="#handleToggleLightClick" text="Toggle Light" />
             <Button fx:id="NoteExit" layoutX="10.0" layoutY="360.0" mnemonicParsing="false" onAction="#handleNoteExit" text="Exit" />
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="79.0" prefWidth="676.0">
+      <AnchorPane fx:id="cashbookPane" prefHeight="400.0" prefWidth="676.0" visible="false">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#393737f7" height="79.0" stroke="TRANSPARENT" strokeType="INSIDE" width="676.0" />
-            <Circle fill="#ffffff00" layoutX="628.0" layoutY="40.0" radius="31.0" stroke="BLACK" strokeType="INSIDE" />
-            <Label fx:id="labelTimer" layoutX="604.0" layoutY="24.0" text="X:XX" textFill="WHITE">
+            <ImageView fitHeight="321.0" fitWidth="461.0" layoutX="136.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/cashbook2.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="363.0" layoutY="144.0" text="Staff wages       1000">
                <font>
-                  <Font name="Calibri" size="26.0" />
+                  <Font size="10.0" />
                </font>
             </Label>
+            <Label layoutX="360.0" layoutY="162.0" text="Director's Salary 2000">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="369.0" layoutY="180.0" text="Expenses         1000">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="360.0" layoutY="197.0" prefHeight="16.0" prefWidth="104.0" text="Winner Cashout XXXXX">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="195.0" layoutY="146.0" text="Balance b/d      10000">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="199.0" layoutY="163.0" text="Share Issue      5000">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="202.0" layoutY="182.0" text="Revenue         9000">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="2.0" layoutX="164.0" layoutY="238.0" stroke="BLACK" strokeType="INSIDE" width="350.0" />
+            <Label layoutX="365.0" layoutY="217.0" prefHeight="16.0" prefWidth="125.0" text="Balance c/d       2000">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="194.0" layoutY="249.0" prefHeight="16.0" prefWidth="125.0" text="Balance b/d       2000">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="balanceArea" layoutX="360.0" layoutY="336.0" prefHeight="32.0" prefWidth="72.0" />
+            <Button fx:id="checkBalance" layoutX="437.0" layoutY="343.0" mnemonicParsing="false" text="Check" />
+            <Label layoutX="360.0" layoutY="319.0" prefHeight="16.0" prefWidth="125.0" text="Missing Balance?">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Button fx:id="cashbookExit" layoutX="186.0" layoutY="343.0" mnemonicParsing="false" onAction="#handlecashbookExit" text="Back" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="79.0" prefWidth="700.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#393737f7" height="79.0" stroke="TRANSPARENT" strokeType="INSIDE" width="700.0" />
             <Label layoutX="260.0" layoutY="24.0" prefHeight="31.0" prefWidth="155.0" text="Crime Scene" textFill="WHITE">
                <font>
                   <Font name="Algerian" size="25.0" />
@@ -152,10 +220,20 @@
                   <Image url="@mapicon2.png" />
                </image>
             </ImageView>
+            <AnchorPane layoutX="623.0" layoutY="6.0" prefHeight="65.0" prefWidth="63.0">
+               <children>
+                  <Circle fill="#ffffff00" layoutX="31.0" layoutY="36.0" radius="31.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Label fx:id="labelTimer" layoutX="7.0" layoutY="20.0" text="X:XX" textFill="WHITE">
+                     <font>
+                        <Font name="Calibri" size="26.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
 
-      <AnchorPane fx:id="paneOpenChat" layoutX="657.0" layoutY="79.0" onMouseClicked="#handleOpenButtonClick" prefHeight="97.0" prefWidth="21.0">
+      <AnchorPane fx:id="paneOpenChat" layoutX="681.0" layoutY="185.0" onMouseClicked="#handleOpenButtonClick" prefHeight="97.0" prefWidth="21.0">
          <children>
             <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#adadadeb" height="110.0" stroke="TRANSPARENT" strokeType="INSIDE" width="36.0" />
             <Label alignment="CENTER" layoutX="4.0" layoutY="37.0" prefHeight="23.0" prefWidth="18.0" rotate="-90.0" text="^" textAlignment="CENTER" textFill="WHITE">
@@ -165,17 +243,32 @@
             </Label>
          </children>
       </AnchorPane>      
-      <AnchorPane fx:id="paneNoteWindow" layoutX="396.0" layoutY="79.0" prefHeight="321.0" prefWidth="287.0" visible="false">
+      <AnchorPane fx:id="paneNoteWindow" layoutX="423.0" layoutY="80.0" prefHeight="321.0" prefWidth="287.0" visible="false">
          <children>
-            <Rectangle fx:id="rectCloseNotes" arcHeight="20.0" arcWidth="20.0" fill="#adadadeb" height="110.0" layoutX="11.0" onMouseClicked="#handleCloseButtonClick" stroke="TRANSPARENT" strokeType="INSIDE" width="36.0" />
-            <Label alignment="CENTER" layoutX="11.0" layoutY="37.0" prefHeight="23.0" prefWidth="18.0" text="&gt;" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font size="25.0" />
-               </font>
-            </Label>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="321.0" layoutX="29.0" stroke="TRANSPARENT" strokeType="INSIDE" width="249.0" />
-            <Label layoutX="46.0" layoutY="14.0" text="Notes" />
-            <TextArea layoutX="37.0" layoutY="47.0" prefHeight="273.0" prefWidth="234.0" />
+            <AnchorPane fx:id="paneOpenChat1" layoutX="11.0" layoutY="106.0" onMouseClicked="#handleCloseButtonClick" prefHeight="97.0" prefWidth="21.0">
+               <children>
+                  <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#adadadeb" height="110.0" stroke="TRANSPARENT" strokeType="INSIDE" width="36.0" />
+                  <Label alignment="CENTER" layoutX="-3.0" layoutY="36.0" prefHeight="23.0" prefWidth="18.0" rotate="90.0" text="^" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#383636f7" height="322.0" layoutX="29.0" layoutY="-2.0" stroke="TRANSPARENT" strokeType="INSIDE" width="248.0" />
+            <TabPane layoutX="37.0" layoutY="6.0" prefHeight="308.0" prefWidth="232.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="Notes">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="185.0" prefWidth="232.0">
+                           <children>
+                              <TextArea layoutY="3.0" prefHeight="280.0" prefWidth="232.0" />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+              </tabs>
+            </TabPane>
 
          </children>
       </AnchorPane>
