@@ -14,7 +14,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
-import nz.ac.auckland.se206.GameStateContext;
+import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.classes.*;
 
 /**
@@ -99,8 +99,6 @@ public class CrimeSceneController implements Controller {
   @FXML
   private ImageView fingerprint;
 
-  private static GameStateContext context = new GameStateContext();
-
   public static int moneyCollected = 0;
 
   // Variables to store the initial mouse click position
@@ -137,6 +135,7 @@ public class CrimeSceneController implements Controller {
     lightPane.setVisible(false);
     blueLight.setMouseTransparent(true);
     dark.setMouseTransparent(true);
+    App.setGameState(App.getContext().getInvestigatingState());
   }
 
   /**
@@ -179,7 +178,7 @@ public class CrimeSceneController implements Controller {
    */
   @FXML
   private void handleGuessClick(ActionEvent event) throws IOException {
-    context.handleGuessClick();
+    App.getContext().handleGuessClick();
   }
 
   @FXML

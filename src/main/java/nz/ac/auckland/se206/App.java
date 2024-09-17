@@ -12,6 +12,7 @@ import javafx.stage.WindowEvent;
 import nz.ac.auckland.se206.classes.*;
 import nz.ac.auckland.se206.controllers.ChatController;
 import nz.ac.auckland.se206.speech.FreeTextToSpeech;
+import nz.ac.auckland.se206.states.GameState;
 
 /**
  * This is the entry point of the JavaFX application. This class initializes and runs the JavaFX
@@ -20,6 +21,7 @@ import nz.ac.auckland.se206.speech.FreeTextToSpeech;
 public class App extends Application {
 
   private static Scene scene;
+  private static GameStateContext context = new GameStateContext();
   // private static Controller currentController;
   private static FXMLLoader fxmlHandler;
 
@@ -83,8 +85,9 @@ public class App extends Application {
    */
   @Override
   public void start(final Stage stage) throws IOException {
-    Parent root = loadFxml("CrimeScene");
+    Parent root = loadFxml("Menu");
     scene = new Scene(root);
+    stage.setTitle("Pi Masters Detective Training");
     stage.setScene(scene);
     stage.show();
     stage.setOnCloseRequest(event -> handleWindowClose(event));
@@ -97,5 +100,13 @@ public class App extends Application {
 
   public static Controller getController() {
     return (fxmlHandler.getController());
+  }
+
+  public static GameStateContext getContext() {
+    return (context);
+  }
+
+  public static void setGameState(GameState gameState) {
+    context.setState(gameState);
   }
 }

@@ -21,7 +21,10 @@ public class GameStarted implements GameState {
    */
   public GameStarted(GameStateContext context) {
     this.context = context;
+    System.out.println("Game Started State");
   }
+
+  public void start() {}
 
   /**
    * Handles the event when a rectangle is clicked. Depending on the clicked rectangle, it either
@@ -54,6 +57,6 @@ public class GameStarted implements GameState {
   @Override
   public void handleGuessClick() throws IOException {
     TextToSpeech.speak("Make a guess, click on the " + context.getProfessionToGuess());
-    context.setState(context.getGuessingState());
+    context.setState(context.getInvestigatingState());
   }
 }
