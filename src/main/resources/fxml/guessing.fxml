@@ -17,14 +17,14 @@
    <children>
       <ImageView fitHeight="400.0" fitWidth="836.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@interrogationroom1.jpeg" />
+            <Image url="@../images/interrogationroom1.jpeg" />
          </image>
       </ImageView>
       <AnchorPane fx:id="paneSuspectOne" layoutX="64.0" layoutY="134.0" onMouseClicked="#handleSuspectClick" prefHeight="205.0" prefWidth="129.0">
          <children>
             <ImageView fitHeight="222.0" fitWidth="168.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@man%201.png" />
+                  <Image url="@../images/man 1.png" />
                </image>
             </ImageView>
          </children>
@@ -33,7 +33,7 @@
          <children>
             <ImageView fitHeight="237.0" fitWidth="148.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@man%201.png" />
+                  <Image url="@../images/man 1.png" />
                </image>
             </ImageView>
          </children>
@@ -42,7 +42,7 @@
          <children>
             <ImageView fitHeight="273.0" fitWidth="213.0" layoutX="-14.0" layoutY="-14.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@man%201.png" />
+                  <Image url="@../images/man 1.png" />
                </image>
             </ImageView>
          </children>
@@ -51,7 +51,7 @@
          <children>
             <ImageView fitHeight="408.0" fitWidth="707.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@interrogationroom1.jpeg" />
+                  <Image url="@../images/interrogationroom1.jpeg" />
                </image>
             </ImageView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fdfdfd" height="321.0" layoutX="14.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" width="391.0" />

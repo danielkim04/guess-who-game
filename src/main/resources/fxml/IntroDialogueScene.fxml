@@ -11,21 +11,21 @@
    <children>
       <ImageView fitHeight="400.0" fitWidth="705.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@casinoexterior.jpeg" />
+            <Image url="@../images/casinoexterior.jpeg" />
          </image>
       </ImageView>
       <AnchorPane layoutX="96.0" layoutY="33.0" prefHeight="334.0" prefWidth="509.0">
          <children>
             <ImageView fitHeight="388.0" fitWidth="191.0" layoutX="304.0" layoutY="-52.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@gamblerdraft1.png" />
+                  <Image url="@../images/gamblerdraft1.png" />
                </image>
             </ImageView>
             <AnchorPane fx:id="paneDialogueBox" layoutY="197.0" onMouseClicked="#handleBoxClick" prefHeight="122.0" prefWidth="500.0">
                <children>
                   <ImageView fitHeight="190.0" fitWidth="509.0" layoutY="-16.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@textbox1.png" />
+                        <Image url="@../images/textbox1.png" />
                      </image>
                   </ImageView>
                   <Label fx:id="labelDialogue" layoutX="31.0" layoutY="35.0" prefHeight="84.0" prefWidth="437.0" text="Label" wrapText="true">
