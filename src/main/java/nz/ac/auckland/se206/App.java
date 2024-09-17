@@ -1,6 +1,9 @@
 package nz.ac.auckland.se206;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -15,15 +18,16 @@ import nz.ac.auckland.se206.speech.FreeTextToSpeech;
 import nz.ac.auckland.se206.states.GameState;
 
 /**
- * This is the entry point of the JavaFX application. This class initializes and runs the JavaFX
+ * This is the entry point of the JavaFX application. This class initializes and
+ * runs the JavaFX
  * application.
  */
 public class App extends Application {
 
   private static Scene scene;
   private static GameStateContext context = new GameStateContext();
-  // private static Controller currentController;
   private static FXMLLoader fxmlHandler;
+  private static Map<String, Parent> sceneMap = new HashMap<>(); // stores the scenes that have been initialised
 
   /**
    * The main method that launches the JavaFX application.
@@ -41,11 +45,18 @@ public class App extends Application {
    * @throws IOException if the FXML file is not found
    */
   public static void setRoot(String fxml) throws IOException {
-    scene.setRoot(loadFxml(fxml));
+    if (!sceneMap.containsKey(fxml)) {
+      // if scene has not been initialised, load the FXML file and store it in the map
+      Parent root = loadFxml(fxml);
+      sceneMap.put(fxml, root);
+    }
+    // retrieve the scene from the map and set it as the root
+    scene.setRoot(sceneMap.get(fxml));
   }
 
   /**
-   * Loads the FXML file and returns the associated node. The method expects that the file is
+   * Loads the FXML file and returns the associated node. The method expects that
+   * the file is
    * located in "src/main/resources/fxml".
    *
    * @param fxml the name of the FXML file (without extension)
@@ -60,7 +71,7 @@ public class App extends Application {
   /**
    * Opens the chat view and sets the profession in the chat controller.
    *
-   * @param event the mouse event that triggered the method
+   * @param event      the mouse event that triggered the method
    * @param profession the profession to set in the chat controller
    * @throws IOException if the FXML file is not found
    */
@@ -78,13 +89,17 @@ public class App extends Application {
   }
 
   /**
-   * This method is invoked when the application starts. It loads and shows the "room" scene.
+   * This method is invoked when the application starts. It loads and shows the
+   * "room" scene.
    *
    * @param stage the primary stage of the application
-   * @throws IOException if the "src/main/resources/fxml/room.fxml" file is not found
+   * @throws IOException if the "src/main/resources/fxml/room.fxml" file is not
+   *                     found
    */
   @Override
   public void start(final Stage stage) throws IOException {
+    // Parent root = loadFxml("SuspectOne");
+    sceneMap.put("SuspectOne", loadFxml("SuspectOne")); // add initial scene to sceneMap
     Parent root = loadFxml("Menu");
     scene = new Scene(root);
     stage.setTitle("Pi Masters Detective Training");

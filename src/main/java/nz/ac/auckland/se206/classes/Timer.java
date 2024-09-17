@@ -26,31 +26,29 @@ public class Timer {
   private Thread timeOutThread;
 
   // Thread that waits interval and starts a new execution thread
-  private Thread timerThread =
-      new Thread(
-          () -> {
-            while (!halt) {
-              if (executionThread != (null)) {
-                (new Thread(executionThread)).start();
-              } else {
-                System.out.println("Null thread");
-              }
-              try {
-                Thread.sleep(interval * 1000);
-              } catch (InterruptedException e) {
-                e.printStackTrace();
-              }
+  private Thread timerThread = new Thread(
+      () -> {
+        while (!halt) {
+          if (executionThread != (null)) {
+            (new Thread(executionThread)).start();
+          } else {
+            System.out.println("Null thread");
+          }
+          try {
+            Thread.sleep(interval * 1000);
+          } catch (InterruptedException e) {
+            e.printStackTrace();
+          }
 
-              System.out.println("Cur time: " + this.time.getTime());
-              if (this.time.getTime() <= 0) {
-                stop();
-              }
+          if (this.time.getTime() <= 0) {
+            stop();
+          }
 
-              this.count();
-            }
+          this.count();
+        }
 
-            handleTimeOut();
-          });
+        handleTimeOut();
+      });
 
   // Current timer thread executing
   private Thread activeTimerThread = null;
