@@ -63,7 +63,7 @@
       <AnchorPane layoutY="-1.0" prefHeight="79.0" prefWidth="700.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#393737f7" height="79.0" stroke="TRANSPARENT" strokeType="INSIDE" width="700.0" />
-            <Label layoutX="254.0" layoutY="22.0" prefHeight="36.0" prefWidth="192.0" text="Who is the thief?" textFill="WHITE">
+            <Label fx:id="labelTitle" layoutX="254.0" layoutY="22.0" prefHeight="36.0" prefWidth="192.0" text="Who is the thief?" textFill="WHITE">
                <font>
                   <Font name="Algerian" size="25.0" />
                </font>
