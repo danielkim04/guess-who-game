@@ -43,13 +43,10 @@ public class GuessingController implements Controller {
   private boolean isThief;
   private ChatCompletionRequest chatCompletionRequest;
 
-  /**
-   * Initializes the room view. If it's the first time initialization, it will provide instructions
-   * via text-to-speech.
-   */
+
   @FXML
   public void initialize() {
-    // to be implemented
+
   }
 
   /**
@@ -137,6 +134,7 @@ public class GuessingController implements Controller {
               ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
               Choice result = chatCompletionResult.getChoices().iterator().next();
               chatCompletionRequest.addMessage(result.getChatMessage());
+              System.out.println(result.getChatMessage().getContent());
               return result.getChatMessage();
             } catch (ApiProxyException e) {
               e.printStackTrace();
