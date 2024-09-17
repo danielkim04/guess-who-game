@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -32,7 +33,12 @@
                   <Font name="Algerian" size="25.0" />
                </font>
             </Label>
-            <ChoiceBox fx:id="choicebox" layoutX="30.0" layoutY="27.0" prefWidth="150.0" />
+            <MenuButton layoutX="28.0" layoutY="27.0" mnemonicParsing="false" text="Locations">
+              <items>
+                <MenuItem fx:id="menuSuspectTwo" mnemonicParsing="false" onAction="#toSuspectTwo" text="Suspect 2" />
+                <MenuItem fx:id="menuSuspectThree" mnemonicParsing="false" onAction="#toSuspectThree" text="Suspect 3" />
+              </items>
+            </MenuButton>
          </children>
       </AnchorPane>
       <ImageView fitHeight="365.0" fitWidth="207.0" layoutX="385.0" layoutY="-29.0" pickOnBounds="true" preserveRatio="true">
