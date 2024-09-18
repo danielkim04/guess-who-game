@@ -100,7 +100,7 @@ public class App extends Application {
   public void start(final Stage stage) throws IOException {
     // Parent root = loadFxml("SuspectOne");
     sceneMap.put("SuspectOne", loadFxml("SuspectOne")); // add initial scene to sceneMap
-    Parent root = loadFxml("Menu");
+    Parent root = loadFxml("CrimeScene");
     scene = new Scene(root);
     stage.setTitle("Pi Masters Detective Training");
     stage.setScene(scene);

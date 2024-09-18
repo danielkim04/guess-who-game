@@ -245,16 +245,6 @@
       </AnchorPane>      
       <AnchorPane fx:id="paneNoteWindow" layoutX="423.0" layoutY="80.0" prefHeight="321.0" prefWidth="287.0" visible="false">
          <children>
-            <AnchorPane fx:id="paneOpenChat1" layoutX="11.0" layoutY="106.0" onMouseClicked="#handleCloseButtonClick" prefHeight="97.0" prefWidth="21.0">
-               <children>
-                  <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#adadadeb" height="110.0" stroke="TRANSPARENT" strokeType="INSIDE" width="36.0" />
-                  <Label alignment="CENTER" layoutX="-3.0" layoutY="36.0" prefHeight="23.0" prefWidth="18.0" rotate="90.0" text="^" textAlignment="CENTER" textFill="WHITE">
-                     <font>
-                        <Font size="25.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#383636f7" height="322.0" layoutX="29.0" layoutY="-2.0" stroke="TRANSPARENT" strokeType="INSIDE" width="248.0" />
             <TabPane layoutX="37.0" layoutY="6.0" prefHeight="308.0" prefWidth="232.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
@@ -267,8 +257,71 @@
                         </AnchorPane>
                   </content>
                 </Tab>
+                  <Tab text="Inventory">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Rectangle arcHeight="100.0" arcWidth="100.0" fill="#393737" height="79.0" layoutY="10.0" stroke="BLACK" strokeType="INSIDE" width="233.0" />
+                              <Rectangle arcHeight="100.0" arcWidth="100.0" fill="#393737" height="79.0" layoutY="190.0" stroke="BLACK" strokeType="INSIDE" width="233.0" />
+                              <Rectangle arcHeight="100.0" arcWidth="100.0" fill="#393737" height="79.0" layoutY="100.0" stroke="BLACK" strokeType="INSIDE" width="233.0" />
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fitHeight="68.0" fitWidth="64.0" layoutX="40.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/fingerprintInv1.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label layoutX="110.0" layoutY="15.0" stylesheets="@../css/style.css" text="Hair Sample">
+                                       <font>
+                                          <Font name="Dubai Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fitHeight="64.0" fitWidth="65.0" layoutX="40.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/hairInv.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label layoutX="110.0" layoutY="105.0" stylesheets="@../css/style.css" text="Fingerprint">
+                                       <font>
+                                          <Font name="Dubai Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fitHeight="64.0" fitWidth="65.0" layoutX="40.0" layoutY="195.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/hairInv.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label layoutX="125.0" layoutY="195.0" stylesheets="@../css/style.css" text="Money">
+                                       <font>
+                                          <Font name="Dubai Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
               </tabs>
             </TabPane>
+            <AnchorPane fx:id="paneOpenChat1" layoutX="11.0" layoutY="106.0" onMouseClicked="#handleCloseButtonClick" prefHeight="97.0" prefWidth="21.0">
+               <children>
+                  <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#adadadeb" height="110.0" stroke="TRANSPARENT" strokeType="INSIDE" width="36.0" />
+                  <Label alignment="CENTER" layoutX="-3.0" layoutY="36.0" prefHeight="23.0" prefWidth="18.0" rotate="90.0" text="^" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
 
          </children>
       </AnchorPane>

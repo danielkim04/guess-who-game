@@ -101,6 +101,10 @@ public class CrimeSceneController implements Controller {
 
   public static int moneyCollected = 0;
 
+  boolean fingerprintCollected = false;
+
+  boolean hairCollected = false;
+
   // Variables to store the initial mouse click position
   private double initialX;
   private double initialY;
@@ -269,6 +273,7 @@ public class CrimeSceneController implements Controller {
 
     // Show the fingerCollectedPane when the fingerprint is clicked
     fingerCollectedPane.setVisible(true);
+    fingerprintCollected = true;
 
     // Display "Fingerprint Collected!" slowly
     displayFingerprintTextSlowly("Fingerprint Collected, Sample must be tested in the lab!");
@@ -345,6 +350,7 @@ public class CrimeSceneController implements Controller {
       // If the dragged item is Hair, show the hairCollectedPane and animate the text
       if (draggedItem == Hair) {
         System.out.println("Hair collected! No money gained.");
+        hairCollected = true;
         draggedItem.setVisible(false);
         hairCollectedPane.setVisible(true); // Show hairCollectedPane
 
