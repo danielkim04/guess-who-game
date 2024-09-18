@@ -6,6 +6,7 @@ import javafx.scene.input.MouseEvent;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.classes.*;
+import nz.ac.auckland.se206.controllers.GameEndController;
 
 public class Guessing implements GameState {
   private Timer timer = new Timer(10);
@@ -51,6 +52,12 @@ public class Guessing implements GameState {
   public void handleTimeOut() {
     System.out.println("No more Guessing Time");
     nextState();
+    if (App.getController() instanceof GameEndController) {
+      GameEndController controller = (GameEndController) App.getController();
+      controller.timeOut();
+    } else {
+      System.out.println("Error: Controller is not GameEndController");
+    }
   }
 
   public void nextState() {

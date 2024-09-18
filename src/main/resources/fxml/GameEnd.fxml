@@ -26,14 +26,9 @@
                         <Image url="@../images/man%201.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="labelResult" layoutX="356.0" layoutY="14.0" text="You won" textFill="#afff9d">
-                     <font>
-                        <Font name="Times New Roman" size="48.0" />
-                     </font>
-                  </Label>
                   <AnchorPane layoutX="260.0" layoutY="89.0" prefHeight="209.0" prefWidth="364.0">
                      <children>
-                        <Label fx:id="labelExplain" alignment="CENTER" prefHeight="209.0" prefWidth="369.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." textAlignment="JUSTIFY" textFill="WHITE" wrapText="true">
+                        <Label fx:id="labelExplain" alignment="CENTER" prefHeight="209.0" prefWidth="369.0" textAlignment="JUSTIFY" textFill="WHITE" wrapText="true">
                            <font>
                               <Font name="Times New Roman" size="18.0" />
                            </font>
@@ -45,14 +40,19 @@
                         <Font size="18.0" />
                      </font>
                   </Button>
+                  <Label fx:id="labelVictory" layoutX="356.0" layoutY="14.0" text="You won" textFill="#afff9d" visible="false">
+                     <font>
+                        <Font name="Times New Roman" size="48.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labelDefeat" layoutX="355.0" layoutY="14.0" text="You Lost" textFill="#ff9e9e" visible="false">
+                     <font>
+                        <Font name="Times New Roman" size="48.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
          </children>
       </AnchorPane>
-      <Label layoutX="809.0" layoutY="115.0" text="You Lost" textFill="#ff9e9e">
-         <font>
-            <Font name="Times New Roman" size="48.0" />
-         </font>
-      </Label>
    </children>
 </Pane>

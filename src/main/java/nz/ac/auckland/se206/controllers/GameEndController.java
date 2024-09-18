@@ -10,16 +10,14 @@ import nz.ac.auckland.se206.classes.*;
 
 public class GameEndController implements Controller {
 
-  @FXML
-  private Label labelResult;
+  @FXML private Label labelVictory;
+  @FXML private Label labelDefeat;
   @FXML private Label labelExplain;
   @FXML private ImageView imageCriminal;
   @FXML private Button buttonPlayAgain;
 
   @FXML
-  public void initalize() {
-
-  }
+  public void initalize() {}
 
   @FXML
   public void playAgainClick() {
@@ -35,7 +33,16 @@ public class GameEndController implements Controller {
 
     // displays gpt evaluation of the user's explanation
     labelExplain.setText(chat);
+  }
 
+  public void setWinOrLose(boolean win) {
+    if (win) {
+      labelVictory.setVisible(true);
+      labelDefeat.setVisible(false);
+    } else {
+      labelVictory.setVisible(false);
+      labelDefeat.setVisible(true);
+    }
   }
 
   @Override
@@ -44,4 +51,8 @@ public class GameEndController implements Controller {
     throw new UnsupportedOperationException("Unimplemented method 'onTimerUpdate'");
   }
 
+  public void timeOut() {
+    setWinOrLose(false);
+    labelExplain.setText("Time's up! You failed to solve the case.");
+  }
 }
