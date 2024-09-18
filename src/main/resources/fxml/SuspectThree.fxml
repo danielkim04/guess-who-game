@@ -4,7 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -55,8 +55,8 @@
                         <Image url="@../images/textbox1.png" />
                     </image>
                 </ImageView>
-                <Label fx:id="labelResponse" layoutX="82.0" layoutY="76.0" prefHeight="55.0" prefWidth="461.0" text="Label" wrapText="true" />
-                <TextField fx:id="txtMessage" layoutX="82.0" layoutY="138.0" prefHeight="31.0" prefWidth="451.0" />
+                <Label fx:id="labelResponse" layoutX="82.0" layoutY="76.0" prefHeight="55.0" prefWidth="461.0" text="Loading" wrapText="true" />
+            <TextArea fx:id="txtMessage" layoutX="82.0" layoutY="135.0" onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="30.0" prefWidth="451.0" promptText="Type here to chat" wrapText="true" />
                 <Button fx:id="btnSend" layoutX="536.0" layoutY="138.0" mnemonicParsing="false" onAction="#sendMessage" prefHeight="31.0" prefWidth="62.0" text="Send" />
                 <Label fx:id="labelName" layoutX="82.0" layoutY="21.0" prefHeight="17.0" prefWidth="109.0" text="Name" textFill="WHITE">
                     <font>
