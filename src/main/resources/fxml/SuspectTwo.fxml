@@ -35,8 +35,8 @@
                 </Label>
             <MenuButton layoutX="32.0" layoutY="27.0" mnemonicParsing="false" text="Locations">
                <items>
-                  <MenuItem fx:id="menuSuspectOne" mnemonicParsing="false" onAction="#toSuspectOne" text="Suspect 1" />
-                  <MenuItem fx:id="menuSuspectThree" mnemonicParsing="false" onAction="#toSuspectThree" text="Suspect 3" />
+                  <MenuItem fx:id="menuSuspectOne" mnemonicParsing="false" onAction="#toSuspectOne" text="Lobby" />
+                  <MenuItem fx:id="menuSuspectThree" mnemonicParsing="false" onAction="#toSuspectThree" text="Bar" />
                   <MenuItem fx:id="menuCrimeScene" mnemonicParsing="false" onAction="#toCrimeScene" text="Crime Scene" />
                </items>
             </MenuButton>
