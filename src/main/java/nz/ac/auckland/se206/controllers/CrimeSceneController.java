@@ -74,6 +74,10 @@ public class CrimeSceneController implements Controller {
   @FXML
   private ImageView imgMap;
   @FXML
+  private Button hairTest;
+  @FXML
+  private Button fingerprintTest;
+  @FXML
   private Button BagExit;
   @FXML
   private Button cashbookExit;
@@ -136,6 +140,17 @@ public class CrimeSceneController implements Controller {
     fingerprintSamplePane.setVisible(false);
     moneyCollectedPane.setVisible(false);
     correct.setVisible(false);
+
+    rectClueBag.setOnMouseEntered(event -> rectClueBag.setCursor(javafx.scene.Cursor.HAND));
+    rectClueBag.setOnMouseExited(event -> rectClueBag.setCursor(javafx.scene.Cursor.DEFAULT));
+
+    // Change cursor when hovering over rectClueBook
+    rectClueBook.setOnMouseEntered(event -> rectClueBook.setCursor(javafx.scene.Cursor.HAND));
+    rectClueBook.setOnMouseExited(event -> rectClueBook.setCursor(javafx.scene.Cursor.DEFAULT));
+
+    // Change cursor when hovering over rectClueNote
+    rectClueNote.setOnMouseEntered(event -> rectClueNote.setCursor(javafx.scene.Cursor.HAND));
+    rectClueNote.setOnMouseExited(event -> rectClueNote.setCursor(javafx.scene.Cursor.DEFAULT));
 
     // Initialize money counter with zero
     updateMoneyCounter();

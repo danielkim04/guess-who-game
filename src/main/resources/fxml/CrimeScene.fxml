@@ -285,6 +285,7 @@
                                           <Font name="Dubai Bold" size="18.0" />
                                        </font>
                                     </Label>
+                                    <Button fx:id="hairTest" layoutX="110.0" layoutY="70.0" mnemonicParsing="false" text="Test Sample" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane fx:id="fingerprintSamplePane" prefHeight="200.0" prefWidth="200.0">
@@ -299,6 +300,7 @@
                                           <Font name="Dubai Bold" size="18.0" />
                                        </font>
                                     </Label>
+                                    <Button fx:id="fingerprintTest" layoutX="110.0" layoutY="170.0" mnemonicParsing="false" text="Test Sample" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane fx:id="moneyCollectedPane" prefHeight="200.0" prefWidth="200.0">
@@ -332,6 +334,16 @@
                </children>
             </AnchorPane>
 
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="labPane" prefHeight="400.0" prefWidth="700.0" visible="false">
+         <children>
+            <ImageView fitHeight="321.0" fitWidth="461.0" layoutX="110.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/frame2.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="labLabel" layoutX="170.0" layoutY="140.0" prefHeight="18.0" prefWidth="337.0" stylesheets="@../css/style.css" text="poopoo" wrapText="true" />
          </children>
       </AnchorPane>
    </children>
