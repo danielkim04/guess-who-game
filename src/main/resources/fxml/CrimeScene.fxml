@@ -235,7 +235,7 @@
 
       <AnchorPane fx:id="paneOpenChat" layoutX="681.0" layoutY="185.0" onMouseClicked="#handleOpenButtonClick" prefHeight="97.0" prefWidth="21.0">
          <children>
-            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#adadadeb" height="110.0" stroke="TRANSPARENT" strokeType="INSIDE" width="36.0" />
+            <Rectangle fx:id="glow" arcHeight="20.0" arcWidth="20.0" fill="#adadadeb" height="110.0" stroke="TRANSPARENT" strokeType="INSIDE" width="36.0" />
             <Label alignment="CENTER" layoutX="4.0" layoutY="37.0" prefHeight="23.0" prefWidth="18.0" rotate="-90.0" text="^" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font size="25.0" />

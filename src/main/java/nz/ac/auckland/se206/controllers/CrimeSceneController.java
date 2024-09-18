@@ -7,11 +7,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
@@ -40,6 +42,8 @@ public class CrimeSceneController implements Controller {
   private AnchorPane paneNoteWindow;
   @FXML
   private Rectangle rectCloseNotes;
+  @FXML
+  private Rectangle glow;
   @FXML
   private AnchorPane paneOpenChat;
   @FXML
@@ -275,6 +279,7 @@ public class CrimeSceneController implements Controller {
   private void handleFingerprintClick(MouseEvent event) {
     // Print a message to the console when the fingerprint is clicked
     System.out.println("Fingerprint image clicked");
+    makeRectangleGlow(glow);
 
     // Show the fingerCollectedPane when the fingerprint is clicked
     fingerCollectedPane.setVisible(true);
@@ -355,6 +360,7 @@ public class CrimeSceneController implements Controller {
       // If the dragged item is Hair, show the hairCollectedPane and animate the text
       if (draggedItem == Hair) {
         System.out.println("Hair collected! No money gained.");
+        makeRectangleGlow(glow);
         hairSamplePane.setVisible(true);
         draggedItem.setVisible(false);
         hairCollectedPane.setVisible(true); // Show hairCollectedPane
@@ -366,6 +372,7 @@ public class CrimeSceneController implements Controller {
         draggedItem.setVisible(false);
         moneyCollectedPane.setVisible(true);
         moneyCollected += 1000;
+        makeRectangleGlow(glow);
         updateMoneyCounter(); // Update the label when money is collected
         System.out.println(moneyCollected);
       }
@@ -443,6 +450,31 @@ public class CrimeSceneController implements Controller {
       // If not, keep the fingerprint hidden
       fingerprint.setOpacity(0.0); // Fully hidden
     }
+  }
+
+  // Method to make the rectangle glow for 1 second
+  private void makeRectangleGlow(Rectangle rect) {
+    DropShadow dropShadow = new DropShadow();
+    dropShadow.setColor(Color.YELLOW); // Set the glow color (adjust as needed)
+    dropShadow.setRadius(20); // Set the initial glow radius
+
+    // Apply the drop shadow effect to the rectangle
+    rect.setEffect(dropShadow);
+
+    // Create a timeline to animate the glow for 1 second (pulsing effect)
+    Timeline glowTimeline = new Timeline(
+        new KeyFrame(Duration.seconds(0), e -> dropShadow.setRadius(10)),
+        new KeyFrame(Duration.seconds(0.5), e -> dropShadow.setRadius(20)),
+        new KeyFrame(Duration.seconds(1), e -> dropShadow.setRadius(10)));
+
+    // Ensure the timeline runs only once (for 1 second)
+    glowTimeline.setCycleCount(1);
+
+    // After the animation is finished, remove the glow effect
+    glowTimeline.setOnFinished(e -> rect.setEffect(null));
+
+    // Start the animation
+    glowTimeline.play();
   }
 
 }
