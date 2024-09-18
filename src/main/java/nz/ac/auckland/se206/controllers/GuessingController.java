@@ -5,6 +5,8 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+
+import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,6 +28,7 @@ import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.classes.*;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
+import nz.ac.auckland.se206.states.Guessing;
 
 public class GuessingController implements Controller {
   @FXML private Label labelTimer;
@@ -115,7 +118,7 @@ public class GuessingController implements Controller {
               .setTemperature(0.2)
               .setTopP(0.5)
               .setMaxTokens(100);
-      runGpt(new ChatMessage("system", loadSystemPrompt()));
+      chatCompletionRequest.addMessage(new ChatMessage("system", loadSystemPrompt()));
     } catch (ApiProxyException | URISyntaxException | IOException e) { // ??????????
       e.printStackTrace();
     }
@@ -132,7 +135,11 @@ public class GuessingController implements Controller {
               ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
               Choice result = chatCompletionResult.getChoices().iterator().next();
               chatCompletionRequest.addMessage(result.getChatMessage());
-              System.out.println(result.getChatMessage().getContent());
+              System.out.println(result.getChatMessage().getContent()); // testing
+              System.out.println(App.getController()); // testing
+              Platform.runLater(() -> {
+                App.getController().onNewChat(result.getChatMessage().getContent());
+              });
               return result.getChatMessage();
             } catch (ApiProxyException e) {
               e.printStackTrace();
@@ -156,6 +163,15 @@ public class GuessingController implements Controller {
     }
     initialiseChat();
     ChatMessage msg = new ChatMessage("user", message);
+    Guessing guessingState = (Guessing) App.getContext().getGuessingState();
+    guessingState.getTimer().stop();
+
+    try {
+      App.setRoot("GameEnd");
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+
     runGpt(msg);
   }
 

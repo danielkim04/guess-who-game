@@ -12,9 +12,9 @@ public class GameEndController implements Controller {
 
   @FXML
   private Label labelResult;
-  private Label labelExplain;
-  private ImageView imageCriminal;
-  private Button buttonPlayAgain;
+  @FXML private Label labelExplain;
+  @FXML private ImageView imageCriminal;
+  @FXML private Button buttonPlayAgain;
 
   @FXML
   public void initalize() {
@@ -32,8 +32,10 @@ public class GameEndController implements Controller {
 
   @Override
   public void onNewChat(String chat) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'onNewChat'");
+
+    // displays gpt evaluation of the user's explanation
+    labelExplain.setText(chat);
+
   }
 
   @Override

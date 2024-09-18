@@ -62,4 +62,8 @@ public class Guessing implements GameState {
     }
 
   }
+
+  public Timer getTimer() {
+    return timer;
+  }
 }
