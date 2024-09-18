@@ -49,6 +49,12 @@ public class CrimeSceneController implements Controller {
   @FXML
   private Pane paneBase;
   @FXML
+  private Pane hairSamplePane;
+  @FXML
+  private Pane fingerprintSamplePane;
+  @FXML
+  private Pane moneyCollectedPane;
+  @FXML
   private Pane lightPane;
   @FXML
   private Pane fingerCollectedPane;
@@ -101,10 +107,6 @@ public class CrimeSceneController implements Controller {
 
   public static int moneyCollected = 0;
 
-  boolean fingerprintCollected = false;
-
-  boolean hairCollected = false;
-
   // Variables to store the initial mouse click position
   private double initialX;
   private double initialY;
@@ -119,6 +121,9 @@ public class CrimeSceneController implements Controller {
     // Hide bagInteractPane and hairCollectedPane initially
     bagInteractPane.setVisible(false);
     hairCollectedPane.setVisible(false);
+    hairSamplePane.setVisible(false);
+    fingerprintSamplePane.setVisible(false);
+    moneyCollectedPane.setVisible(false);
 
     // Initialize money counter with zero
     updateMoneyCounter();
@@ -273,7 +278,7 @@ public class CrimeSceneController implements Controller {
 
     // Show the fingerCollectedPane when the fingerprint is clicked
     fingerCollectedPane.setVisible(true);
-    fingerprintCollected = true;
+    fingerprintSamplePane.setVisible(true);
 
     // Display "Fingerprint Collected!" slowly
     displayFingerprintTextSlowly("Fingerprint Collected, Sample must be tested in the lab!");
@@ -350,7 +355,7 @@ public class CrimeSceneController implements Controller {
       // If the dragged item is Hair, show the hairCollectedPane and animate the text
       if (draggedItem == Hair) {
         System.out.println("Hair collected! No money gained.");
-        hairCollected = true;
+        hairSamplePane.setVisible(true);
         draggedItem.setVisible(false);
         hairCollectedPane.setVisible(true); // Show hairCollectedPane
 
@@ -359,6 +364,7 @@ public class CrimeSceneController implements Controller {
       } else {
         // For other items (like money), hide the item and collect money
         draggedItem.setVisible(false);
+        moneyCollectedPane.setVisible(true);
         moneyCollected += 1000;
         updateMoneyCounter(); // Update the label when money is collected
         System.out.println(moneyCollected);
