@@ -28,6 +28,7 @@ public class App extends Application {
   private static GameStateContext context = new GameStateContext();
   private static FXMLLoader fxmlHandler;
   private static Map<String, Parent> sceneMap = new HashMap<>(); // stores the scenes that have been initialised
+  private static Map<String, FXMLLoader> fxmlLoaderMap = new HashMap<>(); // stores the FXML loaders
 
   /**
    * The main method that launches the JavaFX application.
@@ -50,6 +51,8 @@ public class App extends Application {
       Parent root = loadFxml(fxml);
       sceneMap.put(fxml, root);
     }
+    // retrieve the FXML loader from the map
+    fxmlHandler = fxmlLoaderMap.get(fxml);
     // retrieve the scene from the map and set it as the root
     scene.setRoot(sceneMap.get(fxml));
   }
@@ -65,6 +68,7 @@ public class App extends Application {
    */
   private static Parent loadFxml(final String fxml) throws IOException {
     fxmlHandler = new FXMLLoader(App.class.getResource("/fxml/" + fxml + ".fxml"));
+    fxmlLoaderMap.put(fxml, fxmlHandler); // store the FXML loader in the map for later retrieval
     return (fxmlHandler.load());
   }
 
@@ -98,8 +102,6 @@ public class App extends Application {
    */
   @Override
   public void start(final Stage stage) throws IOException {
-    // Parent root = loadFxml("SuspectOne");
-    sceneMap.put("SuspectOne", loadFxml("SuspectOne")); // add initial scene to sceneMap
     Parent root = loadFxml("Menu");
     scene = new Scene(root);
     stage.setTitle("Pi Masters Detective Training");
@@ -123,5 +125,15 @@ public class App extends Application {
 
   public static void setGameState(GameState gameState) {
     context.setState(gameState);
+  }
+
+  public static GameStateContext getGameState() {
+    return context;
+  }
+
+  public static void resetAll() {
+    // reset maps that retain the scenes and FXML loaders
+    sceneMap.clear();
+    fxmlLoaderMap.clear();
   }
 }

@@ -42,12 +42,11 @@ public class Timer {
 
           if (this.time.getTime() <= 0) {
             stop();
+            handleTimeOut();
           }
 
           this.count();
         }
-
-        handleTimeOut();
       });
 
   // Current timer thread executing

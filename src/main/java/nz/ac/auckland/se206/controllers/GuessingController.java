@@ -23,6 +23,7 @@ import nz.ac.auckland.apiproxy.chat.openai.ChatMessage;
 import nz.ac.auckland.apiproxy.chat.openai.Choice;
 import nz.ac.auckland.apiproxy.config.ApiProxyConfig;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
+import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.classes.*;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 
@@ -43,11 +44,8 @@ public class GuessingController implements Controller {
   private boolean isThief;
   private ChatCompletionRequest chatCompletionRequest;
 
-
   @FXML
-  public void initialize() {
-
-  }
+  public void initialize() {}
 
   /**
    * Handles the key pressed event.
