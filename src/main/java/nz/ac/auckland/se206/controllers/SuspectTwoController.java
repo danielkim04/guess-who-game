@@ -113,12 +113,13 @@ public class SuspectTwoController implements Controller {
     for (int i = 0; i < text.length(); i++) {
       final int index = i;
       KeyFrame keyFrame =
-              new KeyFrame(
-                      Duration.millis(500 * index), // Delay each letter by 100ms
-                      e -> {
-                        displayedText.append(text.charAt(index)); // Append the current letter
-                        labelResponse.setText(displayedText.toString()); // Update the label with the new text
-                      });
+          new KeyFrame(
+              Duration.millis(500 * index), // Delay each letter by 100ms
+              e -> {
+                displayedText.append(text.charAt(index)); // Append the current letter
+                labelResponse.setText(
+                    displayedText.toString()); // Update the label with the new text
+              });
       timeline.getKeyFrames().add(keyFrame);
     }
 
@@ -147,9 +148,7 @@ public class SuspectTwoController implements Controller {
   }
 
   @Override
-  public void onNewChat(String chat) {
-
-  }
+  public void onNewChat(String chat) {}
 
   @Override
   public void onTimerUpdate(String time) {

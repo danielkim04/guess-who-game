@@ -234,6 +234,7 @@
                   <MenuItem fx:id="menuSuspectThree" mnemonicParsing="false" onAction="#toSuspectThree" text="Suspect 3" />
                </items>
             </MenuButton>
+            <Button fx:id="btnGuessNow" layoutX="138.0" layoutY="27.0" mnemonicParsing="false" onAction="#handleGuessClick" text="Guess Now" />
          </children>
       </AnchorPane>
 

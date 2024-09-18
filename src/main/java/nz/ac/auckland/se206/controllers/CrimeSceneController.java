@@ -17,6 +17,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.classes.*;
+import nz.ac.auckland.se206.states.Investigating;
 
 /**
  * Controller class for the room view. Handles user interactions within the room where the user can
@@ -62,6 +63,7 @@ public class CrimeSceneController implements Controller {
   @FXML private MenuItem menuSuspectTwo;
   @FXML private MenuItem menuSuspectThree;
   @FXML private MenuItem menuSuspectOne;
+  @FXML private Button btnGuessNow;
 
   public static int moneyCollected = 0;
 
@@ -133,15 +135,14 @@ public class CrimeSceneController implements Controller {
     // to be implemented
   }
 
-  /**
-   * Handles the guess button click event.
-   *
-   * @param event the action event triggered by clicking the guess button
-   * @throws IOException if there is an I/O error
-   */
   @FXML
-  private void handleGuessClick(ActionEvent event) throws IOException {
-    App.getContext().handleGuessClick();
+  private void handleGuessClick(ActionEvent event) {
+    if (App.getContext().getInvestigatingState() instanceof Investigating) {
+      Investigating state = (Investigating) App.getContext().getInvestigatingState();
+      state.handleGuessClick();
+    } else {
+      System.out.println("Warning! Not in Investigating state!!!");
+    }
   }
 
   @FXML

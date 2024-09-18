@@ -72,12 +72,12 @@ public class Investigating implements GameState {
       System.out.println("Talk to all suspects first");
       return;
     }
-     context.setState(context.getGuessingState());
-     try {
-       App.setRoot("Guessing");
-     } catch (IOException e) {
-       e.printStackTrace();
-     }
+    context.setState(context.getGuessingState());
+    try {
+      App.setRoot("Guessing");
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 
   public void handleTimeOut() {

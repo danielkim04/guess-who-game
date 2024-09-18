@@ -44,11 +44,8 @@ public class GuessingController implements Controller {
   private boolean isThief;
   private ChatCompletionRequest chatCompletionRequest;
 
-
   @FXML
-  public void initialize() {
-
-  }
+  public void initialize() {}
 
   /**
    * Handles the key pressed event.
