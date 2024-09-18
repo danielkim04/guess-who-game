@@ -9,8 +9,10 @@ import javafx.scene.input.KeyEvent;
 import javafx.util.Duration;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.App;
+import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.classes.Controller;
 import nz.ac.auckland.se206.classes.Suspect;
+import nz.ac.auckland.se206.states.Investigating;
 
 import java.io.IOException;
 
@@ -22,6 +24,7 @@ public class SuspectOneController implements Controller {
   @FXML private MenuItem menuSuspectTwo;
   @FXML private MenuItem menuSuspectThree;
   @FXML private MenuItem menuCrimeScene;
+  @FXML private Button btnGuessNow;
 
   private Suspect suspect;
   private Timeline timeline;
@@ -45,6 +48,15 @@ public class SuspectOneController implements Controller {
     if (message.isEmpty()) {
       return;
     }
+
+    // update suspect engagement status
+    if (App.getContext().getInvestigatingState() instanceof Investigating) {
+      Investigating state = (Investigating) App.getContext().getInvestigatingState();
+      state.setSuspectState("SuspectOne");
+    } else {
+      System.out.println("Warning! Not in Investigating state!!!");
+    }
+
     displayTextSlowly(". . .");
     txtMessage.clear();
 
@@ -80,6 +92,16 @@ public class SuspectOneController implements Controller {
       App.setRoot("CrimeScene");
     } catch (IOException e) {
       e.printStackTrace();
+    }
+  }
+
+  @FXML
+  private void handleGuessClick(ActionEvent event) {
+    if (App.getContext().getInvestigatingState() instanceof Investigating) {
+      Investigating state = (Investigating) App.getContext().getInvestigatingState();
+      state.handleGuessClick();
+    } else {
+      System.out.println("Warning! Not in Investigating state!!!");
     }
   }
 

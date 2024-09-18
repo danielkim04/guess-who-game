@@ -40,6 +40,7 @@
                   <MenuItem fx:id="menuCrimeScene" mnemonicParsing="false" onAction="#toCrimeScene" text="Crime Scene" />
                </items>
             </MenuButton>
+                <Button fx:id="btnGuessNow" layoutX="150.0" layoutY="27.0" mnemonicParsing="false" onAction="#handleGuessClick" text="Guess Now" />
             </children>
         </AnchorPane>
         <ImageView fitHeight="365.0" fitWidth="207.0" layoutX="385.0" layoutY="-29.0" pickOnBounds="true" preserveRatio="true">
