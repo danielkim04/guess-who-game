@@ -8,24 +8,22 @@ import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.classes.*;
 
 public class Guessing implements GameState {
-  private Timer timer = new Timer(30);
+  private Timer timer = new Timer(10);
   private final GameStateContext context;
-  private Thread updateThread =
-      new Thread(
-          () -> {
-            Platform.runLater(
-                () -> {
-                  App.getController().onTimerUpdate(this.timer.getTime().toString());
-                });
-          });
-  private Thread timeOutThread =
-      new Thread(
-          () -> {
-            Platform.runLater(
-                () -> {
-                  handleTimeOut();
-                });
-          });
+  private Thread updateThread = new Thread(
+      () -> {
+        Platform.runLater(
+            () -> {
+              App.getController().onTimerUpdate(this.timer.getTime().toString());
+            });
+      });
+  private Thread timeOutThread = new Thread(
+      () -> {
+        Platform.runLater(
+            () -> {
+              handleTimeOut();
+            });
+      });
 
   public Guessing(GameStateContext context) {
     this.context = context;
@@ -51,13 +49,17 @@ public class Guessing implements GameState {
   }
 
   public void handleTimeOut() {
-    System.out.println("No more Time");
+    System.out.println("No more Guessing Time");
+    nextStage();
+  }
 
+  public void nextStage() {
+    context.setState(context.getGameOverState());
     try {
-      App.setRoot("Guessing");
+      App.setRoot("GameEnd");
     } catch (IOException e) {
       e.printStackTrace();
     }
-    context.setState(context.getGameOverState());
+
   }
 }
