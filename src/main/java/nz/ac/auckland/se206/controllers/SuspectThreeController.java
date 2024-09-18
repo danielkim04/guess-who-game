@@ -16,21 +16,32 @@ import nz.ac.auckland.se206.states.Investigating;
 import java.io.IOException;
 
 public class SuspectThreeController implements Controller {
-  @FXML private Label labelTimer;
-  @FXML private Label labelResponse;
-  @FXML private TextField txtMessage;
-  @FXML private Button btnSend;
-  @FXML private MenuItem menuSuspectTwo;
-  @FXML private MenuItem menuSuspectOne;
-  @FXML private MenuItem menuCrimeScene;
-  @FXML private Button btnGuessNow;
+  @FXML
+  private Label labelTimer;
+  @FXML
+  private Label labelResponse;
+  @FXML
+  private TextField txtMessage;
+  @FXML
+  private Button btnSend;
+  @FXML
+  private MenuItem menuSuspectTwo;
+  @FXML
+  private MenuItem menuSuspectOne;
+  @FXML
+  private MenuItem menuCrimeScene;
+  @FXML
+  private Button btnGuessNow;
+  @FXML
+  private Label labelName;
 
   private Suspect suspect;
   private Timeline timeline;
 
   @FXML
   public void initialize() {
-    this.suspect = new Suspect("D", "Suspect", "suspect3.txt");
+    this.suspect = new Suspect("Susan", "Bartender", "suspect3.txt");
+    labelName.setText(this.suspect.toString());
     displayTextSlowly(". . .");
     // set the initial message by telling gpt to introduce itself
     suspect.getResponse(
@@ -112,14 +123,13 @@ public class SuspectThreeController implements Controller {
     timeline = new Timeline();
     for (int i = 0; i < text.length(); i++) {
       final int index = i;
-      KeyFrame keyFrame =
-          new KeyFrame(
-              Duration.millis(500 * index), // Delay each letter by 100ms
-              e -> {
-                displayedText.append(text.charAt(index)); // Append the current letter
-                labelResponse.setText(
-                    displayedText.toString()); // Update the label with the new text
-              });
+      KeyFrame keyFrame = new KeyFrame(
+          Duration.millis(500 * index), // Delay each letter by 100ms
+          e -> {
+            displayedText.append(text.charAt(index)); // Append the current letter
+            labelResponse.setText(
+                displayedText.toString()); // Update the label with the new text
+          });
       timeline.getKeyFrames().add(keyFrame);
     }
 
@@ -148,7 +158,8 @@ public class SuspectThreeController implements Controller {
   }
 
   @Override
-  public void onNewChat(String chat) {}
+  public void onNewChat(String chat) {
+  }
 
   @Override
   public void onTimerUpdate(String time) {

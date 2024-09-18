@@ -9,7 +9,8 @@ import nz.ac.auckland.se206.classes.*;
 import nz.ac.auckland.se206.speech.TextToSpeech;
 
 /**
- * The Guessing state of the game. Handles the logic for when the player is making a guess about the
+ * The Guessing state of the game. Handles the logic for when the player is
+ * making a guess about the
  * profession of the characters in the game.
  */
 public class Investigating implements GameState {
@@ -19,24 +20,22 @@ public class Investigating implements GameState {
   private boolean talkedToSuspectTwo = false;
   private boolean talkedToSuspectThree = false;
 
-  private Timer timer = new Timer(60);
+  private Timer timer = new Timer(600);
 
-  private Thread updateThread =
-      new Thread(
-          () -> {
-            Platform.runLater(
-                () -> {
-                  App.getController().onTimerUpdate(this.timer.getTime().toString());
-                });
-          });
-  private Thread timeOutThread =
-      new Thread(
-          () -> {
-            Platform.runLater(
-                () -> {
-                  handleTimeOut();
-                });
-          });
+  private Thread updateThread = new Thread(
+      () -> {
+        Platform.runLater(
+            () -> {
+              App.getController().onTimerUpdate(this.timer.getTime().toString());
+            });
+      });
+  private Thread timeOutThread = new Thread(
+      () -> {
+        Platform.runLater(
+            () -> {
+              handleTimeOut();
+            });
+      });
 
   /**
    * Constructs a new Guessing state with the given game state context.
@@ -55,15 +54,17 @@ public class Investigating implements GameState {
   }
 
   /**
-   * Handles the event when a rectangle is clicked. Checks if the clicked rectangle is a customer
+   * Handles the event when a rectangle is clicked. Checks if the clicked
+   * rectangle is a customer
    * and updates the game state accordingly.
    *
-   * @param event the mouse event triggered by clicking a rectangle
+   * @param event       the mouse event triggered by clicking a rectangle
    * @param rectangleId the ID of the clicked rectangle
    * @throws IOException if there is an I/O error
    */
   @Override
-  public void handleRectangleClick(MouseEvent event, String rectangleId) throws IOException {}
+  public void handleRectangleClick(MouseEvent event, String rectangleId) throws IOException {
+  }
 
   @Override
   public void handleGuessClick() {
