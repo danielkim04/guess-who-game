@@ -110,6 +110,10 @@
                   <Image url="@../images/note2.png" />
                </image>
             </ImageView>
+            <Label layoutX="322.0" layoutY="113.0" prefHeight="250.0" prefWidth="146.0" text="I saw him again tonight at the casino. There's something about the way he carries himself—always so confident, like he owns the place. People seem to gravitate toward him, and I don't know why it bothers me so much. Maybe it's how easily things come to him, or maybe it’s just the way he’s always at the center of attention." wrapText="true">
+               <font>
+                  <Font name="Comic Sans MS" size="11.0" />
+               </font></Label>
             <AnchorPane fx:id="lightPane" prefHeight="200.0" prefWidth="200.0">
                <children>
                   <ImageView fx:id="blueLight" fitHeight="43.0" fitWidth="54.0" layoutX="145.0" layoutY="236.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
@@ -122,7 +126,7 @@
                         <Image url="@../images/fingerprint2.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="dark" fitHeight="953.0" fitWidth="1718.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="dark" fitHeight="953.0" fitWidth="1718.0" opacity="0.95" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/darkness4.png" />
                      </image>
@@ -198,12 +202,17 @@
                </font>
             </Label>
             <TextArea fx:id="balanceArea" layoutX="360.0" layoutY="336.0" prefHeight="32.0" prefWidth="72.0" />
-            <Button fx:id="checkBalance" layoutX="437.0" layoutY="343.0" mnemonicParsing="false" text="Check" />
+            <Button fx:id="checkBalance" layoutX="437.0" layoutY="343.0" mnemonicParsing="false" onAction="#handleCheckBalanceClick" text="Check" />
             <Label layoutX="360.0" layoutY="319.0" prefHeight="16.0" prefWidth="125.0" text="Missing Balance?">
                <font>
                   <Font size="10.0" />
                </font>
             </Label>
+            <ImageView fx:id="correct" fitHeight="43.0" fitWidth="36.0" layoutX="480.0" layoutY="343.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/correct.png" />
+               </image>
+            </ImageView>
             <Button fx:id="cashbookExit" layoutX="186.0" layoutY="343.0" mnemonicParsing="false" onAction="#handlecashbookExit" text="Back" />
          </children>
       </AnchorPane>

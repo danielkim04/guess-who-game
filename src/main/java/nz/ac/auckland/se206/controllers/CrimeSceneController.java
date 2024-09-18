@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
@@ -77,6 +78,10 @@ public class CrimeSceneController implements Controller {
   @FXML
   private Button cashbookExit;
   @FXML
+  private Button checkBalance;
+  @FXML
+  private ImageView correct;
+  @FXML
   private ImageView Money1;
   @FXML
   private ImageView Money2;
@@ -108,6 +113,8 @@ public class CrimeSceneController implements Controller {
   private ImageView blueLight;
   @FXML
   private ImageView fingerprint;
+  @FXML
+  private TextArea balanceArea;
 
   public static int moneyCollected = 0;
 
@@ -128,6 +135,7 @@ public class CrimeSceneController implements Controller {
     hairSamplePane.setVisible(false);
     fingerprintSamplePane.setVisible(false);
     moneyCollectedPane.setVisible(false);
+    correct.setVisible(false);
 
     // Initialize money counter with zero
     updateMoneyCounter();
@@ -192,6 +200,23 @@ public class CrimeSceneController implements Controller {
   @FXML
   private void handleGuessClick(ActionEvent event) throws IOException {
     App.getContext().handleGuessClick();
+  }
+
+  @FXML
+  private void handleCheckBalanceClick(ActionEvent event) {
+    // Get the text from the balanceArea TextArea
+    String balanceText = balanceArea.getText();
+
+    // Check if the balance is "18000"
+    if (balanceText.trim().equals("18000")) {
+      // Action when balance is 18000, e.g., print a message
+      System.out.println("Balance is exactly 18000!");
+      correct.setVisible(true);
+    } else {
+      // Action when balance is not 18000
+      System.out.println("Balance is not 18000. Current balance: " + balanceText);
+      correct.setVisible(false);
+    }
   }
 
   @FXML
