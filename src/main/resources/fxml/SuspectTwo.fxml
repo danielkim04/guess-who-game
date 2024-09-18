@@ -4,7 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,9 +14,9 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.SuspectTwoController">
     <children>
-        <ImageView fitHeight="400.0" fitWidth="700.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="697.0" fitWidth="700.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../images/casinoexterior.jpeg" />
+                <Image url="@../images/Suspect_2_Background.png" />
             </image>
         </ImageView>
         <AnchorPane prefHeight="79.0" prefWidth="700.0">
@@ -28,7 +28,7 @@
                         <Font name="Calibri" size="26.0" />
                     </font>
                 </Label>
-                <Label alignment="CENTER" layoutX="260.0" layoutY="24.0" prefHeight="31.0" prefWidth="155.0" text="Suspect 2" textFill="WHITE">
+                <Label alignment="CENTER" layoutX="260.0" layoutY="24.0" prefHeight="31.0" prefWidth="155.0" text="Tables" textFill="WHITE">
                     <font>
                         <Font name="Algerian" size="25.0" />
                     </font>
@@ -43,11 +43,6 @@
                 <Button fx:id="btnGuessNow" layoutX="150.0" layoutY="27.0" mnemonicParsing="false" onAction="#handleGuessClick" text="Guess Now" />
             </children>
         </AnchorPane>
-        <ImageView fitHeight="365.0" fitWidth="207.0" layoutX="385.0" layoutY="-29.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/gamblerdraft1.png" />
-            </image>
-        </ImageView>
         <AnchorPane layoutX="10.0" layoutY="182.0" prefHeight="204.0" prefWidth="685.0">
             <children>
                 <ImageView fitHeight="165.0" fitWidth="566.0" layoutX="60.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
@@ -55,14 +50,14 @@
                         <Image url="@../images/textbox1.png" />
                     </image>
                 </ImageView>
-                <Label fx:id="labelResponse" layoutX="82.0" layoutY="76.0" prefHeight="55.0" prefWidth="461.0" text="Label" wrapText="true" />
-                <TextField fx:id="txtMessage" layoutX="82.0" layoutY="138.0" prefHeight="31.0" prefWidth="451.0" />
+                <Label fx:id="labelResponse" layoutX="82.0" layoutY="76.0" prefHeight="55.0" prefWidth="461.0" text="Loading" wrapText="true" />
                 <Button fx:id="btnSend" layoutX="536.0" layoutY="138.0" mnemonicParsing="false" onAction="#sendMessage" prefHeight="31.0" prefWidth="62.0" text="Send" />
-                <Label layoutX="82.0" layoutY="21.0" prefHeight="17.0" prefWidth="109.0" text="Name" textFill="WHITE">
+                <Label alignment="CENTER" layoutX="63.0" layoutY="21.0" prefHeight="30.0" prefWidth="143.0" text="Anthony" textAlignment="CENTER" textFill="WHITE">
                     <font>
                         <Font size="20.0" />
                     </font>
                 </Label>
+            <TextArea fx:id="txtMessage" layoutX="82.0" layoutY="135.0" onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="30.0" prefWidth="451.0" promptText="Type here to chat" wrapText="true" />
             </children>
         </AnchorPane>
     </children>

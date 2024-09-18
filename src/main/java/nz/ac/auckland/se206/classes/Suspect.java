@@ -27,6 +27,8 @@ public class Suspect {
   private String name;
   private String role;
 
+  private String suspectID;
+
   // Varible that stores hitbox as a rectangle
   private Rectangle rect;
 
