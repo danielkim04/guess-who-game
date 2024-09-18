@@ -74,12 +74,12 @@ public class Investigating implements GameState {
     // return;
     // }
     timer.stop();
-    nextStage();
+    nextState();
   }
 
   public void handleTimeOut() {
     System.out.println("No more Time");
-    nextStage();
+    nextState();
   }
 
   public void setSuspectState(String suspect) {
@@ -110,7 +110,7 @@ public class Investigating implements GameState {
     return talkedToSuspectThree;
   }
 
-  public void nextStage() {
+  public void nextState() {
     context.setState(context.getGuessingState());
     try {
       App.setRoot("Guessing");

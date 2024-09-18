@@ -50,10 +50,10 @@ public class Guessing implements GameState {
 
   public void handleTimeOut() {
     System.out.println("No more Guessing Time");
-    nextStage();
+    nextState();
   }
 
-  public void nextStage() {
+  public void nextState() {
     context.setState(context.getGameOverState());
     try {
       App.setRoot("GameEnd");
