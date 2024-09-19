@@ -272,8 +272,18 @@
             </Label>
          </children>
       </AnchorPane>      
-      <AnchorPane fx:id="paneNoteWindow" layoutX="423.0" layoutY="80.0" prefHeight="321.0" prefWidth="287.0" visible="false">
+      <AnchorPane fx:id="paneNoteWindow" layoutX="423.0" layoutY="80.0" prefHeight="321.0" prefWidth="287.0">
          <children>
+            <AnchorPane fx:id="paneOpenChat1" layoutX="11.0" layoutY="106.0" onMouseClicked="#handleCloseButtonClick" prefHeight="97.0" prefWidth="21.0">
+               <children>
+                  <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#adadadeb" height="110.0" stroke="TRANSPARENT" strokeType="INSIDE" width="36.0" />
+                  <Label alignment="CENTER" layoutX="-3.0" layoutY="36.0" prefHeight="23.0" prefWidth="18.0" rotate="90.0" text="^" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#383636f7" height="322.0" layoutX="29.0" layoutY="-2.0" stroke="TRANSPARENT" strokeType="INSIDE" width="248.0" />
             <TabPane layoutX="37.0" layoutY="6.0" prefHeight="308.0" prefWidth="232.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
@@ -281,7 +291,7 @@
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="185.0" prefWidth="232.0">
                            <children>
-                              <TextArea layoutY="3.0" prefHeight="280.0" prefWidth="232.0" text="Add notes here" />
+                              <TextArea layoutY="3.0" prefHeight="280.0" prefWidth="232.0" promptText="Add notes here" />
                            </children>
                         </AnchorPane>
                   </content>
@@ -343,16 +353,6 @@
                   </Tab>
               </tabs>
             </TabPane>
-            <AnchorPane fx:id="paneOpenChat1" layoutX="11.0" layoutY="106.0" onMouseClicked="#handleCloseButtonClick" prefHeight="97.0" prefWidth="21.0">
-               <children>
-                  <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#adadadeb" height="110.0" stroke="TRANSPARENT" strokeType="INSIDE" width="36.0" />
-                  <Label alignment="CENTER" layoutX="-3.0" layoutY="36.0" prefHeight="23.0" prefWidth="18.0" rotate="90.0" text="^" textAlignment="CENTER" textFill="WHITE">
-                     <font>
-                        <Font size="25.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
 
          </children>
       </AnchorPane>

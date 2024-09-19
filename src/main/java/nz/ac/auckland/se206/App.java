@@ -1,21 +1,21 @@
 package nz.ac.auckland.se206;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import nz.ac.auckland.se206.classes.*;
-import nz.ac.auckland.se206.controllers.ChatController;
 import nz.ac.auckland.se206.speech.FreeTextToSpeech;
 import nz.ac.auckland.se206.states.GameState;
+import nz.ac.auckland.se206.states.Investigating;
 
 /**
  * This is the entry point of the JavaFX application. This class initializes and
@@ -29,6 +29,9 @@ public class App extends Application {
   private static FXMLLoader fxmlHandler;
   private static Map<String, Parent> sceneMap = new HashMap<>(); // stores the scenes that have been initialised
   private static Map<String, FXMLLoader> fxmlLoaderMap = new HashMap<>(); // stores the FXML loaders
+  private static Map<String, Suspect> suspectMap = new HashMap<>();
+  private static Map<MenuItem, String> locationMap = new HashMap<>();
+  private static Suspect currentSuspect;
 
   /**
    * The main method that launches the JavaFX application.
@@ -46,6 +49,7 @@ public class App extends Application {
    * @throws IOException if the FXML file is not found
    */
   public static void setRoot(String fxml) throws IOException {
+    currentSuspect = suspectMap.get(fxml);
     if (!sceneMap.containsKey(fxml)) {
       // if scene has not been initialised, load the FXML file and store it in the map
       Parent root = loadFxml(fxml);
@@ -55,6 +59,9 @@ public class App extends Application {
     fxmlHandler = fxmlLoaderMap.get(fxml);
     // retrieve the scene from the map and set it as the root
     scene.setRoot(sceneMap.get(fxml));
+    if (context.getState() instanceof Investigating) {
+      ((Investigating) context.getState()).sceneChange();
+    }
   }
 
   /**
@@ -73,26 +80,6 @@ public class App extends Application {
   }
 
   /**
-   * Opens the chat view and sets the profession in the chat controller.
-   *
-   * @param event      the mouse event that triggered the method
-   * @param profession the profession to set in the chat controller
-   * @throws IOException if the FXML file is not found
-   */
-  public static void openChat(MouseEvent event, String profession) throws IOException {
-    FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/chat.fxml"));
-    Parent root = loader.load();
-
-    ChatController chatController = loader.getController();
-    chatController.setProfession(profession);
-
-    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    scene = new Scene(root);
-    stage.setScene(scene);
-    stage.show();
-  }
-
-  /**
    * This method is invoked when the application starts. It loads and shows the
    * "room" scene.
    *
@@ -102,7 +89,8 @@ public class App extends Application {
    */
   @Override
   public void start(final Stage stage) throws IOException {
-    Parent root = loadFxml("menu");
+    initaliseSuspectMap();
+    Parent root = loadFxml("Menu");
     scene = new Scene(root);
     stage.setTitle("Pi Masters Detective Training");
     stage.setScene(scene);
@@ -131,5 +119,32 @@ public class App extends Application {
     // reset maps that retain the scenes and FXML loaders
     sceneMap.clear();
     fxmlLoaderMap.clear();
+  }
+
+  private void initaliseSuspectMap() {
+    suspectMap.put("SuspectOne", new Suspect("Mark", "Suspect", "Suspect1.txt"));
+    suspectMap.put("SuspectTwo", new Suspect("Anthony", "Suspect", "Suspect2.txt"));
+    suspectMap.put("SuspectThree", new Suspect("Susan", "Suspect", "Suspect3.txt"));
+  }
+
+  public static Suspect getCurrentSuspect() {
+    return (currentSuspect);
+  }
+
+  public static void addToLocationMap(MenuItem loc, String scene) {
+    locationMap.put(loc, scene);
+  }
+
+  public static void changeSceneMap(MenuItem loc) {
+    try {
+      setRoot(locationMap.get(loc));
+    } catch (IOException e) {
+
+      e.printStackTrace();
+    }
+  }
+
+  public static Collection<Suspect> getSuspects() {
+    return (suspectMap.values());
   }
 }
