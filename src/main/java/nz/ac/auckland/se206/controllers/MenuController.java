@@ -9,9 +9,11 @@ import nz.ac.auckland.se206.App;
 
 public class MenuController {
 
-  @FXML private Rectangle StartRectangle;
+  @FXML
+  private Rectangle StartRectangle;
 
-  @FXML private Label StartLabel; // Reference to StartLabel
+  @FXML
+  private Label StartLabel; // Reference to StartLabel
 
   // Called after FXML file has been loaded
   @FXML
@@ -43,6 +45,8 @@ public class MenuController {
 
   private void startGame() {
     System.out.println("Game Starting");
+    App.getContext().getGameStartedState().nextState();
+
     try {
       // Attempt to set the root scene to "room"
       App.setRoot("IntroDialogueScene");
