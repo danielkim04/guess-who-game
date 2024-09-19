@@ -9,28 +9,24 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import nz.ac.auckland.se206.App;
-import nz.ac.auckland.se206.classes.*;
+import nz.ac.auckland.se206.classes.Controller;
 
 public class IntroDialogueSceneController implements Controller {
 
-  @FXML
-  private AnchorPane paneDialogueBox;
-  @FXML
-  private Label labelDialogue;
-  @FXML
-  private Label labelTimer;
-
+  @FXML private AnchorPane paneDialogueBox;
+  @FXML private Label labelDialogue;
+  @FXML private Label labelTimer;
 
   private List<String> dialogues;
   private int currentDialogueIndex = 0;
 
   /**
-   * Initializes the room view. If it's the first time initialization, it will
-   * provide instructions
+   * Initializes the room view. If it's the first time initialization, it will provide instructions
    * via text-to-speech.
    */
   @FXML
   public void initialize() {
+    // displays the dialogues for the intro scene
     dialogues = new ArrayList<>();
     dialogues.add("NO! My winnings! They're gone!");
     dialogues.add(

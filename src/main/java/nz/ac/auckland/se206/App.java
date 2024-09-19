@@ -12,14 +12,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import nz.ac.auckland.se206.classes.*;
+import nz.ac.auckland.se206.classes.Controller;
+import nz.ac.auckland.se206.classes.Suspect;
 import nz.ac.auckland.se206.speech.FreeTextToSpeech;
 import nz.ac.auckland.se206.states.GameState;
 import nz.ac.auckland.se206.states.Investigating;
 
 /**
- * This is the entry point of the JavaFX application. This class initializes and
- * runs the JavaFX
+ * This is the entry point of the JavaFX application. This class initializes and runs the JavaFX
  * application.
  */
 public class App extends Application {
@@ -27,7 +27,8 @@ public class App extends Application {
   private static Scene scene;
   private static GameStateContext context = new GameStateContext();
   private static FXMLLoader fxmlHandler;
-  private static Map<String, Parent> sceneMap = new HashMap<>(); // stores the scenes that have been initialised
+  private static Map<String, Parent> sceneMap =
+      new HashMap<>(); // stores the scenes that have been initialised
   private static Map<String, FXMLLoader> fxmlLoaderMap = new HashMap<>(); // stores the FXML loaders
   private static Map<String, Suspect> suspectMap = new HashMap<>();
   private static Map<MenuItem, String> locationMap = new HashMap<>();
@@ -65,8 +66,7 @@ public class App extends Application {
   }
 
   /**
-   * Loads the FXML file and returns the associated node. The method expects that
-   * the file is
+   * Loads the FXML file and returns the associated node. The method expects that the file is
    * located in "src/main/resources/fxml".
    *
    * @param fxml the name of the FXML file (without extension)
@@ -77,34 +77,6 @@ public class App extends Application {
     fxmlHandler = new FXMLLoader(App.class.getResource("/fxml/" + fxml + ".fxml"));
     fxmlLoaderMap.put(fxml, fxmlHandler); // store the FXML loader in the map for later retrieval
     return (fxmlHandler.load());
-  }
-
-  /**
-   * This method is invoked when the application starts. It loads and shows the
-   * "room" scene.
-   *
-   * @param stage the primary stage of the application
-   * @throws IOException if the "src/main/resources/fxml/room.fxml" file is not
-   *                     found
-   */
-  @Override
-  public void start(final Stage stage) throws IOException {
-    initaliseSuspectMap();
-    Parent root = loadFxml("Menu");
-    scene = new Scene(root);
-    stage.setTitle("Pi Masters Detective Training");
-    stage.setScene(scene);
-    stage.show();
-    stage.setOnCloseRequest(event -> handleWindowClose(event));
-    root.requestFocus();
-  }
-
-  private void handleWindowClose(WindowEvent event) {
-    FreeTextToSpeech.deallocateSynthesizer();
-  }
-
-  public static Controller getController() {
-    return (fxmlHandler.getController());
   }
 
   public static GameStateContext getContext() {
@@ -119,12 +91,6 @@ public class App extends Application {
     // reset maps that retain the scenes and FXML loaders
     sceneMap.clear();
     fxmlLoaderMap.clear();
-  }
-
-  private void initaliseSuspectMap() {
-    suspectMap.put("SuspectOne", new Suspect("Mark", "Suspect", "Suspect1.txt"));
-    suspectMap.put("SuspectTwo", new Suspect("Anthony", "Suspect", "Suspect2.txt"));
-    suspectMap.put("SuspectThree", new Suspect("Susan", "Suspect", "Suspect3.txt"));
   }
 
   public static Suspect getCurrentSuspect() {
@@ -146,5 +112,37 @@ public class App extends Application {
 
   public static Collection<Suspect> getSuspects() {
     return (suspectMap.values());
+  }
+
+  /**
+   * This method is invoked when the application starts. It loads and shows the "room" scene.
+   *
+   * @param stage the primary stage of the application
+   * @throws IOException if the "src/main/resources/fxml/room.fxml" file is not found
+   */
+  @Override
+  public void start(final Stage stage) throws IOException {
+    initaliseSuspectMap();
+    Parent root = loadFxml("Menu");
+    scene = new Scene(root);
+    stage.setTitle("Pi Masters Detective Training");
+    stage.setScene(scene);
+    stage.show();
+    stage.setOnCloseRequest(event -> handleWindowClose(event));
+    root.requestFocus();
+  }
+
+  private void handleWindowClose(WindowEvent event) {
+    FreeTextToSpeech.deallocateSynthesizer();
+  }
+
+  public static Controller getController() {
+    return (fxmlHandler.getController());
+  }
+
+  private void initaliseSuspectMap() {
+    suspectMap.put("SuspectOne", new Suspect("Mark", "Suspect", "Suspect1.txt"));
+    suspectMap.put("SuspectTwo", new Suspect("Anthony", "Suspect", "Suspect2.txt"));
+    suspectMap.put("SuspectThree", new Suspect("Susan", "Suspect", "Suspect3.txt"));
   }
 }

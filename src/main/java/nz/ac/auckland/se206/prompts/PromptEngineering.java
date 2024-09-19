@@ -9,21 +9,18 @@ import java.nio.file.Paths;
 import java.util.Map;
 
 /**
- * Utility class for prompt engineering. This class provides methods to load and
- * fill prompt
+ * Utility class for prompt engineering. This class provides methods to load and fill prompt
  * templates with dynamic data.
  */
 public class PromptEngineering {
 
   /**
-   * Retrieves a prompt template, fills it with the provided data, and returns the
-   * filled prompt.
+   * Retrieves a prompt template, fills it with the provided data, and returns the filled prompt.
    *
    * @param promptId the ID of the prompt template to load
-   * @param data     the data to fill into the template
+   * @param data the data to fill into the template
    * @return the filled prompt
-   * @throws IllegalArgumentException if there is an error loading or filling the
-   *                                  template
+   * @throws IllegalArgumentException if there is an error loading or filling the template
    */
   public static String getPrompt(String promptId, Map<String, String> data) {
     try {
@@ -50,12 +47,11 @@ public class PromptEngineering {
   }
 
   /**
-   * Fills a template string with the provided data. Replaces placeholders in the
-   * template with
+   * Fills a template string with the provided data. Replaces placeholders in the template with
    * corresponding values from the data map.
    *
    * @param template the template string to fill
-   * @param data     the data to fill into the template
+   * @param data the data to fill into the template
    * @return the filled template string
    */
   private static String fillTemplate(String template, Map<String, String> data) {

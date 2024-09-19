@@ -19,135 +19,78 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
-import nz.ac.auckland.se206.classes.*;
+import nz.ac.auckland.se206.classes.Controller;
 
 /**
- * Controller class for the room view. Handles user interactions within the room
- * where the user can
+ * Controller class for the room view. Handles user interactions within the room where the user can
  * chat with customers and guess their profession.
  */
 public class CrimeSceneController implements Controller {
 
-  @FXML
-  private Rectangle rectClueBag;
-  @FXML
-  private Rectangle rectClueBook;
-  @FXML
-  private Rectangle rectClueNote;
-  @FXML
-  private Rectangle BagCollectionRect; // This is the collection rectangle for money
-  @FXML
-  private Label labelTimer;
-  @FXML
-  private Label MoneyCounter; // Label to display the money collected
-  @FXML
-  private AnchorPane paneNoteWindow;
-  @FXML
-  private Rectangle rectCloseNotes;
-  @FXML
-  private Rectangle glow;
-  @FXML
-  private AnchorPane paneOpenChat;
-  @FXML
-  private AnchorPane bagInteractPane;
-  @FXML
-  private AnchorPane noteInteractPane;
-  @FXML
-  private Pane paneBase;
-  @FXML
-  private Pane hairSamplePane;
-  @FXML
-  private Pane fingerprintSamplePane;
-  @FXML
-  private Pane moneyCollectedPane;
-  @FXML
-  private Pane lightPane;
-  @FXML
-  private Pane fingerCollectedPane;
-  @FXML
-  private Pane cashbookPane;
-  @FXML
-  private Pane hairCollectedPane; // Pane that becomes visible when hair is collected
-  @FXML
-  private Label hairText; // Label for hair collection message
-  @FXML
-  private Label printLabel;
-  @FXML
-  private ImageView imgMap;
-  @FXML
-  private Button hairTest;
-  @FXML
-  private Button fingerprintTest;
-  @FXML
-  private Button BagExit;
-  @FXML
-  private Button cashbookExit;
-  @FXML
-  private Button checkBalance;
-  @FXML
-  private ImageView correct;
-  @FXML
-  private ImageView Money1;
-  @FXML
-  private ImageView Money2;
-  @FXML
-  private ImageView Money3;
-  @FXML
-  private ImageView Money4;
-  @FXML
-  private ImageView Money5;
-  @FXML
-  private ImageView Money6;
-  @FXML
-  private ImageView Money7;
-  @FXML
-  private ImageView Money8;
-  @FXML
-  private ImageView Money9;
-  @FXML
-  private ImageView Money10;
-  @FXML
-  private ImageView Hair;
-  @FXML
-  private ImageView dark;
-  @FXML
-  private ImageView web1;
-  @FXML
-  private ImageView web2;
-  @FXML
-  private ImageView web3;
-  @FXML
-  private Button NoteExit;
-  @FXML
-  private Button toggleLight;
-  @FXML
-  private ImageView blueLight;
-  @FXML
-  private ImageView fingerprint;
-  @FXML
-  private TextArea balanceArea;
-  @FXML
-  private Pane labPane;
-  @FXML
-  private Label labLabel;
-  @FXML
-  private MenuItem menuSuspectTwo;
-  @FXML
-  private MenuItem menuSuspectThree;
-  @FXML
-  private MenuItem menuSuspectOne;
-  @FXML
-  private Button btnGuessNow;
-
   public static int moneyCollected = 0;
+
+  @FXML private Rectangle rectClueBag;
+  @FXML private Rectangle rectClueBook;
+  @FXML private Rectangle rectClueNote;
+  @FXML private Rectangle BagCollectionRect; // This is the collection rectangle for money
+  @FXML private Label labelTimer;
+  @FXML private Label MoneyCounter; // Label to display the money collected
+  @FXML private AnchorPane paneNoteWindow;
+  @FXML private Rectangle rectCloseNotes;
+  @FXML private Rectangle glow;
+  @FXML private AnchorPane paneOpenChat;
+  @FXML private AnchorPane bagInteractPane;
+  @FXML private AnchorPane noteInteractPane;
+  @FXML private Pane paneBase;
+  @FXML private Pane hairSamplePane;
+  @FXML private Pane fingerprintSamplePane;
+  @FXML private Pane moneyCollectedPane;
+  @FXML private Pane lightPane;
+  @FXML private Pane fingerCollectedPane;
+  @FXML private Pane cashbookPane;
+  @FXML private Pane hairCollectedPane; // Pane that becomes visible when hair is collected
+  @FXML private Label hairText; // Label for hair collection message
+  @FXML private Label printLabel;
+  @FXML private ImageView imgMap;
+  @FXML private Button hairTest;
+  @FXML private Button fingerprintTest;
+  @FXML private Button BagExit;
+  @FXML private Button cashbookExit;
+  @FXML private Button checkBalance;
+  @FXML private ImageView correct;
+  @FXML private ImageView Money1;
+  @FXML private ImageView Money2;
+  @FXML private ImageView Money3;
+  @FXML private ImageView Money4;
+  @FXML private ImageView Money5;
+  @FXML private ImageView Money6;
+  @FXML private ImageView Money7;
+  @FXML private ImageView Money8;
+  @FXML private ImageView Money9;
+  @FXML private ImageView Money10;
+  @FXML private ImageView Hair;
+  @FXML private ImageView dark;
+  @FXML private ImageView web1;
+  @FXML private ImageView web2;
+  @FXML private ImageView web3;
+  @FXML private Button NoteExit;
+  @FXML private Button toggleLight;
+  @FXML private ImageView blueLight;
+  @FXML private ImageView fingerprint;
+  @FXML private TextArea balanceArea;
+  @FXML private Pane labPane;
+  @FXML private Label labLabel;
+  @FXML private MenuItem menuSuspectTwo;
+  @FXML private MenuItem menuSuspectThree;
+  @FXML private MenuItem menuSuspectOne;
+  @FXML private Button btnGuessNow;
 
   // Variables to store the initial mouse click position
   private double initialX;
   private double initialY;
 
   /**
-   * Initializes the room view. If it's the first time initialization, it will
-   * provide instructions
+   * Initializes the room view. If it's the first time initialization, it will provide instructions
    * via text-to-speech.
    */
   @FXML
@@ -198,7 +141,6 @@ public class CrimeSceneController implements Controller {
     lightPane.setVisible(false);
     blueLight.setMouseTransparent(true);
     dark.setMouseTransparent(true);
-    // App.setGameState(App.getContext().getInvestigatingState());
   }
 
   /**
@@ -371,12 +313,13 @@ public class CrimeSceneController implements Controller {
     Timeline timeline = new Timeline();
     for (int i = 0; i < text.length(); i++) {
       final int index = i;
-      KeyFrame keyFrame = new KeyFrame(
-          Duration.millis(100 * index), // Delay each letter by 100ms
-          e -> {
-            displayedText.append(text.charAt(index)); // Append the current letter
-            printLabel.setText(displayedText.toString()); // Update the label with the new text
-          });
+      KeyFrame keyFrame =
+          new KeyFrame(
+              Duration.millis(100 * index), // Delay each letter by 100ms
+              e -> {
+                displayedText.append(text.charAt(index)); // Append the current letter
+                printLabel.setText(displayedText.toString()); // Update the label with the new text
+              });
       timeline.getKeyFrames().add(keyFrame);
     }
 
@@ -387,11 +330,12 @@ public class CrimeSceneController implements Controller {
 
   // Method to hide the fingerCollectedPane after 3 seconds
   private void hideFingerprintPaneAfterDelay() {
-    Timeline hidePaneTimeline = new Timeline(
-        new KeyFrame(
-            Duration.seconds(3), // Wait for 3 seconds
-            ev -> fingerCollectedPane.setVisible(false) // Hide the pane
-        ));
+    Timeline hidePaneTimeline =
+        new Timeline(
+            new KeyFrame(
+                Duration.seconds(3), // Wait for 3 seconds
+                ev -> fingerCollectedPane.setVisible(false) // Hide the pane
+                ));
     hidePaneTimeline.play();
   }
 
@@ -464,23 +408,25 @@ public class CrimeSceneController implements Controller {
     Timeline timeline = new Timeline();
     for (int i = 0; i < text.length(); i++) {
       final int index = i;
-      KeyFrame keyFrame = new KeyFrame(
-          Duration.millis(100 * index), // Delay each letter by 100ms
-          e -> {
-            displayedText.append(text.charAt(index)); // Append the current letter
-            hairText.setText(displayedText.toString()); // Update the label with the new text
-          });
+      KeyFrame keyFrame =
+          new KeyFrame(
+              Duration.millis(100 * index), // Delay each letter by 100ms
+              e -> {
+                displayedText.append(text.charAt(index)); // Append the current letter
+                hairText.setText(displayedText.toString()); // Update the label with the new text
+              });
       timeline.getKeyFrames().add(keyFrame);
     }
 
     // After the text has been fully displayed, hide the pane after 3 seconds
     timeline.setOnFinished(
         e -> {
-          Timeline hidePaneTimeline = new Timeline(
-              new KeyFrame(
-                  Duration.seconds(3), // Wait for 3 seconds
-                  ev -> hairCollectedPane.setVisible(false) // Hide the pane
-          ));
+          Timeline hidePaneTimeline =
+              new Timeline(
+                  new KeyFrame(
+                      Duration.seconds(3), // Wait for 3 seconds
+                      ev -> hairCollectedPane.setVisible(false) // Hide the pane
+                      ));
           hidePaneTimeline.play();
         });
 
@@ -515,8 +461,8 @@ public class CrimeSceneController implements Controller {
     double hitboxY = blueLight.getLayoutY() + (blueLight.getFitHeight() - hitboxHeight) / 2;
 
     // Create a temporary rectangle representing the hitbox
-    javafx.geometry.Bounds blueLightHitbox = new javafx.geometry.BoundingBox(hitboxX, hitboxY, hitboxWidth,
-        hitboxHeight);
+    javafx.geometry.Bounds blueLightHitbox =
+        new javafx.geometry.BoundingBox(hitboxX, hitboxY, hitboxWidth, hitboxHeight);
 
     // Check if this smaller hitbox intersects with the fingerprint's bounds
     if (blueLightHitbox.intersects(fingerprint.getBoundsInParent())) {
@@ -538,10 +484,11 @@ public class CrimeSceneController implements Controller {
     rect.setEffect(dropShadow);
 
     // Create a timeline to animate the glow for 1 second (pulsing effect)
-    Timeline glowTimeline = new Timeline(
-        new KeyFrame(Duration.seconds(0), e -> dropShadow.setRadius(10)),
-        new KeyFrame(Duration.seconds(0.5), e -> dropShadow.setRadius(20)),
-        new KeyFrame(Duration.seconds(1), e -> dropShadow.setRadius(10)));
+    Timeline glowTimeline =
+        new Timeline(
+            new KeyFrame(Duration.seconds(0), e -> dropShadow.setRadius(10)),
+            new KeyFrame(Duration.seconds(0.5), e -> dropShadow.setRadius(20)),
+            new KeyFrame(Duration.seconds(1), e -> dropShadow.setRadius(10)));
 
     // Ensure the timeline runs only once (for 1 second)
     glowTimeline.setCycleCount(1);
@@ -561,12 +508,13 @@ public class CrimeSceneController implements Controller {
     Timeline timeline = new Timeline();
     for (int i = 0; i < text.length(); i++) {
       final int index = i;
-      KeyFrame keyFrame = new KeyFrame(
-          Duration.millis(100 * index), // Delay each letter by 100ms
-          e -> {
-            displayedText.append(text.charAt(index)); // Append the current letter
-            labLabel.setText(displayedText.toString()); // Update the label with the new text
-          });
+      KeyFrame keyFrame =
+          new KeyFrame(
+              Duration.millis(100 * index), // Delay each letter by 100ms
+              e -> {
+                displayedText.append(text.charAt(index)); // Append the current letter
+                labLabel.setText(displayedText.toString()); // Update the label with the new text
+              });
       timeline.getKeyFrames().add(keyFrame);
     }
 
@@ -577,11 +525,12 @@ public class CrimeSceneController implements Controller {
 
   // Method to hide the labPane after 3 seconds
   private void hideLabPaneAfterDelay() {
-    Timeline hidePaneTimeline = new Timeline(
-        new KeyFrame(
-            Duration.seconds(3), // Wait for 3 seconds
-            ev -> labPane.setVisible(false) // Hide the pane
-        ));
+    Timeline hidePaneTimeline =
+        new Timeline(
+            new KeyFrame(
+                Duration.seconds(3), // Wait for 3 seconds
+                ev -> labPane.setVisible(false) // Hide the pane
+                ));
     hidePaneTimeline.play();
   }
 
@@ -611,5 +560,4 @@ public class CrimeSceneController implements Controller {
       e.printStackTrace();
     }
   }
-
 }
