@@ -27,6 +27,8 @@ public class Suspect {
   private String name;
   private String role;
 
+  private String suspectID;
+
   // Varible that stores hitbox as a rectangle
   private Rectangle rect;
 
@@ -92,12 +94,11 @@ public class Suspect {
     if (this.chatCompletionRequest == null) {
       try {
         ApiProxyConfig config = ApiProxyConfig.readConfig();
-        this.chatCompletionRequest =
-            new ChatCompletionRequest(config)
-                .setN(1)
-                .setTemperature(0.2)
-                .setTopP(0.5)
-                .setMaxTokens(100);
+        this.chatCompletionRequest = new ChatCompletionRequest(config)
+            .setN(1)
+            .setTemperature(0.2)
+            .setTopP(0.5)
+            .setMaxTokens(100);
         String systemPrompt = loadSystemPrompt();
         chatCompletionRequest.addMessage(new ChatMessage("system", systemPrompt));
       } catch (ApiProxyException | IOException | URISyntaxException e) {
@@ -110,7 +111,7 @@ public class Suspect {
   // old implementation
   private String getSystemPrompt() {
     Map<String, String> map = new HashMap<>();
-    map.put("name", toString());
+    map.put("name", toString()); // bar_name , gambler_name , victim_name
     map.put("role", getRole());
     return PromptEngineering.getPrompt("chat.txt", map);
   }
@@ -118,8 +119,7 @@ public class Suspect {
   // Loads system prompt from file
   private String loadSystemPrompt() throws IOException, URISyntaxException {
     System.out.println(this.promptFilename);
-    URL resourceUrl =
-        PromptEngineering.class.getClassLoader().getResource("prompts/" + this.promptFilename);
+    URL resourceUrl = PromptEngineering.class.getClassLoader().getResource("prompts/" + this.promptFilename);
     if (resourceUrl == null) {
       System.out.println("Prompt file not found: " + this.promptFilename);
     }
@@ -137,23 +137,22 @@ public class Suspect {
     }
     this.currentChatMessage = msg;
 
-    Thread tttRequestThread =
-        new Thread(
-            () -> {
-              try {
-                this.currentChatMessage = runGpt(null);
-                TextToSpeech.speak(this.currentChatMessage.getContent());
-              } catch (ApiProxyException e) {
-                e.printStackTrace();
-              }
-              Platform.runLater(
-                  () -> {
-                    Object controller = App.getController();
-                    if (controller.getClass().equals(Controller.class)) {
-                      ((Controller) controller).onNewChat(this.currentChatMessage.getContent());
-                    }
-                  });
-            });
+    Thread tttRequestThread = new Thread(
+        () -> {
+          try {
+            this.currentChatMessage = runGpt(null);
+            TextToSpeech.speak(this.currentChatMessage.getContent());
+          } catch (ApiProxyException e) {
+            e.printStackTrace();
+          }
+          Platform.runLater(
+              () -> {
+                Object controller = App.getController();
+                if (controller.getClass().equals(Controller.class)) {
+                  ((Controller) controller).onNewChat(this.currentChatMessage.getContent());
+                }
+              });
+        });
 
     tttRequestThread.start();
 
@@ -171,21 +170,20 @@ public class Suspect {
     }
     chatCompletionRequest.addMessage(this.currentChatMessage);
 
-    Task<ChatMessage> task =
-        new Task<ChatMessage>() {
-          @Override
-          protected ChatMessage call() throws ApiProxyException {
-            try {
-              ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
-              Choice result = chatCompletionResult.getChoices().iterator().next();
-              chatCompletionRequest.addMessage(result.getChatMessage());
-              return result.getChatMessage();
-            } catch (ApiProxyException e) {
-              e.printStackTrace();
-              return null;
-            }
-          }
-        };
+    Task<ChatMessage> task = new Task<ChatMessage>() {
+      @Override
+      protected ChatMessage call() throws ApiProxyException {
+        try {
+          ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
+          Choice result = chatCompletionResult.getChoices().iterator().next();
+          chatCompletionRequest.addMessage(result.getChatMessage());
+          return result.getChatMessage();
+        } catch (ApiProxyException e) {
+          e.printStackTrace();
+          return null;
+        }
+      }
+    };
 
     task.setOnSucceeded(
         workerStateEvent -> {
@@ -198,7 +196,8 @@ public class Suspect {
     backgroundThread.start();
   }
 
-  // Returns the name of the suspect whenever the suspect class is converted to string
+  // Returns the name of the suspect whenever the suspect class is converted to
+  // string
   @Override
   public String toString() {
     return this.name;

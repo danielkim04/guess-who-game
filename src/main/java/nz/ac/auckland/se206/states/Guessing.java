@@ -9,7 +9,7 @@ import nz.ac.auckland.se206.classes.*;
 import nz.ac.auckland.se206.controllers.GameEndController;
 
 public class Guessing implements GameState {
-  private Timer timer = new Timer(10);
+  private Timer timer = new Timer(60);
   private final GameStateContext context;
   private Thread updateThread = new Thread(
       () -> {
