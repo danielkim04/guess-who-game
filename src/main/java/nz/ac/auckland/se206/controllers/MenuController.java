@@ -9,9 +9,11 @@ import nz.ac.auckland.se206.App;
 
 public class MenuController {
 
-  @FXML private Rectangle StartRectangle;
+  @FXML
+  private Rectangle StartRectangle;
 
-  @FXML private Label StartLabel; // Reference to StartLabel
+  @FXML
+  private Label StartLabel; // Reference to StartLabel
 
   // Called after FXML file has been loaded
   @FXML

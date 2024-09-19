@@ -11,7 +11,8 @@ public class AudioPlayer {
   private volatile MediaPlayer currentAudioPlayer;
   private Boolean playing = false;
 
-  public AudioPlayer() {}
+  public AudioPlayer() {
+  }
 
   // Adds media to queue
   public void addAudioToQueue(Media sound) {
@@ -57,29 +58,27 @@ public class AudioPlayer {
   // Start playing from queue
   public synchronized void playAudioQueue() {
 
-    Thread audioStoppedThread =
-        new Thread(
-            () -> {
-              playNextInQueue();
-            });
+    Thread audioStoppedThread = new Thread(
+        () -> {
+          playNextInQueue();
+        });
 
-    Thread audioQueueThread =
-        new Thread(
-            () -> {
-              if (currentAudioPlayer != null) {
-                currentAudioPlayer.stop();
-              }
-              Thread audioPlayThread = (new Thread(audioStoppedThread));
-              if (audioQueue.size() > 0) {
-                audioPlayThread.start();
-                try {
-                  audioPlayThread.join();
-                } catch (InterruptedException e) {
-                  e.printStackTrace();
-                }
-                currentAudioPlayer.setOnEndOfMedia(new Thread(audioStoppedThread));
-              }
-            });
+    Thread audioQueueThread = new Thread(
+        () -> {
+          if (currentAudioPlayer != null) {
+            currentAudioPlayer.stop();
+          }
+          Thread audioPlayThread = (new Thread(audioStoppedThread));
+          if (audioQueue.size() > 0) {
+            audioPlayThread.start();
+            try {
+              audioPlayThread.join();
+            } catch (InterruptedException e) {
+              e.printStackTrace();
+            }
+            currentAudioPlayer.setOnEndOfMedia(new Thread(audioStoppedThread));
+          }
+        });
 
     audioQueueThread.start();
     return;

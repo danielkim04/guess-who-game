@@ -10,14 +10,20 @@ import nz.ac.auckland.se206.classes.*;
 
 public class GameEndController implements Controller {
 
-  @FXML private Label labelVictory;
-  @FXML private Label labelDefeat;
-  @FXML private Label labelExplain;
-  @FXML private ImageView imageCriminal;
-  @FXML private Button buttonPlayAgain;
+  @FXML
+  private Label labelVictory;
+  @FXML
+  private Label labelDefeat;
+  @FXML
+  private Label labelExplain;
+  @FXML
+  private ImageView imageCriminal;
+  @FXML
+  private Button buttonPlayAgain;
 
   @FXML
-  public void initalize() {}
+  public void initalize() {
+  }
 
   @FXML
   public void playAgainClick() {

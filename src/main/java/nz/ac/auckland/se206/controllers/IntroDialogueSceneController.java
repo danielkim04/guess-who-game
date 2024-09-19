@@ -12,14 +12,17 @@ import nz.ac.auckland.se206.App;
 
 public class IntroDialogueSceneController {
 
-  @FXML private AnchorPane paneDialogueBox;
-  @FXML private Label labelDialogue;
+  @FXML
+  private AnchorPane paneDialogueBox;
+  @FXML
+  private Label labelDialogue;
 
   private List<String> dialogues;
   private int currentDialogueIndex = 0;
 
   /**
-   * Initializes the room view. If it's the first time initialization, it will provide instructions
+   * Initializes the room view. If it's the first time initialization, it will
+   * provide instructions
    * via text-to-speech.
    */
   @FXML
