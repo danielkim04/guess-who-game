@@ -5,6 +5,8 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
 
 import javafx.application.Platform;
 import javafx.concurrent.Task;
@@ -31,24 +33,37 @@ import nz.ac.auckland.se206.prompts.PromptEngineering;
 import nz.ac.auckland.se206.states.Guessing;
 
 public class GuessingController implements Controller {
-  @FXML private Label labelTimer;
-  @FXML private AnchorPane paneNoteWindow;
-  @FXML private Rectangle rectCloseNotes;
-  @FXML private AnchorPane paneOpenChat;
-  @FXML private AnchorPane paneSuspectOne;
-  @FXML private AnchorPane paneSuspectTwo;
-  @FXML private AnchorPane paneSuspectThree;
-  @FXML private TextArea txtaExplanation;
-  @FXML private Button btnSend;
-  @FXML private AnchorPane paneExplanation;
-  @FXML private Label labelTitle;
-  @FXML private ImageView imgChosenSuspect;
+  @FXML
+  private Label labelTimer;
+  @FXML
+  private AnchorPane paneNoteWindow;
+  @FXML
+  private Rectangle rectCloseNotes;
+  @FXML
+  private AnchorPane paneOpenChat;
+  @FXML
+  private AnchorPane paneSuspectOne;
+  @FXML
+  private AnchorPane paneSuspectTwo;
+  @FXML
+  private AnchorPane paneSuspectThree;
+  @FXML
+  private TextArea txtaExplanation;
+  @FXML
+  private Button btnSend;
+  @FXML
+  private AnchorPane paneExplanation;
+  @FXML
+  private Label labelTitle;
+  @FXML
+  private ImageView imgChosenSuspect;
 
-  private boolean isThief;
+  private String suspectName;
   private ChatCompletionRequest chatCompletionRequest;
 
   @FXML
-  public void initialize() {}
+  public void initialize() {
+  }
 
   /**
    * Handles the key pressed event.
@@ -82,15 +97,15 @@ public class GuessingController implements Controller {
     AnchorPane clickedSuspect = (AnchorPane) event.getSource();
     switch (clickedSuspect.getId()) {
       case "paneSuspectOne":
-        isThief = false;
+        suspectName = "winner";
         filename = "man 1.png"; // modify filename
         break;
       case "paneSuspectTwo":
-        isThief = false;
+        suspectName = "bartender";
         filename = "man 1.png"; // modify filename
         break;
       case "paneSuspectThree":
-        isThief = true;
+        suspectName = "gambler";
         filename = "man 1.png"; // modify filename
         break;
     }
@@ -105,19 +120,23 @@ public class GuessingController implements Controller {
   }
 
   private String loadSystemPrompt() throws IOException, URISyntaxException {
-    URL resourceUrl = PromptEngineering.class.getClassLoader().getResource("prompts/chat.txt");
-    return new String(Files.readAllBytes(Paths.get(resourceUrl.toURI())));
+    Map<String, String> map = new HashMap<>();
+    map.put("suspect", suspectName);
+    return PromptEngineering.getPrompt("chat.txt", map);
+
+    // URL resourceUrl =
+    // PromptEngineering.class.getClassLoader().getResource("prompts/chat.txt");
+    // return new String(Files.readAllBytes(Paths.get(resourceUrl.toURI())));
   }
 
   public void initialiseChat() {
     try {
       ApiProxyConfig config = ApiProxyConfig.readConfig();
-      chatCompletionRequest =
-          new ChatCompletionRequest(config)
-              .setN(1)
-              .setTemperature(0.2)
-              .setTopP(0.5)
-              .setMaxTokens(100);
+      chatCompletionRequest = new ChatCompletionRequest(config)
+          .setN(1)
+          .setTemperature(0.2)
+          .setTopP(0.5)
+          .setMaxTokens(100);
       chatCompletionRequest.addMessage(new ChatMessage("system", loadSystemPrompt()));
     } catch (ApiProxyException | URISyntaxException | IOException e) { // ??????????
       e.printStackTrace();
@@ -127,26 +146,25 @@ public class GuessingController implements Controller {
   private void runGpt(ChatMessage msg) {
     chatCompletionRequest.addMessage(msg);
 
-    Task<ChatMessage> task =
-        new Task<ChatMessage>() {
-          @Override
-          protected ChatMessage call() throws ApiProxyException {
-            try {
-              ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
-              Choice result = chatCompletionResult.getChoices().iterator().next();
-              chatCompletionRequest.addMessage(result.getChatMessage());
-              System.out.println(result.getChatMessage().getContent()); // testing
-              System.out.println(App.getController()); // testing
-              Platform.runLater(() -> {
-                App.getController().onNewChat(result.getChatMessage().getContent());
-              });
-              return result.getChatMessage();
-            } catch (ApiProxyException e) {
-              e.printStackTrace();
-              return null;
-            }
-          }
-        };
+    Task<ChatMessage> task = new Task<ChatMessage>() {
+      @Override
+      protected ChatMessage call() throws ApiProxyException {
+        try {
+          ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
+          Choice result = chatCompletionResult.getChoices().iterator().next();
+          chatCompletionRequest.addMessage(result.getChatMessage());
+          System.out.println(result.getChatMessage().getContent()); // testing
+          System.out.println(App.getController()); // testing
+          Platform.runLater(() -> {
+            App.getController().onNewChat(result.getChatMessage().getContent());
+          });
+          return result.getChatMessage();
+        } catch (ApiProxyException e) {
+          e.printStackTrace();
+          return null;
+        }
+      }
+    };
 
     Thread backgroundThread = new Thread(task);
     backgroundThread.start();
