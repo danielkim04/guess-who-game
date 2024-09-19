@@ -142,7 +142,6 @@ public class SuspectTwoController implements Controller {
    */
   @FXML
   public void onKeyPressed(KeyEvent event) {
-    System.out.println("Key " + event.getCode() + " pressed");
   }
 
   /**

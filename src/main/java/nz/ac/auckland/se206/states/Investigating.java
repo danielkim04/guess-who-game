@@ -6,7 +6,7 @@ import javafx.scene.input.MouseEvent;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.classes.*;
-import nz.ac.auckland.se206.speech.TextToSpeech;
+// import nz.ac.auckland.se206.speech.TextToSpeech;
 
 /**
  * The Guessing state of the game. Handles the logic for when the player is
@@ -20,7 +20,7 @@ public class Investigating implements GameState {
   private boolean talkedToSuspectTwo = false;
   private boolean talkedToSuspectThree = false;
 
-  private Timer timer = new Timer(600);
+  private Timer timer = new Timer(5 * 60);
 
   private Thread updateThread = new Thread(
       () -> {
@@ -68,11 +68,11 @@ public class Investigating implements GameState {
 
   @Override
   public void handleGuessClick() {
-     if (!talkedToSuspectOne || !talkedToSuspectTwo || !talkedToSuspectThree) {
-     // tell user to talk to all suspects
-     System.out.println("Talk to all suspects first");
-     return;
-     }
+    if (!(talkedToSuspectOne && talkedToSuspectTwo && talkedToSuspectThree)) {
+      // tell user to talk to all suspects
+      System.out.println("Talk to all suspects first");
+      return;
+    }
     timer.stop();
     nextState();
   }
