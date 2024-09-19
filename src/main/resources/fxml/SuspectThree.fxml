@@ -50,7 +50,7 @@
                         <Image url="@../images/textbox1.png" />
                     </image>
                 </ImageView>
-                <Label fx:id="labelResponse" layoutX="82.0" layoutY="76.0" prefHeight="55.0" prefWidth="461.0" text="Loading" wrapText="true" />
+                <Label fx:id="labelResponse" layoutX="82.0" layoutY="69.0" prefHeight="62.0" prefWidth="514.0" text="Loading" wrapText="true" />
             <TextArea fx:id="txtMessage" layoutX="82.0" layoutY="135.0" onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="30.0" prefWidth="451.0" promptText="Type here to chat" wrapText="true" />
                 <Button fx:id="btnSend" layoutX="536.0" layoutY="138.0" mnemonicParsing="false" onAction="#sendMessage" prefHeight="31.0" prefWidth="62.0" text="Send" />
                 <Label fx:id="labelName" alignment="CENTER" layoutX="62.0" layoutY="21.0" prefHeight="30.0" prefWidth="139.0" text="Susan" textAlignment="CENTER" textFill="WHITE">
