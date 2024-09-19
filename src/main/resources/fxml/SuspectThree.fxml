@@ -33,7 +33,7 @@
                         <Font name="Algerian" size="25.0" />
                     </font>
                 </Label>
-            <MenuButton layoutX="28.0" layoutY="26.0" mnemonicParsing="false" text="Locations">
+            <MenuButton fx:id="menuButtonMap" layoutX="28.0" layoutY="26.0" mnemonicParsing="false" text="Locations">
                <items>
                   <MenuItem fx:id="menuSuspectOne" mnemonicParsing="false" onAction="#toSuspectOne" text="Lobby" />
                   <MenuItem fx:id="menuSuspectTwo" mnemonicParsing="false" onAction="#toSuspectTwo" text="Tables" />

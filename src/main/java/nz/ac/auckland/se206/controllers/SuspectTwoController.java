@@ -13,8 +13,6 @@ import nz.ac.auckland.se206.classes.Controller;
 import nz.ac.auckland.se206.classes.Suspect;
 import nz.ac.auckland.se206.states.Investigating;
 
-import java.io.IOException;
-
 public class SuspectTwoController implements Controller {
   @FXML
   private Label labelTimer;
@@ -25,13 +23,18 @@ public class SuspectTwoController implements Controller {
   @FXML
   private Button btnSend;
   @FXML
-  private MenuItem menuSuspectOne;
+  private MenuItem menuLobby;
   @FXML
-  private MenuItem menuSuspectThree;
+  private MenuItem menuBar;
+  @FXML
+  private MenuItem menuTables;
   @FXML
   private MenuItem menuCrimeScene;
   @FXML
   private Button btnGuessNow;
+
+  @FXML
+  private MenuButton menuButtonMap;
 
   private Suspect suspect;
   private Timeline timeline;
@@ -39,6 +42,7 @@ public class SuspectTwoController implements Controller {
   @FXML
   public void initialize() {
     this.suspect = new Suspect("V", "Suspect", "suspect2.txt");
+    createMap();
     displayTextSlowly(". . .");
     // set the initial message by telling gpt to introduce itself
     suspect.getResponse(
@@ -47,6 +51,13 @@ public class SuspectTwoController implements Controller {
           timeline.stop();
           labelResponse.setText(response);
         });
+  }
+
+  private void createMap() {
+    App.addToLocationMap(menuLobby, "SuspectOne");
+    App.addToLocationMap(menuTables, "SuspectTwo");
+    App.addToLocationMap(menuBar, "SuspectThree");
+    App.addToLocationMap(menuCrimeScene, "CrimeScene");
   }
 
   @FXML
@@ -76,29 +87,9 @@ public class SuspectTwoController implements Controller {
   }
 
   @FXML
-  private void toSuspectOne(ActionEvent event) {
-    try {
-      App.setRoot("SuspectOne");
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-  }
-
-  @FXML
-  private void toSuspectThree(ActionEvent event) {
-    try {
-      App.setRoot("SuspectThree");
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-  }
-
-  @FXML
-  private void toCrimeScene(ActionEvent event) {
-    try {
-      App.setRoot("CrimeScene");
-    } catch (IOException e) {
-      e.printStackTrace();
+  private void handleChangeArea(ActionEvent event) {
+    if (event.getSource() instanceof MenuItem) {
+      App.changeSceneMap((MenuItem) event.getSource());
     }
   }
 

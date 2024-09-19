@@ -8,6 +8,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import nz.ac.auckland.se206.classes.*;
@@ -26,6 +27,8 @@ public class App extends Application {
   private static FXMLLoader fxmlHandler;
   private static Map<String, Parent> sceneMap = new HashMap<>(); // stores the scenes that have been initialised
   private static Map<String, FXMLLoader> fxmlLoaderMap = new HashMap<>(); // stores the FXML loaders
+  private static Map<Suspect, Integer> suspectMap = new HashMap<>();
+  private static Map<MenuItem, String> locationMap = new HashMap<>();
 
   /**
    * The main method that launches the JavaFX application.
@@ -108,5 +111,18 @@ public class App extends Application {
     // reset maps that retain the scenes and FXML loaders
     sceneMap.clear();
     fxmlLoaderMap.clear();
+  }
+
+  public static void addToLocationMap(MenuItem loc, String scene) {
+    locationMap.put(loc, scene);
+  }
+
+  public static void changeSceneMap(MenuItem loc) {
+    try {
+      setRoot(locationMap.get(loc));
+    } catch (IOException e) {
+
+      e.printStackTrace();
+    }
   }
 }
