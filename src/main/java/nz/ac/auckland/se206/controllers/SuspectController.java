@@ -1,5 +1,7 @@
 package nz.ac.auckland.se206.controllers;
 
+import java.io.IOException;
+
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -8,15 +10,11 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.util.Duration;
-import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.classes.Controller;
 import nz.ac.auckland.se206.classes.Suspect;
-import nz.ac.auckland.se206.states.Investigating;
 
-import java.io.IOException;
-
-public class SuspectThreeController implements Controller {
+public class SuspectController implements Controller {
   @FXML
   private Label labelTimer;
   @FXML
@@ -26,23 +24,26 @@ public class SuspectThreeController implements Controller {
   @FXML
   private Button btnSend;
   @FXML
-  private MenuItem menuSuspectTwo;
+  private MenuItem menuLobby;
   @FXML
-  private MenuItem menuSuspectOne;
+  private MenuItem menuBar;
+  @FXML
+  private MenuItem menuTables;
   @FXML
   private MenuItem menuCrimeScene;
   @FXML
   private Button btnGuessNow;
+
   @FXML
-  private Label labelName;
+  private MenuButton menuButtonMap;
 
   private Suspect suspect;
   private Timeline timeline;
 
   @FXML
   public void initialize() {
-    this.suspect = new Suspect("Susan", "Bartender", "suspect3.txt");
-    labelName.setText(this.suspect.toString());
+    this.suspect = App.getCurrentSuspect();
+    createMap();
     displayTextSlowly(". . .");
     // set the initial message by telling gpt to introduce itself
     suspect.getResponse(
@@ -53,6 +54,13 @@ public class SuspectThreeController implements Controller {
         });
   }
 
+  private void createMap() {
+    App.addToLocationMap(menuLobby, "SuspectOne");
+    App.addToLocationMap(menuTables, "SuspectTwo");
+    App.addToLocationMap(menuBar, "SuspectThree");
+    App.addToLocationMap(menuCrimeScene, "CrimeScene");
+  }
+
   @FXML
   public void sendMessage() {
     String message = txtMessage.getText().trim();
@@ -61,13 +69,7 @@ public class SuspectThreeController implements Controller {
     }
 
     // update suspect engagement status
-    if (App.getContext().getInvestigatingState() instanceof Investigating) {
-      Investigating state = (Investigating) App.getContext().getInvestigatingState();
-      state.setSuspectState("SuspectThree");
-    } else {
-      System.out.println("Warning! Not in Investigating state!!!");
-    }
-
+    this.suspect.interacted();
     displayTextSlowly(". . .");
     txtMessage.clear();
 
@@ -80,39 +82,18 @@ public class SuspectThreeController implements Controller {
   }
 
   @FXML
-  private void toSuspectTwo(ActionEvent event) {
-    try {
-      App.setRoot("SuspectTwo");
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-  }
-
-  @FXML
-  private void toSuspectOne(ActionEvent event) {
-    try {
-      App.setRoot("SuspectOne");
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-  }
-
-  @FXML
-  private void toCrimeScene(ActionEvent event) {
-    try {
-      App.setRoot("CrimeScene");
-    } catch (IOException e) {
-      e.printStackTrace();
+  private void handleChangeArea(ActionEvent event) {
+    if (event.getSource() instanceof MenuItem) {
+      App.changeSceneMap((MenuItem) event.getSource());
     }
   }
 
   @FXML
   private void handleGuessClick(ActionEvent event) {
-    if (App.getContext().getInvestigatingState() instanceof Investigating) {
-      Investigating state = (Investigating) App.getContext().getInvestigatingState();
-      state.handleGuessClick();
-    } else {
-      System.out.println("Warning! Not in Investigating state!!!");
+    try {
+      App.getContext().getState().handleGuessClick();
+    } catch (IOException e) {
+      e.printStackTrace();
     }
   }
 

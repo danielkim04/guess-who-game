@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.SuspectThreeController">
+<AnchorPane prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.SuspectController">
     <children>
         <ImageView fitHeight="700.0" fitWidth="700.0" pickOnBounds="true" preserveRatio="true">
             <image>
@@ -33,11 +33,11 @@
                         <Font name="Algerian" size="25.0" />
                     </font>
                 </Label>
-            <MenuButton layoutX="28.0" layoutY="26.0" mnemonicParsing="false" text="Locations">
+            <MenuButton fx:id="menuButtonMap" layoutX="28.0" layoutY="26.0" mnemonicParsing="false" text="Locations">
                <items>
-                  <MenuItem fx:id="menuSuspectOne" mnemonicParsing="false" onAction="#toSuspectOne" text="Lobby" />
-                  <MenuItem fx:id="menuSuspectTwo" mnemonicParsing="false" onAction="#toSuspectTwo" text="Tables" />
-                  <MenuItem fx:id="menuCrimeScene" mnemonicParsing="false" onAction="#toCrimeScene" text="Crime Scene" />
+                  <MenuItem fx:id="menuLobby" mnemonicParsing="false" onAction="#handleChangeArea" text="Lobby" />
+                  <MenuItem fx:id="menuTables" mnemonicParsing="false" onAction="#handleChangeArea" text="Tables" />
+                  <MenuItem fx:id="menuCrimeScene" mnemonicParsing="false" onAction="#handleChangeArea" text="Crime Scene" />
                </items>
             </MenuButton>
                 <Button fx:id="btnGuessNow" layoutX="150.0" layoutY="27.0" mnemonicParsing="false" onAction="#handleGuessClick" text="Guess Now" />

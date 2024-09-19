@@ -34,6 +34,8 @@ public class Suspect {
   private ChatCompletionRequest chatCompletionRequest;
   private volatile ChatMessage currentChatMessage;
 
+  private Boolean interacted = false;
+
   // String that stores chat history
   private String chatHistory = "";
 
@@ -50,6 +52,10 @@ public class Suspect {
     this.name = name;
   }
 
+  public String getName() {
+    return (this.name);
+  }
+
   public void setRole(String role) {
     this.role = role;
   }
@@ -58,8 +64,12 @@ public class Suspect {
     return (role);
   }
 
-  public String getName() {
-    return (this.name);
+  public void interacted() {
+    this.interacted = true;
+  }
+
+  public Boolean getInteracted() {
+    return (this.interacted);
   }
 
   // Set hitbox

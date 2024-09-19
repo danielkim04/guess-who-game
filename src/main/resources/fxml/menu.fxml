@@ -18,7 +18,7 @@
       <AnchorPane layoutX="98.0" layoutY="47.0" prefHeight="306.0" prefWidth="499.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000000df" height="307.0" layoutY="-2.0" stroke="TRANSPARENT" strokeType="INSIDE" width="500.0" />
-            <Label alignment="CENTER" layoutX="79.0" layoutY="29.0" prefHeight="81.0" prefWidth="343.0" text="Game Name" textAlignment="RIGHT" textFill="WHITE" wrapText="true">
+            <Label alignment="CENTER" layoutX="20.0" layoutY="29.0" prefHeight="113.0" prefWidth="463.0" text="Pi Masters Detective Training Casino Royale" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="Berlin Sans FB Demi Bold" size="31.0" />
                </font>

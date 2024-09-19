@@ -9,7 +9,6 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 import javafx.scene.input.MouseEvent;
-import nz.ac.auckland.se206.classes.Controller;
 import nz.ac.auckland.se206.states.*;
 import org.yaml.snakeyaml.Yaml;
 
@@ -80,8 +79,11 @@ public class GameStateContext {
    */
   public void setState(GameState state) {
     this.gameState = state;
-    System.out.println("Set state" + state.toString());
     this.gameState.start();
+  }
+
+  public GameState getState() {
+    return (this.gameState);
   }
 
   /**
