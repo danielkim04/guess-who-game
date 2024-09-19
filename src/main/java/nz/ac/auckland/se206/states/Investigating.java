@@ -53,6 +53,10 @@ public class Investigating implements GameState {
     timer.start();
   }
 
+  public void sceneChange() {
+    App.getController().onTimerUpdate(this.timer.getTime().toString());
+  }
+
   /**
    * Handles the event when a rectangle is clicked. Checks if the clicked
    * rectangle is a customer
@@ -110,6 +114,10 @@ public class Investigating implements GameState {
     return talkedToSuspectThree;
   }
 
+  public Timer getTimer() {
+    return timer;
+  }
+
   public void nextState() {
     context.setState(context.getGuessingState());
     try {
@@ -117,6 +125,5 @@ public class Investigating implements GameState {
     } catch (IOException e) {
       e.printStackTrace();
     }
-
   }
 }

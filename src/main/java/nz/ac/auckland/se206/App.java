@@ -14,6 +14,7 @@ import javafx.stage.WindowEvent;
 import nz.ac.auckland.se206.classes.*;
 import nz.ac.auckland.se206.speech.FreeTextToSpeech;
 import nz.ac.auckland.se206.states.GameState;
+import nz.ac.auckland.se206.states.Investigating;
 
 /**
  * This is the entry point of the JavaFX application. This class initializes and
@@ -57,7 +58,9 @@ public class App extends Application {
     fxmlHandler = fxmlLoaderMap.get(fxml);
     // retrieve the scene from the map and set it as the root
     scene.setRoot(sceneMap.get(fxml));
-
+    if (context.getState() instanceof Investigating) {
+      ((Investigating) context.getState()).sceneChange();
+    }
   }
 
   /**
