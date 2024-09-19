@@ -9,13 +9,17 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import nz.ac.auckland.se206.App;
+import nz.ac.auckland.se206.classes.*;
 
-public class IntroDialogueSceneController {
+public class IntroDialogueSceneController implements Controller {
 
   @FXML
   private AnchorPane paneDialogueBox;
   @FXML
   private Label labelDialogue;
+  @FXML
+  private Label labelTimer;
+
 
   private List<String> dialogues;
   private int currentDialogueIndex = 0;
@@ -30,11 +34,10 @@ public class IntroDialogueSceneController {
     dialogues = new ArrayList<>();
     dialogues.add("NO! My winnings! They're gone!");
     dialogues.add(
-        "I had just won big at the casino, a life-changing amount. But the moment I turned my back,"
-            + " the bag of cash disappeared.");
-    dialogues.add("You say they found the bag? that's ... something.");
-    dialogues.add("But you're still looking into me, aren't you? I can see it in your eyes.");
-    dialogues.add("Come on, I need you to find the real culprit. I had nothing to do with this.");
+        "I had just won big at the casino, a life-changing amount. But when I arrived at my hotel,"
+            + " most of the money was gone.");
+    dialogues.add("I'm glad you're here I'm counting on you to solve this detective.");
+    dialogues.add("I'll be in the lobby if you need me.");
 
     showNextDialogue();
   }
@@ -76,5 +79,16 @@ public class IntroDialogueSceneController {
         e.printStackTrace();
       }
     }
+  }
+
+  @Override
+  public void onNewChat(String chat) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'onNewChat'");
+  }
+
+  @Override
+  public void onTimerUpdate(String time) {
+    labelTimer.setText(time);
   }
 }

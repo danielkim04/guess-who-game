@@ -45,6 +45,8 @@ public class MenuController {
 
   private void startGame() {
     System.out.println("Game Starting");
+    App.getContext().getGameStartedState().nextState();
+
     try {
       // Attempt to set the root scene to "room"
       App.setRoot("IntroDialogueScene");

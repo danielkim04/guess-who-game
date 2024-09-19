@@ -66,5 +66,12 @@ public class GameStarted implements GameState {
   }
 
   public void nextState() {
+    try {
+      // Attempt to set the root scene to "room"
+      App.setRoot("IntroDialogueScene");
+    } catch (IOException e) {
+      e.printStackTrace(); // Handle any exception that occurs during the scene change
+    }
+    context.setState(context.getInvestigatingState());
   }
 }

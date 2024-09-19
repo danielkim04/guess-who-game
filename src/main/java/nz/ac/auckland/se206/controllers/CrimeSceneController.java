@@ -199,7 +199,7 @@ public class CrimeSceneController implements Controller {
     lightPane.setVisible(false);
     blueLight.setMouseTransparent(true);
     dark.setMouseTransparent(true);
-    App.setGameState(App.getContext().getInvestigatingState());
+    // App.setGameState(App.getContext().getInvestigatingState());
   }
 
   /**
