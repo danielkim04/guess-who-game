@@ -31,37 +31,24 @@ import nz.ac.auckland.se206.prompts.PromptEngineering;
 import nz.ac.auckland.se206.states.Guessing;
 
 public class GuessingController implements Controller {
-  @FXML
-  private Label labelTimer;
-  @FXML
-  private AnchorPane paneNoteWindow;
-  @FXML
-  private Rectangle rectCloseNotes;
-  @FXML
-  private AnchorPane paneOpenChat;
-  @FXML
-  private AnchorPane paneSuspectOne;
-  @FXML
-  private AnchorPane paneSuspectTwo;
-  @FXML
-  private AnchorPane paneSuspectThree;
-  @FXML
-  private TextArea txtaExplanation;
-  @FXML
-  private Button btnSend;
-  @FXML
-  private AnchorPane paneExplanation;
-  @FXML
-  private Label labelTitle;
-  @FXML
-  private ImageView imgChosenSuspect;
+  @FXML private Label labelTimer;
+  @FXML private AnchorPane paneNoteWindow;
+  @FXML private Rectangle rectCloseNotes;
+  @FXML private AnchorPane paneOpenChat;
+  @FXML private AnchorPane paneSuspectOne;
+  @FXML private AnchorPane paneSuspectTwo;
+  @FXML private AnchorPane paneSuspectThree;
+  @FXML private TextArea txtaExplanation;
+  @FXML private Button btnSend;
+  @FXML private AnchorPane paneExplanation;
+  @FXML private Label labelTitle;
+  @FXML private ImageView imgChosenSuspect;
 
   private String suspectName;
   private ChatCompletionRequest chatCompletionRequest;
 
   @FXML
-  public void initialize() {
-  }
+  public void initialize() {}
 
   /**
    * Handles the key pressed event.
@@ -95,16 +82,16 @@ public class GuessingController implements Controller {
     AnchorPane clickedSuspect = (AnchorPane) event.getSource();
     switch (clickedSuspect.getId()) {
       case "paneSuspectOne":
-        suspectName = "winner";
-        filename = "man 1.png"; // modify filename
+        suspectName = "Mark";
+        filename = "Suspect_1_Cropped.png"; // modify filename
         break;
       case "paneSuspectTwo":
-        suspectName = "bartender";
-        filename = "man 1.png"; // modify filename
+        suspectName = "Susan";
+        filename = "Suspect_3_Cropped.png"; // modify filename
         break;
       case "paneSuspectThree":
-        suspectName = "gambler";
-        filename = "man 1.png"; // modify filename
+        suspectName = "Anthony";
+        filename = "Suspect_2_Cropped.png"; // modify filename
         break;
     }
     transitionToExplanation(getClass().getResource("/images/" + filename));
@@ -130,11 +117,12 @@ public class GuessingController implements Controller {
   public void initialiseChat() {
     try {
       ApiProxyConfig config = ApiProxyConfig.readConfig();
-      chatCompletionRequest = new ChatCompletionRequest(config)
-          .setN(1)
-          .setTemperature(0.2)
-          .setTopP(0.5)
-          .setMaxTokens(100);
+      chatCompletionRequest =
+          new ChatCompletionRequest(config)
+              .setN(1)
+              .setTemperature(0.1)
+              .setTopP(0.9)
+              .setMaxTokens(100);
       chatCompletionRequest.addMessage(new ChatMessage("system", loadSystemPrompt()));
     } catch (ApiProxyException | URISyntaxException | IOException e) { // ??????????
       e.printStackTrace();
@@ -144,25 +132,27 @@ public class GuessingController implements Controller {
   private void runGpt(ChatMessage msg) {
     chatCompletionRequest.addMessage(msg);
 
-    Task<ChatMessage> task = new Task<ChatMessage>() {
-      @Override
-      protected ChatMessage call() throws ApiProxyException {
-        try {
-          ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
-          Choice result = chatCompletionResult.getChoices().iterator().next();
-          chatCompletionRequest.addMessage(result.getChatMessage());
-          System.out.println(result.getChatMessage().getContent()); // testing
-          System.out.println(App.getController()); // testing
-          Platform.runLater(() -> {
-            App.getController().onNewChat(result.getChatMessage().getContent());
-          });
-          return result.getChatMessage();
-        } catch (ApiProxyException e) {
-          e.printStackTrace();
-          return null;
-        }
-      }
-    };
+    Task<ChatMessage> task =
+        new Task<ChatMessage>() {
+          @Override
+          protected ChatMessage call() throws ApiProxyException {
+            try {
+              ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
+              Choice result = chatCompletionResult.getChoices().iterator().next();
+              chatCompletionRequest.addMessage(result.getChatMessage());
+              System.out.println(result.getChatMessage().getContent()); // testing
+              System.out.println(App.getController()); // testing
+              Platform.runLater(
+                  () -> {
+                    App.getController().onNewChat(result.getChatMessage().getContent());
+                  });
+              return result.getChatMessage();
+            } catch (ApiProxyException e) {
+              e.printStackTrace();
+              return null;
+            }
+          }
+        };
 
     Thread backgroundThread = new Thread(task);
     backgroundThread.start();
@@ -170,25 +160,37 @@ public class GuessingController implements Controller {
 
   @FXML
   private void sendExplanation(ActionEvent event) throws ApiProxyException, IOException {
-    // to be implemented
-    // evaluate user input using gpt and display the result
+    // evaluate user input using gpt and display the result only if player chooses anthony
+    // otherwise, straight to game over scene. load pre-written explanation instead of using gpt
+    if (suspectName.equals("Anthony")) {
+      String message = txtaExplanation.getText().trim();
+      if (message.isEmpty()) {
+        return;
+      }
+      initialiseChat();
+      ChatMessage msg = new ChatMessage("user", message);
+      Guessing guessingState = (Guessing) App.getContext().getGuessingState();
+      guessingState.getTimer().stop();
 
-    String message = txtaExplanation.getText().trim();
-    if (message.isEmpty()) {
-      return;
+      try {
+        App.setRoot("GameEnd");
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+
+      GameEndController gameEndController = (GameEndController) App.getController();
+      gameEndController.showLoadingWheel(true);
+      runGpt(msg);
+    } else {
+      // when the guess is wrong. load pre-written explanation
+      try {
+        App.setRoot("GameEnd");
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+      GameEndController gameEndController = (GameEndController) App.getController();
+      gameEndController.onWrongGuess(suspectName);
     }
-    initialiseChat();
-    ChatMessage msg = new ChatMessage("user", message);
-    Guessing guessingState = (Guessing) App.getContext().getGuessingState();
-    guessingState.getTimer().stop();
-
-    try {
-      App.setRoot("GameEnd");
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-
-    runGpt(msg);
   }
 
   @FXML

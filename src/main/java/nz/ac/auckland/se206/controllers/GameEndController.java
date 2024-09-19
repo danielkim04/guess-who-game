@@ -6,23 +6,24 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.classes.*;
+import nz.ac.auckland.se206.prompts.PromptEngineering;
+
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 
 public class GameEndController implements Controller {
 
-  @FXML
-  private Label labelVictory;
-  @FXML
-  private Label labelDefeat;
-  @FXML
-  private Label labelExplain;
-  @FXML
-  private ImageView imageCriminal;
-  @FXML
-  private Button buttonPlayAgain;
+  @FXML private Label labelVictory;
+  @FXML private Label labelDefeat;
+  @FXML private Label labelExplain;
+  @FXML private ImageView imageCriminal;
+  @FXML private Button buttonPlayAgain;
+  @FXML private ImageView imgLoadingWheel;
 
   @FXML
-  public void initalize() {
-  }
+  public void initalize() {}
 
   @FXML
   public void playAgainClick() {
@@ -36,6 +37,7 @@ public class GameEndController implements Controller {
   @Override
   public void onNewChat(String chat) {
     // process gpt response and display result
+    showLoadingWheel(false);
     String responseLowerCase = chat.toLowerCase();
     if (responseLowerCase.contains("incorrect")) {
       setWinOrLose(false);
@@ -49,6 +51,20 @@ public class GameEndController implements Controller {
     labelExplain.setText(chat);
   }
 
+  public void onWrongGuess(String suspectName) {
+    String explanation = suspectName + " is not the thief.\n";
+    try {
+      URL resourceUrl =
+          PromptEngineering.class.getClassLoader().getResource("prompts/wrongGuess.txt");
+      String textToAppend = new String(Files.readAllBytes(Paths.get(resourceUrl.toURI())));
+      explanation += textToAppend;
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    labelExplain.setText(explanation);
+    setWinOrLose(false);
+  }
+
   public void setWinOrLose(boolean win) {
     if (win) {
       labelVictory.setVisible(true);
@@ -57,6 +73,10 @@ public class GameEndController implements Controller {
       labelVictory.setVisible(false);
       labelDefeat.setVisible(true);
     }
+  }
+
+  public void showLoadingWheel(Boolean show) {
+    imgLoadingWheel.setVisible(show);
   }
 
   @Override
