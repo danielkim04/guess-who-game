@@ -1,5 +1,7 @@
 package nz.ac.auckland.se206.controllers;
 
+import java.io.IOException;
+
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -11,7 +13,6 @@ import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.classes.Controller;
 import nz.ac.auckland.se206.classes.Suspect;
-import nz.ac.auckland.se206.states.Investigating;
 
 public class SuspectController implements Controller {
   @FXML
@@ -68,13 +69,7 @@ public class SuspectController implements Controller {
     }
 
     // update suspect engagement status
-    if (App.getContext().getInvestigatingState() instanceof Investigating) {
-      Investigating state = (Investigating) App.getContext().getInvestigatingState();
-      state.setSuspectState("SuspectTwo");
-    } else {
-      System.out.println("Warning! Not in Investigating state!!!");
-    }
-
+    this.suspect.interacted();
     displayTextSlowly(". . .");
     txtMessage.clear();
 
@@ -95,11 +90,10 @@ public class SuspectController implements Controller {
 
   @FXML
   private void handleGuessClick(ActionEvent event) {
-    if (App.getContext().getInvestigatingState() instanceof Investigating) {
-      Investigating state = (Investigating) App.getContext().getInvestigatingState();
-      state.handleGuessClick();
-    } else {
-      System.out.println("Warning! Not in Investigating state!!!");
+    try {
+      App.getContext().getState().handleGuessClick();
+    } catch (IOException e) {
+      e.printStackTrace();
     }
   }
 

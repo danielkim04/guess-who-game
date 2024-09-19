@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206.states;
 
 import java.io.IOException;
+
 import javafx.application.Platform;
 import javafx.scene.input.MouseEvent;
 import nz.ac.auckland.se206.App;
@@ -16,9 +17,6 @@ import nz.ac.auckland.se206.classes.*;
 public class Investigating implements GameState {
 
   private final GameStateContext context;
-  private boolean talkedToSuspectOne = false;
-  private boolean talkedToSuspectTwo = false;
-  private boolean talkedToSuspectThree = false;
 
   private Timer timer = new Timer(5 * 60);
 
@@ -72,12 +70,12 @@ public class Investigating implements GameState {
 
   @Override
   public void handleGuessClick() {
-    if (!(talkedToSuspectOne && talkedToSuspectTwo && talkedToSuspectThree)) {
-      // tell user to talk to all suspects
-      System.out.println("Talk to all suspects first");
-      return;
+    for (Suspect currentSuspect : App.getSuspects()) {
+      if (!currentSuspect.getInteracted()) {
+        System.out.println("Interact will all suspects first");
+        return;
+      }
     }
-    timer.stop();
     nextState();
   }
 
@@ -86,39 +84,40 @@ public class Investigating implements GameState {
     nextState();
   }
 
-  public void setSuspectState(String suspect) {
-    switch (suspect) {
-      case "SuspectOne":
-        talkedToSuspectOne = true;
-        break;
-      case "SuspectTwo":
-        talkedToSuspectTwo = true;
-        break;
-      case "SuspectThree":
-        talkedToSuspectThree = true;
-        break;
-      default:
-        break;
-    }
-  }
+  // public void setSuspectState(String suspect) {
+  // switch (suspect) {
+  // case "SuspectOne":
+  // talkedToSuspectOne = true;
+  // break;
+  // case "SuspectTwo":
+  // talkedToSuspectTwo = true;
+  // break;
+  // case "SuspectThree":
+  // talkedToSuspectThree = true;
+  // break;
+  // default:
+  // break;
+  // }
+  // }
 
-  public boolean getTalkedToSuspectOne() {
-    return talkedToSuspectOne;
-  }
+  // public boolean getTalkedToSuspectOne() {
+  // return talkedToSuspectOne;
+  // }
 
-  public boolean getTalkedToSuspectTwo() {
-    return talkedToSuspectTwo;
-  }
+  // public boolean getTalkedToSuspectTwo() {
+  // return talkedToSuspectTwo;
+  // }
 
-  public boolean getTalkedToSuspectThree() {
-    return talkedToSuspectThree;
-  }
+  // public boolean getTalkedToSuspectThree() {
+  // return talkedToSuspectThree;
+  // }
 
   public Timer getTimer() {
     return timer;
   }
 
   public void nextState() {
+    timer.stop();
     context.setState(context.getGuessingState());
     try {
       App.setRoot("Guessing");

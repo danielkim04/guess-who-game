@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -141,5 +142,9 @@ public class App extends Application {
 
       e.printStackTrace();
     }
+  }
+
+  public static Collection<Suspect> getSuspects() {
+    return (suspectMap.values());
   }
 }
