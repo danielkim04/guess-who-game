@@ -68,11 +68,11 @@ public class Investigating implements GameState {
 
   @Override
   public void handleGuessClick() {
-    // if (!talkedToSuspectOne || !talkedToSuspectTwo || !talkedToSuspectThree) {
-    // // tell user to talk to all suspects
-    // System.out.println("Talk to all suspects first");
-    // return;
-    // }
+     if (!talkedToSuspectOne || !talkedToSuspectTwo || !talkedToSuspectThree) {
+     // tell user to talk to all suspects
+     System.out.println("Talk to all suspects first");
+     return;
+     }
     timer.stop();
     nextState();
   }
