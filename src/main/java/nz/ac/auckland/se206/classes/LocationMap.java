@@ -1,9 +1,9 @@
 package nz.ac.auckland.se206.classes;
 
-import javafx.scene.control.*;
-
 import java.util.HashMap;
 import java.util.Map;
+
+import javafx.scene.control.*;
 
 public class LocationMap {
   private static Map<MenuItem, String> locationMap = new HashMap<>();

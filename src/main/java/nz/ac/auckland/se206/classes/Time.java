@@ -55,6 +55,7 @@ public class Time {
 
   // Sets time given a minute and second input
   public void setTime(Integer mins, Integer secs) {
+    // Sets time given a minute and second input
     if (mins > 0) {
       setMins(mins);
     } else {
@@ -70,13 +71,14 @@ public class Time {
 
   // Adds a given number of minutes to the time
   public void addMins(Integer mins) {
+    // Adds a given number of minutes to the time
     minutes += mins % 60;
     minutes %= 60;
   }
 
-  // Adds a given number of seconds to the time
-  public void addSecs(Integer secs) {
 
+  public void addSecs(Integer secs) {
+// Adds a given number of seconds to the time
     if (secs >= 60) {
       seconds += secs % 60;
       addMins(secs / 60);
@@ -91,8 +93,9 @@ public class Time {
     }
   }
 
-  // Subtracts an amount of minutes from the time
+
   public void subMins(Integer mins) {
+    // Subtracts an amount of minutes from the time
     minutes -= mins;
     if (minutes < 0) {
       minutes = 0;
@@ -100,8 +103,8 @@ public class Time {
     }
   }
 
-  // Subtracts an amount of seconds from the time
   public void subSecs(Integer secs) {
+    // Subtracts an amount of seconds from the time
     seconds -= secs;
     if (seconds < 0) {
       subMins(seconds * -1);

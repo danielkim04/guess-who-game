@@ -26,7 +26,7 @@ import nz.ac.auckland.apiproxy.chat.openai.Choice;
 import nz.ac.auckland.apiproxy.config.ApiProxyConfig;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.App;
-import nz.ac.auckland.se206.classes.*;
+import nz.ac.auckland.se206.classes.Controller;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 import nz.ac.auckland.se206.states.Guessing;
 
@@ -108,10 +108,6 @@ public class GuessingController implements Controller {
     Map<String, String> map = new HashMap<>();
     map.put("suspect", suspectName);
     return PromptEngineering.getPrompt("chat.txt", map);
-
-    // URL resourceUrl =
-    // PromptEngineering.class.getClassLoader().getResource("prompts/chat.txt");
-    // return new String(Files.readAllBytes(Paths.get(resourceUrl.toURI())));
   }
 
   public void initialiseChat() {

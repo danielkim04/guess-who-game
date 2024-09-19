@@ -1,17 +1,16 @@
 package nz.ac.auckland.se206.controllers;
 
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import nz.ac.auckland.se206.App;
-import nz.ac.auckland.se206.classes.*;
+import nz.ac.auckland.se206.classes.Controller;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
-
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-
 
 public class GameEndController implements Controller {
 
@@ -52,8 +51,10 @@ public class GameEndController implements Controller {
   }
 
   public void onWrongGuess(String suspectName) {
-    String explanation = suspectName + " is not the thief.\n";
+    // displays the explanation for the wrong guess
+    String explanation = suspectName + " is not the thief.\n"; // first line
     try {
+      // get text from file
       URL resourceUrl =
           PromptEngineering.class.getClassLoader().getResource("prompts/wrongGuess.txt");
       String textToAppend = new String(Files.readAllBytes(Paths.get(resourceUrl.toURI())));
