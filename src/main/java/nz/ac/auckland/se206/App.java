@@ -27,8 +27,9 @@ public class App extends Application {
   private static FXMLLoader fxmlHandler;
   private static Map<String, Parent> sceneMap = new HashMap<>(); // stores the scenes that have been initialised
   private static Map<String, FXMLLoader> fxmlLoaderMap = new HashMap<>(); // stores the FXML loaders
-  private static Map<Suspect, Integer> suspectMap = new HashMap<>();
+  private static Map<String, Suspect> suspectMap = new HashMap<>();
   private static Map<MenuItem, String> locationMap = new HashMap<>();
+  private static Suspect currentSuspect;
 
   /**
    * The main method that launches the JavaFX application.
@@ -46,6 +47,7 @@ public class App extends Application {
    * @throws IOException if the FXML file is not found
    */
   public static void setRoot(String fxml) throws IOException {
+    currentSuspect = suspectMap.get(fxml);
     if (!sceneMap.containsKey(fxml)) {
       // if scene has not been initialised, load the FXML file and store it in the map
       Parent root = loadFxml(fxml);
@@ -55,6 +57,7 @@ public class App extends Application {
     fxmlHandler = fxmlLoaderMap.get(fxml);
     // retrieve the scene from the map and set it as the root
     scene.setRoot(sceneMap.get(fxml));
+
   }
 
   /**
@@ -82,6 +85,7 @@ public class App extends Application {
    */
   @Override
   public void start(final Stage stage) throws IOException {
+    initaliseSuspectMap();
     Parent root = loadFxml("Menu");
     scene = new Scene(root);
     stage.setTitle("Pi Masters Detective Training");
@@ -111,6 +115,16 @@ public class App extends Application {
     // reset maps that retain the scenes and FXML loaders
     sceneMap.clear();
     fxmlLoaderMap.clear();
+  }
+
+  private void initaliseSuspectMap() {
+    suspectMap.put("SuspectOne", new Suspect("Mark", "Suspect", "Suspect1.txt"));
+    suspectMap.put("SuspectTwo", new Suspect("Anthony", "Suspect", "Suspect2.txt"));
+    suspectMap.put("SuspectThree", new Suspect("Susan", "Suspect", "Suspect3.txt"));
+  }
+
+  public static Suspect getCurrentSuspect() {
+    return (currentSuspect);
   }
 
   public static void addToLocationMap(MenuItem loc, String scene) {

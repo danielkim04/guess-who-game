@@ -41,7 +41,7 @@ public class SuspectTwoController implements Controller {
 
   @FXML
   public void initialize() {
-    this.suspect = new Suspect("V", "Suspect", "suspect2.txt");
+    this.suspect = App.getCurrentSuspect();
     createMap();
     displayTextSlowly(". . .");
     // set the initial message by telling gpt to introduce itself
