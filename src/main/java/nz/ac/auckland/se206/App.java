@@ -6,14 +6,11 @@ import java.util.Map;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import nz.ac.auckland.se206.classes.*;
-import nz.ac.auckland.se206.controllers.ChatController;
 import nz.ac.auckland.se206.speech.FreeTextToSpeech;
 import nz.ac.auckland.se206.states.GameState;
 
@@ -70,26 +67,6 @@ public class App extends Application {
     fxmlHandler = new FXMLLoader(App.class.getResource("/fxml/" + fxml + ".fxml"));
     fxmlLoaderMap.put(fxml, fxmlHandler); // store the FXML loader in the map for later retrieval
     return (fxmlHandler.load());
-  }
-
-  /**
-   * Opens the chat view and sets the profession in the chat controller.
-   *
-   * @param event      the mouse event that triggered the method
-   * @param profession the profession to set in the chat controller
-   * @throws IOException if the FXML file is not found
-   */
-  public static void openChat(MouseEvent event, String profession) throws IOException {
-    FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/chat.fxml"));
-    Parent root = loader.load();
-
-    ChatController chatController = loader.getController();
-    chatController.setProfession(profession);
-
-    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    scene = new Scene(root);
-    stage.setScene(scene);
-    stage.show();
   }
 
   /**

@@ -9,7 +9,6 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 import javafx.scene.input.MouseEvent;
-import nz.ac.auckland.se206.classes.Controller;
 import nz.ac.auckland.se206.states.*;
 import org.yaml.snakeyaml.Yaml;
 

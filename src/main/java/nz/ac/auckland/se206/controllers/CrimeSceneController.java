@@ -222,18 +222,6 @@ public class CrimeSceneController implements Controller {
     System.out.println("Key " + event.getCode() + " released");
   }
 
-  /**
-   * Handles mouse clicks on rectangles representing people in the room.
-   *
-   * @param event the mouse event triggered by clicking a rectangle
-   * @throws IOException if there is an I/O error
-   */
-  @FXML
-  private void handleRectangleClick(MouseEvent event) throws IOException {
-    Rectangle clickedRectangle = (Rectangle) event.getSource();
-    // to be implemented
-  }
-
   @FXML
   private void handleGuessClick(ActionEvent event) {
     if (App.getContext().getInvestigatingState() instanceof Investigating) {
