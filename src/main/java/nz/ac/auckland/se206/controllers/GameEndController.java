@@ -30,6 +30,15 @@ public class GameEndController implements Controller {
 
   @Override
   public void onNewChat(String chat) {
+    // process gpt response and display result
+    String responseLowerCase = chat.toLowerCase();
+    if (responseLowerCase.contains("incorrect")) {
+      setWinOrLose(false);
+    } else if (responseLowerCase.contains("correct")) {
+      setWinOrLose(true);
+    } else {
+      System.out.println("Warning! Unexpected response ... ");
+    }
 
     // displays gpt evaluation of the user's explanation
     labelExplain.setText(chat);
