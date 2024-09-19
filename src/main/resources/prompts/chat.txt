@@ -1,3 +1,9 @@
-The player guessed that {suspect} is the thief.
-If the player guessed that the gambler is the thief, the player guessed correctly. The guess is incorrect otherwise.
-Respond with either "Correct" or "Incorrect", followed by an explanation of why the guess is correct or incorrect.
+In order for the explanation to be considered correct, the player must reference at least three of the following pieces of evidence:
+Anthony had a long-standing rivalry with Mark.
+Anthony knew about the contents of the bag, which was cash.
+The bag was left unattended, giving Anthony the perfect opportunity to steal some of it, especially because he knew the bag contained cash.
+Susan testified that Anthony was visibly annoyed when Mark showed off his winnings.
+A hair found in the bag matches a male with brown hair (which matches Anthony's description).
+A note, with Anthony's fingerprint on it, shows that Anthony was annoyed by Mark's gloating.
+Respond with either "Correct" or "Incorrect", followed by an explanation of why the guess is correct or incorrect, referencing the player's input. If the player did not provide enough evidence to support their guess (at least three pieces), the answer should be incorrect. Explain which key pieces of evidence were missing if necessary.
+Limit response to three sentences.

@@ -20,44 +20,44 @@
             <Image url="@../images/interrogationroom1.jpeg" />
          </image>
       </ImageView>
-      <AnchorPane fx:id="paneSuspectOne" layoutX="64.0" layoutY="134.0" onMouseClicked="#handleSuspectClick" prefHeight="205.0" prefWidth="129.0">
+      <AnchorPane fx:id="paneSuspectOne" layoutY="75.0" onMouseClicked="#handleSuspectClick" prefHeight="324.0" prefWidth="238.0">
          <children>
-            <ImageView fitHeight="222.0" fitWidth="168.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="331.0" fitWidth="238.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/man 1.png" />
+                  <Image url="@../images/Suspect_1_Cropped.png" />
                </image>
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="paneSuspectTwo" layoutX="226.0" layoutY="134.0" onMouseClicked="#handleSuspectClick" prefHeight="222.0" prefWidth="148.0">
+      <AnchorPane fx:id="paneSuspectTwo" layoutX="236.0" layoutY="77.0" onMouseClicked="#handleSuspectClick" prefHeight="322.0" prefWidth="232.0">
          <children>
-            <ImageView fitHeight="237.0" fitWidth="148.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="339.0" fitWidth="238.0" layoutX="-3.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/man 1.png" />
+                  <Image url="@../images/Suspect_3_cropped.png" />
                </image>
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="paneSuspectThree" layoutX="415.0" layoutY="98.0" onMouseClicked="#handleSuspectClick" prefHeight="284.0" prefWidth="148.0">
+      <AnchorPane fx:id="paneSuspectThree" layoutX="471.0" layoutY="76.0" onMouseClicked="#handleSuspectClick" prefHeight="324.0" prefWidth="205.0">
          <children>
-            <ImageView fitHeight="273.0" fitWidth="213.0" layoutX="-14.0" layoutY="-14.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="324.0" fitWidth="232.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/man 1.png" />
+                  <Image url="@../images/Suspect_2_cropped.png" />
                </image>
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="paneExplanation" layoutX="-16.0" layoutY="-1.0" prefHeight="400.0" prefWidth="676.0" visible="false">
+      <AnchorPane fx:id="paneExplanation" layoutX="-16.0" layoutY="-1.0" prefHeight="417.0" prefWidth="723.0" visible="false">
          <children>
-            <ImageView fitHeight="408.0" fitWidth="707.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="417.0" fitWidth="723.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/interrogationroom1.jpeg" />
                </image>
             </ImageView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fdfdfd" height="321.0" layoutX="14.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" width="391.0" />
-            <TextArea fx:id="txtaExplanation" layoutX="24.0" layoutY="88.0" prefHeight="265.0" prefWidth="370.0" />
+            <TextArea fx:id="txtaExplanation" layoutX="24.0" layoutY="88.0" prefHeight="265.0" prefWidth="370.0" wrapText="true" />
             <Button fx:id="btnSend" layoutX="24.0" layoutY="353.0" mnemonicParsing="false" onAction="#sendExplanation" prefHeight="36.0" prefWidth="370.0" text="Send" />
-            <ImageView fx:id="imgChosenSuspect" fitHeight="305.0" fitWidth="200.0" layoutX="442.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imgChosenSuspect" fitHeight="324.0" fitWidth="238.0" layoutX="442.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
       <AnchorPane layoutY="-1.0" prefHeight="79.0" prefWidth="700.0">
