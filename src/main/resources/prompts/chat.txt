@@ -1,14 +1,9 @@
-The player guessed that {suspect} is the thief.
-If the player guessed that Anthony is the thief, the player guessed correctly. The guess is incorrect otherwise.
-Respond with either "Correct" or "Incorrect", followed by an explanation of why the guess is correct or incorrect.
-For the explanation to be considered correct, the player MUST mention at least three of the points of evidence listed below.
-Otherwise, there is not enough evidence to confirm that the gambler is the thief.
-
-The player will submit their explanation for why they believe the suspect they chose is the thief.
-Compare user input to the following pieces of evidence to determine if the user's explanation is correct.
-Anthony had a long standing rivalry with Mark.
+In order for the explanation to be considered correct, the player must reference at least three of the following pieces of evidence:
+Anthony had a long-standing rivalry with Mark.
 Anthony knew about the contents of the bag, which was cash.
-Bag was left unattended. This gave Anthony the perfect chance to steal some of it, especially because he knew the bag contained cash.
-Susan testified Anthony was visibly annoyed when Mark showed off his winnings.
-Hair found in the bag shows it beings to a male with brown hair
-Note, with Anthony's fingerprint on it, also shows Anthony was annoyed by Mark's gloating.
+The bag was left unattended, giving Anthony the perfect opportunity to steal some of it, especially because he knew the bag contained cash.
+Susan testified that Anthony was visibly annoyed when Mark showed off his winnings.
+A hair found in the bag matches a male with brown hair (which matches Anthony's description).
+A note, with Anthony's fingerprint on it, shows that Anthony was annoyed by Mark's gloating.
+Respond with either "Correct" or "Incorrect", followed by an explanation of why the guess is correct or incorrect, referencing the player's input. If the player did not provide enough evidence to support their guess (at least three pieces), the answer should be incorrect. Explain which key pieces of evidence were missing if necessary.
+Limit response to three sentences.

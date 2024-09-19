@@ -102,7 +102,7 @@ public class App extends Application {
    */
   @Override
   public void start(final Stage stage) throws IOException {
-    Parent root = loadFxml("Menu");
+    Parent root = loadFxml("menu");
     scene = new Scene(root);
     stage.setTitle("Pi Masters Detective Training");
     stage.setScene(scene);

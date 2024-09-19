@@ -28,11 +28,16 @@
                   </ImageView>
                   <AnchorPane layoutX="260.0" layoutY="89.0" prefHeight="209.0" prefWidth="364.0">
                      <children>
-                        <Label fx:id="labelExplain" alignment="CENTER" layoutX="32.0" layoutY="-10.0" prefHeight="249.0" prefWidth="369.0" textAlignment="JUSTIFY" textFill="WHITE" wrapText="true">
+                        <Label fx:id="labelExplain" alignment="CENTER" layoutX="32.0" layoutY="-10.0" prefHeight="249.0" prefWidth="386.0" textAlignment="JUSTIFY" textFill="WHITE" wrapText="true">
                            <font>
                               <Font name="Times New Roman" size="18.0" />
                            </font>
                         </Label>
+                        <ImageView fx:id="imgLoadingWheel" fitHeight="97.0" fitWidth="100.0" layoutX="161.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                           <image>
+                              <Image url="@../images/loading%20wheel.gif" />
+                           </image>
+                        </ImageView>
                      </children>
                   </AnchorPane>
                   <Button fx:id="buttonPlayAgain" alignment="CENTER" layoutX="366.0" layoutY="333.0" mnemonicParsing="false" onAction="#handlePlayAgain" prefHeight="37.0" prefWidth="212.0" text="Play Again?" textAlignment="CENTER">
@@ -40,12 +45,12 @@
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Label fx:id="labelVictory" layoutX="356.0" layoutY="14.0" text="You won" textFill="#afff9d" visible="false">
+                  <Label fx:id="labelDefeat" layoutX="382.0" layoutY="14.0" text="You Lost" textFill="#ff9e9e" visible="false">
                      <font>
                         <Font name="Times New Roman" size="48.0" />
                      </font>
                   </Label>
-                  <Label fx:id="labelDefeat" layoutX="355.0" layoutY="14.0" text="You Lost" textFill="#ff9e9e" visible="false">
+                  <Label fx:id="labelVictory" alignment="CENTER" layoutX="383.0" layoutY="14.0" text="You won" textFill="#afff9d" visible="false">
                      <font>
                         <Font name="Times New Roman" size="48.0" />
                      </font>
