@@ -19,14 +19,18 @@ import nz.ac.auckland.se206.prompts.PromptEngineering;
 import nz.ac.auckland.se206.speech.FreeTextToSpeech;
 
 /**
- * Controller class for the chat view. Handles user interactions and communication with the GPT
+ * Controller class for the chat view. Handles user interactions and
+ * communication with the GPT
  * model via the API proxy.
  */
 public class ChatController {
 
-  @FXML private TextArea txtaChat;
-  @FXML private TextField txtInput;
-  @FXML private Button btnSend;
+  @FXML
+  private TextArea txtaChat;
+  @FXML
+  private TextField txtInput;
+  @FXML
+  private Button btnSend;
 
   private ChatCompletionRequest chatCompletionRequest;
   private String profession;
@@ -34,7 +38,8 @@ public class ChatController {
   /**
    * Initializes the chat view.
    *
-   * @throws ApiProxyException if there is an error communicating with the API proxy
+   * @throws ApiProxyException if there is an error communicating with the API
+   *                           proxy
    */
   @FXML
   public void initialize() throws ApiProxyException {
@@ -53,7 +58,8 @@ public class ChatController {
   }
 
   /**
-   * Sets the profession for the chat context and initializes the ChatCompletionRequest.
+   * Sets the profession for the chat context and initializes the
+   * ChatCompletionRequest.
    *
    * @param profession the profession to set
    */
@@ -61,12 +67,11 @@ public class ChatController {
     this.profession = profession;
     try {
       ApiProxyConfig config = ApiProxyConfig.readConfig();
-      chatCompletionRequest =
-          new ChatCompletionRequest(config)
-              .setN(1)
-              .setTemperature(0.2)
-              .setTopP(0.5)
-              .setMaxTokens(100);
+      chatCompletionRequest = new ChatCompletionRequest(config)
+          .setN(1)
+          .setTemperature(0.2)
+          .setTopP(0.5)
+          .setMaxTokens(100);
       runGpt(new ChatMessage("system", getSystemPrompt()));
     } catch (ApiProxyException e) {
       e.printStackTrace();
@@ -87,7 +92,8 @@ public class ChatController {
    *
    * @param msg the chat message to process
    * @return the response chat message
-   * @throws ApiProxyException if there is an error communicating with the API proxy
+   * @throws ApiProxyException if there is an error communicating with the API
+   *                           proxy
    */
   private ChatMessage runGpt(ChatMessage msg) throws ApiProxyException {
     chatCompletionRequest.addMessage(msg);
@@ -108,8 +114,9 @@ public class ChatController {
    * Sends a message to the GPT model.
    *
    * @param event the action event triggered by the send button
-   * @throws ApiProxyException if there is an error communicating with the API proxy
-   * @throws IOException if there is an I/O error
+   * @throws ApiProxyException if there is an error communicating with the API
+   *                           proxy
+   * @throws IOException       if there is an I/O error
    */
   @FXML
   private void onSendMessage(ActionEvent event) throws ApiProxyException, IOException {
@@ -127,8 +134,9 @@ public class ChatController {
    * Navigates back to the previous view.
    *
    * @param event the action event triggered by the go back button
-   * @throws ApiProxyException if there is an error communicating with the API proxy
-   * @throws IOException if there is an I/O error
+   * @throws ApiProxyException if there is an error communicating with the API
+   *                           proxy
+   * @throws IOException       if there is an I/O error
    */
   @FXML
   private void onGoBack(ActionEvent event) throws ApiProxyException, IOException {

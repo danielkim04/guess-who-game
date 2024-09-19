@@ -27,8 +27,6 @@ public class Suspect {
   private String name;
   private String role;
 
-  private String suspectID;
-
   // Varible that stores hitbox as a rectangle
   private Rectangle rect;
 
@@ -89,8 +87,8 @@ public class Suspect {
     return (this.chatHistory);
   }
 
-  // Initalies GPT settings
   private void initialiseChat() {
+    // initialise chat upon creation of suspect
     if (this.chatCompletionRequest == null) {
       try {
         ApiProxyConfig config = ApiProxyConfig.readConfig();
@@ -99,8 +97,8 @@ public class Suspect {
             .setTemperature(0.2)
             .setTopP(0.5)
             .setMaxTokens(100);
-        String systemPrompt = loadSystemPrompt();
-        chatCompletionRequest.addMessage(new ChatMessage("system", systemPrompt));
+        String systemPrompt = loadSystemPrompt(); // load in system prompt
+        chatCompletionRequest.addMessage(new ChatMessage("system", systemPrompt)); // add system prompt
       } catch (ApiProxyException | IOException | URISyntaxException e) {
         e.printStackTrace();
       }
@@ -128,11 +126,12 @@ public class Suspect {
 
   // Returns chat message from suspect
   public String talk(ChatMessage msg) {
-
+    // not used in the current implementation
     if (msg == null) {
       if (!chatHistory.equals("")) {
         return (null);
       }
+      // if no message is passed in, create a system prompt message
       msg = new ChatMessage("system", getSystemPrompt());
     }
     this.currentChatMessage = msg;
@@ -141,7 +140,7 @@ public class Suspect {
         () -> {
           try {
             this.currentChatMessage = runGpt(null);
-            TextToSpeech.speak(this.currentChatMessage.getContent());
+            TextToSpeech.speak(this.currentChatMessage.getContent()); // we can remove this line
           } catch (ApiProxyException e) {
             e.printStackTrace();
           }
@@ -156,16 +155,19 @@ public class Suspect {
 
     tttRequestThread.start();
 
+    // return chat message
     return (this.currentChatMessage.getContent());
   }
 
   // Returns GPT chat message
   private void runGptAsync(ChatMessage msg, Consumer<ChatMessage> callback)
       throws ApiProxyException {
+    // used to display gpt response to suspect chat scenes.
     chatCompletionRequest.addMessage(
         new ChatMessage("system", this.chatHistory)); // adds chat history? check if this works as intended
     if (msg != null) {
       this.currentChatMessage = msg;
+      // add to chat history
       addChatHistory("User: " + msg.getContent() + "\n");
     }
     chatCompletionRequest.addMessage(this.currentChatMessage);
@@ -177,7 +179,7 @@ public class Suspect {
           ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
           Choice result = chatCompletionResult.getChoices().iterator().next();
           chatCompletionRequest.addMessage(result.getChatMessage());
-          return result.getChatMessage();
+          return result.getChatMessage(); // return response from GPT
         } catch (ApiProxyException e) {
           e.printStackTrace();
           return null;
@@ -187,6 +189,7 @@ public class Suspect {
 
     task.setOnSucceeded(
         workerStateEvent -> {
+          // upon receiving response from GPT, add to chat history and call callback
           ChatMessage response = task.getValue();
           addChatHistory("Suspect: " + response.getContent() + "\n");
           callback.accept(response);
@@ -204,12 +207,14 @@ public class Suspect {
   }
 
   public void getResponse(String message, Consumer<String> callback) {
+    // called by suspect room controllers to get response from GPT
     try {
       ChatMessage msg = new ChatMessage("user", message);
-
+      // call runGptAsync to get response from GPT
       runGptAsync(
           msg,
           response -> {
+            // send response to callback
             callback.accept(response.getContent());
           });
     } catch (ApiProxyException e) {
@@ -219,15 +224,16 @@ public class Suspect {
 
   // Returns GPT chat message
   private ChatMessage runGpt(ChatMessage msg) throws ApiProxyException {
+    // not used in the current implementation
     if (msg != null) {
       this.currentChatMessage = msg;
     }
-    chatCompletionRequest.addMessage(this.currentChatMessage);
+    chatCompletionRequest.addMessage(this.currentChatMessage); // adds chat history?
     try {
       ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
       Choice result = chatCompletionResult.getChoices().iterator().next();
       chatCompletionRequest.addMessage(result.getChatMessage());
-      System.out.println(result.getChatMessage().getContent());
+      System.out.println(result.getChatMessage().getContent()); // for tetsing
       return result.getChatMessage();
     } catch (ApiProxyException e) {
       e.printStackTrace();

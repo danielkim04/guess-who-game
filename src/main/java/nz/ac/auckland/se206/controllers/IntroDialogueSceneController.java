@@ -17,9 +17,9 @@ public class IntroDialogueSceneController implements Controller {
   private AnchorPane paneDialogueBox;
   @FXML
   private Label labelDialogue;
-
   @FXML
   private Label labelTimer;
+
 
   private List<String> dialogues;
   private int currentDialogueIndex = 0;
