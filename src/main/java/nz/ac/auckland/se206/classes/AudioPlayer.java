@@ -26,9 +26,8 @@ public class AudioPlayer {
     }
   }
 
-  // Change item to currently be played
   private void playNextInQueue() {
-
+    // Change item to currently be played
     if (audioQueue.size() > 0) {
       Runnable onEndMediaRunnable = null;
       if (currentAudioPlayer != null) {
@@ -55,9 +54,8 @@ public class AudioPlayer {
     return (this.playing);
   }
 
-  // Start playing from queue
   public synchronized void playAudioQueue() {
-
+    // Start playing from queue
     Thread audioStoppedThread = new Thread(
         () -> {
           playNextInQueue();
@@ -66,6 +64,7 @@ public class AudioPlayer {
     Thread audioQueueThread = new Thread(
         () -> {
           if (currentAudioPlayer != null) {
+            // Stop current audio
             currentAudioPlayer.stop();
           }
           Thread audioPlayThread = (new Thread(audioStoppedThread));
