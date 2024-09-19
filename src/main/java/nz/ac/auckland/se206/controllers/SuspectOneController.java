@@ -5,6 +5,7 @@ import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.util.Duration;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
@@ -17,14 +18,22 @@ import nz.ac.auckland.se206.states.Investigating;
 import java.io.IOException;
 
 public class SuspectOneController implements Controller {
-  @FXML private Label labelTimer;
-  @FXML private Label labelResponse;
-  @FXML private TextField txtMessage;
-  @FXML private Button btnSend;
-  @FXML private MenuItem menuSuspectTwo;
-  @FXML private MenuItem menuSuspectThree;
-  @FXML private MenuItem menuCrimeScene;
-  @FXML private Button btnGuessNow;
+  @FXML
+  private Label labelTimer;
+  @FXML
+  private Label labelResponse;
+  @FXML
+  private TextArea txtMessage;
+  @FXML
+  private Button btnSend;
+  @FXML
+  private MenuItem menuSuspectTwo;
+  @FXML
+  private MenuItem menuSuspectThree;
+  @FXML
+  private MenuItem menuCrimeScene;
+  @FXML
+  private Button btnGuessNow;
 
   private Suspect suspect;
   private Timeline timeline;
@@ -43,7 +52,7 @@ public class SuspectOneController implements Controller {
   }
 
   @FXML
-  public void sendMessage(ActionEvent event) throws IOException, ApiProxyException {
+  public void sendMessage() {
     String message = txtMessage.getText().trim();
     if (message.isEmpty()) {
       return;
@@ -113,14 +122,13 @@ public class SuspectOneController implements Controller {
     timeline = new Timeline();
     for (int i = 0; i < text.length(); i++) {
       final int index = i;
-      KeyFrame keyFrame =
-          new KeyFrame(
-              Duration.millis(500 * index), // Delay each letter by 100ms
-              e -> {
-                displayedText.append(text.charAt(index)); // Append the current letter
-                labelResponse.setText(
-                    displayedText.toString()); // Update the label with the new text
-              });
+      KeyFrame keyFrame = new KeyFrame(
+          Duration.millis(500 * index), // Delay each letter by 100ms
+          e -> {
+            displayedText.append(text.charAt(index)); // Append the current letter
+            labelResponse.setText(
+                displayedText.toString()); // Update the label with the new text
+          });
       timeline.getKeyFrames().add(keyFrame);
     }
 
@@ -135,7 +143,6 @@ public class SuspectOneController implements Controller {
    */
   @FXML
   public void onKeyPressed(KeyEvent event) {
-    System.out.println("Key " + event.getCode() + " pressed");
   }
 
   /**
@@ -145,11 +152,15 @@ public class SuspectOneController implements Controller {
    */
   @FXML
   public void onKeyReleased(KeyEvent event) {
-    System.out.println("Key " + event.getCode() + " released");
+    if (event.getCode().equals(KeyCode.ENTER)) {
+      sendMessage();
+    }
+
   }
 
   @Override
-  public void onNewChat(String chat) {}
+  public void onNewChat(String chat) {
+  }
 
   @Override
   public void onTimerUpdate(String time) {

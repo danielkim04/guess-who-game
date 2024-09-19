@@ -20,7 +20,7 @@ public class Investigating implements GameState {
   private boolean talkedToSuspectTwo = false;
   private boolean talkedToSuspectThree = false;
 
-  private Timer timer = new Timer(60);
+  private Timer timer = new Timer(600);
 
   private Thread updateThread = new Thread(
       () -> {
