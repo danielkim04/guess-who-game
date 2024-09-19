@@ -110,6 +110,12 @@ public class CrimeSceneController implements Controller {
   @FXML
   private ImageView dark;
   @FXML
+  private ImageView web1;
+  @FXML
+  private ImageView web2;
+  @FXML
+  private ImageView web3;
+  @FXML
   private Button NoteExit;
   @FXML
   private Button toggleLight;
@@ -173,6 +179,11 @@ public class CrimeSceneController implements Controller {
     makeImageViewDraggable(Money8);
     makeImageViewDraggable(Money9);
     makeImageViewDraggable(Money10);
+
+    makeImageViewDraggable(web1);
+    makeImageViewDraggable(web2);
+    makeImageViewDraggable(web3);
+
     makeImageViewDraggable(Hair);
     enableBothLightsToFollowCursor();
     lightPane.setVisible(false);
@@ -433,13 +444,15 @@ public class CrimeSceneController implements Controller {
         // Display the hairText slowly, letter by letter
         displayTextSlowly("Hair Collected, Sample must be tested in the lab!");
       } else {
-        // For other items (like money), hide the item and collect money
+        if (draggedItem != web1 && draggedItem != web2 && draggedItem != web3) {
+          // For other items (like money), hide the item and collect money
         draggedItem.setVisible(false);
         moneyCollectedPane.setVisible(true);
         moneyCollected += 1000;
         makeRectangleGlow(glow);
         updateMoneyCounter(); // Update the label when money is collected
         System.out.println(moneyCollected);
+        }
       }
     }
   }
