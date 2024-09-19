@@ -285,7 +285,7 @@
                                           <Font name="Dubai Bold" size="18.0" />
                                        </font>
                                     </Label>
-                                    <Button fx:id="hairTest" layoutX="110.0" layoutY="55.0" mnemonicParsing="false" text="Test Sample" />
+                                    <Button fx:id="hairTest" layoutX="110.0" layoutY="55.0" mnemonicParsing="false" text="Test Sample" onAction="#handleHairTestClick" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane fx:id="fingerprintSamplePane" layoutY="96.0" prefHeight="80.0" prefWidth="200.0">
@@ -300,7 +300,7 @@
                                           <Font name="Dubai Bold" size="18.0" />
                                        </font>
                                     </Label>
-                                    <Button fx:id="fingerprintTest" layoutX="110.0" layoutY="50.0" mnemonicParsing="false" text="Test Sample" />
+                                    <Button fx:id="fingerprintTest" layoutX="110.0" layoutY="50.0" mnemonicParsing="false" text="Test Sample" onAction="#handleFingerprintTestClick" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane fx:id="moneyCollectedPane" prefHeight="200.0" prefWidth="200.0">

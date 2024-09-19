@@ -119,6 +119,10 @@ public class CrimeSceneController implements Controller {
   private ImageView fingerprint;
   @FXML
   private TextArea balanceArea;
+  @FXML
+  private Pane labPane;
+  @FXML
+  private Label labLabel;
 
   public static int moneyCollected = 0;
 
@@ -144,7 +148,6 @@ public class CrimeSceneController implements Controller {
     hairSamplePane.toFront();
     fingerprintSamplePane.toFront();
 
-    
     rectClueBag.setOnMouseEntered(event -> rectClueBag.setCursor(javafx.scene.Cursor.HAND));
     rectClueBag.setOnMouseExited(event -> rectClueBag.setCursor(javafx.scene.Cursor.DEFAULT));
 
@@ -295,6 +298,24 @@ public class CrimeSceneController implements Controller {
   private void handleToggleLightClick(ActionEvent event) {
     // Toggle the visibility of the lightPane
     lightPane.setVisible(!lightPane.isVisible());
+  }
+
+  @FXML
+  private void handleHairTestClick(ActionEvent event) {
+    // Show the labPane
+    labPane.setVisible(true);
+
+    // Display message specific to the hair test
+    displayLabTextSlowly("Hair contains brown eumelanin and belongs to a male...");
+  }
+
+  @FXML
+  private void handleFingerprintTestClick(ActionEvent event) {
+    // Show the labPane
+    labPane.setVisible(true);
+
+    // Display message specific to the fingerprint test
+    displayLabTextSlowly("The fingerprint tested likely belongs to Anthony...");
   }
 
   @FXML
@@ -519,6 +540,38 @@ public class CrimeSceneController implements Controller {
 
     // Start the animation
     glowTimeline.play();
+  }
+
+  // Method to display text in labLabel letter by letter
+  private void displayLabTextSlowly(String text) {
+    final StringBuilder displayedText = new StringBuilder();
+    labLabel.setText(""); // Clear the label initially
+
+    Timeline timeline = new Timeline();
+    for (int i = 0; i < text.length(); i++) {
+      final int index = i;
+      KeyFrame keyFrame = new KeyFrame(
+          Duration.millis(100 * index), // Delay each letter by 100ms
+          e -> {
+            displayedText.append(text.charAt(index)); // Append the current letter
+            labLabel.setText(displayedText.toString()); // Update the label with the new text
+          });
+      timeline.getKeyFrames().add(keyFrame);
+    }
+
+    // After the text has been fully displayed, hide the pane after 3 seconds
+    timeline.setOnFinished(e -> hideLabPaneAfterDelay());
+    timeline.play();
+  }
+
+  // Method to hide the labPane after 3 seconds
+  private void hideLabPaneAfterDelay() {
+    Timeline hidePaneTimeline = new Timeline(
+        new KeyFrame(
+            Duration.seconds(3), // Wait for 3 seconds
+            ev -> labPane.setVisible(false) // Hide the pane
+        ));
+    hidePaneTimeline.play();
   }
 
 }
