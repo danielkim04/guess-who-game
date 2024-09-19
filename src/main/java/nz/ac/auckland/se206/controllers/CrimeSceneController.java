@@ -141,6 +141,10 @@ public class CrimeSceneController implements Controller {
     moneyCollectedPane.setVisible(false);
     correct.setVisible(false);
 
+    hairSamplePane.toFront();
+    fingerprintSamplePane.toFront();
+
+    
     rectClueBag.setOnMouseEntered(event -> rectClueBag.setCursor(javafx.scene.Cursor.HAND));
     rectClueBag.setOnMouseExited(event -> rectClueBag.setCursor(javafx.scene.Cursor.DEFAULT));
 
