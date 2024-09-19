@@ -127,10 +127,6 @@ public class App extends Application {
     context.setState(gameState);
   }
 
-  public static GameStateContext getGameState() {
-    return context;
-  }
-
   public static void resetAll() {
     // reset maps that retain the scenes and FXML loaders
     sceneMap.clear();
