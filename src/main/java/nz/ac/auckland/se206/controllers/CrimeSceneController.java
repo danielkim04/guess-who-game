@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -19,13 +20,14 @@ import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.classes.*;
+import nz.ac.auckland.se206.states.Investigating;
 
 /**
- * Controller class for the room view. Handles user interactions within the room
- * where the user can
+ * Controller class for the room view. Handles user interactions within the room where the user can
  * chat with customers and guess their profession.
  */
 public class CrimeSceneController implements Controller {
+
 
   @FXML
   private Rectangle rectClueBag;
@@ -129,6 +131,11 @@ public class CrimeSceneController implements Controller {
   private Pane labPane;
   @FXML
   private Label labLabel;
+  @FXML private MenuItem menuSuspectTwo;
+  @FXML private MenuItem menuSuspectThree;
+  @FXML private MenuItem menuSuspectOne;
+  @FXML private Button btnGuessNow;
+
 
   public static int moneyCollected = 0;
 
@@ -137,8 +144,7 @@ public class CrimeSceneController implements Controller {
   private double initialY;
 
   /**
-   * Initializes the room view. If it's the first time initialization, it will
-   * provide instructions
+   * Initializes the room view. If it's the first time initialization, it will provide instructions
    * via text-to-speech.
    */
   @FXML
@@ -224,15 +230,14 @@ public class CrimeSceneController implements Controller {
     // to be implemented
   }
 
-  /**
-   * Handles the guess button click event.
-   *
-   * @param event the action event triggered by clicking the guess button
-   * @throws IOException if there is an I/O error
-   */
   @FXML
-  private void handleGuessClick(ActionEvent event) throws IOException {
-    App.getContext().handleGuessClick();
+  private void handleGuessClick(ActionEvent event) {
+    if (App.getContext().getInvestigatingState() instanceof Investigating) {
+      Investigating state = (Investigating) App.getContext().getInvestigatingState();
+      state.handleGuessClick();
+    } else {
+      System.out.println("Warning! Not in Investigating state!!!");
+    }
   }
 
   @FXML
@@ -337,18 +342,21 @@ public class CrimeSceneController implements Controller {
     double blueLightOffsetX = 2; // No offset for blueLight
     double blueLightOffsetY = 0; // No offset for blueLight
 
-    paneBase.setOnMouseMoved(event -> {
-      // Set the dark ImageView's position
-      dark.setLayoutX(event.getSceneX() - (dark.getFitWidth() / 2) + darkOffsetX);
-      dark.setLayoutY(event.getSceneY() - (dark.getFitHeight() / 2) + darkOffsetY);
+    paneBase.setOnMouseMoved(
+        event -> {
+          // Set the dark ImageView's position
+          dark.setLayoutX(event.getSceneX() - (dark.getFitWidth() / 2) + darkOffsetX);
+          dark.setLayoutY(event.getSceneY() - (dark.getFitHeight() / 2) + darkOffsetY);
 
-      // Set the blueLight ImageView's position
-      blueLight.setLayoutX(event.getSceneX() - (blueLight.getFitWidth() / 2) + blueLightOffsetX);
-      blueLight.setLayoutY(event.getSceneY() - (blueLight.getFitHeight() / 2) + blueLightOffsetY);
+          // Set the blueLight ImageView's position
+          blueLight.setLayoutX(
+              event.getSceneX() - (blueLight.getFitWidth() / 2) + blueLightOffsetX);
+          blueLight.setLayoutY(
+              event.getSceneY() - (blueLight.getFitHeight() / 2) + blueLightOffsetY);
 
-      // Check for intersection between blueLight and fingerprint
-      checkFingerprintIntersection();
-    });
+          // Check for intersection between blueLight and fingerprint
+          checkFingerprintIntersection();
+        });
   }
 
   @FXML
@@ -373,12 +381,13 @@ public class CrimeSceneController implements Controller {
     Timeline timeline = new Timeline();
     for (int i = 0; i < text.length(); i++) {
       final int index = i;
-      KeyFrame keyFrame = new KeyFrame(
-          Duration.millis(100 * index), // Delay each letter by 100ms
-          e -> {
-            displayedText.append(text.charAt(index)); // Append the current letter
-            printLabel.setText(displayedText.toString()); // Update the label with the new text
-          });
+      KeyFrame keyFrame =
+          new KeyFrame(
+              Duration.millis(100 * index), // Delay each letter by 100ms
+              e -> {
+                displayedText.append(text.charAt(index)); // Append the current letter
+                printLabel.setText(displayedText.toString()); // Update the label with the new text
+              });
       timeline.getKeyFrames().add(keyFrame);
     }
 
@@ -389,11 +398,12 @@ public class CrimeSceneController implements Controller {
 
   // Method to hide the fingerCollectedPane after 3 seconds
   private void hideFingerprintPaneAfterDelay() {
-    Timeline hidePaneTimeline = new Timeline(
-        new KeyFrame(
-            Duration.seconds(3), // Wait for 3 seconds
-            ev -> fingerCollectedPane.setVisible(false) // Hide the pane
-        ));
+    Timeline hidePaneTimeline =
+        new Timeline(
+            new KeyFrame(
+                Duration.seconds(3), // Wait for 3 seconds
+                ev -> fingerCollectedPane.setVisible(false) // Hide the pane
+                ));
     hidePaneTimeline.play();
   }
 
@@ -466,23 +476,25 @@ public class CrimeSceneController implements Controller {
     Timeline timeline = new Timeline();
     for (int i = 0; i < text.length(); i++) {
       final int index = i;
-      KeyFrame keyFrame = new KeyFrame(
-          Duration.millis(100 * index), // Delay each letter by 100ms
-          e -> {
-            displayedText.append(text.charAt(index)); // Append the current letter
-            hairText.setText(displayedText.toString()); // Update the label with the new text
-          });
+      KeyFrame keyFrame =
+          new KeyFrame(
+              Duration.millis(100 * index), // Delay each letter by 100ms
+              e -> {
+                displayedText.append(text.charAt(index)); // Append the current letter
+                hairText.setText(displayedText.toString()); // Update the label with the new text
+              });
       timeline.getKeyFrames().add(keyFrame);
     }
 
     // After the text has been fully displayed, hide the pane after 3 seconds
     timeline.setOnFinished(
         e -> {
-          Timeline hidePaneTimeline = new Timeline(
-              new KeyFrame(
-                  Duration.seconds(3), // Wait for 3 seconds
-                  ev -> hairCollectedPane.setVisible(false) // Hide the pane
-          ));
+          Timeline hidePaneTimeline =
+              new Timeline(
+                  new KeyFrame(
+                      Duration.seconds(3), // Wait for 3 seconds
+                      ev -> hairCollectedPane.setVisible(false) // Hide the pane
+                      ));
           hidePaneTimeline.play();
         });
 
@@ -517,8 +529,8 @@ public class CrimeSceneController implements Controller {
     double hitboxY = blueLight.getLayoutY() + (blueLight.getFitHeight() - hitboxHeight) / 2;
 
     // Create a temporary rectangle representing the hitbox
-    javafx.geometry.Bounds blueLightHitbox = new javafx.geometry.BoundingBox(hitboxX, hitboxY, hitboxWidth,
-        hitboxHeight);
+    javafx.geometry.Bounds blueLightHitbox =
+        new javafx.geometry.BoundingBox(hitboxX, hitboxY, hitboxWidth, hitboxHeight);
 
     // Check if this smaller hitbox intersects with the fingerprint's bounds
     if (blueLightHitbox.intersects(fingerprint.getBoundsInParent())) {
@@ -529,6 +541,7 @@ public class CrimeSceneController implements Controller {
       fingerprint.setOpacity(0.0); // Fully hidden
     }
   }
+
 
   // Method to make the rectangle glow for 1 second
   private void makeRectangleGlow(Rectangle rect) {
@@ -585,6 +598,34 @@ public class CrimeSceneController implements Controller {
             ev -> labPane.setVisible(false) // Hide the pane
         ));
     hidePaneTimeline.play();
+  }
+
+
+  @FXML
+  private void toSuspectOne(ActionEvent event) {
+    try {
+      App.setRoot("SuspectOne");
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+  @FXML
+  private void toSuspectTwo(ActionEvent event) {
+    try {
+      App.setRoot("SuspectTwo");
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+  @FXML
+  private void toSuspectThree(ActionEvent event) {
+    try {
+      App.setRoot("SuspectThree");
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 
 }
