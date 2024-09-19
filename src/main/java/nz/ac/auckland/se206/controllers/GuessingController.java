@@ -97,16 +97,16 @@ public class GuessingController implements Controller {
     AnchorPane clickedSuspect = (AnchorPane) event.getSource();
     switch (clickedSuspect.getId()) {
       case "paneSuspectOne":
-        suspectName = "winner";
-        filename = "man 1.png"; // modify filename
+        suspectName = "Mark";
+        filename = "Suspect_1_Cropped.png"; // modify filename
         break;
       case "paneSuspectTwo":
-        suspectName = "bartender";
-        filename = "man 1.png"; // modify filename
+        suspectName = "Susan";
+        filename = "Suspect_3_Cropped.png"; // modify filename
         break;
       case "paneSuspectThree":
-        suspectName = "gambler";
-        filename = "man 1.png"; // modify filename
+        suspectName = "Anthony";
+        filename = "Suspect_2_Cropped.png"; // modify filename
         break;
     }
     transitionToExplanation(getClass().getResource("/images/" + filename));
@@ -134,8 +134,8 @@ public class GuessingController implements Controller {
       ApiProxyConfig config = ApiProxyConfig.readConfig();
       chatCompletionRequest = new ChatCompletionRequest(config)
           .setN(1)
-          .setTemperature(0.2)
-          .setTopP(0.5)
+          .setTemperature(0.1)
+          .setTopP(0.9)
           .setMaxTokens(100);
       chatCompletionRequest.addMessage(new ChatMessage("system", loadSystemPrompt()));
     } catch (ApiProxyException | URISyntaxException | IOException e) { // ??????????
