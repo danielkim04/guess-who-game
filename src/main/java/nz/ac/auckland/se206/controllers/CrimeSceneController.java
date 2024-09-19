@@ -7,12 +7,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
@@ -25,45 +28,114 @@ import nz.ac.auckland.se206.states.Investigating;
  */
 public class CrimeSceneController implements Controller {
 
-  @FXML private Rectangle rectClueBag;
-  @FXML private Rectangle rectClueBook;
-  @FXML private Rectangle rectClueNote;
-  @FXML private Rectangle BagCollectionRect; // This is the collection rectangle for money
-  @FXML private Label labelTimer;
-  @FXML private Label MoneyCounter; // Label to display the money collected
-  @FXML private AnchorPane paneNoteWindow;
-  @FXML private AnchorPane paneOpenChat;
-  @FXML private AnchorPane bagInteractPane;
-  @FXML private AnchorPane noteInteractPane;
-  @FXML private Pane paneBase;
-  @FXML private Pane lightPane;
-  @FXML private Pane fingerCollectedPane;
-  @FXML private Pane cashbookPane;
-  @FXML private Pane hairCollectedPane; // Pane that becomes visible when hair is collected
-  @FXML private Label hairText; // Label for hair collection message
-  @FXML private Label printLabel;
-  @FXML private Button BagExit;
-  @FXML private Button cashbookExit;
-  @FXML private ImageView Money1;
-  @FXML private ImageView Money2;
-  @FXML private ImageView Money3;
-  @FXML private ImageView Money4;
-  @FXML private ImageView Money5;
-  @FXML private ImageView Money6;
-  @FXML private ImageView Money7;
-  @FXML private ImageView Money8;
-  @FXML private ImageView Money9;
-  @FXML private ImageView Money10;
-  @FXML private ImageView Hair;
-  @FXML private ImageView dark;
-  @FXML private Button NoteExit;
-  @FXML private Button toggleLight;
-  @FXML private ImageView blueLight;
-  @FXML private ImageView fingerprint;
+
+  @FXML
+  private Rectangle rectClueBag;
+  @FXML
+  private Rectangle rectClueBook;
+  @FXML
+  private Rectangle rectClueNote;
+  @FXML
+  private Rectangle BagCollectionRect; // This is the collection rectangle for money
+  @FXML
+  private Label labelTimer;
+  @FXML
+  private Label MoneyCounter; // Label to display the money collected
+  @FXML
+  private AnchorPane paneNoteWindow;
+  @FXML
+  private Rectangle rectCloseNotes;
+  @FXML
+  private Rectangle glow;
+  @FXML
+  private AnchorPane paneOpenChat;
+  @FXML
+  private AnchorPane bagInteractPane;
+  @FXML
+  private AnchorPane noteInteractPane;
+  @FXML
+  private Pane paneBase;
+  @FXML
+  private Pane hairSamplePane;
+  @FXML
+  private Pane fingerprintSamplePane;
+  @FXML
+  private Pane moneyCollectedPane;
+  @FXML
+  private Pane lightPane;
+  @FXML
+  private Pane fingerCollectedPane;
+  @FXML
+  private Pane cashbookPane;
+  @FXML
+  private Pane hairCollectedPane; // Pane that becomes visible when hair is collected
+  @FXML
+  private Label hairText; // Label for hair collection message
+  @FXML
+  private Label printLabel;
+  @FXML
+  private ImageView imgMap;
+  @FXML
+  private Button hairTest;
+  @FXML
+  private Button fingerprintTest;
+  @FXML
+  private Button BagExit;
+  @FXML
+  private Button cashbookExit;
+  @FXML
+  private Button checkBalance;
+  @FXML
+  private ImageView correct;
+  @FXML
+  private ImageView Money1;
+  @FXML
+  private ImageView Money2;
+  @FXML
+  private ImageView Money3;
+  @FXML
+  private ImageView Money4;
+  @FXML
+  private ImageView Money5;
+  @FXML
+  private ImageView Money6;
+  @FXML
+  private ImageView Money7;
+  @FXML
+  private ImageView Money8;
+  @FXML
+  private ImageView Money9;
+  @FXML
+  private ImageView Money10;
+  @FXML
+  private ImageView Hair;
+  @FXML
+  private ImageView dark;
+  @FXML
+  private ImageView web1;
+  @FXML
+  private ImageView web2;
+  @FXML
+  private ImageView web3;
+  @FXML
+  private Button NoteExit;
+  @FXML
+  private Button toggleLight;
+  @FXML
+  private ImageView blueLight;
+  @FXML
+  private ImageView fingerprint;
+  @FXML
+  private TextArea balanceArea;
+  @FXML
+  private Pane labPane;
+  @FXML
+  private Label labLabel;
   @FXML private MenuItem menuSuspectTwo;
   @FXML private MenuItem menuSuspectThree;
   @FXML private MenuItem menuSuspectOne;
   @FXML private Button btnGuessNow;
+
 
   public static int moneyCollected = 0;
 
@@ -80,6 +152,24 @@ public class CrimeSceneController implements Controller {
     // Hide bagInteractPane and hairCollectedPane initially
     bagInteractPane.setVisible(false);
     hairCollectedPane.setVisible(false);
+    hairSamplePane.setVisible(false);
+    fingerprintSamplePane.setVisible(false);
+    moneyCollectedPane.setVisible(false);
+    correct.setVisible(false);
+
+    hairSamplePane.toFront();
+    fingerprintSamplePane.toFront();
+
+    rectClueBag.setOnMouseEntered(event -> rectClueBag.setCursor(javafx.scene.Cursor.HAND));
+    rectClueBag.setOnMouseExited(event -> rectClueBag.setCursor(javafx.scene.Cursor.DEFAULT));
+
+    // Change cursor when hovering over rectClueBook
+    rectClueBook.setOnMouseEntered(event -> rectClueBook.setCursor(javafx.scene.Cursor.HAND));
+    rectClueBook.setOnMouseExited(event -> rectClueBook.setCursor(javafx.scene.Cursor.DEFAULT));
+
+    // Change cursor when hovering over rectClueNote
+    rectClueNote.setOnMouseEntered(event -> rectClueNote.setCursor(javafx.scene.Cursor.HAND));
+    rectClueNote.setOnMouseExited(event -> rectClueNote.setCursor(javafx.scene.Cursor.DEFAULT));
 
     // Initialize money counter with zero
     updateMoneyCounter();
@@ -95,6 +185,11 @@ public class CrimeSceneController implements Controller {
     makeImageViewDraggable(Money8);
     makeImageViewDraggable(Money9);
     makeImageViewDraggable(Money10);
+
+    makeImageViewDraggable(web1);
+    makeImageViewDraggable(web2);
+    makeImageViewDraggable(web3);
+
     makeImageViewDraggable(Hair);
     enableBothLightsToFollowCursor();
     lightPane.setVisible(false);
@@ -142,6 +237,23 @@ public class CrimeSceneController implements Controller {
       state.handleGuessClick();
     } else {
       System.out.println("Warning! Not in Investigating state!!!");
+    }
+  }
+
+  @FXML
+  private void handleCheckBalanceClick(ActionEvent event) {
+    // Get the text from the balanceArea TextArea
+    String balanceText = balanceArea.getText();
+
+    // Check if the balance is "18000"
+    if (balanceText.trim().equals("18000")) {
+      // Action when balance is 18000, e.g., print a message
+      System.out.println("Balance is exactly 18000!");
+      correct.setVisible(true);
+    } else {
+      // Action when balance is not 18000
+      System.out.println("Balance is not 18000. Current balance: " + balanceText);
+      correct.setVisible(false);
     }
   }
 
@@ -205,6 +317,24 @@ public class CrimeSceneController implements Controller {
   }
 
   @FXML
+  private void handleHairTestClick(ActionEvent event) {
+    // Show the labPane
+    labPane.setVisible(true);
+
+    // Display message specific to the hair test
+    displayLabTextSlowly("Hair contains brown eumelanin and belongs to a male...");
+  }
+
+  @FXML
+  private void handleFingerprintTestClick(ActionEvent event) {
+    // Show the labPane
+    labPane.setVisible(true);
+
+    // Display message specific to the fingerprint test
+    displayLabTextSlowly("The fingerprint tested likely belongs to Anthony...");
+  }
+
+  @FXML
   private void enableBothLightsToFollowCursor() {
     // Define the offset values for both blueLight and dark
     double darkOffsetX = 24; // Move dark slightly to the right
@@ -233,9 +363,11 @@ public class CrimeSceneController implements Controller {
   private void handleFingerprintClick(MouseEvent event) {
     // Print a message to the console when the fingerprint is clicked
     System.out.println("Fingerprint image clicked");
+    makeRectangleGlow(glow);
 
     // Show the fingerCollectedPane when the fingerprint is clicked
     fingerCollectedPane.setVisible(true);
+    fingerprintSamplePane.setVisible(true);
 
     // Display "Fingerprint Collected!" slowly
     displayFingerprintTextSlowly("Fingerprint Collected, Sample must be tested in the lab!");
@@ -314,17 +446,23 @@ public class CrimeSceneController implements Controller {
       // If the dragged item is Hair, show the hairCollectedPane and animate the text
       if (draggedItem == Hair) {
         System.out.println("Hair collected! No money gained.");
+        makeRectangleGlow(glow);
+        hairSamplePane.setVisible(true);
         draggedItem.setVisible(false);
         hairCollectedPane.setVisible(true); // Show hairCollectedPane
 
         // Display the hairText slowly, letter by letter
         displayTextSlowly("Hair Collected, Sample must be tested in the lab!");
       } else {
-        // For other items (like money), hide the item and collect money
+        if (draggedItem != web1 && draggedItem != web2 && draggedItem != web3) {
+          // For other items (like money), hide the item and collect money
         draggedItem.setVisible(false);
+        moneyCollectedPane.setVisible(true);
         moneyCollected += 1000;
+        makeRectangleGlow(glow);
         updateMoneyCounter(); // Update the label when money is collected
         System.out.println(moneyCollected);
+        }
       }
     }
   }
@@ -404,6 +542,65 @@ public class CrimeSceneController implements Controller {
     }
   }
 
+
+  // Method to make the rectangle glow for 1 second
+  private void makeRectangleGlow(Rectangle rect) {
+    DropShadow dropShadow = new DropShadow();
+    dropShadow.setColor(Color.YELLOW); // Set the glow color (adjust as needed)
+    dropShadow.setRadius(20); // Set the initial glow radius
+
+    // Apply the drop shadow effect to the rectangle
+    rect.setEffect(dropShadow);
+
+    // Create a timeline to animate the glow for 1 second (pulsing effect)
+    Timeline glowTimeline = new Timeline(
+        new KeyFrame(Duration.seconds(0), e -> dropShadow.setRadius(10)),
+        new KeyFrame(Duration.seconds(0.5), e -> dropShadow.setRadius(20)),
+        new KeyFrame(Duration.seconds(1), e -> dropShadow.setRadius(10)));
+
+    // Ensure the timeline runs only once (for 1 second)
+    glowTimeline.setCycleCount(1);
+
+    // After the animation is finished, remove the glow effect
+    glowTimeline.setOnFinished(e -> rect.setEffect(null));
+
+    // Start the animation
+    glowTimeline.play();
+  }
+
+  // Method to display text in labLabel letter by letter
+  private void displayLabTextSlowly(String text) {
+    final StringBuilder displayedText = new StringBuilder();
+    labLabel.setText(""); // Clear the label initially
+
+    Timeline timeline = new Timeline();
+    for (int i = 0; i < text.length(); i++) {
+      final int index = i;
+      KeyFrame keyFrame = new KeyFrame(
+          Duration.millis(100 * index), // Delay each letter by 100ms
+          e -> {
+            displayedText.append(text.charAt(index)); // Append the current letter
+            labLabel.setText(displayedText.toString()); // Update the label with the new text
+          });
+      timeline.getKeyFrames().add(keyFrame);
+    }
+
+    // After the text has been fully displayed, hide the pane after 3 seconds
+    timeline.setOnFinished(e -> hideLabPaneAfterDelay());
+    timeline.play();
+  }
+
+  // Method to hide the labPane after 3 seconds
+  private void hideLabPaneAfterDelay() {
+    Timeline hidePaneTimeline = new Timeline(
+        new KeyFrame(
+            Duration.seconds(3), // Wait for 3 seconds
+            ev -> labPane.setVisible(false) // Hide the pane
+        ));
+    hidePaneTimeline.play();
+  }
+
+
   @FXML
   private void toSuspectOne(ActionEvent event) {
     try {
@@ -430,4 +627,5 @@ public class CrimeSceneController implements Controller {
       e.printStackTrace();
     }
   }
+
 }
