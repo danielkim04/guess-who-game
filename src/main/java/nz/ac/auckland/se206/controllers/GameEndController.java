@@ -1,5 +1,9 @@
 package nz.ac.auckland.se206.controllers;
 
+import nz.ac.auckland.se206.App;
+import nz.ac.auckland.se206.classes.Controller;
+import nz.ac.auckland.se206.prompts.PromptEngineering;
+
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -8,21 +12,26 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import nz.ac.auckland.se206.App;
-import nz.ac.auckland.se206.classes.Controller;
-import nz.ac.auckland.se206.prompts.PromptEngineering;
 
 public class GameEndController implements Controller {
 
-  @FXML private Label labelVictory;
-  @FXML private Label labelDefeat;
-  @FXML private Label labelExplain;
-  @FXML private ImageView imageCriminal;
-  @FXML private Button buttonPlayAgain;
-  @FXML private ImageView imgLoadingWheel;
+  @FXML
+  private Label labelVictory;
+  @FXML
+  private Label labelDefeat;
+  @FXML
+  private Label labelExplain;
+  @FXML
+  private ImageView imageCriminal;
+  @FXML
+  private Button buttonPlayAgain;
+  @FXML
+  private ImageView imgLoadingWheel;
 
   @FXML
-  public void initalize() {}
+  public void initialize() {
+    // Initialization code if necessary
+  }
 
   @FXML
   public void playAgainClick() {
@@ -35,7 +44,7 @@ public class GameEndController implements Controller {
 
   @Override
   public void onNewChat(String chat) {
-    // process gpt response and display result
+    // process GPT response and display result
     showLoadingWheel(false);
     String responseLowerCase = chat.toLowerCase();
     if (responseLowerCase.contains("incorrect")) {
@@ -46,7 +55,7 @@ public class GameEndController implements Controller {
       System.out.println("Warning! Unexpected response ... ");
     }
 
-    // displays gpt evaluation of the user's explanation
+    // displays GPT evaluation of the user's explanation
     labelExplain.setText(chat);
   }
 
@@ -55,8 +64,7 @@ public class GameEndController implements Controller {
     String explanation = suspectName + " is not the thief.\n"; // first line
     try {
       // get text from file
-      URL resourceUrl =
-          PromptEngineering.class.getClassLoader().getResource("prompts/wrongGuess.txt");
+      URL resourceUrl = PromptEngineering.class.getClassLoader().getResource("prompts/wrongGuess.txt");
       String textToAppend = new String(Files.readAllBytes(Paths.get(resourceUrl.toURI())));
       explanation += textToAppend;
     } catch (Exception e) {

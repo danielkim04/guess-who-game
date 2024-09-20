@@ -36,57 +36,57 @@
             </ImageView>
             <Rectangle fx:id="BagCollectionRect" arcHeight="5.0" arcWidth="5.0" fill="#393737" height="321.0" layoutY="79.0" stroke="#008663" strokeType="INSIDE" width="112.0" />
             <!-- Restored ImageViews for cash images -->
-            <ImageView fx:id="Money1" fitHeight="31.0" fitWidth="74.0" layoutX="404.0" layoutY="172.0" pickOnBounds="true" preserveRatio="true" rotate="13.6">
+            <ImageView fx:id="moneyOne" fitHeight="31.0" fitWidth="74.0" layoutX="404.0" layoutY="172.0" pickOnBounds="true" preserveRatio="true" rotate="13.6">
                <image>
                   <Image url="@../images/cash2.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="Money2" fitHeight="31.0" fitWidth="74.0" layoutX="416.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true" rotate="-61.6">
+            <ImageView fx:id="moneyTwo" fitHeight="31.0" fitWidth="74.0" layoutX="416.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true" rotate="-61.6">
                <image>
                   <Image url="@../images/cash2.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="Money3" fitHeight="31.0" fitWidth="74.0" layoutX="373.0" layoutY="228.0" pickOnBounds="true" preserveRatio="true" rotate="-32.3">
+            <ImageView fx:id="moneyThree" fitHeight="31.0" fitWidth="74.0" layoutX="373.0" layoutY="228.0" pickOnBounds="true" preserveRatio="true" rotate="-32.3">
                <image>
                   <Image url="@../images/cash2.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="Money4" fitHeight="31.0" fitWidth="74.0" layoutX="394.0" layoutY="238.0" pickOnBounds="true" preserveRatio="true" rotate="-51.2">
+            <ImageView fx:id="moneyFour" fitHeight="31.0" fitWidth="74.0" layoutX="394.0" layoutY="238.0" pickOnBounds="true" preserveRatio="true" rotate="-51.2">
                <image>
                   <Image url="@../images/cash2.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="Money5" fitHeight="31.0" fitWidth="74.0" layoutX="379.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true" rotate="-38.5">
+            <ImageView fx:id="moneyFive" fitHeight="31.0" fitWidth="74.0" layoutX="379.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true" rotate="-38.5">
                <image>
                   <Image url="@../images/cash2.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="Money6" fitHeight="31.0" fitWidth="74.0" layoutX="358.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true" rotate="-39.4">
+            <ImageView fx:id="moneySix" fitHeight="31.0" fitWidth="74.0" layoutX="358.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true" rotate="-39.4">
                <image>
                   <Image url="@../images/cash2.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="Hair" fitHeight="72.0" fitWidth="36.0" layoutX="425.0" layoutY="215.0" pickOnBounds="true" preserveRatio="true" rotate="62.2">
+            <ImageView fx:id="hair" fitHeight="72.0" fitWidth="36.0" layoutX="425.0" layoutY="215.0" pickOnBounds="true" preserveRatio="true" rotate="62.2">
                <image>
                   <Image url="@../images/hair2.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="Money7" fitHeight="31.0" fitWidth="74.0" layoutX="339.0" layoutY="260.0" pickOnBounds="true" preserveRatio="true" rotate="18.4">
+            <ImageView fx:id="moneySeven" fitHeight="31.0" fitWidth="74.0" layoutX="339.0" layoutY="260.0" pickOnBounds="true" preserveRatio="true" rotate="18.4">
                <image>
                   <Image url="@../images/cash2.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="Money8" fitHeight="31.0" fitWidth="74.0" layoutX="330.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true" rotate="22.4">
+            <ImageView fx:id="moneyEight" fitHeight="31.0" fitWidth="74.0" layoutX="330.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true" rotate="22.4">
                <image>
                   <Image url="@../images/cash2.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="Money9" fitHeight="31.0" fitWidth="74.0" layoutX="315.0" layoutY="237.0" pickOnBounds="true" preserveRatio="true" rotate="-20.4">
+            <ImageView fx:id="moneyNine" fitHeight="31.0" fitWidth="74.0" layoutX="315.0" layoutY="237.0" pickOnBounds="true" preserveRatio="true" rotate="-20.4">
                <image>
                   <Image url="@../images/cash2.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="Money10" fitHeight="31.0" fitWidth="74.0" layoutX="373.0" layoutY="229.0" pickOnBounds="true" preserveRatio="true" rotate="-30.2">
+            <ImageView fx:id="moneyTen" fitHeight="31.0" fitWidth="74.0" layoutX="373.0" layoutY="229.0" pickOnBounds="true" preserveRatio="true" rotate="-30.2">
                <image>
                   <Image url="@../images/cash2.png" />
                </image>
@@ -101,8 +101,8 @@
                   <Label fx:id="hairText" layoutX="170.0" layoutY="140.0" stylesheets="@../css/style.css" text="Label" />
                </children>
             </AnchorPane>
-            <Label fx:id="MoneyCounter" layoutX="5.0" layoutY="90.0" prefHeight="65.0" prefWidth="97.0" stylesheets="@../css/style.css" text="Money Collected: XXXXX " wrapText="true" />
-            <Button fx:id="BagExit" layoutX="10.0" layoutY="360.0" mnemonicParsing="false" onAction="#handleBagExitClick" text="Exit" />
+            <Label fx:id="moneyCounter" layoutX="5.0" layoutY="90.0" prefHeight="65.0" prefWidth="97.0" stylesheets="@../css/style.css" text="Money Collected: XXXXX " wrapText="true" />
+            <Button fx:id="bagExit" layoutX="10.0" layoutY="360.0" mnemonicParsing="false" onAction="#handleBagExitClick" text="Exit" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="noteInteractPane" prefHeight="400.0" prefWidth="1073.0" visible="false">
@@ -147,7 +147,7 @@
             </AnchorPane>
             <Rectangle fx:id="BagCollectionRect1" arcHeight="5.0" arcWidth="5.0" fill="#393737" height="321.0" layoutY="79.0" stroke="#008663" strokeType="INSIDE" width="112.0" />
             <Button fx:id="toggleLight" layoutX="10.0" layoutY="100.0" mnemonicParsing="false" onAction="#handleToggleLightClick" text="Toggle Light" />
-            <Button fx:id="NoteExit" layoutX="10.0" layoutY="360.0" mnemonicParsing="false" onAction="#handleNoteExit" text="Exit" />
+            <Button fx:id="noteExit" layoutX="10.0" layoutY="360.0" mnemonicParsing="false" onAction="#handleNoteExit" text="Exit" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="cashbookPane" prefHeight="400.0" prefWidth="676.0" visible="false">
@@ -262,7 +262,7 @@
          </children>
       </AnchorPane>
 
-      <AnchorPane fx:id="paneOpenChat" layoutX="681.0" layoutY="185.0" onMouseClicked="#handleOpenButtonClick" prefHeight="97.0" prefWidth="21.0">
+      <AnchorPane fx:id="paneOpenChat" layoutX="681.0" layoutY="185.0" onMouseClicked="#onHandleOpenButtonClick" prefHeight="97.0" prefWidth="21.0">
          <children>
             <Rectangle fx:id="glow" arcHeight="20.0" arcWidth="20.0" fill="#adadadeb" height="110.0" stroke="TRANSPARENT" strokeType="INSIDE" width="36.0" />
             <Label alignment="CENTER" layoutX="4.0" layoutY="37.0" prefHeight="23.0" prefWidth="18.0" rotate="-90.0" text="^" textAlignment="CENTER" textFill="WHITE">
