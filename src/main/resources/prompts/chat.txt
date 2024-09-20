@@ -1,9 +1,11 @@
-In order for the explanation to be considered correct, the player must reference at least three of the following pieces of evidence:
-Anthony had a long-standing rivalry with Mark.
-Anthony knew about the contents of the bag, which was cash.
-The bag was left unattended, giving Anthony the perfect opportunity to steal some of it, especially because he knew the bag contained cash.
-Susan testified that Anthony was visibly annoyed when Mark showed off his winnings.
-A hair found in the bag matches a male with brown hair (which matches Anthony's description).
-A note, with Anthony's fingerprint on it, shows that Anthony was annoyed by Mark's gloating.
-Respond with either "Correct" or "Incorrect", followed by an explanation of why the guess is correct or incorrect, referencing the player's input. If the player did not provide enough evidence to support their guess (at least three pieces), the answer should be incorrect. Explain which key pieces of evidence were missing if necessary.
+The user's answer does not have to be word for word. For the guess to be considered correct, user must mention at least three pieces of evidence. Consider each of these numbered pieces of evidence as a separate point that can be referenced in the player's explanation.:
+"Anthony had a long-standing rivalry with Mark."
+"Anthony knew about the contents of the bag, which was cash."
+"The bag was left unattended, giving Anthony the perfect opportunity to steal some of it, especially because he knew the bag contained cash."
+"Susan testified that Anthony was visibly annoyed when Mark showed off his winnings."
+"A hair found in the bag matches a male with brown hair (which matches Anthony's description)."
+"A note, with Anthony's fingerprint on it, shows that Anthony was annoyed by Mark's gloating."
+
+Respond with either "Correct" or "Incorrect", followed by an explanation of why the guess is correct or incorrect, referencing the player's input. If the player did not provide at least three pieces of evidence to support their guess, the answer should be incorrect. Explain which key pieces of evidence were missing if necessary.
+Do not directly quote the requirement for three pieces of evidence in the response.
 Limit response to three sentences.
