@@ -1,9 +1,5 @@
 package nz.ac.auckland.se206.classes;
 
-import nz.ac.auckland.se206.App;
-import nz.ac.auckland.se206.prompts.PromptEngineering;
-import nz.ac.auckland.se206.speech.TextToSpeech;
-
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -23,6 +19,9 @@ import nz.ac.auckland.apiproxy.chat.openai.ChatMessage;
 import nz.ac.auckland.apiproxy.chat.openai.Choice;
 import nz.ac.auckland.apiproxy.config.ApiProxyConfig;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
+import nz.ac.auckland.se206.App;
+import nz.ac.auckland.se206.prompts.PromptEngineering;
+import nz.ac.auckland.se206.speech.TextToSpeech;
 
 public class Suspect {
 

@@ -12,7 +12,7 @@ public class MenuController implements Controller {
 
   @FXML private Rectangle StartRectangle;
 
-  @FXML private Label StartLabel; // Reference to StartLabel
+  @FXML private Label labelStart; // Reference to StartLabel
 
   // Called after FXML file has been loaded
   @FXML
@@ -24,7 +24,7 @@ public class MenuController implements Controller {
       System.out.println("StartRectangle is initialized.");
     }
 
-    if (StartLabel != null) {
+    if (labelStart != null) {
       System.out.println("StartLabel is initialized.");
     }
     App.setGameState(App.getContext().getGameStartedState());
