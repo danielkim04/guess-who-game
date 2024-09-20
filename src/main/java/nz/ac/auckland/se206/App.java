@@ -19,8 +19,7 @@ import nz.ac.auckland.se206.states.GameState;
 import nz.ac.auckland.se206.states.Investigating;
 
 /**
- * This is the entry point of the JavaFX application. This class initializes and
- * runs the JavaFX
+ * This is the entry point of the JavaFX application. This class initializes and runs the JavaFX
  * application.
  */
 public class App extends Application {
@@ -28,7 +27,8 @@ public class App extends Application {
   private static Scene scene;
   private static GameStateContext context = new GameStateContext();
   private static FXMLLoader fxmlHandler;
-  private static Map<String, Parent> sceneMap = new HashMap<>(); // stores the scenes that have been initialised
+  private static Map<String, Parent> sceneMap =
+      new HashMap<>(); // stores the scenes that have been initialised
   private static Map<String, FXMLLoader> fxmlLoaderMap = new HashMap<>(); // stores the FXML loaders
   private static Map<String, Suspect> suspectMap = new HashMap<>();
   private static Map<MenuItem, String> locationMap = new HashMap<>();
@@ -66,8 +66,7 @@ public class App extends Application {
   }
 
   /**
-   * Loads the FXML file and returns the associated node. The method expects that
-   * the file is
+   * Loads the FXML file and returns the associated node. The method expects that the file is
    * located in "src/main/resources/fxml".
    *
    * @param fxml the name of the FXML file (without extension)
@@ -128,12 +127,10 @@ public class App extends Application {
   }
 
   /**
-   * This method is invoked when the application starts. It loads and shows the
-   * "room" scene.
+   * This method is invoked when the application starts. It loads and shows the "room" scene.
    *
    * @param stage the primary stage of the application
-   * @throws IOException if the "src/main/resources/fxml/room.fxml" file is not
-   *                     found
+   * @throws IOException if the "src/main/resources/fxml/room.fxml" file is not found
    */
   @Override
   public void start(final Stage stage) throws IOException {

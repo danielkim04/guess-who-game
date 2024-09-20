@@ -1,7 +1,6 @@
 package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException;
-
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -14,7 +13,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.util.Duration;
-
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.classes.Controller;
 import nz.ac.auckland.se206.classes.Suspect;
@@ -67,7 +65,7 @@ public class SuspectController implements Controller {
   }
 
   @FXML
-  public void onSendMessage() {
+  private void onSendMessage() {
     String message = txtMessage.getText().trim();
     if (message.isEmpty()) {
       return;

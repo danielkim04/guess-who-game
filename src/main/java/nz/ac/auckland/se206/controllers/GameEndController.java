@@ -3,30 +3,22 @@ package nz.ac.auckland.se206.controllers;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.classes.Controller;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 
 public class GameEndController implements Controller {
 
-  @FXML
-  private Label labelVictory;
-  @FXML
-  private Label labelDefeat;
-  @FXML
-  private Label labelExplain;
-  @FXML
-  private ImageView imageCriminal;
-  @FXML
-  private Button buttonPlayAgain;
-  @FXML
-  private ImageView imgLoadingWheel;
+  @FXML private Label labelVictory;
+  @FXML private Label labelDefeat;
+  @FXML private Label labelExplain;
+  @FXML private ImageView imageCriminal;
+  @FXML private Button buttonPlayAgain;
+  @FXML private ImageView imgLoadingWheel;
 
   @FXML
   public void initialize() {
@@ -39,7 +31,7 @@ public class GameEndController implements Controller {
   }
 
   @FXML
-  public void onPlayAgain() {
+  private void onPlayAgain() {
     App.getContext().getGameOverState().nextState();
   }
 
@@ -65,7 +57,8 @@ public class GameEndController implements Controller {
     String explanation = suspectName + " is not the thief.\n"; // first line
     try {
       // get text from file
-      URL resourceUrl = PromptEngineering.class.getClassLoader().getResource("prompts/wrongGuess.txt");
+      URL resourceUrl =
+          PromptEngineering.class.getClassLoader().getResource("prompts/wrongGuess.txt");
       String textToAppend = new String(Files.readAllBytes(Paths.get(resourceUrl.toURI())));
       explanation += textToAppend;
     } catch (Exception e) {
