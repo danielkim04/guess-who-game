@@ -102,7 +102,7 @@
                </children>
             </AnchorPane>
             <Label fx:id="moneyCounter" layoutX="5.0" layoutY="90.0" prefHeight="65.0" prefWidth="97.0" stylesheets="@../css/style.css" text="Money Collected: XXXXX " wrapText="true" />
-            <Button fx:id="bagExit" layoutX="10.0" layoutY="360.0" mnemonicParsing="false" onAction="#handleBagExitClick" text="Exit" />
+            <Button fx:id="bagExit" layoutX="10.0" layoutY="360.0" mnemonicParsing="false" onAction="#onBagExit" text="Exit" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="noteInteractPane" prefHeight="400.0" prefWidth="1073.0" visible="false">
@@ -146,8 +146,8 @@
                </children>
             </AnchorPane>
             <Rectangle fx:id="BagCollectionRect1" arcHeight="5.0" arcWidth="5.0" fill="#393737" height="321.0" layoutY="79.0" stroke="#008663" strokeType="INSIDE" width="112.0" />
-            <Button fx:id="toggleLight" layoutX="10.0" layoutY="100.0" mnemonicParsing="false" onAction="#handleToggleLightClick" text="Toggle Light" />
-            <Button fx:id="noteExit" layoutX="10.0" layoutY="360.0" mnemonicParsing="false" onAction="#handleNoteExit" text="Exit" />
+            <Button fx:id="toggleLight" layoutX="10.0" layoutY="100.0" mnemonicParsing="false" onAction="#onToggleLight" text="Toggle Light" />
+            <Button fx:id="noteExit" layoutX="10.0" layoutY="360.0" mnemonicParsing="false" onAction="#onNoteExit" text="Exit" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="cashbookPane" prefHeight="400.0" prefWidth="676.0" visible="false">
@@ -204,7 +204,7 @@
                </font>
             </Label>
             <TextArea fx:id="balanceArea" layoutX="360.0" layoutY="336.0" prefHeight="32.0" prefWidth="72.0" />
-            <Button fx:id="checkBalance" layoutX="437.0" layoutY="343.0" mnemonicParsing="false" onAction="#handleCheckBalanceClick" text="Check" />
+            <Button fx:id="checkBalance" layoutX="437.0" layoutY="343.0" mnemonicParsing="false" onAction="#onCheckBalance" text="Check" />
             <Label layoutX="360.0" layoutY="319.0" prefHeight="16.0" prefWidth="125.0" text="Missing Balance?">
                <font>
                   <Font size="10.0" />
@@ -215,7 +215,7 @@
                   <Image url="@../images/correct.png" />
                </image>
             </ImageView>
-            <Button fx:id="cashbookExit" layoutX="186.0" layoutY="343.0" mnemonicParsing="false" onAction="#handlecashbookExit" text="Back" />
+            <Button fx:id="cashbookExit" layoutX="186.0" layoutY="343.0" mnemonicParsing="false" onAction="#onCashBookExit" text="Back" />
             <ImageView fx:id="web1" fitHeight="204.0" fitWidth="323.0" layoutX="250.0" layoutY="125.0" opacity="0.5" pickOnBounds="true" preserveRatio="true" rotate="72.2">
                <image>
                   <Image url="@../images/cobweb2.png" />
@@ -253,12 +253,12 @@
             </AnchorPane>
             <MenuButton layoutX="22.0" layoutY="27.0" mnemonicParsing="false" text="Locations">
                <items>
-                  <MenuItem fx:id="menuSuspectOne" mnemonicParsing="false" onAction="#toSuspectOne" text="Lobby" />
-                  <MenuItem fx:id="menuSuspectTwo" mnemonicParsing="false" onAction="#toSuspectTwo" text="Tables" />
-                  <MenuItem fx:id="menuSuspectThree" mnemonicParsing="false" onAction="#toSuspectThree" text="Bar" />
+                  <MenuItem fx:id="menuSuspectOne" mnemonicParsing="false" onAction="#onSuspectOne" text="Lobby" />
+                  <MenuItem fx:id="menuSuspectTwo" mnemonicParsing="false" onAction="#onSuspectTwo" text="Tables" />
+                  <MenuItem fx:id="menuSuspectThree" mnemonicParsing="false" onAction="#onSuspectThree" text="Bar" />
                </items>
             </MenuButton>
-            <Button fx:id="btnGuessNow" layoutX="138.0" layoutY="27.0" mnemonicParsing="false" onAction="#handleGuessClick" text="Guess Now" />
+            <Button fx:id="btnGuessNow" layoutX="138.0" layoutY="27.0" mnemonicParsing="false" onAction="#onGuessNow" text="Guess Now" />
          </children>
       </AnchorPane>
 
@@ -315,7 +315,7 @@
                                           <Font name="Dubai Bold" size="18.0" />
                                        </font>
                                     </Label>
-                                    <Button fx:id="hairTest" layoutX="110.0" layoutY="55.0" mnemonicParsing="false" onAction="#handleHairTestClick" text="Test Sample" />
+                                    <Button fx:id="hairTest" layoutX="110.0" layoutY="55.0" mnemonicParsing="false" onAction="#onTestHair" text="Test Sample" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane fx:id="fingerprintSamplePane" layoutY="96.0" prefHeight="80.0" prefWidth="200.0">
@@ -330,7 +330,7 @@
                                           <Font name="Dubai Bold" size="18.0" />
                                        </font>
                                     </Label>
-                                    <Button fx:id="fingerprintTest" layoutX="110.0" layoutY="50.0" mnemonicParsing="false" onAction="#handleFingerprintTestClick" text="Test Sample" />
+                                    <Button fx:id="fingerprintTest" layoutX="110.0" layoutY="50.0" mnemonicParsing="false" onAction="#onFingerprintTestClick" text="Test Sample" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane fx:id="moneyCollectedPane" prefHeight="200.0" prefWidth="200.0">

@@ -67,7 +67,7 @@ public class SuspectController implements Controller {
   }
 
   @FXML
-  public void sendMessage() {
+  public void onSendMessage() {
     String message = txtMessage.getText().trim();
     if (message.isEmpty()) {
       return;
@@ -87,16 +87,16 @@ public class SuspectController implements Controller {
   }
 
   @FXML
-  private void handleChangeArea(ActionEvent event) {
+  private void onChangeArea(ActionEvent event) {
     if (event.getSource() instanceof MenuItem) {
       App.changeSceneMap((MenuItem) event.getSource());
     }
   }
 
   @FXML
-  private void handleGuessClick(ActionEvent event) {
+  private void onGuessNow(ActionEvent event) {
     try {
-      App.getContext().getState().handleGuessClick();
+      App.getContext().getState().onGuessNow();
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -141,7 +141,7 @@ public class SuspectController implements Controller {
   @FXML
   public void onKeyReleased(KeyEvent event) {
     if (event.getCode().equals(KeyCode.ENTER)) {
-      sendMessage();
+      onSendMessage();
     }
   }
 

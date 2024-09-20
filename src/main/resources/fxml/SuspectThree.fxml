@@ -35,12 +35,12 @@
                 </Label>
             <MenuButton fx:id="menuButtonMap" layoutX="28.0" layoutY="26.0" mnemonicParsing="false" text="Locations">
                <items>
-                  <MenuItem fx:id="menuLobby" mnemonicParsing="false" onAction="#handleChangeArea" text="Lobby" />
-                  <MenuItem fx:id="menuTables" mnemonicParsing="false" onAction="#handleChangeArea" text="Tables" />
-                  <MenuItem fx:id="menuCrimeScene" mnemonicParsing="false" onAction="#handleChangeArea" text="Crime Scene" />
+                  <MenuItem fx:id="menuLobby" mnemonicParsing="false" onAction="#onChangeArea" text="Lobby" />
+                  <MenuItem fx:id="menuTables" mnemonicParsing="false" onAction="#onChangeArea" text="Tables" />
+                  <MenuItem fx:id="menuCrimeScene" mnemonicParsing="false" onAction="#onChangeArea" text="Crime Scene" />
                </items>
             </MenuButton>
-                <Button fx:id="btnGuessNow" layoutX="150.0" layoutY="27.0" mnemonicParsing="false" onAction="#handleGuessClick" text="Guess Now" />
+                <Button fx:id="btnGuessNow" layoutX="150.0" layoutY="27.0" mnemonicParsing="false" onAction="#onGuessNow" text="Guess Now" />
             </children>
         </AnchorPane>
         <AnchorPane layoutX="14.0" layoutY="182.0" prefHeight="204.0" prefWidth="685.0">
@@ -52,7 +52,7 @@
                 </ImageView>
                 <Label fx:id="labelResponse" layoutX="82.0" layoutY="69.0" prefHeight="62.0" prefWidth="514.0" text="Loading" wrapText="true" />
             <TextArea fx:id="txtMessage" layoutX="82.0" layoutY="135.0" onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="30.0" prefWidth="451.0" promptText="Type here to chat" wrapText="true" />
-                <Button fx:id="btnSend" layoutX="536.0" layoutY="138.0" mnemonicParsing="false" onAction="#sendMessage" prefHeight="31.0" prefWidth="62.0" text="Send" />
+                <Button fx:id="btnSend" layoutX="536.0" layoutY="138.0" mnemonicParsing="false" onAction="#onSendMessage" prefHeight="31.0" prefWidth="62.0" text="Send" />
                 <Label fx:id="labelName" alignment="CENTER" layoutX="62.0" layoutY="21.0" prefHeight="30.0" prefWidth="139.0" text="Susan" textAlignment="CENTER" textFill="WHITE">
                     <font>
                         <Font size="20.0" />

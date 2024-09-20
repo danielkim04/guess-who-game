@@ -56,7 +56,7 @@
             </ImageView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fdfdfd" height="321.0" layoutX="14.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" width="391.0" />
             <TextArea fx:id="txtaExplanation" layoutX="24.0" layoutY="88.0" prefHeight="265.0" prefWidth="370.0" wrapText="true" />
-            <Button fx:id="btnSend" layoutX="24.0" layoutY="353.0" mnemonicParsing="false" onAction="#sendExplanation" prefHeight="36.0" prefWidth="370.0" text="Send" />
+            <Button fx:id="btnSend" layoutX="24.0" layoutY="353.0" mnemonicParsing="false" onAction="#onSendExplanation" prefHeight="36.0" prefWidth="370.0" text="Send" />
             <ImageView fx:id="imgChosenSuspect" fitHeight="324.0" fitWidth="238.0" layoutX="442.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>

@@ -70,7 +70,7 @@ public class Investigating implements GameState {
   }
 
   @Override
-  public void handleGuessClick() {
+  public void onGuessNow() {
     for (Suspect currentSuspect : App.getSuspects()) {
       if (!currentSuspect.getInteracted()) {
         System.out.println("Interact will all suspects first");

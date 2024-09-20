@@ -49,7 +49,7 @@ public class GameStarted implements GameState {
    * @throws IOException if there is an I/O error
    */
   @Override
-  public void handleGuessClick() throws IOException {
+  public void onGuessNow() throws IOException {
     TextToSpeech.speak("Make a guess, click on the " + context.getProfessionToGuess());
     context.setState(context.getInvestigatingState());
   }

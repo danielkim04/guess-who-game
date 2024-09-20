@@ -38,7 +38,8 @@ public class GameEndController implements Controller {
     App.getContext().getGameOverState().nextState();
   }
 
-  public void handlePlayAgain() {
+  @FXML
+  public void onPlayAgain() {
     App.getContext().getGameOverState().nextState();
   }
 

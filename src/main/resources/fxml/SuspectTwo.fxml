@@ -35,12 +35,12 @@
                 </Label>
             <MenuButton fx:id="menuButtonMap" layoutX="32.0" layoutY="27.0" mnemonicParsing="false" text="Locations">
                <items>
-                  <MenuItem fx:id="menuLobby" mnemonicParsing="false" onAction="#handleChangeArea" text="Lobby" />
-                  <MenuItem fx:id="menuBar" mnemonicParsing="false" onAction="#handleChangeArea" text="Bar" />
-                  <MenuItem fx:id="menuCrimeScene" mnemonicParsing="false" onAction="#handleChangeArea" text="Crime Scene" />
+                  <MenuItem fx:id="menuLobby" mnemonicParsing="false" onAction="#onChangeArea" text="Lobby" />
+                  <MenuItem fx:id="menuBar" mnemonicParsing="false" onAction="#onChangeArea" text="Bar" />
+                  <MenuItem fx:id="menuCrimeScene" mnemonicParsing="false" onAction="#onChangeArea" text="Crime Scene" />
                </items>
             </MenuButton>
-                <Button fx:id="btnGuessNow" layoutX="150.0" layoutY="27.0" mnemonicParsing="false" onAction="#handleGuessClick" text="Guess Now" />
+                <Button fx:id="btnGuessNow" layoutX="150.0" layoutY="27.0" mnemonicParsing="false" onAction="#onGuessNow" text="Guess Now" />
             </children>
         </AnchorPane>
         <AnchorPane layoutX="10.0" layoutY="182.0" prefHeight="204.0" prefWidth="685.0">
@@ -51,7 +51,7 @@
                     </image>
                 </ImageView>
                 <Label fx:id="labelResponse" layoutX="82.0" layoutY="63.0" prefHeight="68.0" prefWidth="513.0" text="Loading" wrapText="true" />
-                <Button fx:id="btnSend" layoutX="536.0" layoutY="138.0" mnemonicParsing="false" onAction="#sendMessage" prefHeight="31.0" prefWidth="62.0" text="Send" />
+                <Button fx:id="btnSend" layoutX="536.0" layoutY="138.0" mnemonicParsing="false" onAction="#onSendMessage" prefHeight="31.0" prefWidth="62.0" text="Send" />
                 <Label alignment="CENTER" layoutX="63.0" layoutY="21.0" prefHeight="30.0" prefWidth="143.0" text="Anthony" textAlignment="CENTER" textFill="WHITE">
                     <font>
                         <Font size="20.0" />
