@@ -241,4 +241,8 @@ public class GuessingController implements Controller {
   public void onTimerUpdate(String time) {
     labelTimer.setText(time);
   }
+
+  @Override
+  public void unlockGuessBtn() {
+  }
 }

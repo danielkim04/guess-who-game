@@ -29,7 +29,6 @@ import nz.ac.auckland.se206.classes.NotesSyncManager;
  */
 public class CrimeSceneController implements Controller {
 
-
   private int moneyCollected = 0;
 
   @FXML
@@ -620,5 +619,10 @@ public class CrimeSceneController implements Controller {
     } catch (IOException e) {
       e.printStackTrace();
     }
+  }
+
+  @Override
+  public void unlockGuessBtn() {
+    btnGuessNow.setDisable(false);
   }
 }

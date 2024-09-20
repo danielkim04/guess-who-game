@@ -52,6 +52,19 @@ public class Investigating implements GameState {
 
   public void sceneChange() {
     App.getController().onTimerUpdate(this.timer.getTime().toString());
+    if (guessNowCheck()) {
+      App.getController().unlockGuessBtn();
+    }
+  }
+
+  private Boolean guessNowCheck() {
+    for (Suspect currentSuspect : App.getSuspects()) {
+      if (!currentSuspect.getInteracted()) {
+        System.out.println("Interact will all suspects first");
+        return (false);
+      }
+    }
+    return (true);
   }
 
   /**

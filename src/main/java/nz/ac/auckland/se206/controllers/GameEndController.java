@@ -96,4 +96,8 @@ public class GameEndController implements Controller {
     setWinOrLose(false);
     labelExplain.setText("Time's up! You failed to solve the case.");
   }
+
+  @Override
+  public void unlockGuessBtn() {
+  }
 }
