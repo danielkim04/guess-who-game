@@ -8,8 +8,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
+
 import javafx.scene.input.MouseEvent;
-import nz.ac.auckland.se206.states.*;
+import nz.ac.auckland.se206.states.GameStarted;
+import nz.ac.auckland.se206.states.Investigating;
+import nz.ac.auckland.se206.states.Guessing;
+import nz.ac.auckland.se206.states.GameOver;
+import nz.ac.auckland.se206.states.GameState;
 import org.yaml.snakeyaml.Yaml;
 
 /**

@@ -247,7 +247,7 @@ public class CrimeSceneController implements Controller {
   }
 
   @FXML
-  private void handleOpenButtonClick(MouseEvent event) throws IOException {
+  private void onHandleOpenButtonClick(MouseEvent event) throws IOException {
     System.out.println("Box opened");
     paneNoteWindow.setVisible(true);
   }

@@ -2,8 +2,7 @@ package nz.ac.auckland.se206.classes;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import javafx.scene.control.*;
+import javafx.scene.control.MenuItem;
 
 public class LocationMap {
   private static Map<MenuItem, String> locationMap = new HashMap<>();
@@ -13,6 +12,6 @@ public class LocationMap {
   }
 
   public static String getScene(MenuItem loc) {
-    return (locationMap.get(loc));
+    return locationMap.get(loc);
   }
 }
