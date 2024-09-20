@@ -88,7 +88,9 @@ public class App extends Application {
   }
 
   public static void resetAll() {
+    context = new GameStateContext();
     // reset maps that retain the scenes and FXML loaders
+    initialiseSuspectMap();
     sceneMap.clear();
     fxmlLoaderMap.clear();
   }
@@ -114,6 +116,16 @@ public class App extends Application {
     return (suspectMap.values());
   }
 
+  public static Controller getController() {
+    return (fxmlHandler.getController());
+  }
+
+  private static void initialiseSuspectMap() {
+    suspectMap.put("SuspectOne", new Suspect("Mark", "Suspect", "Suspect1.txt"));
+    suspectMap.put("SuspectTwo", new Suspect("Anthony", "Suspect", "Suspect2.txt"));
+    suspectMap.put("SuspectThree", new Suspect("Susan", "Suspect", "Suspect3.txt"));
+  }
+
   /**
    * This method is invoked when the application starts. It loads and shows the "room" scene.
    *
@@ -122,7 +134,7 @@ public class App extends Application {
    */
   @Override
   public void start(final Stage stage) throws IOException {
-    initaliseSuspectMap();
+    initialiseSuspectMap();
     Parent root = loadFxml("Menu");
     scene = new Scene(root);
     stage.setTitle("Pi Masters Detective Training");
@@ -134,15 +146,5 @@ public class App extends Application {
 
   private void handleWindowClose(WindowEvent event) {
     FreeTextToSpeech.deallocateSynthesizer();
-  }
-
-  public static Controller getController() {
-    return (fxmlHandler.getController());
-  }
-
-  private void initaliseSuspectMap() {
-    suspectMap.put("SuspectOne", new Suspect("Mark", "Suspect", "Suspect1.txt"));
-    suspectMap.put("SuspectTwo", new Suspect("Anthony", "Suspect", "Suspect2.txt"));
-    suspectMap.put("SuspectThree", new Suspect("Susan", "Suspect", "Suspect3.txt"));
   }
 }

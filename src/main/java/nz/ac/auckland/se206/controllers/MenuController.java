@@ -6,8 +6,9 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.App;
+import nz.ac.auckland.se206.classes.Controller;
 
-public class MenuController {
+public class MenuController implements Controller {
 
   @FXML private Rectangle StartRectangle;
 
@@ -51,5 +52,15 @@ public class MenuController {
     } catch (IOException e) {
       e.printStackTrace(); // Handle any exception that occurs during the scene change
     }
+  }
+
+  @Override
+  public void onNewChat(String chat) {
+    // irrelevant for this controller
+  }
+
+  @Override
+  public void onTimerUpdate(String time) {
+    // irrelevant for this controller
   }
 }

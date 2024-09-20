@@ -12,7 +12,7 @@ import nz.ac.auckland.se206.App;
  */
 public class GameOver implements GameState {
 
-  private final GameStateContext context;
+  private GameStateContext context;
 
   /**
    * Constructs a new GameOver state with the given game state context.
@@ -55,6 +55,8 @@ public class GameOver implements GameState {
   }
 
   public void nextState() {
+    App.resetAll();
+    context = App.getContext();
     context.setState(context.getGameStartedState());
     try {
       App.setRoot("Menu");
