@@ -20,6 +20,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.classes.Controller;
+import nz.ac.auckland.se206.classes.NotesSyncManager;
 
 /**
  * Controller class for the room view. Handles user interactions within the room
@@ -28,7 +29,8 @@ import nz.ac.auckland.se206.classes.Controller;
  */
 public class CrimeSceneController implements Controller {
 
-  public static int moneyCollected = 0;
+
+  private int moneyCollected = 0;
 
   @FXML
   private Rectangle rectClueBag;
@@ -129,6 +131,8 @@ public class CrimeSceneController implements Controller {
   @FXML
   private TextArea balanceArea;
   @FXML
+  private TextArea notesText;
+  @FXML
   private Pane labPane;
   @FXML
   private Label labLabel;
@@ -222,6 +226,12 @@ public class CrimeSceneController implements Controller {
   @FXML
   public void onKeyReleased(KeyEvent event) {
     System.out.println("Key " + event.getCode() + " released");
+  }
+
+  @FXML
+  private void onNotesTextChanged() {
+    // Update the notes in NotesSyncManager when the user edits the TextArea
+    NotesSyncManager.setNotesText(notesText.getText());
   }
 
   @FXML

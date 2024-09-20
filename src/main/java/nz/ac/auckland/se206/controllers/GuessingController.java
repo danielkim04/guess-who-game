@@ -26,6 +26,7 @@ import nz.ac.auckland.apiproxy.config.ApiProxyConfig;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.classes.Controller;
+import nz.ac.auckland.se206.classes.NotesSyncManager;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 import nz.ac.auckland.se206.states.Guessing;
 
@@ -47,6 +48,8 @@ public class GuessingController implements Controller {
   @FXML
   private TextArea txtaExplanation;
   @FXML
+  private TextArea guessingNotes;
+  @FXML
   private Button btnSend;
   @FXML
   private AnchorPane paneExplanation;
@@ -60,6 +63,20 @@ public class GuessingController implements Controller {
 
   @FXML
   public void initialize() {
+    // Load the synced notes from NotesSyncManager when the scene is initialized
+    guessingNotes.setText(NotesSyncManager.getNotesText());
+    refreshNotes();
+  }
+
+  @FXML
+  private void onGuessingNotesChanged() {
+    // Update the notes in NotesSyncManager when the user edits the TextArea
+    NotesSyncManager.setNotesText(guessingNotes.getText());
+  }
+
+  // Call this method when you want to manually refresh the notes
+  public void refreshNotes() {
+    guessingNotes.setText(NotesSyncManager.getNotesText());
   }
 
   /**
