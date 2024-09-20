@@ -90,6 +90,7 @@ public class App extends Application {
   public static void resetAll() {
     context = new GameStateContext();
     // reset maps that retain the scenes and FXML loaders
+    initialiseSuspectMap();
     sceneMap.clear();
     fxmlLoaderMap.clear();
   }
@@ -123,7 +124,7 @@ public class App extends Application {
    */
   @Override
   public void start(final Stage stage) throws IOException {
-    initaliseSuspectMap();
+    initialiseSuspectMap();
     Parent root = loadFxml("Menu");
     scene = new Scene(root);
     stage.setTitle("Pi Masters Detective Training");
@@ -141,7 +142,7 @@ public class App extends Application {
     return (fxmlHandler.getController());
   }
 
-  private void initaliseSuspectMap() {
+  private static void initialiseSuspectMap() {
     suspectMap.put("SuspectOne", new Suspect("Mark", "Suspect", "Suspect1.txt"));
     suspectMap.put("SuspectTwo", new Suspect("Anthony", "Suspect", "Suspect2.txt"));
     suspectMap.put("SuspectThree", new Suspect("Susan", "Suspect", "Suspect3.txt"));
