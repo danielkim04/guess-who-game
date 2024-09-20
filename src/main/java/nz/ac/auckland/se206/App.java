@@ -88,6 +88,7 @@ public class App extends Application {
   }
 
   public static void resetAll() {
+    context = new GameStateContext();
     // reset maps that retain the scenes and FXML loaders
     sceneMap.clear();
     fxmlLoaderMap.clear();

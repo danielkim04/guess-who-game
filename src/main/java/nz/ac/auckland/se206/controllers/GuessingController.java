@@ -184,6 +184,8 @@ public class GuessingController implements Controller {
       } catch (IOException e) {
         e.printStackTrace();
       }
+      Guessing guessingState = (Guessing) App.getContext().getGuessingState();
+      guessingState.getTimer().stop();
       GameEndController gameEndController = (GameEndController) App.getController();
       gameEndController.onWrongGuess(suspectName);
     }
