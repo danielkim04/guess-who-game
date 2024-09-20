@@ -1,10 +1,8 @@
 package nz.ac.auckland.se206.states;
 
 import java.io.IOException;
-
 import javafx.application.Platform;
 import javafx.scene.input.MouseEvent;
-
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.classes.Suspect;

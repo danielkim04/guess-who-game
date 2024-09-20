@@ -18,8 +18,7 @@ import nz.ac.auckland.se206.states.GameState;
 import org.yaml.snakeyaml.Yaml;
 
 /**
- * Context class for managing the state of the game. Handles transitions between
- * different game
+ * Context class for managing the state of the game. Handles transitions between different game
  * states and maintains game data such as the professions and rectangle IDs.
  */
 public class GameStateContext {
@@ -33,10 +32,7 @@ public class GameStateContext {
   private final GameOver gameOverState;
   private GameState gameState;
 
-  /**
-   * Constructs a new GameStateContext and initializes the game states and
-   * professions.
-   */
+  /** Constructs a new GameStateContext and initializes the game states and professions. */
   public GameStateContext() {
     gameStartedState = new GameStarted(this);
     investigatingState = new Investigating(this);
@@ -46,8 +42,8 @@ public class GameStateContext {
     gameState = gameStartedState; // Initial state
     Map<String, Object> obj = null;
     Yaml yaml = new Yaml();
-    try (InputStream inputStream = GameStateContext.class.getClassLoader()
-        .getResourceAsStream("data/professions.yaml")) {
+    try (InputStream inputStream =
+        GameStateContext.class.getClassLoader().getResourceAsStream("data/professions.yaml")) {
       if (inputStream == null) {
         throw new IllegalStateException("File not found!");
       }
@@ -73,7 +69,8 @@ public class GameStateContext {
     rectanglesToProfession.put("rectPerson3", randomProfessionsArray[2]);
 
     int randomNumber = random.nextInt(3);
-    rectIdToGuess = randomNumber == 0 ? "rectPerson1" : ((randomNumber == 1) ? "rectPerson2" : "rectPerson3");
+    rectIdToGuess =
+        randomNumber == 0 ? "rectPerson1" : ((randomNumber == 1) ? "rectPerson2" : "rectPerson3");
     professionToGuess = rectanglesToProfession.get(rectIdToGuess);
   }
 
@@ -158,7 +155,7 @@ public class GameStateContext {
   /**
    * Handles the event when a rectangle is clicked.
    *
-   * @param event       the mouse event triggered by clicking a rectangle
+   * @param event the mouse event triggered by clicking a rectangle
    * @param rectangleId the ID of the clicked rectangle
    * @throws IOException if there is an I/O error
    */
@@ -166,8 +163,7 @@ public class GameStateContext {
     gameState.handleRectangleClick(event, rectangleId);
   }
 
-  public void handleAnchorClick(MouseEvent event, String anchorId) {
-  }
+  public void handleAnchorClick(MouseEvent event, String anchorId) {}
 
   /**
    * Handles the event when the guess button is clicked.
