@@ -258,7 +258,7 @@
                   <MenuItem fx:id="menuSuspectThree" mnemonicParsing="false" onAction="#onSuspectThree" text="Bar" />
                </items>
             </MenuButton>
-            <Button fx:id="btnGuessNow" layoutX="138.0" layoutY="27.0" mnemonicParsing="false" onAction="#onGuessNow" text="Guess Now" />
+            <Button fx:id="btnGuessNow" disable="true" layoutX="138.0" layoutY="27.0" mnemonicParsing="false" onAction="#onGuessNow" text="Guess Now" />
          </children>
       </AnchorPane>
 
@@ -291,7 +291,7 @@
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="185.0" prefWidth="232.0">
                            <children>
-                              <TextArea fx:id="notesText" layoutY="3.0" prefHeight="280.0" prefWidth="232.0" promptText="Add notes here" onKeyTyped="#onNotesTextChanged" />
+                              <TextArea fx:id="notesText" layoutY="3.0" onKeyTyped="#onNotesTextChanged" prefHeight="280.0" prefWidth="232.0" promptText="Add notes here" />
                            </children>
                         </AnchorPane>
                   </content>

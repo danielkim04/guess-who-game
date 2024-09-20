@@ -44,7 +44,7 @@
                   <MenuItem fx:id="menuCrimeScene" mnemonicParsing="false" onAction="#onChangeArea" text="Crime Scene" />
               </items>
             </MenuButton>
-            <Button fx:id="btnGuessNow" layoutX="150.0" layoutY="27.0" mnemonicParsing="false" onAction="#onGuessNow" text="Guess Now" />
+            <Button fx:id="btnGuessNow" disable="true" layoutX="150.0" layoutY="27.0" mnemonicParsing="false" onAction="#onGuessNow" text="Guess Now" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="10.0" layoutY="182.0" prefHeight="204.0" prefWidth="685.0">
