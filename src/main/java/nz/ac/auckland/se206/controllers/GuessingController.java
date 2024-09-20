@@ -7,13 +7,13 @@ import java.util.HashMap;
 import java.util.Map;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -86,7 +86,6 @@ public class GuessingController implements Controller {
    */
   @FXML
   public void onKeyPressed(KeyEvent event) {
-    System.out.println("Key " + event.getCode() + " pressed");
   }
 
   /**
@@ -96,7 +95,9 @@ public class GuessingController implements Controller {
    */
   @FXML
   public void onKeyReleased(KeyEvent event) {
-    System.out.println("Key " + event.getCode() + " released");
+    if (event.getCode().equals(KeyCode.ENTER)) {
+      onSendExplanation();
+    }
   }
 
   /**
@@ -182,7 +183,7 @@ public class GuessingController implements Controller {
   }
 
   @FXML
-  private void onSendExplanation(ActionEvent event) throws ApiProxyException, IOException {
+  private void onSendExplanation() {
     // evaluate user input using gpt and display the result only if player chooses
     // anthony
     // otherwise, straight to game over scene. load pre-written explanation instead

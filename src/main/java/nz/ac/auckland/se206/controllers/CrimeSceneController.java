@@ -29,6 +29,7 @@ import nz.ac.auckland.se206.classes.NotesSyncManager;
  */
 public class CrimeSceneController implements Controller {
 
+
   private int moneyCollected = 0;
 
   @FXML

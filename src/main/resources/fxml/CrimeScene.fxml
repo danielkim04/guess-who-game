@@ -236,7 +236,7 @@
       <AnchorPane prefHeight="79.0" prefWidth="700.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#393737f7" height="79.0" stroke="TRANSPARENT" strokeType="INSIDE" width="700.0" />
-            <Label layoutX="260.0" layoutY="24.0" prefHeight="31.0" prefWidth="155.0" text="Crime Scene" textFill="WHITE">
+            <Label alignment="CENTER" layoutX="273.0" layoutY="22.0" prefHeight="31.0" prefWidth="155.0" text="Crime Scene" textFill="WHITE">
                <font>
                   <Font name="Algerian" size="25.0" />
                </font>
