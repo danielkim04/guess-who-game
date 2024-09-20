@@ -10,9 +10,11 @@ import nz.ac.auckland.se206.classes.Controller;
 
 public class MenuController implements Controller {
 
-  @FXML private Rectangle StartRectangle;
+  @FXML
+  private Rectangle startRectangle;
 
-  @FXML private Label labelStart; // Reference to StartLabel
+  @FXML
+  private Label labelStart; // Reference to StartLabel
 
   // Called after FXML file has been loaded
   @FXML
@@ -20,7 +22,7 @@ public class MenuController implements Controller {
     System.out.println("MenuController initialized");
 
     // Add any additional setup here, if needed
-    if (StartRectangle != null) {
+    if (startRectangle != null) {
       System.out.println("StartRectangle is initialized.");
     }
 

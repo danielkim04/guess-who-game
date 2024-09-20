@@ -4,8 +4,8 @@ package nz.ac.auckland.se206.classes;
 public class Time {
 
   // Creates inital varibles for time
-  private Integer minutes = 0;
-  private Integer seconds = 0;
+  private Integer minutes;
+  private Integer seconds;
 
   public Time() {
     // Initalises time varibles to 0
@@ -76,9 +76,8 @@ public class Time {
     minutes %= 60;
   }
 
-
   public void addSecs(Integer secs) {
-// Adds a given number of seconds to the time
+    // Adds a given number of seconds to the time
     if (secs >= 60) {
       seconds += secs % 60;
       addMins(secs / 60);
@@ -92,7 +91,6 @@ public class Time {
       addMins(1);
     }
   }
-
 
   public void subMins(Integer mins) {
     // Subtracts an amount of minutes from the time

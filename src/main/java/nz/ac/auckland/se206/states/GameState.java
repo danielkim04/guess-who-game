@@ -4,7 +4,8 @@ import java.io.IOException;
 import javafx.scene.input.MouseEvent;
 
 /**
- * Interface representing the state of the game. Defines methods to handle user interactions such as
+ * Interface representing the state of the game. Defines methods to handle user
+ * interactions such as
  * clicking on a rectangle and making a guess.
  */
 public interface GameState {
@@ -12,7 +13,7 @@ public interface GameState {
   /**
    * Handles the event when a rectangle is clicked.
    *
-   * @param event the mouse event triggered by clicking a rectangle
+   * @param event       the mouse event triggered by clicking a rectangle
    * @param rectangleId the ID of the clicked rectangle
    * @throws IOException if there is an I/O error
    */
