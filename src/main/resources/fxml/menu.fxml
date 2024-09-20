@@ -29,7 +29,7 @@
                   <Rectangle fx:id="StartRectangle" arcHeight="25.0" arcWidth="25.0" fill="#777373c4" height="57.0" onMouseClicked="#onStartRectangleClick" stroke="TRANSPARENT" strokeType="INSIDE" width="155.0" />
                   
                   <!-- Added pickOnBounds="true" to the label to ensure it captures clicks -->
-                  <Label fx:id="StartLabel" alignment="CENTER" layoutX="27.0" layoutY="0.0" onMouseClicked="#onStartLabelClick" pickOnBounds="true" prefHeight="57.0" prefWidth="102.0" text="Start" textAlignment="CENTER" textFill="WHITE">
+                  <Label fx:id="labelStart" alignment="CENTER" layoutX="27.0" layoutY="0.0" onMouseClicked="#onStartLabelClick" pickOnBounds="true" prefHeight="57.0" prefWidth="102.0" text="Start" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font name="Berlin Sans FB Demi Bold" size="40.0" />
                      </font>
