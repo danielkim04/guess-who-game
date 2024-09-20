@@ -34,7 +34,7 @@ public class CrimeSceneController implements Controller {
   @FXML private Rectangle rectClueNote;
   @FXML private Rectangle BagCollectionRect; // This is the collection rectangle for money
   @FXML private Label labelTimer;
-  @FXML private Label MoneyCounter; // Label to display the money collected
+  @FXML private Label moneyCounter; // Label to display the money collected
   @FXML private AnchorPane paneNoteWindow;
   @FXML private Rectangle rectCloseNotes;
   @FXML private Rectangle glow;
@@ -54,26 +54,26 @@ public class CrimeSceneController implements Controller {
   @FXML private ImageView imgMap;
   @FXML private Button hairTest;
   @FXML private Button fingerprintTest;
-  @FXML private Button BagExit;
+  @FXML private Button bagExit;
   @FXML private Button cashbookExit;
   @FXML private Button checkBalance;
   @FXML private ImageView correct;
-  @FXML private ImageView Money1;
-  @FXML private ImageView Money2;
-  @FXML private ImageView Money3;
-  @FXML private ImageView Money4;
-  @FXML private ImageView Money5;
-  @FXML private ImageView Money6;
-  @FXML private ImageView Money7;
-  @FXML private ImageView Money8;
-  @FXML private ImageView Money9;
-  @FXML private ImageView Money10;
-  @FXML private ImageView Hair;
+  @FXML private ImageView moneyOne;
+  @FXML private ImageView moneyTwo;
+  @FXML private ImageView moneyThree;
+  @FXML private ImageView moneyFour;
+  @FXML private ImageView moneyFive;
+  @FXML private ImageView moneySix;
+  @FXML private ImageView moneySeven;
+  @FXML private ImageView moneyEight;
+  @FXML private ImageView moneyNine;
+  @FXML private ImageView moneyTen;
+  @FXML private ImageView hair;
   @FXML private ImageView dark;
   @FXML private ImageView web1;
   @FXML private ImageView web2;
   @FXML private ImageView web3;
-  @FXML private Button NoteExit;
+  @FXML private Button noteExit;
   @FXML private Button toggleLight;
   @FXML private ImageView blueLight;
   @FXML private ImageView fingerprint;
@@ -121,22 +121,22 @@ public class CrimeSceneController implements Controller {
     updateMoneyCounter();
 
     // Add drag-and-drop functionality to Money
-    makeImageViewDraggable(Money1);
-    makeImageViewDraggable(Money2);
-    makeImageViewDraggable(Money3);
-    makeImageViewDraggable(Money4);
-    makeImageViewDraggable(Money5);
-    makeImageViewDraggable(Money6);
-    makeImageViewDraggable(Money7);
-    makeImageViewDraggable(Money8);
-    makeImageViewDraggable(Money9);
-    makeImageViewDraggable(Money10);
+    makeImageViewDraggable(moneyOne);
+    makeImageViewDraggable(moneyTwo);
+    makeImageViewDraggable(moneyThree);
+    makeImageViewDraggable(moneyFour);
+    makeImageViewDraggable(moneyFive);
+    makeImageViewDraggable(moneySix);
+    makeImageViewDraggable(moneySeven);
+    makeImageViewDraggable(moneyEight);
+    makeImageViewDraggable(moneyNine);
+    makeImageViewDraggable(moneyTen);
 
     makeImageViewDraggable(web1);
     makeImageViewDraggable(web2);
     makeImageViewDraggable(web3);
 
-    makeImageViewDraggable(Hair);
+    makeImageViewDraggable(hair);
     enableBothLightsToFollowCursor();
     lightPane.setVisible(false);
     blueLight.setMouseTransparent(true);
@@ -376,7 +376,7 @@ public class CrimeSceneController implements Controller {
     if (draggedItem.getBoundsInParent().intersects(BagCollectionRect.getBoundsInParent())) {
 
       // If the dragged item is Hair, show the hairCollectedPane and animate the text
-      if (draggedItem == Hair) {
+      if (draggedItem == hair) {
         System.out.println("Hair collected! No money gained.");
         makeRectangleGlow(glow);
         hairSamplePane.setVisible(true);
@@ -436,7 +436,7 @@ public class CrimeSceneController implements Controller {
 
   // Method to update the MoneyCounter label
   private void updateMoneyCounter() {
-    MoneyCounter.setText("Money Collected: " + moneyCollected);
+    moneyCounter.setText("Money Collected: " + moneyCollected);
   }
 
   @Override
