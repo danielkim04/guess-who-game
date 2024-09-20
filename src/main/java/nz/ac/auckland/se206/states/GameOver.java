@@ -52,7 +52,7 @@ public class GameOver implements GameState {
    * @throws IOException if there is an I/O error
    */
   @Override
-  public void handleGuessClick() throws IOException {
+  public void onGuessNow() throws IOException {
     TextToSpeech.speak("You have already guessed!");
   }
 

@@ -48,9 +48,9 @@ public class Guessing implements GameState {
   }
 
   @Override
-  public void handleGuessClick() throws IOException {
+  public void onGuessNow() throws IOException {
     // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'handleGuessClick'");
+    throw new UnsupportedOperationException("Unimplemented method 'onGuessNow'");
   }
 
   public void handleTimeOut() {

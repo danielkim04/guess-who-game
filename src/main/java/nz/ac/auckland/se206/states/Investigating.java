@@ -69,7 +69,7 @@ public class Investigating implements GameState {
   public void handleRectangleClick(MouseEvent event, String rectangleId) throws IOException {}
 
   @Override
-  public void handleGuessClick() {
+  public void onGuessNow() {
     for (Suspect currentSuspect : App.getSuspects()) {
       if (!currentSuspect.getInteracted()) {
         System.out.println("Interact will all suspects first");

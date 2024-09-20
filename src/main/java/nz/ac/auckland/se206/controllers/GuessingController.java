@@ -155,7 +155,7 @@ public class GuessingController implements Controller {
   }
 
   @FXML
-  private void sendExplanation(ActionEvent event) throws ApiProxyException, IOException {
+  private void onSendExplanation(ActionEvent event) throws ApiProxyException, IOException {
     // evaluate user input using gpt and display the result only if player chooses anthony
     // otherwise, straight to game over scene. load pre-written explanation instead of using gpt
     if (suspectName.equals("Anthony")) {

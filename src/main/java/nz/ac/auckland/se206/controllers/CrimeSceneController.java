@@ -166,16 +166,16 @@ public class CrimeSceneController implements Controller {
   }
 
   @FXML
-  private void handleGuessClick(ActionEvent event) {
+  private void onGuessNow(ActionEvent event) {
     try {
-      App.getContext().getInvestigatingState().handleGuessClick();
+      App.getContext().getInvestigatingState().onGuessNow();
     } catch (IOException e) {
       e.printStackTrace();
     }
   }
 
   @FXML
-  private void handleCheckBalanceClick(ActionEvent event) {
+  private void onCheckBalance(ActionEvent event) {
     // Get the text from the balanceArea TextArea
     String balanceText = balanceArea.getText();
 
@@ -215,18 +215,18 @@ public class CrimeSceneController implements Controller {
   }
 
   @FXML
-  private void handleBagExitClick(ActionEvent event) {
+  private void onBagExit(ActionEvent event) {
     bagInteractPane.setVisible(false);
   }
 
   @FXML
-  private void handleNoteExit(ActionEvent event) {
+  private void onNoteExit(ActionEvent event) {
     // Hide the pane
     noteInteractPane.setVisible(false);
   }
 
   @FXML
-  private void handlecashbookExit(ActionEvent event) {
+  private void onCashBookExit(ActionEvent event) {
     // Hide the pane
     cashbookPane.setVisible(false);
   }
@@ -245,13 +245,13 @@ public class CrimeSceneController implements Controller {
   }
 
   @FXML
-  private void handleToggleLightClick(ActionEvent event) {
+  private void onToggleLight(ActionEvent event) {
     // Toggle the visibility of the lightPane
     lightPane.setVisible(!lightPane.isVisible());
   }
 
   @FXML
-  private void handleHairTestClick(ActionEvent event) {
+  private void onTestHair(ActionEvent event) {
     // Show the labPane
     labPane.setVisible(true);
 
@@ -260,7 +260,7 @@ public class CrimeSceneController implements Controller {
   }
 
   @FXML
-  private void handleFingerprintTestClick(ActionEvent event) {
+  private void onFingerprintTestClick(ActionEvent event) {
     // Show the labPane
     labPane.setVisible(true);
 
@@ -534,7 +534,7 @@ public class CrimeSceneController implements Controller {
   }
 
   @FXML
-  private void toSuspectOne(ActionEvent event) {
+  private void onSuspectOne(ActionEvent event) {
     try {
       App.setRoot("SuspectOne");
     } catch (IOException e) {
@@ -543,7 +543,7 @@ public class CrimeSceneController implements Controller {
   }
 
   @FXML
-  private void toSuspectTwo(ActionEvent event) {
+  private void onSuspectTwo(ActionEvent event) {
     try {
       App.setRoot("SuspectTwo");
     } catch (IOException e) {
@@ -552,7 +552,7 @@ public class CrimeSceneController implements Controller {
   }
 
   @FXML
-  private void toSuspectThree(ActionEvent event) {
+  private void onSuspectThree(ActionEvent event) {
     try {
       App.setRoot("SuspectThree");
     } catch (IOException e) {

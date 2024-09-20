@@ -40,7 +40,7 @@
                         </ImageView>
                      </children>
                   </AnchorPane>
-                  <Button fx:id="buttonPlayAgain" alignment="CENTER" layoutX="366.0" layoutY="333.0" mnemonicParsing="false" onAction="#handlePlayAgain" prefHeight="37.0" prefWidth="212.0" text="Play Again?" textAlignment="CENTER">
+                  <Button fx:id="buttonPlayAgain" alignment="CENTER" layoutX="366.0" layoutY="333.0" mnemonicParsing="false" onAction="#onPlayAgain" prefHeight="37.0" prefWidth="212.0" text="Play Again?" textAlignment="CENTER">
                      <font>
                         <Font size="18.0" />
                      </font>
