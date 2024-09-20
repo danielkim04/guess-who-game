@@ -109,7 +109,7 @@
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="185.0" prefWidth="232.0">
                            <children>
-                              <TextArea layoutY="3.0" prefHeight="280.0" prefWidth="232.0" promptText="Add notes here" />
+                              <TextArea fx:id="guessingNotes" layoutY="3.0" prefHeight="280.0" prefWidth="232.0" promptText="Add notes here" />
                            </children>
                         </AnchorPane>
                      </content>
