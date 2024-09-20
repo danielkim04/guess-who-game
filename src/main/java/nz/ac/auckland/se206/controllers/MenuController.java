@@ -65,4 +65,8 @@ public class MenuController implements Controller {
   public void onTimerUpdate(String time) {
     // irrelevant for this controller
   }
+
+  @Override
+  public void unlockGuessBtn() {
+  }
 }

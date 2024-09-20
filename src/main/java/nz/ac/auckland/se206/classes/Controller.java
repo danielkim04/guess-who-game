@@ -7,4 +7,6 @@ public interface Controller {
 
   // Runs when timer iterates and gives current time
   public void onTimerUpdate(String time);
+
+  public void unlockGuessBtn();
 }

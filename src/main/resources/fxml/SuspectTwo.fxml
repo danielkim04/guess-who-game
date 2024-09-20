@@ -22,12 +22,6 @@
         <AnchorPane prefHeight="79.0" prefWidth="700.0">
             <children>
                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#393737f7" height="79.0" stroke="TRANSPARENT" strokeType="INSIDE" width="700.0" />
-                <Circle fill="#ffffff00" layoutX="628.0" layoutY="40.0" radius="31.0" stroke="BLACK" strokeType="INSIDE" />
-                <Label fx:id="labelTimer" layoutX="604.0" layoutY="24.0" text="X:XX" textFill="WHITE">
-                    <font>
-                        <Font name="Calibri" size="26.0" />
-                    </font>
-                </Label>
                 <Label alignment="CENTER" layoutX="260.0" layoutY="24.0" prefHeight="31.0" prefWidth="155.0" text="Tables" textFill="WHITE">
                     <font>
                         <Font name="Algerian" size="25.0" />
@@ -40,7 +34,17 @@
                   <MenuItem fx:id="menuCrimeScene" mnemonicParsing="false" onAction="#onChangeArea" text="Crime Scene" />
                </items>
             </MenuButton>
-                <Button fx:id="btnGuessNow" layoutX="150.0" layoutY="27.0" mnemonicParsing="false" onAction="#onGuessNow" text="Guess Now" />
+                <Button fx:id="btnGuessNow" disable="true" layoutX="150.0" layoutY="27.0" mnemonicParsing="false" onAction="#onGuessNow" text="Guess Now" />
+            <AnchorPane layoutX="623.0" layoutY="6.0" prefHeight="65.0" prefWidth="63.0">
+               <children>
+                  <Circle fill="#ffffff00" layoutX="31.0" layoutY="36.0" radius="31.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Label fx:id="labelTimer" layoutX="7.0" layoutY="20.0" text="X:XX" textFill="WHITE">
+                     <font>
+                        <Font name="Calibri" size="26.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
             </children>
         </AnchorPane>
         <AnchorPane layoutX="10.0" layoutY="182.0" prefHeight="204.0" prefWidth="685.0">

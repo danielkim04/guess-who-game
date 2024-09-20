@@ -16,6 +16,8 @@ import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.classes.Controller;
 import nz.ac.auckland.se206.classes.Suspect;
+import nz.ac.auckland.se206.states.GameState;
+import nz.ac.auckland.se206.states.Investigating;
 
 public class SuspectController implements Controller {
   @FXML
@@ -73,6 +75,12 @@ public class SuspectController implements Controller {
 
     // update suspect engagement status
     this.suspect.interacted();
+    GameState curGameState = App.getContext().getState();
+    if (curGameState instanceof Investigating) {
+      ((Investigating) curGameState).sceneChange();
+    } else {
+      System.out.println("Not investigating");
+    }
     displayTextSlowly(". . .");
     txtMessage.clear();
 
@@ -150,5 +158,10 @@ public class SuspectController implements Controller {
   @Override
   public void onTimerUpdate(String time) {
     labelTimer.setText(time);
+  }
+
+  @Override
+  public void unlockGuessBtn() {
+    btnGuessNow.setDisable(false);
   }
 }
