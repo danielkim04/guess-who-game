@@ -105,7 +105,7 @@ public class Timer {
 
   // Begins timer
   public void start() {
-
+    // Check if thread exists
     if (this.activeTimerThread != null) {
       this.stop();
       try {
@@ -117,7 +117,7 @@ public class Timer {
     if (executionThread != (null)) {
       (new Thread(executionThread)).start();
     }
-
+    // Set teh timer thread
     this.activeTimerThread = new Thread(timerThread);
     this.activeTimerThread.setDaemon(true);
     this.activeTimerThread.start();
