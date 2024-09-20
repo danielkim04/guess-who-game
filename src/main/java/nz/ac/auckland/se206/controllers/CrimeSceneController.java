@@ -117,6 +117,10 @@ public class CrimeSceneController implements Controller {
     rectClueNote.setOnMouseEntered(event -> rectClueNote.setCursor(javafx.scene.Cursor.HAND));
     rectClueNote.setOnMouseExited(event -> rectClueNote.setCursor(javafx.scene.Cursor.DEFAULT));
 
+    // Change cursor when hovering over fingerprint
+    fingerprint.setOnMouseEntered(event -> fingerprint.setCursor(javafx.scene.Cursor.HAND));
+    fingerprint.setOnMouseExited(event -> fingerprint.setCursor(javafx.scene.Cursor.DEFAULT));
+
     // Initialize money counter with zero
     updateMoneyCounter();
 
