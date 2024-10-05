@@ -7,24 +7,27 @@ import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.classes.Timer;
 import nz.ac.auckland.se206.controllers.GameEndController;
+import nz.ac.auckland.se206.controllers.GuessingController;
 
 public class Guessing implements GameState {
   private Timer timer = new Timer(60);
   private final GameStateContext context;
-  private Thread updateThread = new Thread(
-      () -> {
-        Platform.runLater(
-            () -> {
-              App.getController().onTimerUpdate(this.timer.getTime().toString());
-            });
-      });
-  private Thread timeOutThread = new Thread(
-      () -> {
-        Platform.runLater(
-            () -> {
-              handleTimeOut();
-            });
-      });
+  private Thread updateThread =
+      new Thread(
+          () -> {
+            Platform.runLater(
+                () -> {
+                  App.getController().onTimerUpdate(this.timer.getTime().toString());
+                });
+          });
+  private Thread timeOutThread =
+      new Thread(
+          () -> {
+            Platform.runLater(
+                () -> {
+                  handleTimeOut();
+                });
+          });
 
   public Guessing(GameStateContext context) {
     this.context = context;
@@ -50,8 +53,15 @@ public class Guessing implements GameState {
   }
 
   public void handleTimeOut() {
-    // called when time runs out
+    // if the time runs out but the player has entered some text, automatically send explanation
     System.out.println("No more Guessing Time");
+    GuessingController guessingController = (GuessingController) App.getController();
+    if (!guessingController.getPlayerExplanation().isEmpty()) {
+      guessingController.sendExplanationTimeOut();
+      return;
+    }
+
+    // if the player has not entered any text, go to game over scene
     nextState();
     if (App.getController() instanceof GameEndController) {
       GameEndController controller = (GameEndController) App.getController();

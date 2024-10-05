@@ -31,32 +31,19 @@ import nz.ac.auckland.se206.prompts.PromptEngineering;
 import nz.ac.auckland.se206.states.Guessing;
 
 public class GuessingController implements Controller {
-  @FXML
-  private Label labelTimer;
-  @FXML
-  private AnchorPane paneNoteWindow;
-  @FXML
-  private Rectangle rectCloseNotes;
-  @FXML
-  private AnchorPane paneOpenChat;
-  @FXML
-  private AnchorPane paneSuspectOne;
-  @FXML
-  private AnchorPane paneSuspectTwo;
-  @FXML
-  private AnchorPane paneSuspectThree;
-  @FXML
-  private TextArea txtaExplanation;
-  @FXML
-  private TextArea guessingNotes;
-  @FXML
-  private Button btnSend;
-  @FXML
-  private AnchorPane paneExplanation;
-  @FXML
-  private Label labelTitle;
-  @FXML
-  private ImageView imgChosenSuspect;
+  @FXML private Label labelTimer;
+  @FXML private AnchorPane paneNoteWindow;
+  @FXML private Rectangle rectCloseNotes;
+  @FXML private AnchorPane paneOpenChat;
+  @FXML private AnchorPane paneSuspectOne;
+  @FXML private AnchorPane paneSuspectTwo;
+  @FXML private AnchorPane paneSuspectThree;
+  @FXML private TextArea txtaExplanation;
+  @FXML private TextArea guessingNotes;
+  @FXML private Button btnSend;
+  @FXML private AnchorPane paneExplanation;
+  @FXML private Label labelTitle;
+  @FXML private ImageView imgChosenSuspect;
 
   private String suspectName;
   private ChatCompletionRequest chatCompletionRequest;
@@ -85,8 +72,7 @@ public class GuessingController implements Controller {
    * @param event the key event
    */
   @FXML
-  public void onKeyPressed(KeyEvent event) {
-  }
+  public void onKeyPressed(KeyEvent event) {}
 
   /**
    * Handles the key released event.
@@ -113,11 +99,11 @@ public class GuessingController implements Controller {
     switch (clickedSuspect.getId()) {
       case "paneSuspectOne":
         suspectName = "Mark";
-        filename = "Suspect_1_Cropped.png"; // modify filename
+        onSendExplanation(); // straight to game over scene
         break;
       case "paneSuspectTwo":
         suspectName = "Susan";
-        filename = "Suspect_3_Cropped.png"; // modify filename
+        onSendExplanation(); // straight to game over scene
         break;
       case "paneSuspectThree":
         suspectName = "Anthony";
@@ -143,11 +129,12 @@ public class GuessingController implements Controller {
   public void initialiseChat() {
     try {
       ApiProxyConfig config = ApiProxyConfig.readConfig();
-      chatCompletionRequest = new ChatCompletionRequest(config)
-          .setN(1)
-          .setTemperature(0.1)
-          .setTopP(0.9)
-          .setMaxTokens(100);
+      chatCompletionRequest =
+          new ChatCompletionRequest(config)
+              .setN(1)
+              .setTemperature(0.1)
+              .setTopP(0.9)
+              .setMaxTokens(100);
       chatCompletionRequest.addMessage(new ChatMessage("system", loadSystemPrompt()));
     } catch (ApiProxyException | URISyntaxException | IOException e) { // ??????????
       e.printStackTrace();
@@ -157,26 +144,27 @@ public class GuessingController implements Controller {
   private void runGpt(ChatMessage msg) {
     chatCompletionRequest.addMessage(msg);
 
-    Task<ChatMessage> task = new Task<ChatMessage>() {
-      @Override
-      protected ChatMessage call() throws ApiProxyException {
-        try {
-          ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
-          Choice result = chatCompletionResult.getChoices().iterator().next();
-          chatCompletionRequest.addMessage(result.getChatMessage());
-          System.out.println(result.getChatMessage().getContent()); // testing
-          System.out.println(App.getController()); // testing
-          Platform.runLater(
-              () -> {
-                App.getController().onNewChat(result.getChatMessage().getContent());
-              });
-          return result.getChatMessage();
-        } catch (ApiProxyException e) {
-          e.printStackTrace();
-          return null;
-        }
-      }
-    };
+    Task<ChatMessage> task =
+        new Task<ChatMessage>() {
+          @Override
+          protected ChatMessage call() throws ApiProxyException {
+            try {
+              ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
+              Choice result = chatCompletionResult.getChoices().iterator().next();
+              chatCompletionRequest.addMessage(result.getChatMessage());
+              System.out.println(result.getChatMessage().getContent()); // testing
+              System.out.println(App.getController()); // testing
+              Platform.runLater(
+                  () -> {
+                    App.getController().onNewChat(result.getChatMessage().getContent());
+                  });
+              return result.getChatMessage();
+            } catch (ApiProxyException e) {
+              e.printStackTrace();
+              return null;
+            }
+          }
+        };
 
     Thread backgroundThread = new Thread(task);
     backgroundThread.start();
@@ -243,6 +231,13 @@ public class GuessingController implements Controller {
   }
 
   @Override
-  public void unlockGuessBtn() {
+  public void unlockGuessBtn() {}
+
+  public String getPlayerExplanation() {
+    return txtaExplanation.getText().trim();
+  }
+
+  public void sendExplanationTimeOut() {
+    onSendExplanation();
   }
 }
