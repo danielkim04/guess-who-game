@@ -16,6 +16,7 @@ import nz.ac.auckland.se206.classes.Timer;
 public class Investigating implements GameState {
 
   private final GameStateContext context;
+  private boolean hasClueBeenInspected = false;
 
   private Timer timer = new Timer(5 * 60);
 
@@ -64,6 +65,12 @@ public class Investigating implements GameState {
         return (false);
       }
     }
+
+    if (!hasClueBeenInspected) {
+      System.out.println("Inspect the clue first");
+      return (false);
+    }
+
     return (true);
   }
 
@@ -108,5 +115,9 @@ public class Investigating implements GameState {
     } catch (IOException e) {
       e.printStackTrace();
     }
+  }
+
+  public void setClueInteractionStatus() {
+    hasClueBeenInspected = true;
   }
 }

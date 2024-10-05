@@ -21,6 +21,8 @@ import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.classes.Controller;
 import nz.ac.auckland.se206.classes.NotesSyncManager;
+import nz.ac.auckland.se206.states.GameState;
+import nz.ac.auckland.se206.states.Investigating;
 
 /**
  * Controller class for the room view. Handles user interactions within the room
@@ -30,6 +32,7 @@ import nz.ac.auckland.se206.classes.NotesSyncManager;
 public class CrimeSceneController implements Controller {
 
   private int moneyCollected = 0;
+  private boolean hasClueBeenInspected = false;
 
   @FXML
   private Rectangle rectClueBag;
@@ -273,8 +276,19 @@ public class CrimeSceneController implements Controller {
 
   @FXML
   private void handleBookClueClick(MouseEvent event) {
-    // Hide the bagInteractPane when rectClueBook is clicked
+    // opens cash book clue
     cashbookPane.setVisible(true);
+
+    //set clue interaction status
+    Investigating investigatingState = (Investigating) App.getContext().getInvestigatingState();
+    investigatingState.setClueInteractionStatus();
+    GameState curGameState = App.getContext().getState();
+    if (curGameState instanceof Investigating) {
+      ((Investigating) curGameState).sceneChange();
+    } else {
+      System.out.println("Not investigating");
+    }
+    System.out.println("clue opened");
   }
 
   @FXML
@@ -303,6 +317,17 @@ public class CrimeSceneController implements Controller {
   private void handleNoteClueClick(MouseEvent event) {
     // Show the noteInteractPane when rectClueNote is clicked
     noteInteractPane.setVisible(true);
+
+    //set clue interaction status
+    Investigating investigatingState = (Investigating) App.getContext().getInvestigatingState();
+    investigatingState.setClueInteractionStatus();
+    GameState curGameState = App.getContext().getState();
+    if (curGameState instanceof Investigating) {
+      ((Investigating) curGameState).sceneChange();
+    } else {
+      System.out.println("Not investigating");
+    }
+    System.out.println("clue opened");
   }
 
   // New method to handle clicks on rectClueBag
@@ -310,6 +335,17 @@ public class CrimeSceneController implements Controller {
   private void handleClueBagClick(MouseEvent event) {
     // Show the bagInteractPane when rectClueBag is clicked
     bagInteractPane.setVisible(true);
+
+    //set clue interaction status
+    Investigating investigatingState = (Investigating) App.getContext().getInvestigatingState();
+    investigatingState.setClueInteractionStatus();
+    GameState curGameState = App.getContext().getState();
+    if (curGameState instanceof Investigating) {
+      ((Investigating) curGameState).sceneChange();
+    } else {
+      System.out.println("Not investigating");
+    }
+    System.out.println("clue opened");
   }
 
   @FXML
