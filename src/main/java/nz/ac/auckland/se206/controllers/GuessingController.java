@@ -113,11 +113,11 @@ public class GuessingController implements Controller {
     switch (clickedSuspect.getId()) {
       case "paneSuspectOne":
         suspectName = "Mark";
-        filename = "Suspect_1_Cropped.png"; // modify filename
+        onSendExplanation(); // straight to game over scene
         break;
       case "paneSuspectTwo":
         suspectName = "Susan";
-        filename = "Suspect_3_Cropped.png"; // modify filename
+        onSendExplanation(); // straight to game over scene
         break;
       case "paneSuspectThree":
         suspectName = "Anthony";
