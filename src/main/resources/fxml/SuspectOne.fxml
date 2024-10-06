@@ -32,7 +32,7 @@
                   <Font name="Algerian" size="35.0" />
                </font>
             </Label>
-            <AnchorPane layoutX="972.0" layoutY="10.0" prefHeight="65.0" prefWidth="63.0">
+            <AnchorPane layoutX="972.0" layoutY="10.0" prefHeight="65.0" prefWidth="65.0">
                <children>
                   <Circle fill="#ffffff00" layoutX="31.0" layoutY="36.0" radius="31.0" stroke="BLACK" strokeType="INSIDE" />
                   <Label fx:id="labelTimer" layoutX="7.0" layoutY="20.0" text="X:XX" textFill="WHITE">
@@ -52,7 +52,7 @@
             <Button fx:id="btnGuessNow" disable="true" layoutX="856.0" layoutY="28.0" mnemonicParsing="false" onAction="#onGuessNow" prefHeight="31.0" prefWidth="98.0" text="Guess Now" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="9.0" layoutY="354.0" prefHeight="221.0" prefWidth="1031.0">
+      <AnchorPane layoutX="9.0" layoutY="364.0" prefHeight="221.0" prefWidth="1031.0">
          <children>
             <ImageView fitHeight="203.0" fitWidth="962.0" layoutX="35.0" pickOnBounds="true" preserveRatio="true">
                <image>

@@ -107,7 +107,7 @@ public class GuessingController implements Controller {
         break;
       case "paneSuspectThree":
         suspectName = "Anthony";
-        filename = "Suspect_2_Cropped.png"; // modify filename
+        filename = "suspect_2_cropped_ver2.png"; // modify filename
         break;
     }
     transitionToExplanation(getClass().getResource("/images/" + filename));

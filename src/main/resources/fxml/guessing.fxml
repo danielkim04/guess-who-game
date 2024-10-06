@@ -13,58 +13,61 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="paneBase" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.GuessingController">
+<Pane fx:id="paneBase" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.GuessingController">
    <children>
-      <ImageView fitHeight="400.0" fitWidth="836.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="657.0" fitWidth="1050.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/interrogationroom1.jpeg" />
          </image>
       </ImageView>
-      <AnchorPane fx:id="paneSuspectOne" layoutY="75.0" onMouseClicked="#handleSuspectClick" prefHeight="324.0" prefWidth="238.0">
+      <AnchorPane fx:id="paneSuspectOne" layoutY="73.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleSuspectClick" prefHeight="530.0" prefWidth="350.0">
          <children>
-            <ImageView fitHeight="331.0" fitWidth="238.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="609.0" fitWidth="364.0" layoutY="-25.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/Suspect_1_Cropped.png" />
+                  <Image url="@../images/suspect_1_cropped_ver2.png" />
                </image>
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="paneSuspectTwo" layoutX="236.0" layoutY="77.0" onMouseClicked="#handleSuspectClick" prefHeight="322.0" prefWidth="232.0">
+      <AnchorPane fx:id="paneSuspectTwo" layoutX="350.0" layoutY="77.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleSuspectClick" prefHeight="522.0" prefWidth="350.0">
          <children>
-            <ImageView fitHeight="339.0" fitWidth="238.0" layoutX="-3.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="617.0" fitWidth="359.0" layoutX="-3.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/Suspect_3_cropped.png" />
+                  <Image url="@../images/suspect_3_cropped_ver2.png" />
                </image>
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="paneSuspectThree" layoutX="471.0" layoutY="76.0" onMouseClicked="#handleSuspectClick" prefHeight="324.0" prefWidth="205.0">
+      <AnchorPane fx:id="paneSuspectThree" layoutX="699.0" layoutY="76.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleSuspectClick" prefHeight="524.0" prefWidth="350.0">
          <children>
-            <ImageView fitHeight="324.0" fitWidth="232.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="609.0" fitWidth="355.0" layoutX="2.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/Suspect_2_cropped.png" />
+                  <Image url="@../images/suspect_2_cropped_ver2.png" />
                </image>
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="paneExplanation" layoutX="-16.0" layoutY="-1.0" prefHeight="417.0" prefWidth="723.0" visible="false">
+      <AnchorPane fx:id="paneExplanation" layoutX="-16.0" layoutY="-1.0" prefHeight="600.0" prefWidth="1068.0" visible="false">
          <children>
-            <ImageView fitHeight="417.0" fitWidth="723.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="623.0" fitWidth="1068.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/interrogationroom1.jpeg" />
                </image>
             </ImageView>
             <AnchorPane layoutX="14.0" layoutY="79.0" prefHeight="335.0" prefWidth="391.0">
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#383636f7" height="335.0" stroke="#ffffff00" strokeType="INSIDE" width="391.0" />
-                  <Button fx:id="btnSend" layoutX="11.0" layoutY="288.0" mnemonicParsing="false" onAction="#onSendExplanation" prefHeight="31.0" prefWidth="370.0" text="Send" />
-                  <TabPane layoutX="11.0" layoutY="19.0" prefHeight="259.0" prefWidth="370.0" tabClosingPolicy="UNAVAILABLE">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#383636f7" height="530.0" stroke="#ffffff00" strokeType="INSIDE" width="701.0" />
+                  <Button fx:id="btnSend" layoutX="11.0" layoutY="484.0" mnemonicParsing="false" onAction="#onSendExplanation" prefHeight="31.0" prefWidth="675.0" text="Send" />
+                  <TabPane layoutX="11.0" layoutY="19.0" prefHeight="454.0" prefWidth="675.0" tabClosingPolicy="UNAVAILABLE">
                     <tabs>
                       <Tab text="Justify Your Reason">
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <TextArea fx:id="txtaExplanation" layoutY="1.0" onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="233.0" prefWidth="370.0" promptText="Enter reason here" wrapText="true" />
+                                    <TextArea fx:id="txtaExplanation" layoutY="1.0" onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="419.0" prefWidth="675.0" promptText="Enter reason here" wrapText="true">
+                                       <font>
+                                          <Font size="23.0" />
+                                       </font></TextArea>
                                  </children>
                               </AnchorPane>
                         </content>
@@ -73,18 +76,18 @@
                   </TabPane>
                </children>
             </AnchorPane>
-            <ImageView fx:id="imgChosenSuspect" fitHeight="324.0" fitWidth="238.0" layoutX="442.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imgChosenSuspect" fitHeight="530.0" fitWidth="350.0" layoutX="711.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
       <AnchorPane layoutY="-1.0" prefHeight="79.0" prefWidth="700.0">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#393737f7" height="79.0" stroke="TRANSPARENT" strokeType="INSIDE" width="708.0" />
-            <Label fx:id="labelTitle" alignment="CENTER" layoutX="218.0" layoutY="22.0" prefHeight="36.0" prefWidth="264.0" text="Who is the thief?" textFill="WHITE">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#393737f7" height="79.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1050.0" />
+            <Label fx:id="labelTitle" alignment="CENTER" layoutX="247.0" layoutY="20.0" prefHeight="40.0" prefWidth="555.0" text="Who is the thief?" textFill="WHITE">
                <font>
-                  <Font name="Algerian" size="25.0" />
+                  <Font name="Algerian" size="35.0" />
                </font>
             </Label>
-            <AnchorPane layoutX="623.0" layoutY="6.0" prefHeight="65.0" prefWidth="63.0">
+            <AnchorPane layoutX="972.0" layoutY="6.0" prefHeight="65.0" prefWidth="63.0">
                <children>
                   <Circle fill="#ffffff00" layoutX="31.0" layoutY="36.0" radius="31.0" stroke="BLACK" strokeType="INSIDE" />
                   <Label fx:id="labelTimer" layoutX="7.0" layoutY="20.0" text="X:XX" textFill="WHITE">
@@ -96,7 +99,7 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="paneOpenChat" layoutX="681.0" layoutY="190.0" onMouseClicked="#handleOpenButtonClick" prefHeight="97.0" prefWidth="21.0">
+      <AnchorPane fx:id="paneOpenChat" layoutX="1031.0" layoutY="153.0" onMouseClicked="#handleOpenButtonClick" prefHeight="97.0" prefWidth="21.0">
          <children>
             <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#adadadeb" height="110.0" stroke="TRANSPARENT" strokeType="INSIDE" width="36.0" />
             <Label alignment="CENTER" layoutX="4.0" layoutY="37.0" prefHeight="23.0" prefWidth="18.0" rotate="-90.0" text="^" textAlignment="CENTER" textFill="WHITE">
@@ -106,7 +109,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="paneNoteWindow" layoutX="423.0" layoutY="80.0" prefHeight="321.0" prefWidth="287.0" visible="false">
+      <AnchorPane fx:id="paneNoteWindow" layoutX="774.0" layoutY="78.0" prefHeight="321.0" prefWidth="294.0" visible="false">
          <children>
             <AnchorPane fx:id="paneOpenChat1" layoutX="11.0" layoutY="106.0" onMouseClicked="#handleCloseButtonClick" prefHeight="97.0" prefWidth="21.0">
                <children>

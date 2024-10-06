@@ -27,7 +27,7 @@
         <AnchorPane prefHeight="79.0" prefWidth="700.0">
             <children>
                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#393737f7" height="79.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1056.0" />
-                <Label alignment="CENTER" layoutX="447.0" layoutY="24.0" prefHeight="31.0" prefWidth="155.0" text="Bar" textFill="WHITE">
+                <Label alignment="CENTER" layoutX="450.0" layoutY="19.0" prefHeight="31.0" prefWidth="155.0" text="Bar" textFill="WHITE">
                     <font>
                         <Font name="Algerian" size="35.0" />
                     </font>
