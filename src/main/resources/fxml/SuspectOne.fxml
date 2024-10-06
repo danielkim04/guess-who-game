@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
@@ -54,22 +55,26 @@
       </AnchorPane>
       <AnchorPane layoutX="9.0" layoutY="364.0" prefHeight="221.0" prefWidth="1031.0">
          <children>
-            <ImageView fitHeight="203.0" fitWidth="962.0" layoutX="35.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="221.0" fitWidth="865.0" layoutX="79.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/textbox_narrower.png" />
+                  <Image url="@../images/text_area_with_button2.png" />
                </image>
             </ImageView>
-            <Label fx:id="labelResponse" layoutX="61.0" layoutY="72.0" prefHeight="87.0" prefWidth="901.0" text="Label" wrapText="true">
+            <Label fx:id="labelResponse" layoutX="91.0" layoutY="59.0" prefHeight="87.0" prefWidth="841.0" text="Label" wrapText="true">
                <font>
                   <Font size="19.0" />
                </font></Label>
-            <Button fx:id="btnSend" layoutX="900.0" layoutY="179.0" mnemonicParsing="false" onAction="#onSendMessage" prefHeight="39.0" prefWidth="98.0" text="Send" />
-            <Label alignment="CENTER" layoutX="61.0" layoutY="14.0" prefHeight="30.0" prefWidth="170.0" text="Mark" textAlignment="CENTER" textFill="WHITE">
+            <Label alignment="CENTER" layoutX="80.0" layoutY="-2.0" prefHeight="52.0" prefWidth="199.0" text="Mark" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <TextArea fx:id="txtMessage" layoutX="35.0" layoutY="179.0" onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="39.0" prefWidth="865.0" promptText="Type here to chat" wrapText="true" />
+            <Rectangle fx:id="rectSendButton" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="31.0" layoutX="829.0" layoutY="173.0" onMouseClicked="#onSendMessage" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="98.0" />
+            <TextArea fx:id="txtMessage" layoutX="95.0" layoutY="171.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="33.0" prefWidth="730.0" promptText="Type here to chat" wrapText="true">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TextArea>
          </children>
       </AnchorPane>
    </children>

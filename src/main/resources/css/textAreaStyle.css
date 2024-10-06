@@ -1,0 +1,16 @@
+#txtMessage {
+    -fx-background-color: transparent; /* Make the background transparent */
+    -fx-control-inner-background: transparent; /* Inner background transparent */
+    -fx-border-color: transparent; /* Optional: to make border invisible */
+    -fx-border-width: 0; /* Optional: remove any border */
+    -fx-prompt-text-fill: gray; /* Prompt text color */
+    -fx-text-fill: black; /* Text color */
+    -fx-opacity: 1; /* Ensure opacity is set to fully visible */
+}
+
+#txtMessage:focused {
+    -fx-background-color: transparent; /* Keep background transparent on focus */
+    -fx-control-inner-background: transparent; /* Keep inner background transparent on focus */
+    -fx-border-color: transparent; /* Keep border invisible on focus */
+    -fx-effect: null; /* Remove any effect on focus */
+}
