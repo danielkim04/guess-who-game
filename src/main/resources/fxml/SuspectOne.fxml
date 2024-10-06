@@ -12,22 +12,27 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.SuspectController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.SuspectController">
    <children>
-      <ImageView fitHeight="706.0" fitWidth="700.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="600.0" fitWidth="1125.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/Suspect_1_Background.png" />
+            <Image url="@../images/lobby2.jpeg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="460.0" fitWidth="461.0" layoutX="468.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Suspect_1.png" />
          </image>
       </ImageView>
       <AnchorPane prefHeight="79.0" prefWidth="700.0">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#393737f7" height="79.0" stroke="TRANSPARENT" strokeType="INSIDE" width="700.0" />
-            <Label alignment="CENTER" layoutX="260.0" layoutY="24.0" prefHeight="31.0" prefWidth="155.0" text="Lobby" textFill="WHITE">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#393737f7" height="94.0" layoutY="-7.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1050.0" />
+            <Label alignment="CENTER" layoutX="447.0" layoutY="24.0" prefHeight="31.0" prefWidth="155.0" text="Lobby" textFill="WHITE">
                <font>
-                  <Font name="Algerian" size="25.0" />
+                  <Font name="Algerian" size="35.0" />
                </font>
             </Label>
-            <AnchorPane layoutX="623.0" layoutY="6.0" prefHeight="65.0" prefWidth="63.0">
+            <AnchorPane layoutX="972.0" layoutY="10.0" prefHeight="65.0" prefWidth="63.0">
                <children>
                   <Circle fill="#ffffff00" layoutX="31.0" layoutY="36.0" radius="31.0" stroke="BLACK" strokeType="INSIDE" />
                   <Label fx:id="labelTimer" layoutX="7.0" layoutY="20.0" text="X:XX" textFill="WHITE">
@@ -37,31 +42,34 @@
                   </Label>
                </children>
             </AnchorPane>
-            <MenuButton layoutX="28.0" layoutY="27.0" mnemonicParsing="false" text="Locations">
+            <MenuButton layoutX="28.0" layoutY="31.0" mnemonicParsing="false" text="Locations">
               <items>
                 <MenuItem fx:id="menuTables" mnemonicParsing="false" onAction="#onChangeArea" text="Tables" />
                 <MenuItem fx:id="menuBar" mnemonicParsing="false" onAction="#onChangeArea" text="Bar" />
                   <MenuItem fx:id="menuCrimeScene" mnemonicParsing="false" onAction="#onChangeArea" text="Crime Scene" />
               </items>
             </MenuButton>
-            <Button fx:id="btnGuessNow" disable="true" layoutX="150.0" layoutY="27.0" mnemonicParsing="false" onAction="#onGuessNow" text="Guess Now" />
+            <Button fx:id="btnGuessNow" disable="true" layoutX="856.0" layoutY="28.0" mnemonicParsing="false" onAction="#onGuessNow" prefHeight="31.0" prefWidth="98.0" text="Guess Now" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="10.0" layoutY="182.0" prefHeight="204.0" prefWidth="685.0">
+      <AnchorPane layoutX="9.0" layoutY="354.0" prefHeight="221.0" prefWidth="1031.0">
          <children>
-            <ImageView fitHeight="165.0" fitWidth="566.0" layoutX="60.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="203.0" fitWidth="962.0" layoutX="35.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/textbox1.png" />
+                  <Image url="@../images/textbox_narrower.png" />
                </image>
             </ImageView>
-            <Label fx:id="labelResponse" layoutX="82.0" layoutY="63.0" prefHeight="68.0" prefWidth="515.0" text="Label" wrapText="true" />
-            <Button fx:id="btnSend" layoutX="536.0" layoutY="138.0" mnemonicParsing="false" onAction="#onSendMessage" prefHeight="31.0" prefWidth="62.0" text="Send" />
-            <Label alignment="CENTER" layoutX="66.0" layoutY="21.0" prefHeight="30.0" prefWidth="140.0" text="Mark" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="labelResponse" layoutX="61.0" layoutY="72.0" prefHeight="87.0" prefWidth="901.0" text="Label" wrapText="true">
+               <font>
+                  <Font size="19.0" />
+               </font></Label>
+            <Button fx:id="btnSend" layoutX="900.0" layoutY="179.0" mnemonicParsing="false" onAction="#onSendMessage" prefHeight="39.0" prefWidth="98.0" text="Send" />
+            <Label alignment="CENTER" layoutX="61.0" layoutY="14.0" prefHeight="30.0" prefWidth="170.0" text="Mark" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <TextArea fx:id="txtMessage" layoutX="82.0" layoutY="135.0" onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="30.0" prefWidth="451.0" promptText="Type here to chat" wrapText="true" />
+            <TextArea fx:id="txtMessage" layoutX="35.0" layoutY="179.0" onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="39.0" prefWidth="865.0" promptText="Type here to chat" wrapText="true" />
          </children>
       </AnchorPane>
    </children>
