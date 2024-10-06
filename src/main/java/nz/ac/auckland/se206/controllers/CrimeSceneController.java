@@ -23,6 +23,9 @@ import nz.ac.auckland.se206.classes.Controller;
 import nz.ac.auckland.se206.classes.NotesSyncManager;
 import nz.ac.auckland.se206.states.GameState;
 import nz.ac.auckland.se206.states.Investigating;
+import javafx.scene.Cursor;
+import javafx.scene.ImageCursor;
+import javafx.scene.image.Image;
 
 /**
  * Controller class for the room view. Handles user interactions within the room
@@ -30,6 +33,9 @@ import nz.ac.auckland.se206.states.Investigating;
  * chat with customers and guess their profession.
  */
 public class CrimeSceneController implements Controller {
+
+  private boolean isLightToggled = false;
+  private Cursor customCursor;
 
   private int moneyCollected = 0;
   private boolean hasClueBeenInspected = false;
@@ -279,7 +285,7 @@ public class CrimeSceneController implements Controller {
     // opens cash book clue
     cashbookPane.setVisible(true);
 
-    //set clue interaction status
+    // set clue interaction status
     Investigating investigatingState = (Investigating) App.getContext().getInvestigatingState();
     investigatingState.setClueInteractionStatus();
     GameState curGameState = App.getContext().getState();
@@ -318,7 +324,7 @@ public class CrimeSceneController implements Controller {
     // Show the noteInteractPane when rectClueNote is clicked
     noteInteractPane.setVisible(true);
 
-    //set clue interaction status
+    // set clue interaction status
     Investigating investigatingState = (Investigating) App.getContext().getInvestigatingState();
     investigatingState.setClueInteractionStatus();
     GameState curGameState = App.getContext().getState();
@@ -336,7 +342,7 @@ public class CrimeSceneController implements Controller {
     // Show the bagInteractPane when rectClueBag is clicked
     bagInteractPane.setVisible(true);
 
-    //set clue interaction status
+    // set clue interaction status
     Investigating investigatingState = (Investigating) App.getContext().getInvestigatingState();
     investigatingState.setClueInteractionStatus();
     GameState curGameState = App.getContext().getState();
@@ -352,6 +358,21 @@ public class CrimeSceneController implements Controller {
   private void onToggleLight(ActionEvent event) {
     // Toggle the visibility of the lightPane
     lightPane.setVisible(!lightPane.isVisible());
+
+    // Toggle the light state
+    isLightToggled = !isLightToggled;
+
+    // Change cursor based on the light state
+    if (isLightToggled) {
+      // Load the custom cursor image (ensure the path is correct)
+      if (customCursor == null) {
+        Image cursorImage = new Image(getClass().getResourceAsStream("/images/torch2.png"));
+        customCursor = new ImageCursor(cursorImage);
+      }
+      paneBase.setCursor(customCursor); // Set the custom cursor
+    } else {
+      paneBase.setCursor(Cursor.DEFAULT); // Set back to default cursor
+    }
   }
 
   @FXML
@@ -377,8 +398,8 @@ public class CrimeSceneController implements Controller {
     // Define the offset values for both blueLight and dark
     double darkOffsetX = 24; // Move dark slightly to the right
     double darkOffsetY = 15; // Move dark slightly down
-    double blueLightOffsetX = 2; // No offset for blueLight
-    double blueLightOffsetY = 0; // No offset for blueLight
+    double blueLightOffsetX = -10; // No offset for blueLight
+    double blueLightOffsetY = -8; // No offset for blueLight
 
     paneBase.setOnMouseMoved(
         event -> {
