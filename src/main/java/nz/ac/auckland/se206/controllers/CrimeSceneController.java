@@ -42,6 +42,8 @@ public class CrimeSceneController implements Controller {
 
   // Add these fields to the controller
   private Cursor dusterCursor;
+  // Add these fields to the controller
+  private Cursor grabCursor;
 
   @FXML
   private Rectangle rectClueBag;
@@ -172,6 +174,12 @@ public class CrimeSceneController implements Controller {
     if (dusterCursor == null) {
       Image cursorImage = new Image(getClass().getResourceAsStream("/images/duster3.png"));
       dusterCursor = new ImageCursor(cursorImage);
+    }
+
+    // Load the grab cursor image (ensure the path is correct)
+    if (grabCursor == null) {
+      Image grabImage = new Image(getClass().getResourceAsStream("/images/grab2.png"));
+      grabCursor = new ImageCursor(grabImage);
     }
 
     // Hide bagInteractPane and hairCollectedPane initially
@@ -517,21 +525,30 @@ public class CrimeSceneController implements Controller {
     hidePaneTimeline.play();
   }
 
-  // Method to make an ImageView draggable
-  private void makeImageViewDraggable(ImageView imageView) {
-    // Handle mouse press event (when user clicks on the ImageView)
-    imageView.setOnMousePressed(event -> handleMousePressed(event, imageView));
+  // Method to make ImageViews draggable with the grab cursor
+private void makeImageViewDraggable(ImageView imageView) {
+  // Handle mouse press event (when user clicks on the ImageView)
+  imageView.setOnMousePressed(event -> {
+      handleMousePressed(event, imageView);
+      paneBase.setCursor(grabCursor); // Set the custom grab cursor when pressed
+  });
 
-    // Handle mouse drag event (when user drags the ImageView)
-    imageView.setOnMouseDragged(event -> handleMouseDragged(event, imageView));
+  // Handle mouse drag event (when user drags the ImageView)
+  imageView.setOnMouseDragged(event -> handleMouseDragged(event, imageView));
 
-    // Handle mouse release event (when user releases the ImageView)
-    imageView.setOnMouseReleased(
-        event -> {
-          // Check for intersection with the BagCollectionRect when dragging is finished
-          checkMoneyIntersectionAndHide(imageView);
-        });
-  }
+  // Handle mouse release event (when user releases the ImageView)
+  imageView.setOnMouseReleased(event -> {
+      // Reset the cursor to default on release
+      paneBase.setCursor(Cursor.DEFAULT);
+      checkMoneyIntersectionAndHide(imageView);
+  });
+
+  // Handle mouse entered event to set custom cursor
+  imageView.setOnMouseEntered(event -> paneBase.setCursor(grabCursor));
+
+  // Handle mouse exited event to reset the cursor
+  imageView.setOnMouseExited(event -> paneBase.setCursor(Cursor.DEFAULT));
+}
 
   // This method is triggered when the mouse is pressed on the ImageView
   private void handleMousePressed(MouseEvent event, ImageView imageView) {
