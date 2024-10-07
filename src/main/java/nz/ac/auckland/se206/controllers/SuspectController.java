@@ -12,6 +12,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.classes.Controller;
@@ -38,6 +39,8 @@ public class SuspectController implements Controller {
   private MenuItem menuCrimeScene;
   @FXML
   private Button btnGuessNow;
+  @FXML
+  private Rectangle rectSendButton;
 
   @FXML
   private MenuButton menuButtonMap;

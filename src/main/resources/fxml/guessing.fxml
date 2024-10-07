@@ -22,7 +22,7 @@
       </ImageView>
       <AnchorPane fx:id="paneSuspectOne" layoutY="73.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleSuspectClick" prefHeight="530.0" prefWidth="350.0">
          <children>
-            <ImageView fitHeight="609.0" fitWidth="364.0" layoutY="-25.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="609.0" fitWidth="364.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/suspect_1_cropped_ver2.png" />
                </image>
@@ -57,31 +57,38 @@
             <AnchorPane layoutX="14.0" layoutY="79.0" prefHeight="335.0" prefWidth="391.0">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#383636f7" height="530.0" stroke="#ffffff00" strokeType="INSIDE" width="701.0" />
-                  <Button fx:id="btnSend" layoutX="11.0" layoutY="484.0" mnemonicParsing="false" onAction="#onSendExplanation" prefHeight="31.0" prefWidth="675.0" text="Send" />
-                  <TabPane layoutX="11.0" layoutY="19.0" prefHeight="454.0" prefWidth="675.0" tabClosingPolicy="UNAVAILABLE">
+                  <ImageView fitHeight="530.0" fitWidth="701.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/explanation_board_ver2.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="btnSend" layoutX="25.0" layoutY="473.0" mnemonicParsing="false" onAction="#onSendExplanation" prefHeight="31.0" prefWidth="651.0" text="Send" />
+                  <TextArea fx:id="txtaExplanation" layoutX="25.0" layoutY="26.0" onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="442.0" prefWidth="651.0" promptText="Enter reason here" wrapText="true">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </TextArea>
+                  <TabPane layoutX="11.0" layoutY="19.0" prefHeight="454.0" prefWidth="675.0" tabClosingPolicy="UNAVAILABLE" visible="false">
                     <tabs>
                       <Tab text="Justify Your Reason">
                         <content>
-                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                 <children>
-                                    <TextArea fx:id="txtaExplanation" layoutY="1.0" onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="419.0" prefWidth="675.0" promptText="Enter reason here" wrapText="true">
-                                       <font>
-                                          <Font size="23.0" />
-                                       </font></TextArea>
-                                 </children>
-                              </AnchorPane>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                         </content>
                       </Tab>
                     </tabs>
                   </TabPane>
                </children>
             </AnchorPane>
-            <ImageView fx:id="imgChosenSuspect" fitHeight="530.0" fitWidth="350.0" layoutX="711.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imgChosenSuspect" fitHeight="632.0" fitWidth="355.0" layoutX="711.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
       <AnchorPane layoutY="-1.0" prefHeight="79.0" prefWidth="700.0">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#393737f7" height="79.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1050.0" />
+            <ImageView fitHeight="150.0" fitWidth="1050.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/banner_darker.png" />
+               </image>
+            </ImageView>
             <Label fx:id="labelTitle" alignment="CENTER" layoutX="247.0" layoutY="20.0" prefHeight="40.0" prefWidth="555.0" text="Who is the thief?" textFill="WHITE">
                <font>
                   <Font name="Algerian" size="35.0" />
