@@ -6,7 +6,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Circle?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.IntroDialogueSceneController">
@@ -18,8 +17,12 @@
       </ImageView>
       <AnchorPane prefHeight="79.0" prefWidth="700.0">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#393737f7" height="79.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1050.0" />
-            <Label alignment="CENTER" layoutX="447.0" layoutY="20.0" prefHeight="31.0" prefWidth="155.0" text="Outside" textAlignment="CENTER" textFill="WHITE">
+            <ImageView fitHeight="100.0" fitWidth="1050.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/top_banner.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="447.0" layoutY="19.0" prefHeight="31.0" prefWidth="155.0" text="Outside" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Algerian" size="35.0" />
                </font>
@@ -38,7 +41,7 @@
       </AnchorPane>
       <AnchorPane layoutX="54.0" layoutY="179.0" prefHeight="334.0" prefWidth="509.0">
          <children>
-            <ImageView fitHeight="439.0" fitWidth="459.0" layoutX="449.0" layoutY="-93.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="462.0" fitWidth="471.0" layoutX="428.0" layoutY="-116.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/Suspect_1.png" />
                </image>
@@ -47,10 +50,10 @@
                <children>
                   <ImageView fitHeight="203.0" fitWidth="962.0" layoutY="-16.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/textbox_with_triangle.png" />
+                        <Image url="@../images/chatbox_intro.png" />
                      </image>
                   </ImageView>
-                  <Label alignment="CENTER" layoutX="37.0" layoutY="1.0" prefHeight="25.0" prefWidth="140.0" text="Mark" textAlignment="CENTER" textFill="WHITE">
+                  <Label alignment="CENTER" layoutY="-16.0" prefHeight="52.0" prefWidth="221.0" text="Mark" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font size="20.0" />
                      </font>

@@ -27,7 +27,11 @@
       </ImageView>
         <AnchorPane prefHeight="79.0" prefWidth="700.0">
             <children>
-                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#393737f7" height="79.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1056.0" />
+            <ImageView fitHeight="87.0" fitWidth="1056.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/top_banner.png" />
+               </image>
+            </ImageView>
                 <Label alignment="CENTER" layoutX="450.0" layoutY="19.0" prefHeight="31.0" prefWidth="155.0" text="Bar" textFill="WHITE">
                     <font>
                         <Font name="Algerian" size="35.0" />
@@ -40,7 +44,7 @@
                   <MenuItem fx:id="menuCrimeScene" mnemonicParsing="false" onAction="#onChangeArea" text="Crime Scene" />
                </items>
             </MenuButton>
-                <Button fx:id="btnGuessNow" disable="true" layoutX="880.0" layoutY="26.0" mnemonicParsing="false" onAction="#onGuessNow" text="Guess Now" />
+                <Button fx:id="btnGuessNow" disable="true" layoutX="874.0" layoutY="26.0" mnemonicParsing="false" onAction="#onGuessNow" text="Guess Now" />
             <AnchorPane layoutX="972.0" layoutY="6.0" prefHeight="65.0" prefWidth="63.0">
                <children>
                   <Circle fill="#ffffff00" layoutX="31.0" layoutY="36.0" radius="31.0" stroke="BLACK" strokeType="INSIDE" />
@@ -57,7 +61,7 @@
          <children>
             <ImageView fitHeight="221.0" fitWidth="865.0" layoutX="79.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/text_area_with_button2.png" />
+                  <Image url="@../images/chatbox_wooden.png" />
                </image>
             </ImageView>
             <Label fx:id="labelResponse" layoutX="91.0" layoutY="59.0" prefHeight="87.0" prefWidth="841.0" text="Label" wrapText="true">
@@ -70,8 +74,8 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Rectangle fx:id="rectSendButton" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="31.0" layoutX="829.0" layoutY="173.0" onMouseClicked="#onSendMessage" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="98.0" />
-            <TextArea fx:id="txtMessage" layoutX="95.0" layoutY="171.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="33.0" prefWidth="730.0" promptText="Type here to chat" wrapText="true">
+            <Rectangle fx:id="rectSendButton" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="31.0" layoutX="834.0" layoutY="164.0" onMouseClicked="#onSendMessage" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="98.0" />
+            <TextArea fx:id="txtMessage" layoutX="91.0" layoutY="163.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="33.0" prefWidth="730.0" promptText="Type here to chat" wrapText="true">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
