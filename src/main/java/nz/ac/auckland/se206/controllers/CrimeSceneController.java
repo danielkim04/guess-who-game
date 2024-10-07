@@ -23,6 +23,9 @@ import nz.ac.auckland.se206.classes.Controller;
 import nz.ac.auckland.se206.classes.NotesSyncManager;
 import nz.ac.auckland.se206.states.GameState;
 import nz.ac.auckland.se206.states.Investigating;
+import javafx.scene.Cursor;
+import javafx.scene.ImageCursor;
+import javafx.scene.image.Image;
 
 /**
  * Controller class for the room view. Handles user interactions within the room
@@ -31,8 +34,16 @@ import nz.ac.auckland.se206.states.Investigating;
  */
 public class CrimeSceneController implements Controller {
 
+  private boolean isLightToggled = false;
+  private Cursor customCursor;
+
   private int moneyCollected = 0;
   private boolean hasClueBeenInspected = false;
+
+  // Add these fields to the controller
+  private Cursor dusterCursor;
+  // Add these fields to the controller
+  private Cursor grabCursor;
 
   @FXML
   private Rectangle rectClueBag;
@@ -158,6 +169,19 @@ public class CrimeSceneController implements Controller {
    */
   @FXML
   public void initialize() {
+
+    // Load the duster cursor image (ensure the path is correct)
+    if (dusterCursor == null) {
+      Image cursorImage = new Image(getClass().getResourceAsStream("/images/duster3.png"));
+      dusterCursor = new ImageCursor(cursorImage);
+    }
+
+    // Load the grab cursor image (ensure the path is correct)
+    if (grabCursor == null) {
+      Image grabImage = new Image(getClass().getResourceAsStream("/images/grab2.png"));
+      grabCursor = new ImageCursor(grabImage);
+    }
+
     // Hide bagInteractPane and hairCollectedPane initially
     bagInteractPane.setVisible(false);
     hairCollectedPane.setVisible(false);
@@ -199,9 +223,10 @@ public class CrimeSceneController implements Controller {
     makeImageViewDraggable(moneyNine);
     makeImageViewDraggable(moneyTen);
 
-    makeImageViewDraggable(web1);
-    makeImageViewDraggable(web2);
-    makeImageViewDraggable(web3);
+    // Add drag-and-drop functionality to webs with cursor change
+    makeImageViewDraggableWithCustomCursor(web1);
+    makeImageViewDraggableWithCustomCursor(web2);
+    makeImageViewDraggableWithCustomCursor(web3);
 
     makeImageViewDraggable(hair);
     enableBothLightsToFollowCursor();
@@ -279,7 +304,7 @@ public class CrimeSceneController implements Controller {
     // opens cash book clue
     cashbookPane.setVisible(true);
 
-    //set clue interaction status
+    // set clue interaction status
     Investigating investigatingState = (Investigating) App.getContext().getInvestigatingState();
     investigatingState.setClueInteractionStatus();
     GameState curGameState = App.getContext().getState();
@@ -303,14 +328,26 @@ public class CrimeSceneController implements Controller {
 
   @FXML
   private void onNoteExit(ActionEvent event) {
-    // Hide the pane
+    // Hide the note interaction pane
     noteInteractPane.setVisible(false);
+
+    // Set the cursor back to the default
+    paneBase.setCursor(Cursor.DEFAULT);
+
+    // Turn off the light
+    lightPane.setVisible(false);
+
+    // Update the light toggle state to reflect the light being off
+    isLightToggled = false;
   }
 
   @FXML
   private void onCashBookExit(ActionEvent event) {
     // Hide the pane
     cashbookPane.setVisible(false);
+
+    // Set the cursor back to the default system cursor
+    paneBase.setCursor(Cursor.DEFAULT);
   }
 
   @FXML
@@ -318,7 +355,7 @@ public class CrimeSceneController implements Controller {
     // Show the noteInteractPane when rectClueNote is clicked
     noteInteractPane.setVisible(true);
 
-    //set clue interaction status
+    // set clue interaction status
     Investigating investigatingState = (Investigating) App.getContext().getInvestigatingState();
     investigatingState.setClueInteractionStatus();
     GameState curGameState = App.getContext().getState();
@@ -336,7 +373,7 @@ public class CrimeSceneController implements Controller {
     // Show the bagInteractPane when rectClueBag is clicked
     bagInteractPane.setVisible(true);
 
-    //set clue interaction status
+    // set clue interaction status
     Investigating investigatingState = (Investigating) App.getContext().getInvestigatingState();
     investigatingState.setClueInteractionStatus();
     GameState curGameState = App.getContext().getState();
@@ -352,6 +389,21 @@ public class CrimeSceneController implements Controller {
   private void onToggleLight(ActionEvent event) {
     // Toggle the visibility of the lightPane
     lightPane.setVisible(!lightPane.isVisible());
+
+    // Toggle the light state
+    isLightToggled = !isLightToggled;
+
+    // Change cursor based on the light state
+    if (isLightToggled) {
+      // Load the custom cursor image (ensure the path is correct)
+      if (customCursor == null) {
+        Image cursorImage = new Image(getClass().getResourceAsStream("/images/torch2.png"));
+        customCursor = new ImageCursor(cursorImage);
+      }
+      paneBase.setCursor(customCursor); // Set the custom cursor
+    } else {
+      paneBase.setCursor(Cursor.DEFAULT); // Set back to default cursor
+    }
   }
 
   @FXML
@@ -377,8 +429,8 @@ public class CrimeSceneController implements Controller {
     // Define the offset values for both blueLight and dark
     double darkOffsetX = 24; // Move dark slightly to the right
     double darkOffsetY = 15; // Move dark slightly down
-    double blueLightOffsetX = 2; // No offset for blueLight
-    double blueLightOffsetY = 0; // No offset for blueLight
+    double blueLightOffsetX = -10; // No offset for blueLight
+    double blueLightOffsetY = -8; // No offset for blueLight
 
     paneBase.setOnMouseMoved(
         event -> {
@@ -409,6 +461,36 @@ public class CrimeSceneController implements Controller {
 
     // Display "Fingerprint Collected!" slowly
     displayFingerprintTextSlowly("Fingerprint Collected, Sample must be tested in the lab!");
+  }
+
+  private void makeImageViewDraggableWithCustomCursor(ImageView imageView) {
+    // Handle mouse press event (when user clicks on the ImageView)
+    imageView.setOnMousePressed(event -> {
+      handleMousePressed(event, imageView);
+      paneBase.setCursor(dusterCursor); // Set the custom duster cursor when pressed
+    });
+
+    // Handle mouse drag event (when user drags the ImageView)
+    imageView.setOnMouseDragged(event -> handleMouseDragged(event, imageView));
+
+    // Handle mouse release event (when user releases the ImageView)
+    imageView.setOnMouseReleased(event -> {
+      // Check if the mouse is still over the image after releasing
+      if (imageView.contains(event.getX(), event.getY())) {
+        // Keep the duster cursor if the mouse is still over the image
+        paneBase.setCursor(dusterCursor);
+      } else {
+        // Otherwise, reset to default
+        paneBase.setCursor(Cursor.DEFAULT);
+      }
+      checkMoneyIntersectionAndHide(imageView);
+    });
+
+    // Handle mouse entered event to set custom cursor
+    imageView.setOnMouseEntered(event -> paneBase.setCursor(dusterCursor));
+
+    // Handle mouse exited event to reset the cursor
+    imageView.setOnMouseExited(event -> paneBase.setCursor(Cursor.DEFAULT));
   }
 
   // Method to display "Fingerprint Collected!" slowly in the printLabel
@@ -443,21 +525,30 @@ public class CrimeSceneController implements Controller {
     hidePaneTimeline.play();
   }
 
-  // Method to make an ImageView draggable
-  private void makeImageViewDraggable(ImageView imageView) {
-    // Handle mouse press event (when user clicks on the ImageView)
-    imageView.setOnMousePressed(event -> handleMousePressed(event, imageView));
+  // Method to make ImageViews draggable with the grab cursor
+private void makeImageViewDraggable(ImageView imageView) {
+  // Handle mouse press event (when user clicks on the ImageView)
+  imageView.setOnMousePressed(event -> {
+      handleMousePressed(event, imageView);
+      paneBase.setCursor(grabCursor); // Set the custom grab cursor when pressed
+  });
 
-    // Handle mouse drag event (when user drags the ImageView)
-    imageView.setOnMouseDragged(event -> handleMouseDragged(event, imageView));
+  // Handle mouse drag event (when user drags the ImageView)
+  imageView.setOnMouseDragged(event -> handleMouseDragged(event, imageView));
 
-    // Handle mouse release event (when user releases the ImageView)
-    imageView.setOnMouseReleased(
-        event -> {
-          // Check for intersection with the BagCollectionRect when dragging is finished
-          checkMoneyIntersectionAndHide(imageView);
-        });
-  }
+  // Handle mouse release event (when user releases the ImageView)
+  imageView.setOnMouseReleased(event -> {
+      // Reset the cursor to default on release
+      paneBase.setCursor(Cursor.DEFAULT);
+      checkMoneyIntersectionAndHide(imageView);
+  });
+
+  // Handle mouse entered event to set custom cursor
+  imageView.setOnMouseEntered(event -> paneBase.setCursor(grabCursor));
+
+  // Handle mouse exited event to reset the cursor
+  imageView.setOnMouseExited(event -> paneBase.setCursor(Cursor.DEFAULT));
+}
 
   // This method is triggered when the mouse is pressed on the ImageView
   private void handleMousePressed(MouseEvent event, ImageView imageView) {

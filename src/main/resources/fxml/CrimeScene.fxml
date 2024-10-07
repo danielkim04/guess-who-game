@@ -15,233 +15,233 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="paneBase" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.CrimeSceneController">
+<Pane fx:id="paneBase" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.CrimeSceneController">
    <children>
-      <ImageView fitHeight="400.0" fitWidth="722.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="600.0" fitWidth="1083.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/CrimeScene.jpeg" />
          </image>
       </ImageView>
-      <Rectangle fx:id="rectClueBag" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="126.0" layoutX="347.0" layoutY="152.0" onMouseClicked="#handleClueBagClick" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
-      <Rectangle fx:id="rectClueBook" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="88.0" layoutX="228.0" layoutY="290.0" onMouseClicked="#handleBookClueClick" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="249.0" />
-      <Rectangle fx:id="rectClueNote" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="31.0" layoutX="479.0" layoutY="299.0" onMouseClicked="#handleNoteClueClick" opacity="0.0" stroke="BLACK" width="74.0" />
+      <Rectangle fx:id="rectClueBag" arcHeight="7.5" arcWidth="7.5" fill="#1f93ff00" height="172.0" layoutX="560.0" layoutY="245.0" onMouseClicked="#handleClueBagClick" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="261.0" />
+      <Rectangle fx:id="rectClueBook" arcHeight="7.5" arcWidth="7.5" fill="#1f93ff00" height="132.0" layoutX="377.0" layoutY="435.0" onMouseClicked="#handleBookClueClick" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="339.0" />
+      <Rectangle fx:id="rectClueNote" arcHeight="7.5" arcWidth="7.5" fill="#1f93ff00" height="49.0" layoutX="769.0" layoutY="448.0" onMouseClicked="#handleNoteClueClick" opacity="0.0" stroke="BLACK" width="96.0" />
       
       <!-- bagInteractPane initially hidden -->
-      <AnchorPane fx:id="bagInteractPane" prefHeight="400.0" prefWidth="676.0" visible="false">
+      <AnchorPane fx:id="bagInteractPane" prefHeight="600.0" prefWidth="1014.0" visible="false">
          <children>
-            <ImageView fitHeight="321.0" fitWidth="676.0" layoutX="110.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="481.5" fitWidth="1014.0" layoutX="165.0" layoutY="118.5" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/DuffelBag.png" />
                </image>
             </ImageView>
-            <Rectangle fx:id="rectBagCollection" arcHeight="5.0" arcWidth="5.0" fill="#393737" height="321.0" layoutY="79.0" stroke="#008663" strokeType="INSIDE" width="112.0" />
+            <Rectangle fx:id="rectBagCollection" arcHeight="7.5" arcWidth="7.5" fill="#393737" height="481.5" layoutY="118.5" stroke="#008663" strokeType="INSIDE" width="168.0" />
             <!-- Restored ImageViews for cash images -->
-            <ImageView fx:id="moneyOne" fitHeight="31.0" fitWidth="74.0" layoutX="404.0" layoutY="172.0" pickOnBounds="true" preserveRatio="true" rotate="13.6">
+            <ImageView fx:id="moneyOne" fitHeight="46.5" fitWidth="111.0" layoutX="606.0" layoutY="258.0" pickOnBounds="true" preserveRatio="true" rotate="13.6">
                <image>
                   <Image url="@../images/cash2.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="moneyTwo" fitHeight="31.0" fitWidth="74.0" layoutX="416.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true" rotate="-61.6">
+            <ImageView fx:id="moneyTwo" fitHeight="46.5" fitWidth="111.0" layoutX="624.0" layoutY="298.5" pickOnBounds="true" preserveRatio="true" rotate="-61.6">
                <image>
                   <Image url="@../images/cash2.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="moneyThree" fitHeight="31.0" fitWidth="74.0" layoutX="373.0" layoutY="228.0" pickOnBounds="true" preserveRatio="true" rotate="-32.3">
+            <ImageView fx:id="moneyThree" fitHeight="46.5" fitWidth="111.0" layoutX="559.5" layoutY="342.0" pickOnBounds="true" preserveRatio="true" rotate="-32.3">
                <image>
                   <Image url="@../images/cash2.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="moneyFour" fitHeight="31.0" fitWidth="74.0" layoutX="394.0" layoutY="238.0" pickOnBounds="true" preserveRatio="true" rotate="-51.2">
+            <ImageView fx:id="moneyFour" fitHeight="46.5" fitWidth="111.0" layoutX="591.0" layoutY="357.0" pickOnBounds="true" preserveRatio="true" rotate="-51.2">
                <image>
                   <Image url="@../images/cash2.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="moneyFive" fitHeight="31.0" fitWidth="74.0" layoutX="379.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true" rotate="-38.5">
+            <ImageView fx:id="moneyFive" fitHeight="46.5" fitWidth="111.0" layoutX="568.5" layoutY="298.5" pickOnBounds="true" preserveRatio="true" rotate="-38.5">
                <image>
                   <Image url="@../images/cash2.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="moneySix" fitHeight="31.0" fitWidth="74.0" layoutX="358.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true" rotate="-39.4">
+            <ImageView fx:id="moneySix" fitHeight="46.5" fitWidth="111.0" layoutX="537.0" layoutY="271.5" pickOnBounds="true" preserveRatio="true" rotate="-39.4">
                <image>
                   <Image url="@../images/cash2.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="hair" fitHeight="72.0" fitWidth="36.0" layoutX="425.0" layoutY="215.0" pickOnBounds="true" preserveRatio="true" rotate="62.2">
+            <ImageView fx:id="hair" fitHeight="108.0" fitWidth="54.0" layoutX="637.5" layoutY="322.5" pickOnBounds="true" preserveRatio="true" rotate="62.2">
                <image>
                   <Image url="@../images/hair2.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="moneySeven" fitHeight="31.0" fitWidth="74.0" layoutX="339.0" layoutY="260.0" pickOnBounds="true" preserveRatio="true" rotate="18.4">
+            <ImageView fx:id="moneySeven" fitHeight="46.5" fitWidth="111.0" layoutX="508.5" layoutY="390.0" pickOnBounds="true" preserveRatio="true" rotate="18.4">
                <image>
                   <Image url="@../images/cash2.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="moneyEight" fitHeight="31.0" fitWidth="74.0" layoutX="330.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true" rotate="22.4">
+            <ImageView fx:id="moneyEight" fitHeight="46.5" fitWidth="111.0" layoutX="495.0" layoutY="319.5" pickOnBounds="true" preserveRatio="true" rotate="22.4">
                <image>
                   <Image url="@../images/cash2.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="moneyNine" fitHeight="31.0" fitWidth="74.0" layoutX="315.0" layoutY="237.0" pickOnBounds="true" preserveRatio="true" rotate="-20.4">
+            <ImageView fx:id="moneyNine" fitHeight="46.5" fitWidth="111.0" layoutX="472.5" layoutY="355.5" pickOnBounds="true" preserveRatio="true" rotate="-20.4">
                <image>
                   <Image url="@../images/cash2.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="moneyTen" fitHeight="31.0" fitWidth="74.0" layoutX="373.0" layoutY="229.0" pickOnBounds="true" preserveRatio="true" rotate="-30.2">
+            <ImageView fx:id="moneyTen" fitHeight="46.5" fitWidth="111.0" layoutX="559.5" layoutY="343.5" pickOnBounds="true" preserveRatio="true" rotate="-30.2">
                <image>
                   <Image url="@../images/cash2.png" />
                </image>
             </ImageView>
-            <AnchorPane fx:id="hairCollectedPane" prefHeight="200.0" prefWidth="200.0">
+            <AnchorPane fx:id="hairCollectedPane" prefHeight="300.0" prefWidth="300.0">
                <children>
-                  <ImageView fitHeight="321.0" fitWidth="461.0" layoutX="110.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="481.5" fitWidth="691.5" layoutX="165.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/frame2.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="hairText" layoutX="170.0" layoutY="140.0" stylesheets="@../css/style.css" text="Label" />
+                  <Label fx:id="hairText" layoutX="255.0" layoutY="210.0" stylesheets="@../css/style.css" text="Label" />
                </children>
             </AnchorPane>
-            <Label fx:id="moneyCounter" layoutX="5.0" layoutY="90.0" prefHeight="65.0" prefWidth="97.0" stylesheets="@../css/style.css" text="Money Collected: XXXXX " wrapText="true" />
-            <Button fx:id="bagExit" layoutX="10.0" layoutY="360.0" mnemonicParsing="false" onAction="#onBagExit" text="Exit" />
+            <Label fx:id="moneyCounter" layoutX="7.5" layoutY="135.0" prefHeight="97.5" prefWidth="145.5" stylesheets="@../css/style.css" text="Money Collected: XXXXX " wrapText="true" />
+            <Button fx:id="bagExit" layoutX="15.0" layoutY="540.0" mnemonicParsing="false" onAction="#onBagExit" text="Exit" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="noteInteractPane" prefHeight="400.0" prefWidth="1073.0" visible="false">
+      <AnchorPane fx:id="noteInteractPane" prefHeight="600.0" prefWidth="1609.5" visible="false">
          <children>
-            <ImageView fitHeight="321.0" fitWidth="572.0" layoutX="107.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="481.5" fitWidth="858.0" layoutX="160.5" layoutY="118.5" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/note2.png" />
                </image>
             </ImageView>
-            <Label layoutX="322.0" layoutY="113.0" prefHeight="250.0" prefWidth="146.0" text="I saw him again tonight at the casino. There's something about the way he carries himself—always so confident, like he owns the place. People seem to gravitate toward him, and I don't know why it bothers me so much. Maybe it's how easily things come to him, or maybe it’s just the way he’s always at the center of attention." wrapText="true">
+            <Label layoutX="483.0" layoutY="169.5" prefHeight="375.0" prefWidth="219.0" text="I saw him again tonight at the casino. There's something about the way he carries himself—always so confident, like he owns the place. People seem to gravitate toward him, and I don't know why it bothers me so much. Maybe it's how easily things come to him, or maybe it’s just the way he’s always at the center of attention." wrapText="true">
                <font>
-                  <Font name="Comic Sans MS" size="11.0" />
+                  <Font name="Comic Sans MS" size="16.5" />
                </font></Label>
-            <AnchorPane fx:id="lightPane" prefHeight="200.0" prefWidth="200.0">
+            <AnchorPane fx:id="lightPane" prefHeight="300.0" prefWidth="300.0">
                <children>
-                  <ImageView fx:id="blueLight" fitHeight="43.0" fitWidth="54.0" layoutX="145.0" layoutY="236.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="blueLight" fitHeight="64.5" fitWidth="81.0" layoutX="217.5" layoutY="354.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/BlueCircle2.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="fingerprint" fitHeight="62.0" fitWidth="54.0" layoutX="400.0" layoutY="200.0" onMouseClicked="#handleFingerprintClick" opacity="0.0" pickOnBounds="true" preserveRatio="true" rotate="45.9">
+                  <ImageView fx:id="fingerprint" fitHeight="93.0" fitWidth="81.0" layoutX="600.0" layoutY="300.0" onMouseClicked="#handleFingerprintClick" opacity="0.0" pickOnBounds="true" preserveRatio="true" rotate="45.9">
                      <image>
                         <Image url="@../images/fingerprint2.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="dark" fitHeight="953.0" fitWidth="1718.0" opacity="0.95" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="dark" fitHeight="1429.5" fitWidth="2577.0" opacity="0.95" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/darkness4.png" />
                      </image>
                   </ImageView>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="fingerCollectedPane" prefHeight="400.0" prefWidth="676.0" visible="false">
+            <AnchorPane fx:id="fingerCollectedPane" prefHeight="600.0" prefWidth="1014.0" visible="false">
                <children>
-                  <ImageView fitHeight="321.0" fitWidth="461.0" layoutX="110.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="481.5" fitWidth="691.5" layoutX="165.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/frame2.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="printLabel" layoutX="170.0" layoutY="140.0" stylesheets="@../css/style.css" text="poo" />
+                  <Label fx:id="printLabel" layoutX="255.0" layoutY="210.0" stylesheets="@../css/style.css" text="poo" />
                </children>
             </AnchorPane>
-            <Rectangle fx:id="BagCollectionRect1" arcHeight="5.0" arcWidth="5.0" fill="#393737" height="321.0" layoutY="79.0" stroke="#008663" strokeType="INSIDE" width="112.0" />
-            <Button fx:id="toggleLight" layoutX="10.0" layoutY="100.0" mnemonicParsing="false" onAction="#onToggleLight" text="Toggle Light" />
-            <Button fx:id="noteExit" layoutX="10.0" layoutY="360.0" mnemonicParsing="false" onAction="#onNoteExit" text="Exit" />
+            <Rectangle fx:id="BagCollectionRect1" arcHeight="7.5" arcWidth="7.5" fill="#393737" height="481.5" layoutY="118.5" stroke="#008663" strokeType="INSIDE" width="168.0" />
+            <Button fx:id="toggleLight" layoutX="15.0" layoutY="150.0" mnemonicParsing="false" onAction="#onToggleLight" text="Toggle Light" />
+            <Button fx:id="noteExit" layoutX="15.0" layoutY="540.0" mnemonicParsing="false" onAction="#onNoteExit" text="Exit" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="cashbookPane" prefHeight="400.0" prefWidth="676.0" visible="false">
+      <AnchorPane fx:id="cashbookPane" prefHeight="600.0" prefWidth="1014.0" visible="false">
          <children>
-            <ImageView fitHeight="321.0" fitWidth="461.0" layoutX="136.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="481.5" fitWidth="691.5" layoutX="204.0" layoutY="118.5" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/cashbook2.png" />
                </image>
             </ImageView>
-            <Label layoutX="363.0" layoutY="144.0" text="Staff wages       1000">
+            <Label layoutX="544.5" layoutY="216.0" text="Staff wages       1000">
                <font>
-                  <Font size="10.0" />
+                  <Font size="15.0" />
                </font>
             </Label>
-            <Label layoutX="360.0" layoutY="162.0" text="Director's Salary 2000">
+            <Label layoutX="540.0" layoutY="243.0" text="Director's Salary 2000">
                <font>
-                  <Font size="10.0" />
+                  <Font size="15.0" />
                </font>
             </Label>
-            <Label layoutX="369.0" layoutY="180.0" text="Expenses         1000">
+            <Label layoutX="553.5" layoutY="270.0" text="Expenses         1000">
                <font>
-                  <Font size="10.0" />
+                  <Font size="15.0" />
                </font>
             </Label>
-            <Label layoutX="360.0" layoutY="197.0" prefHeight="16.0" prefWidth="104.0" text="Winner Cashout XXXXX">
+            <Label layoutX="540.0" layoutY="295.5" prefHeight="24.0" prefWidth="156.0" text="Winner Cashout XXXXX">
                <font>
-                  <Font size="10.0" />
+                  <Font size="15.0" />
                </font>
             </Label>
-            <Label layoutX="195.0" layoutY="146.0" text="Balance b/d      10000">
+            <Label layoutX="292.5" layoutY="219.0" text="Balance b/d      10000">
                <font>
-                  <Font size="10.0" />
+                  <Font size="15.0" />
                </font>
             </Label>
-            <Label layoutX="199.0" layoutY="163.0" text="Share Issue      5000">
+            <Label layoutX="298.5" layoutY="244.5" text="Share Issue      5000">
                <font>
-                  <Font size="10.0" />
+                  <Font size="15.0" />
                </font>
             </Label>
-            <Label layoutX="202.0" layoutY="182.0" text="Revenue         9000">
+            <Label layoutX="303.0" layoutY="273.0" text="Revenue         9000">
                <font>
-                  <Font size="10.0" />
+                  <Font size="15.0" />
                </font>
             </Label>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" height="2.0" layoutX="164.0" layoutY="238.0" stroke="BLACK" strokeType="INSIDE" width="350.0" />
-            <Label layoutX="365.0" layoutY="217.0" prefHeight="16.0" prefWidth="125.0" text="Balance c/d       2000">
+            <Rectangle arcHeight="7.5" arcWidth="7.5" height="3.0" layoutX="246.0" layoutY="357.0" stroke="BLACK" strokeType="INSIDE" width="525.0" />
+            <Label layoutX="547.5" layoutY="325.5" prefHeight="24.0" prefWidth="187.5" text="Balance c/d       2000">
                <font>
-                  <Font size="10.0" />
+                  <Font size="15.0" />
                </font>
             </Label>
-            <Label layoutX="194.0" layoutY="249.0" prefHeight="16.0" prefWidth="125.0" text="Balance b/d       2000">
+            <Label layoutX="291.0" layoutY="373.5" prefHeight="24.0" prefWidth="187.5" text="Balance b/d       2000">
                <font>
-                  <Font size="10.0" />
+                  <Font size="15.0" />
                </font>
             </Label>
-            <TextArea fx:id="balanceArea" layoutX="360.0" layoutY="336.0" prefHeight="32.0" prefWidth="72.0" />
-            <Button fx:id="checkBalance" layoutX="437.0" layoutY="343.0" mnemonicParsing="false" onAction="#onCheckBalance" text="Check" />
-            <Label layoutX="360.0" layoutY="319.0" prefHeight="16.0" prefWidth="125.0" text="Missing Balance?">
+            <TextArea fx:id="balanceArea" layoutX="540.0" layoutY="504.0" prefHeight="48.0" prefWidth="108.0" />
+            <Button fx:id="checkBalance" layoutX="655.5" layoutY="514.5" mnemonicParsing="false" onAction="#onCheckBalance" text="Check" />
+            <Label layoutX="540.0" layoutY="478.5" prefHeight="24.0" prefWidth="187.5" text="Missing Balance?">
                <font>
-                  <Font size="10.0" />
+                  <Font size="15.0" />
                </font>
             </Label>
-            <ImageView fx:id="correct" fitHeight="43.0" fitWidth="36.0" layoutX="480.0" layoutY="343.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="correct" fitHeight="64.5" fitWidth="54.0" layoutX="720.0" layoutY="514.5" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/correct.png" />
                </image>
             </ImageView>
-            <Button fx:id="cashbookExit" layoutX="186.0" layoutY="343.0" mnemonicParsing="false" onAction="#onCashBookExit" text="Back" />
-            <ImageView fx:id="web1" fitHeight="204.0" fitWidth="323.0" layoutX="250.0" layoutY="125.0" opacity="0.5" pickOnBounds="true" preserveRatio="true" rotate="72.2">
+            <Button fx:id="cashbookExit" layoutX="279.0" layoutY="514.5" mnemonicParsing="false" onAction="#onCashBookExit" text="Back" />
+            <ImageView fx:id="web1" fitHeight="306.0" fitWidth="484.5" layoutX="375.0" layoutY="187.5" opacity="0.5" pickOnBounds="true" preserveRatio="true" rotate="72.2">
                <image>
                   <Image url="@../images/cobweb2.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="web2" fitHeight="220.0" fitWidth="311.0" layoutX="120.0" layoutY="200.0" opacity="0.5" pickOnBounds="true" preserveRatio="true" rotate="-83.9">
+            <ImageView fx:id="web2" fitHeight="330.0" fitWidth="466.5" layoutX="180.0" layoutY="300.0" opacity="0.5" pickOnBounds="true" preserveRatio="true" rotate="-83.9">
                <image>
                   <Image url="@../images/cobweb2.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="web3" fitHeight="146.0" fitWidth="233.0" layoutX="167.0" layoutY="100.0" opacity="0.5" pickOnBounds="true" preserveRatio="true" rotate="-28.7">
+            <ImageView fx:id="web3" fitHeight="219.0" fitWidth="349.5" layoutX="250.5" layoutY="150.0" opacity="0.5" pickOnBounds="true" preserveRatio="true" rotate="-28.7">
                <image>
                   <Image url="@../images/cobweb2.png" />
                </image>
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="79.0" prefWidth="700.0">
+            <AnchorPane prefHeight="118.5" prefWidth="1050.0">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#393737f7" height="79.0" stroke="TRANSPARENT" strokeType="INSIDE" width="700.0" />
-            <Label alignment="CENTER" layoutX="273.0" layoutY="22.0" prefHeight="31.0" prefWidth="155.0" text="Crime Scene" textFill="WHITE">
+            <Rectangle arcHeight="7.5" arcWidth="7.5" fill="#393737f7" height="94.0" layoutY="-7.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1050.0" />
+            <Label alignment="CENTER" layoutX="409.0" layoutY="20.0" prefHeight="46.5" prefWidth="232.5" text="Crime Scene" textFill="WHITE">
                <font>
-                  <Font name="Algerian" size="25.0" />
+                  <Font name="Algerian" size="37.5" />
                </font>
             </Label>
-            <AnchorPane layoutX="623.0" layoutY="6.0" prefHeight="65.0" prefWidth="63.0">
+            <AnchorPane layoutX="972.0" layoutY="10.0" prefHeight="83.0" prefWidth="76.0">
                <children>
                   <Circle fill="#ffffff00" layoutX="31.0" layoutY="36.0" radius="31.0" stroke="BLACK" strokeType="INSIDE" />
                   <Label fx:id="labelTimer" layoutX="7.0" layoutY="20.0" text="X:XX" textFill="WHITE">
@@ -251,98 +251,99 @@
                   </Label>
                </children>
             </AnchorPane>
-            <MenuButton layoutX="22.0" layoutY="27.0" mnemonicParsing="false" text="Locations">
+            <MenuButton layoutX="28.0" layoutY="31.0" mnemonicParsing="false" text="Locations">
                <items>
                   <MenuItem fx:id="menuSuspectOne" mnemonicParsing="false" onAction="#onSuspectOne" text="Lobby" />
                   <MenuItem fx:id="menuSuspectTwo" mnemonicParsing="false" onAction="#onSuspectTwo" text="Tables" />
                   <MenuItem fx:id="menuSuspectThree" mnemonicParsing="false" onAction="#onSuspectThree" text="Bar" />
                </items>
             </MenuButton>
-            <Button fx:id="btnGuessNow" disable="true" layoutX="138.0" layoutY="27.0" mnemonicParsing="false" onAction="#onGuessNow" text="Guess Now" />
+            <Button fx:id="btnGuessNow" disable="true" layoutX="856.0" layoutY="28.0" mnemonicParsing="false" onAction="#onGuessNow" prefHeight="31.0" prefWidth="98.0" text="Guess Now" />
          </children>
       </AnchorPane>
 
-      <AnchorPane fx:id="paneOpenChat" layoutX="681.0" layoutY="185.0" onMouseClicked="#onHandleOpenButtonClick" prefHeight="97.0" prefWidth="21.0">
+      <AnchorPane fx:id="paneOpenChat" layoutX="1021.5" layoutY="277.5" onMouseClicked="#onHandleOpenButtonClick" prefHeight="145.5" prefWidth="31.5">
          <children>
-            <Rectangle fx:id="glow" arcHeight="20.0" arcWidth="20.0" fill="#adadadeb" height="110.0" stroke="TRANSPARENT" strokeType="INSIDE" width="36.0" />
-            <Label alignment="CENTER" layoutX="4.0" layoutY="37.0" prefHeight="23.0" prefWidth="18.0" rotate="-90.0" text="^" textAlignment="CENTER" textFill="WHITE">
+            <Rectangle fx:id="glow" arcHeight="30.0" arcWidth="30.0" fill="#adadadeb" height="165.0" stroke="TRANSPARENT" strokeType="INSIDE" width="54.0" />
+            <Label alignment="CENTER" layoutX="6.0" layoutY="55.5" prefHeight="34.5" prefWidth="27.0" rotate="-90.0" text="^" textAlignment="CENTER" textFill="WHITE">
                <font>
-                  <Font size="25.0" />
+                  <Font size="37.5" />
                </font>
             </Label>
          </children>
-      </AnchorPane>      
-      <AnchorPane fx:id="paneNoteWindow" layoutX="423.0" layoutY="80.0" prefHeight="321.0" prefWidth="287.0" visible="false">
+      </AnchorPane>
+      
+      <AnchorPane fx:id="paneNoteWindow" layoutX="634.5" layoutY="120.0" prefHeight="481.5" prefWidth="430.5" visible="false">
          <children>
-            <AnchorPane fx:id="paneOpenChat1" layoutX="11.0" layoutY="106.0" onMouseClicked="#handleCloseButtonClick" prefHeight="97.0" prefWidth="21.0">
+            <AnchorPane fx:id="paneOpenChat1" layoutX="16.5" layoutY="159.0" onMouseClicked="#handleCloseButtonClick" prefHeight="145.5" prefWidth="31.5">
                <children>
-                  <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#adadadeb" height="110.0" stroke="TRANSPARENT" strokeType="INSIDE" width="36.0" />
-                  <Label alignment="CENTER" layoutX="-3.0" layoutY="36.0" prefHeight="23.0" prefWidth="18.0" rotate="90.0" text="^" textAlignment="CENTER" textFill="WHITE">
+                  <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#adadadeb" height="165.0" stroke="TRANSPARENT" strokeType="INSIDE" width="54.0" />
+                  <Label alignment="CENTER" layoutX="-4.5" layoutY="54.0" prefHeight="34.5" prefWidth="27.0" rotate="90.0" text="^" textAlignment="CENTER" textFill="WHITE">
                      <font>
-                        <Font size="25.0" />
+                        <Font size="37.5" />
                      </font>
                   </Label>
                </children>
             </AnchorPane>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#383636f7" height="322.0" layoutX="29.0" layoutY="-2.0" stroke="TRANSPARENT" strokeType="INSIDE" width="248.0" />
-            <TabPane layoutX="37.0" layoutY="6.0" prefHeight="308.0" prefWidth="232.0" tabClosingPolicy="UNAVAILABLE">
+            <Rectangle arcHeight="7.5" arcWidth="7.5" fill="#383636f7" height="483.0" layoutX="43.5" layoutY="-3.0" stroke="TRANSPARENT" strokeType="INSIDE" width="372.0" />
+            <TabPane layoutX="55.5" layoutY="9.0" prefHeight="462.0" prefWidth="348.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                 <Tab text="Notes">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="185.0" prefWidth="232.0">
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="277.5" prefWidth="348.0">
                            <children>
-                              <TextArea fx:id="notesText" layoutY="3.0" onKeyTyped="#onNotesTextChanged" prefHeight="280.0" prefWidth="232.0" promptText="Add notes here" />
+                              <TextArea fx:id="notesText" layoutY="4.5" onKeyTyped="#onNotesTextChanged" prefHeight="420.0" prefWidth="348.0" promptText="Add notes here" />
                            </children>
                         </AnchorPane>
                   </content>
                 </Tab>
-                  <Tab text="Inventory">
+                <Tab text="Inventory">
                     <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="270.0" prefWidth="300.0">
                            <children>
-                              <Rectangle arcHeight="100.0" arcWidth="100.0" fill="#393737" height="79.0" layoutY="10.0" stroke="BLACK" strokeType="INSIDE" width="233.0" />
-                              <Rectangle arcHeight="100.0" arcWidth="100.0" fill="#393737" height="79.0" layoutY="190.0" stroke="BLACK" strokeType="INSIDE" width="233.0" />
-                              <Rectangle arcHeight="100.0" arcWidth="100.0" fill="#393737" height="79.0" layoutY="100.0" stroke="BLACK" strokeType="INSIDE" width="233.0" />
-                              <AnchorPane fx:id="hairSamplePane" prefHeight="88.0" prefWidth="205.0">
+                              <Rectangle arcHeight="150.0" arcWidth="150.0" fill="#393737" height="118.5" layoutY="15.0" stroke="BLACK" strokeType="INSIDE" width="349.5" />
+                              <Rectangle arcHeight="150.0" arcWidth="150.0" fill="#393737" height="118.5" layoutY="285.0" stroke="BLACK" strokeType="INSIDE" width="349.5" />
+                              <Rectangle arcHeight="150.0" arcWidth="150.0" fill="#393737" height="118.5" layoutY="150.0" stroke="BLACK" strokeType="INSIDE" width="349.5" />
+                              <AnchorPane fx:id="hairSamplePane" prefHeight="132.0" prefWidth="307.5">
                                  <children>
-                                    <ImageView fitHeight="68.0" fitWidth="64.0" layoutX="40.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="102.0" fitWidth="96.0" layoutX="60.0" layoutY="22.5" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../images/fingerprintInv1.png" />
                                        </image>
                                     </ImageView>
-                                    <Label layoutX="110.0" layoutY="15.0" stylesheets="@../css/style.css" text="Hair Sample">
+                                    <Label layoutX="165.0" layoutY="22.5" stylesheets="@../css/style.css" text="Hair Sample">
                                        <font>
-                                          <Font name="Dubai Bold" size="18.0" />
+                                          <Font name="Dubai Bold" size="27.0" />
                                        </font>
                                     </Label>
-                                    <Button fx:id="hairTest" layoutX="110.0" layoutY="55.0" mnemonicParsing="false" onAction="#onTestHair" text="Test Sample" />
+                                    <Button fx:id="hairTest" layoutX="165.0" layoutY="82.5" mnemonicParsing="false" onAction="#onTestHair" text="Test Sample" />
                                  </children>
                               </AnchorPane>
-                              <AnchorPane fx:id="fingerprintSamplePane" layoutY="96.0" prefHeight="80.0" prefWidth="200.0">
+                              <AnchorPane fx:id="fingerprintSamplePane" layoutY="144.0" prefHeight="120.0" prefWidth="300.0">
                                  <children>
-                                    <ImageView fitHeight="64.0" fitWidth="65.0" layoutX="40.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="96.0" fitWidth="97.5" layoutX="60.0" layoutY="7.5" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../images/fingerprintInv2.png" />
                                        </image>
                                     </ImageView>
-                                    <Label layoutX="110.0" layoutY="5.0" stylesheets="@../css/style.css" text="Fingerprint">
+                                    <Label layoutX="165.0" layoutY="7.5" stylesheets="@../css/style.css" text="Fingerprint">
                                        <font>
-                                          <Font name="Dubai Bold" size="18.0" />
+                                          <Font name="Dubai Bold" size="27.0" />
                                        </font>
                                     </Label>
-                                    <Button fx:id="fingerprintTest" layoutX="110.0" layoutY="50.0" mnemonicParsing="false" onAction="#onFingerprintTestClick" text="Test Sample" />
+                                    <Button fx:id="fingerprintTest" layoutX="165.0" layoutY="75.0" mnemonicParsing="false" onAction="#onFingerprintTestClick" text="Test Sample" />
                                  </children>
                               </AnchorPane>
-                              <AnchorPane fx:id="moneyCollectedPane" prefHeight="200.0" prefWidth="200.0">
+                              <AnchorPane fx:id="moneyCollectedPane" prefHeight="300.0" prefWidth="300.0">
                                  <children>
-                                    <ImageView fitHeight="64.0" fitWidth="65.0" layoutX="40.0" layoutY="195.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="96.0" fitWidth="97.5" layoutX="60.0" layoutY="292.5" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../images/cashInv.png" />
                                        </image>
                                     </ImageView>
-                                    <Label layoutX="125.0" layoutY="195.0" stylesheets="@../css/style.css" text="Money">
+                                    <Label layoutX="187.5" layoutY="292.5" stylesheets="@../css/style.css" text="Money">
                                        <font>
-                                          <Font name="Dubai Bold" size="18.0" />
+                                          <Font name="Dubai Bold" size="27.0" />
                                        </font>
                                     </Label>
                                  </children>
@@ -353,17 +354,16 @@
                   </Tab>
               </tabs>
             </TabPane>
-
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="labPane" prefHeight="400.0" prefWidth="700.0" visible="false">
+      <AnchorPane fx:id="labPane" prefHeight="600.0" prefWidth="1050.0" visible="false">
          <children>
-            <ImageView fitHeight="321.0" fitWidth="461.0" layoutX="110.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="481.5" fitWidth="691.5" layoutX="165.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/frame2.png" />
                </image>
             </ImageView>
-            <Label fx:id="labLabel" layoutX="170.0" layoutY="140.0" prefHeight="18.0" prefWidth="337.0" stylesheets="@../css/style.css" text="poopoo" wrapText="true" />
+            <Label fx:id="labLabel" layoutX="255.0" layoutY="210.0" prefHeight="27.0" prefWidth="505.5" stylesheets="@../css/style.css" text="poopoo" wrapText="true" />
          </children>
       </AnchorPane>
    </children>
