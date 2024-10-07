@@ -40,6 +40,9 @@ public class CrimeSceneController implements Controller {
   private int moneyCollected = 0;
   private boolean hasClueBeenInspected = false;
 
+  // Add these fields to the controller
+  private Cursor dusterCursor;
+
   @FXML
   private Rectangle rectClueBag;
   @FXML
@@ -309,8 +312,17 @@ public class CrimeSceneController implements Controller {
 
   @FXML
   private void onNoteExit(ActionEvent event) {
-    // Hide the pane
+    // Hide the note interaction pane
     noteInteractPane.setVisible(false);
+
+    // Set the cursor back to the default
+    paneBase.setCursor(Cursor.DEFAULT);
+
+    // Turn off the light
+    lightPane.setVisible(false);
+
+    // Update the light toggle state to reflect the light being off
+    isLightToggled = false;
   }
 
   @FXML
