@@ -167,6 +167,13 @@ public class CrimeSceneController implements Controller {
    */
   @FXML
   public void initialize() {
+
+    // Load the duster cursor image (ensure the path is correct)
+    if (dusterCursor == null) {
+      Image cursorImage = new Image(getClass().getResourceAsStream("/images/duster3.png"));
+      dusterCursor = new ImageCursor(cursorImage);
+    }
+
     // Hide bagInteractPane and hairCollectedPane initially
     bagInteractPane.setVisible(false);
     hairCollectedPane.setVisible(false);
@@ -208,9 +215,10 @@ public class CrimeSceneController implements Controller {
     makeImageViewDraggable(moneyNine);
     makeImageViewDraggable(moneyTen);
 
-    makeImageViewDraggable(web1);
-    makeImageViewDraggable(web2);
-    makeImageViewDraggable(web3);
+    // Add drag-and-drop functionality to webs with cursor change
+    makeImageViewDraggableWithCustomCursor(web1);
+    makeImageViewDraggableWithCustomCursor(web2);
+    makeImageViewDraggableWithCustomCursor(web3);
 
     makeImageViewDraggable(hair);
     enableBothLightsToFollowCursor();
@@ -329,6 +337,9 @@ public class CrimeSceneController implements Controller {
   private void onCashBookExit(ActionEvent event) {
     // Hide the pane
     cashbookPane.setVisible(false);
+
+    // Set the cursor back to the default system cursor
+    paneBase.setCursor(Cursor.DEFAULT);
   }
 
   @FXML
@@ -442,6 +453,36 @@ public class CrimeSceneController implements Controller {
 
     // Display "Fingerprint Collected!" slowly
     displayFingerprintTextSlowly("Fingerprint Collected, Sample must be tested in the lab!");
+  }
+
+  private void makeImageViewDraggableWithCustomCursor(ImageView imageView) {
+    // Handle mouse press event (when user clicks on the ImageView)
+    imageView.setOnMousePressed(event -> {
+      handleMousePressed(event, imageView);
+      paneBase.setCursor(dusterCursor); // Set the custom duster cursor when pressed
+    });
+
+    // Handle mouse drag event (when user drags the ImageView)
+    imageView.setOnMouseDragged(event -> handleMouseDragged(event, imageView));
+
+    // Handle mouse release event (when user releases the ImageView)
+    imageView.setOnMouseReleased(event -> {
+      // Check if the mouse is still over the image after releasing
+      if (imageView.contains(event.getX(), event.getY())) {
+        // Keep the duster cursor if the mouse is still over the image
+        paneBase.setCursor(dusterCursor);
+      } else {
+        // Otherwise, reset to default
+        paneBase.setCursor(Cursor.DEFAULT);
+      }
+      checkMoneyIntersectionAndHide(imageView);
+    });
+
+    // Handle mouse entered event to set custom cursor
+    imageView.setOnMouseEntered(event -> paneBase.setCursor(dusterCursor));
+
+    // Handle mouse exited event to reset the cursor
+    imageView.setOnMouseExited(event -> paneBase.setCursor(Cursor.DEFAULT));
   }
 
   // Method to display "Fingerprint Collected!" slowly in the printLabel
