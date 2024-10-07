@@ -83,7 +83,7 @@
          <children>
             <ImageView fitHeight="150.0" fitWidth="1050.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/top_banner.png" />
+                  <Image url="@../images/banner_darker.png" />
                </image>
             </ImageView>
             <Label fx:id="labelTitle" alignment="CENTER" layoutX="247.0" layoutY="20.0" prefHeight="40.0" prefWidth="555.0" text="Who is the thief?" textFill="WHITE">
