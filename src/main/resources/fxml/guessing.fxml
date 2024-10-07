@@ -79,7 +79,7 @@
                   </TabPane>
                </children>
             </AnchorPane>
-            <ImageView fx:id="imgChosenSuspect" fitHeight="609.0" fitWidth="350.0" layoutX="711.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imgChosenSuspect" fitHeight="632.0" fitWidth="355.0" layoutX="711.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
       <AnchorPane layoutY="-1.0" prefHeight="79.0" prefWidth="700.0">
