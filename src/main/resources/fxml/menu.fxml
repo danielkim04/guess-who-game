@@ -32,7 +32,7 @@
                <children>
                   <!-- Set the rectangle behind the label -->
                   <Rectangle fx:id="StartRectangle" arcHeight="25.0" arcWidth="25.0" fill="#777373c4" height="57.0" onMouseClicked="#onStartRectangleClick" stroke="TRANSPARENT" strokeType="INSIDE" visible="false" width="155.0" />
-                  <ImageView fitHeight="57.0" fitWidth="155.0" layoutX="12.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="57.0" fitWidth="155.0" layoutX="12.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                      <image>
                         <Image url="@../images/start_button_larger.png" />
                      </image>

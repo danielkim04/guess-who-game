@@ -39,12 +39,12 @@
                         </ImageView>
                      </children>
                   </AnchorPane>
-                  <Label fx:id="labelDefeat" alignment="CENTER" layoutX="508.0" layoutY="18.0" prefHeight="50.0" prefWidth="475.0" text="You Lost" textFill="#ff3636" visible="false">
+                  <Label fx:id="labelDefeat" alignment="CENTER" layoutX="508.0" layoutY="18.0" prefHeight="50.0" prefWidth="475.0" text="You Lost" textFill="RED" visible="false">
                      <font>
                         <Font name="Times New Roman" size="48.0" />
                      </font>
                   </Label>
-                  <Label fx:id="labelVictory" alignment="CENTER" layoutX="517.0" layoutY="18.0" prefHeight="50.0" prefWidth="455.0" text="You won" textFill="#64ff3d" visible="false">
+                  <Label fx:id="labelVictory" alignment="CENTER" layoutX="517.0" layoutY="18.0" prefHeight="50.0" prefWidth="455.0" text="You won" textFill="#37ff00" visible="false">
                      <font>
                         <Font name="Times New Roman" size="48.0" />
                      </font>
@@ -54,7 +54,7 @@
                         <Font name="Times New Roman" size="21.0" />
                      </font>
                   </Label>
-                  <AnchorPane layoutX="587.0" layoutY="525.0" onMouseClicked="#onPlayAgain" prefHeight="54.0" prefWidth="330.0">
+                  <AnchorPane layoutX="587.0" layoutY="525.0" onMouseClicked="#onPlayAgain" prefHeight="54.0" prefWidth="330.0" style="-fx-cursor: hand;">
                      <children>
                         <ImageView fitHeight="54.0" fitWidth="330.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
                            <image>

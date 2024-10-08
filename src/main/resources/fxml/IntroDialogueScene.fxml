@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Polygon?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.IntroDialogueSceneController">
@@ -49,24 +50,29 @@
             </ImageView>
             <AnchorPane fx:id="paneDialogueBox" layoutY="197.0" onMouseClicked="#handleBoxClick" prefHeight="122.0" prefWidth="500.0">
                <children>
-                  <ImageView fitHeight="203.0" fitWidth="962.0" layoutY="-16.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/chatbox_story_darker.png" />
-                     </image>
-                  </ImageView>
-                  <Label alignment="CENTER" layoutY="-16.0" prefHeight="52.0" prefWidth="221.0" text="Mark" textAlignment="CENTER" textFill="WHITE">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="labelDialogue" layoutX="30.0" layoutY="55.0" prefHeight="84.0" prefWidth="859.0" text="Label" wrapText="true">
-                     <font>
-                        <Font name="Calibri" size="19.0" />
-                     </font>
-                  </Label>
-                  <Polygon fill="#5a402e" layoutX="877.0" layoutY="99.0" points="58.00006103515625, 21.333343505859375, 31.33331298828125, 38.6666259765625, 31.33331298828125, 4.666656494140625" stroke="BLACK" strokeType="INSIDE" />
+                  <AnchorPane layoutY="-15.0" prefHeight="181.0" prefWidth="962.0" style="-fx-cursor: hand;">
+                     <children>
+                        <ImageView fitHeight="203.0" fitWidth="962.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/chatbox_story_darker.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="labelDialogue" layoutX="21.0" layoutY="72.0" prefHeight="84.0" prefWidth="859.0" text="Label" wrapText="true">
+                           <font>
+                              <Font name="Calibri" size="19.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="52.0" prefWidth="221.0" text="Mark" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Polygon fill="#5a402e" layoutX="871.0" layoutY="116.0" points="58.00006103515625, 21.333343505859375, 31.33331298828125, 38.6666259765625, 31.33331298828125, 4.666656494140625" stroke="BLACK" strokeType="INSIDE" />
+                     </children>
+                  </AnchorPane>
                </children>
             </AnchorPane>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="52.0" layoutY="179.0" stroke="TRANSPARENT" strokeType="INSIDE" width="962.0" />
          </children>
       </AnchorPane>
    </children>
