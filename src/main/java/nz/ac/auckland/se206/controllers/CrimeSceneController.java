@@ -502,7 +502,7 @@ public class CrimeSceneController implements Controller {
     for (int i = 0; i < text.length(); i++) {
       final int index = i;
       KeyFrame keyFrame = new KeyFrame(
-          Duration.millis(100 * index), // Delay each letter by 100ms
+          Duration.millis(75 * index), // Delay each letter by 100ms
           e -> {
             displayedText.append(text.charAt(index)); // Append the current letter
             printLabel.setText(displayedText.toString()); // Update the label with the new text
@@ -515,40 +515,40 @@ public class CrimeSceneController implements Controller {
     timeline.play();
   }
 
-  // Method to hide the fingerCollectedPane after 3 seconds
+  // Method to hide the fingerCollectedPane after 2 seconds
   private void hideFingerprintPaneAfterDelay() {
     Timeline hidePaneTimeline = new Timeline(
         new KeyFrame(
-            Duration.seconds(3), // Wait for 3 seconds
+            Duration.seconds(2), // Wait for 2 seconds
             ev -> fingerCollectedPane.setVisible(false) // Hide the pane
         ));
     hidePaneTimeline.play();
   }
 
   // Method to make ImageViews draggable with the grab cursor
-private void makeImageViewDraggable(ImageView imageView) {
-  // Handle mouse press event (when user clicks on the ImageView)
-  imageView.setOnMousePressed(event -> {
+  private void makeImageViewDraggable(ImageView imageView) {
+    // Handle mouse press event (when user clicks on the ImageView)
+    imageView.setOnMousePressed(event -> {
       handleMousePressed(event, imageView);
       paneBase.setCursor(grabCursor); // Set the custom grab cursor when pressed
-  });
+    });
 
-  // Handle mouse drag event (when user drags the ImageView)
-  imageView.setOnMouseDragged(event -> handleMouseDragged(event, imageView));
+    // Handle mouse drag event (when user drags the ImageView)
+    imageView.setOnMouseDragged(event -> handleMouseDragged(event, imageView));
 
-  // Handle mouse release event (when user releases the ImageView)
-  imageView.setOnMouseReleased(event -> {
+    // Handle mouse release event (when user releases the ImageView)
+    imageView.setOnMouseReleased(event -> {
       // Reset the cursor to default on release
       paneBase.setCursor(Cursor.DEFAULT);
       checkMoneyIntersectionAndHide(imageView);
-  });
+    });
 
-  // Handle mouse entered event to set custom cursor
-  imageView.setOnMouseEntered(event -> paneBase.setCursor(grabCursor));
+    // Handle mouse entered event to set custom cursor
+    imageView.setOnMouseEntered(event -> paneBase.setCursor(grabCursor));
 
-  // Handle mouse exited event to reset the cursor
-  imageView.setOnMouseExited(event -> paneBase.setCursor(Cursor.DEFAULT));
-}
+    // Handle mouse exited event to reset the cursor
+    imageView.setOnMouseExited(event -> paneBase.setCursor(Cursor.DEFAULT));
+  }
 
   // This method is triggered when the mouse is pressed on the ImageView
   private void handleMousePressed(MouseEvent event, ImageView imageView) {
@@ -604,7 +604,7 @@ private void makeImageViewDraggable(ImageView imageView) {
     for (int i = 0; i < text.length(); i++) {
       final int index = i;
       KeyFrame keyFrame = new KeyFrame(
-          Duration.millis(100 * index), // Delay each letter by 100ms
+          Duration.millis(75 * index), // Delay each letter by 100ms
           e -> {
             displayedText.append(text.charAt(index)); // Append the current letter
             hairText.setText(displayedText.toString()); // Update the label with the new text
@@ -612,12 +612,12 @@ private void makeImageViewDraggable(ImageView imageView) {
       timeline.getKeyFrames().add(keyFrame);
     }
 
-    // After the text has been fully displayed, hide the pane after 3 seconds
+    // After the text has been fully displayed, hide the pane after 2 seconds
     timeline.setOnFinished(
         e -> {
           Timeline hidePaneTimeline = new Timeline(
               new KeyFrame(
-                  Duration.seconds(3), // Wait for 3 seconds
+                  Duration.seconds(2), // Wait for 2 seconds
                   ev -> hairCollectedPane.setVisible(false) // Hide the pane
           ));
           hidePaneTimeline.play();
@@ -698,7 +698,7 @@ private void makeImageViewDraggable(ImageView imageView) {
     for (int i = 0; i < text.length(); i++) {
       final int index = i;
       KeyFrame keyFrame = new KeyFrame(
-          Duration.millis(100 * index), // Delay each letter by 100ms
+          Duration.millis(75 * index), // Delay each letter by 100ms
           e -> {
             displayedText.append(text.charAt(index)); // Append the current letter
             labLabel.setText(displayedText.toString()); // Update the label with the new text
@@ -711,11 +711,11 @@ private void makeImageViewDraggable(ImageView imageView) {
     timeline.play();
   }
 
-  // Method to hide the labPane after 3 seconds
+  // Method to hide the labPane after 2 seconds
   private void hideLabPaneAfterDelay() {
     Timeline hidePaneTimeline = new Timeline(
         new KeyFrame(
-            Duration.seconds(3), // Wait for 3 seconds
+            Duration.seconds(2), // Wait for 2 seconds
             ev -> labPane.setVisible(false) // Hide the pane
         ));
     hidePaneTimeline.play();
