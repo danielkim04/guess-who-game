@@ -19,7 +19,7 @@
             <Image url="@../images/interrogationroom1.jpeg" />
          </image>
       </ImageView>
-      <AnchorPane fx:id="paneSuspectOne" layoutY="73.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleSuspectClick" prefHeight="530.0" prefWidth="350.0">
+      <AnchorPane fx:id="paneSuspectOne" layoutY="73.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleSuspectClick" prefHeight="530.0" prefWidth="350.0" style="-fx-cursor: hand;">
          <children>
             <ImageView fitHeight="609.0" fitWidth="364.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -28,7 +28,7 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="paneSuspectTwo" layoutX="350.0" layoutY="77.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleSuspectClick" prefHeight="522.0" prefWidth="350.0">
+      <AnchorPane fx:id="paneSuspectTwo" layoutX="350.0" layoutY="77.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleSuspectClick" prefHeight="522.0" prefWidth="350.0" style="-fx-cursor: hand;">
          <children>
             <ImageView fitHeight="617.0" fitWidth="359.0" layoutX="-3.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -37,7 +37,7 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="paneSuspectThree" layoutX="699.0" layoutY="76.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleSuspectClick" prefHeight="524.0" prefWidth="350.0">
+      <AnchorPane fx:id="paneSuspectThree" layoutX="699.0" layoutY="76.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleSuspectClick" prefHeight="524.0" prefWidth="350.0" style="-fx-cursor: hand;">
          <children>
             <ImageView fitHeight="609.0" fitWidth="355.0" layoutX="2.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -66,7 +66,7 @@
                         <Font size="23.0" />
                      </font>
                   </TextArea>
-                  <AnchorPane layoutX="10.0" layoutY="467.0" onMouseClicked="#onSendExplanation" prefHeight="48.0" prefWidth="651.0">
+                  <AnchorPane layoutX="10.0" layoutY="467.0" onMouseClicked="#onSendExplanation" prefHeight="48.0" prefWidth="651.0" style="-fx-cursor: hand;">
                      <children>
                         <ImageView fitHeight="46.0" fitWidth="662.0" layoutX="8.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
                            <image>

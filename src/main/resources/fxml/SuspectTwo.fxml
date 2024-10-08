@@ -74,7 +74,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Rectangle fx:id="rectSendButton" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="31.0" layoutX="834.0" layoutY="163.0" onMouseClicked="#onSendMessage" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="98.0" />
+            <Rectangle fx:id="rectSendButton" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="31.0" layoutX="834.0" layoutY="163.0" onMouseClicked="#onSendMessage" opacity="0.0" stroke="BLACK" strokeType="INSIDE" style="-fx-cursor: hand;" width="98.0" />
             <TextArea fx:id="txtMessage" layoutX="95.0" layoutY="163.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="33.0" prefWidth="721.0" promptText="Type here to chat" wrapText="true">
                <opaqueInsets>
                   <Insets />
