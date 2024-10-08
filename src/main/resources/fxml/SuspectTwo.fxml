@@ -106,5 +106,10 @@
             <AnchorPane fx:id="barButtonAnchorPane" layoutX="27.0" layoutY="309.0" onMouseClicked="#onChangeArea" prefHeight="104.0" prefWidth="370.0" />
          </children>
       </AnchorPane>
+      <ImageView fitHeight="306.0" fitWidth="329.0" layoutX="579.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../gif/casinoNoWater.gif" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>

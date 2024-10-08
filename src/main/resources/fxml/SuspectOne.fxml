@@ -100,5 +100,10 @@
             <AnchorPane fx:id="tablesButtonAnchorPane" layoutX="22.0" layoutY="414.0" onMouseClicked="#onChangeArea" prefHeight="104.0" prefWidth="370.0" />
          </children>
       </AnchorPane>
+      <ImageView fitHeight="297.0" fitWidth="407.0" layoutX="494.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../gif/lobbyNoWater.gif" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
