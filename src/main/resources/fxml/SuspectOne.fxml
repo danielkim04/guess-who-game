@@ -79,7 +79,7 @@
                </font></TextArea>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="mapMenuAnchorPane" layoutX="643.0" layoutY="78.0" prefHeight="519.0" prefWidth="390.0">
+      <AnchorPane fx:id="mapMenuAnchorPane" layoutX="643.0" layoutY="78.0" prefHeight="519.0" prefWidth="390.0" visible="false">
          <children>
             <ImageView fitHeight="531.0" fitWidth="409.0" layoutX="6.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                <image>

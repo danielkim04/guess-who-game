@@ -38,7 +38,7 @@ public class SuspectController implements Controller {
   @FXML
   private AnchorPane barButtonAnchorPane;
   @FXML
-  private AnchorPane tabesButtonAnchorPane;
+  private AnchorPane tablesButtonAnchorPane;
   @FXML
   private Button btnGuessNow;
   @FXML
@@ -69,7 +69,7 @@ public class SuspectController implements Controller {
 
   private void createMap() {
     App.addToLocationMap(lobbyButtonAnchorPane, "SuspectOne");
-    App.addToLocationMap(tabesButtonAnchorPane, "SuspectTwo");
+    App.addToLocationMap(tablesButtonAnchorPane, "SuspectTwo");
     App.addToLocationMap(barButtonAnchorPane, "SuspectThree");
     App.addToLocationMap(crimeSceneButtonAnchorPane, "CrimeScene");
   }
