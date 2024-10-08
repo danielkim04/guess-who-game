@@ -75,10 +75,13 @@
                </font>
             </Label>
             <Rectangle fx:id="rectSendButton" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="31.0" layoutX="834.0" layoutY="164.0" onMouseClicked="#onSendMessage" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="98.0" />
-            <TextArea fx:id="txtMessage" layoutX="91.0" layoutY="163.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="33.0" prefWidth="730.0" promptText="Type here to chat" wrapText="true">
+            <TextArea fx:id="txtMessage" layoutX="91.0" layoutY="163.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="33.0" prefWidth="725.0" promptText="Type here to chat" stylesheets="@../css/textAreaStyle.css" wrapText="true">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
+               <font>
+                  <Font size="15.0" />
+               </font>
             </TextArea>
          </children>
       </AnchorPane>
@@ -87,5 +90,23 @@
             <Image url="@../gif/barNoWater2.gif" />
          </image>
       </ImageView>
+      <AnchorPane layoutX="645.0" layoutY="83.0" prefHeight="519.0" prefWidth="390.0" visible="false">
+         <children>
+            <ImageView fitHeight="527.0" fitWidth="407.0" layoutX="14.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/map_bar.png" />
+               </image>
+            </ImageView>
+            <AnchorPane layoutX="26.0" layoutY="23.0" prefHeight="52.0" prefWidth="98.0">
+               <children>
+                  <ImageView fitHeight="40.0" fitWidth="98.0" layoutX="3.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/close_button.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
     </children>
 </AnchorPane>
