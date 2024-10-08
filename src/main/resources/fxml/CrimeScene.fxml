@@ -29,12 +29,12 @@
       <!-- bagInteractPane initially hidden -->
       <AnchorPane fx:id="bagInteractPane" prefHeight="600.0" prefWidth="1014.0" visible="false">
          <children>
-            <ImageView fitHeight="481.5" fitWidth="1014.0" layoutX="165.0" layoutY="118.5" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="518.0" fitWidth="917.0" layoutX="141.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/DuffelBag.png" />
                </image>
             </ImageView>
-            <Rectangle fx:id="rectBagCollection" arcHeight="7.5" arcWidth="7.5" fill="#393737" height="481.5" layoutY="118.5" stroke="#008663" strokeType="INSIDE" width="168.0" />
+            <Rectangle fx:id="rectBagCollection" arcHeight="7.5" arcWidth="7.5" fill="#393737" height="512.0" layoutY="88.0" stroke="#008663" strokeType="INSIDE" width="156.0" />
             <!-- Restored ImageViews for cash images -->
             <ImageView fx:id="moneyOne" fitHeight="46.5" fitWidth="111.0" layoutX="606.0" layoutY="258.0" pickOnBounds="true" preserveRatio="true" rotate="13.6">
                <image>
@@ -102,12 +102,13 @@
                </children>
             </AnchorPane>
             <Label fx:id="moneyCounter" layoutX="7.5" layoutY="135.0" prefHeight="97.5" prefWidth="145.5" stylesheets="@../css/style.css" text="Money Collected: XXXXX " wrapText="true" />
-            <Button fx:id="bagExit" layoutX="15.0" layoutY="540.0" mnemonicParsing="false" onAction="#onBagExit" stylesheets="@../css/styles.css" text="Exit" />
+            <Button fx:id="bagExit" layoutX="15.0" layoutY="540.0" mnemonicParsing="false" onAction="#onBagExit" stylesheets="@../css/styles.css" text="Exit Bag" />
+            <Label layoutX="5.0" layoutY="300.0" prefHeight="97.5" prefWidth="145.5" stylesheets="@../css/style.css" text="Drag items here to collect " wrapText="true" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="noteInteractPane" prefHeight="600.0" prefWidth="1609.5" visible="false">
          <children>
-            <ImageView fitHeight="481.5" fitWidth="858.0" layoutX="160.5" layoutY="118.5" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="518.0" fitWidth="906.0" layoutX="146.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/note2.png" />
                </image>
@@ -145,9 +146,9 @@
                   <Label fx:id="printLabel" layoutX="255.0" layoutY="210.0" stylesheets="@../css/style.css" text="poo" />
                </children>
             </AnchorPane>
-            <Rectangle fx:id="BagCollectionRect1" arcHeight="7.5" arcWidth="7.5" fill="#393737" height="481.5" layoutY="118.5" stroke="#008663" strokeType="INSIDE" width="168.0" />
-            <Button fx:id="toggleLight" layoutX="15.0" layoutY="150.0" mnemonicParsing="false" onAction="#onToggleLight" stylesheets="@../css/styles.css" text="Toggle Light" />
-            <Button fx:id="noteExit" layoutX="15.0" layoutY="540.0" mnemonicParsing="false" onAction="#onNoteExit" stylesheets="@../css/styles.css" text="Exit" />
+            <Rectangle fx:id="BagCollectionRect1" arcHeight="7.5" arcWidth="7.5" fill="#393737" height="512.0" layoutY="88.0" stroke="#008663" strokeType="INSIDE" width="146.0" />
+            <Button fx:id="toggleLight" layoutX="10.0" layoutY="150.0" mnemonicParsing="false" onAction="#onToggleLight" stylesheets="@../css/styles.css" text="Toggle Light" />
+            <Button fx:id="noteExit" layoutX="15.0" layoutY="540.0" mnemonicParsing="false" onAction="#onNoteExit" stylesheets="@../css/styles.css" text="Exit Note" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="cashbookPane" prefHeight="600.0" prefWidth="1014.0" visible="false">
@@ -210,7 +211,7 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <ImageView fx:id="correct" fitHeight="64.5" fitWidth="54.0" layoutX="720.0" layoutY="514.5" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="correct" fitHeight="64.5" fitWidth="54.0" layoutX="750.0" layoutY="514.5" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/correct.png" />
                </image>
