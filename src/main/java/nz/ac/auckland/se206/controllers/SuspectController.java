@@ -8,10 +8,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
@@ -30,17 +31,20 @@ public class SuspectController implements Controller {
   @FXML
   private Button btnSend;
   @FXML
-  private MenuItem menuLobby;
+  private AnchorPane lobbyButtonAnchorPane;
   @FXML
-  private MenuItem menuBar;
+  private AnchorPane crimeSceneButtonAnchorPane;
   @FXML
-  private MenuItem menuTables;
+  private AnchorPane barButtonAnchorPane;
   @FXML
-  private MenuItem menuCrimeScene;
+  private AnchorPane tablesButtonAnchorPane;
   @FXML
   private Button btnGuessNow;
   @FXML
   private Rectangle rectSendButton;
+
+  @FXML
+  private AnchorPane mapMenuAnchorPane;
 
   @FXML
   private MenuButton menuButtonMap;
@@ -63,10 +67,10 @@ public class SuspectController implements Controller {
   }
 
   private void createMap() {
-    App.addToLocationMap(menuLobby, "SuspectOne");
-    App.addToLocationMap(menuTables, "SuspectTwo");
-    App.addToLocationMap(menuBar, "SuspectThree");
-    App.addToLocationMap(menuCrimeScene, "CrimeScene");
+    App.addToLocationMap(lobbyButtonAnchorPane, "SuspectOne");
+    App.addToLocationMap(tablesButtonAnchorPane, "SuspectTwo");
+    App.addToLocationMap(barButtonAnchorPane, "SuspectThree");
+    App.addToLocationMap(crimeSceneButtonAnchorPane, "CrimeScene");
   }
 
   @FXML
@@ -96,10 +100,24 @@ public class SuspectController implements Controller {
   }
 
   @FXML
-  private void onChangeArea(ActionEvent event) {
-    if (event.getSource() instanceof MenuItem) {
-      App.changeSceneMap((MenuItem) event.getSource());
+  private void onChangeArea(MouseEvent event) {
+    handleCloseMap();
+    if (event.getSource() instanceof AnchorPane) {
+      App.changeSceneMap((AnchorPane) event.getSource());
     }
+  }
+
+  @FXML
+  private void handleMapClick(MouseEvent event) {
+    Boolean menuStatus = mapMenuAnchorPane.isVisible();
+    mapMenuAnchorPane.setDisable(menuStatus);
+    mapMenuAnchorPane.setVisible(!menuStatus);
+  }
+
+  @FXML
+  private void handleCloseMap() {
+    mapMenuAnchorPane.setDisable(true);
+    mapMenuAnchorPane.setVisible(false);
   }
 
   @FXML
