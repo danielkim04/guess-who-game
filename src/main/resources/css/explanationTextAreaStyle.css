@@ -1,4 +1,4 @@
-#txtMessage {
+#txtaExplanation {
     -fx-background-color: #D1C0A5; /* Outer background */
     -fx-control-inner-background: #D1C0A5; /* Inner content area */
     -fx-border-color: #D1C0A5; /* Border color */
@@ -11,7 +11,7 @@
     -fx-effect: none; /* Ensure no additional effects */
 }
 
-#txtMessage:focused {
+#txtaExplanation:focused {
     -fx-background-color: #D1C0A5; /* Keep everything transparent on focus */
     -fx-control-inner-background: #D1C0A5;
     -fx-effect: none; /* Remove any default focus effects */
