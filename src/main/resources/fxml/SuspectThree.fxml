@@ -82,5 +82,10 @@
             </TextArea>
          </children>
       </AnchorPane>
+      <ImageView fitHeight="301.0" fitWidth="249.0" layoutX="580.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../gif/barNoWater2.gif" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>
