@@ -79,5 +79,14 @@
                </font></TextArea>
          </children>
       </AnchorPane>
+      <AnchorPane layoutX="648.0" layoutY="73.0" prefHeight="519.0" prefWidth="390.0">
+         <children>
+            <ImageView fitHeight="531.0" fitWidth="409.0" layoutX="6.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/map_lobby.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
