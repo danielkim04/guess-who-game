@@ -39,7 +39,11 @@ public class SuspectController implements Controller {
   @FXML private MenuButton menuButtonMap;
   @FXML private ImageView imgSuspect;
   @FXML private ImageView imgSuspectGif;
-
+  @FXML private AnchorPane lobbyButtonAnchorPane;
+  @FXML private AnchorPane crimeSceneButtonAnchorPane;
+  @FXML private AnchorPane barButtonAnchorPane;
+  @FXML private AnchorPane tablesButtonAnchorPane;
+  @FXML private AnchorPane mapMenuAnchorPane;
 
   private Suspect suspect;
   private Timeline timeline;

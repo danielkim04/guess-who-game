@@ -367,5 +367,19 @@
             <Label fx:id="labLabel" layoutX="255.0" layoutY="210.0" prefHeight="27.0" prefWidth="505.5" stylesheets="@../css/style.css" text="poopoo" wrapText="true" />
          </children>
       </AnchorPane>
+      <AnchorPane layoutX="660.0" layoutY="76.0" prefHeight="525.0" prefWidth="393.0" visible="false">
+         <children>
+            <ImageView fitHeight="525.0" fitWidth="393.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/map_crimescene.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="40.0" fitWidth="98.0" layoutX="14.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/close_button.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
    </children>
 </Pane>

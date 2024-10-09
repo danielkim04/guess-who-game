@@ -18,14 +18,14 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
+import javafx.scene.Cursor;
+import javafx.scene.ImageCursor;
+import javafx.scene.image.Image;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.classes.Controller;
 import nz.ac.auckland.se206.classes.NotesSyncManager;
 import nz.ac.auckland.se206.states.GameState;
 import nz.ac.auckland.se206.states.Investigating;
-import javafx.scene.Cursor;
-import javafx.scene.ImageCursor;
-import javafx.scene.image.Image;
 
 /**
  * Controller class for the room view. Handles user interactions within the room
