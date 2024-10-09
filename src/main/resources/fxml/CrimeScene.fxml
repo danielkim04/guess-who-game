@@ -378,7 +378,7 @@
                   <Image url="@../images/map_crimescene.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="40.0" fitWidth="98.0" layoutX="14.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="40.0" fitWidth="98.0" layoutX="14.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/close_button.png" />
                </image>
