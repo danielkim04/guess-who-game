@@ -22,11 +22,6 @@
             <Image url="@../images/Suspect_1.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="297.0" fitWidth="407.0" layoutX="494.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../gif/lobbyNoWater.gif" />
-         </image>
-      </ImageView>
       <AnchorPane prefHeight="79.0" prefWidth="700.0">
          <children>
             <ImageView fitHeight="118.0" fitWidth="1050.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
@@ -84,6 +79,7 @@
                </font></TextArea>
          </children>
       </AnchorPane>
+      <ImageView fx:id="imgSuspectGif" fitHeight="306.0" fitWidth="415.0" layoutX="491.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true" />
       <AnchorPane fx:id="mapMenuAnchorPane" layoutX="643.0" layoutY="78.0" prefHeight="519.0" prefWidth="390.0" visible="false">
          <children>
             <ImageView fitHeight="531.0" fitWidth="409.0" layoutX="6.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
