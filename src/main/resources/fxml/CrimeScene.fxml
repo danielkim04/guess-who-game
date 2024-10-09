@@ -34,7 +34,7 @@
                   <Image url="@../images/DuffelBag.png" />
                </image>
             </ImageView>
-            <Rectangle fx:id="rectBagCollection" arcHeight="7.5" arcWidth="7.5" fill="#393737" height="512.0" layoutY="88.0" stroke="#008663" strokeType="INSIDE" width="156.0" />
+            <Rectangle fx:id="rectBagCollection" arcHeight="7.5" arcWidth="7.5" fill="#393737" height="518.0" layoutY="82.0" stroke="#008663" strokeType="INSIDE" width="156.0" />
             <!-- Restored ImageViews for cash images -->
             <ImageView fx:id="moneyOne" fitHeight="46.5" fitWidth="111.0" layoutX="606.0" layoutY="258.0" pickOnBounds="true" preserveRatio="true" rotate="13.6">
                <image>
@@ -108,12 +108,12 @@
       </AnchorPane>
       <AnchorPane fx:id="noteInteractPane" prefHeight="600.0" prefWidth="1609.5" visible="false">
          <children>
-            <ImageView fitHeight="518.0" fitWidth="906.0" layoutX="146.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="518.0" fitWidth="920.0" layoutX="146.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/note2.png" />
                </image>
             </ImageView>
-            <Label layoutX="483.0" layoutY="169.5" prefHeight="375.0" prefWidth="219.0" text="I saw him again tonight at the casino. There's something about the way he carries himself—always so confident, like he owns the place. People seem to gravitate toward him, and I don't know why it bothers me so much. Maybe it's how easily things come to him, or maybe it’s just the way he’s always at the center of attention." wrapText="true">
+            <Label layoutX="492.0" layoutY="170.0" prefHeight="375.0" prefWidth="224.0" text="I saw him again tonight at the casino. There's something about the way he carries himself—always so confident, like he owns the place. People seem to gravitate toward him, and I don't know why it bothers me so much. Maybe it's how easily things come to him, or maybe it’s just the way he’s always at the center of attention." wrapText="true">
                <font>
                   <Font name="Comic Sans MS" size="16.5" />
                </font></Label>
@@ -146,7 +146,7 @@
                   <Label fx:id="printLabel" layoutX="255.0" layoutY="210.0" stylesheets="@../css/style.css" text="poo" />
                </children>
             </AnchorPane>
-            <Rectangle fx:id="BagCollectionRect1" arcHeight="7.5" arcWidth="7.5" fill="#393737" height="512.0" layoutY="88.0" stroke="#008663" strokeType="INSIDE" width="146.0" />
+            <Rectangle fx:id="BagCollectionRect1" arcHeight="7.5" arcWidth="7.5" fill="#393737" height="518.0" layoutY="82.0" stroke="#008663" strokeType="INSIDE" width="146.0" />
             <Button fx:id="toggleLight" layoutX="10.0" layoutY="150.0" mnemonicParsing="false" onAction="#onToggleLight" stylesheets="@../css/styles.css" text="Toggle Light" />
             <Button fx:id="noteExit" layoutX="15.0" layoutY="540.0" mnemonicParsing="false" onAction="#onNoteExit" stylesheets="@../css/styles.css" text="Exit Note" />
          </children>
@@ -236,13 +236,17 @@
       </AnchorPane>
             <AnchorPane prefHeight="118.5" prefWidth="1050.0">
          <children>
-            <Rectangle arcHeight="7.5" arcWidth="7.5" fill="#393737f7" height="94.0" layoutY="-7.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1050.0" />
-            <Label alignment="CENTER" layoutX="409.0" layoutY="20.0" prefHeight="46.5" prefWidth="232.5" text="Crime Scene" textFill="WHITE">
+            <ImageView fitHeight="98.0" fitWidth="1071.0" layoutX="-2.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/banner_darker.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="409.0" layoutY="16.0" prefHeight="46.5" prefWidth="232.5" text="Crime Scene" textFill="WHITE">
                <font>
                   <Font name="Algerian" size="37.5" />
                </font>
             </Label>
-            <AnchorPane layoutX="972.0" layoutY="10.0" prefHeight="83.0" prefWidth="76.0">
+            <AnchorPane layoutX="968.0" layoutY="8.0" prefHeight="71.0" prefWidth="62.0">
                <children>
                   <Circle fill="#ffffff00" layoutX="31.0" layoutY="36.0" radius="31.0" stroke="BLACK" strokeType="INSIDE" />
                   <Label fx:id="labelTimer" layoutX="7.0" layoutY="20.0" text="X:XX" textFill="WHITE">
@@ -259,7 +263,7 @@
                   <MenuItem fx:id="menuSuspectThree" mnemonicParsing="false" onAction="#onSuspectThree" text="Bar" />
                </items>
             </MenuButton>
-            <Button fx:id="btnGuessNow" disable="true" layoutX="856.0" layoutY="28.0" mnemonicParsing="false" onAction="#onGuessNow" prefHeight="31.0" prefWidth="98.0" text="Guess Now" />
+            <Button fx:id="btnGuessNow" disable="true" layoutX="851.0" layoutY="28.0" mnemonicParsing="false" onAction="#onGuessNow" prefHeight="31.0" prefWidth="98.0" text="Guess Now" />
          </children>
       </AnchorPane>
 
@@ -365,6 +369,20 @@
                </image>
             </ImageView>
             <Label fx:id="labLabel" layoutX="255.0" layoutY="210.0" prefHeight="27.0" prefWidth="505.5" stylesheets="@../css/style.css" text="poopoo" wrapText="true" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="660.0" layoutY="76.0" prefHeight="525.0" prefWidth="393.0" visible="false">
+         <children>
+            <ImageView fitHeight="525.0" fitWidth="393.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/map_crimescene.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="40.0" fitWidth="98.0" layoutX="14.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/close_button.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>
