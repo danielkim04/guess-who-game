@@ -3,12 +3,16 @@ package nz.ac.auckland.se206.controllers;
 import java.io.IOException;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -26,16 +30,20 @@ public class SuspectController implements Controller {
   @FXML private Label labelResponse;
   @FXML private TextArea txtMessage;
   @FXML private Button btnSend;
+  @FXML private MenuItem menuLobby;
+  @FXML private MenuItem menuBar;
+  @FXML private MenuItem menuTables;
+  @FXML private MenuItem menuCrimeScene;
+  @FXML private Button btnGuessNow;
+  @FXML private Rectangle rectSendButton;
+  @FXML private MenuButton menuButtonMap;
+  @FXML private ImageView imgSuspect;
+  @FXML private ImageView imgSuspectGif;
   @FXML private AnchorPane lobbyButtonAnchorPane;
   @FXML private AnchorPane crimeSceneButtonAnchorPane;
   @FXML private AnchorPane barButtonAnchorPane;
   @FXML private AnchorPane tablesButtonAnchorPane;
-  @FXML private Button btnGuessNow;
-  @FXML private Rectangle rectSendButton;
-
   @FXML private AnchorPane mapMenuAnchorPane;
-
-  @FXML private MenuButton menuButtonMap;
 
   private Suspect suspect;
   private Timeline timeline;
@@ -51,6 +59,7 @@ public class SuspectController implements Controller {
         response -> {
           timeline.stop();
           labelResponse.setText(response);
+          loadGif();
         });
   }
 
@@ -138,6 +147,38 @@ public class SuspectController implements Controller {
 
     // Start the timeline animation
     timeline.play();
+  }
+
+  public void loadGif() {
+    Image gif = null;
+    switch (suspect.getName()) {
+      case "Mark":
+        gif = new Image(getClass().getResource("/gif/lobbyNoWater.gif").toExternalForm());
+        break;
+      case "Susan":
+        gif = new Image(getClass().getResource("/gif/barNoWater2.gif").toExternalForm());
+        break;
+      case "Anthony":
+        gif = new Image(getClass().getResource("/gif/casinoNoWater.gif").toExternalForm());
+        break;
+    }
+    Image finalGif = gif;
+    Task<Void> loadGifTask =
+        new Task<Void>() {
+          @Override
+          protected Void call() throws Exception {
+            // Update the ImageView on the JavaFX Application Thread
+            Platform.runLater(
+                () -> {
+                  imgSuspectGif.setImage(finalGif);
+                });
+
+            return null;
+          }
+        };
+
+    // Run the task in a background thread
+    new Thread(loadGifTask).start();
   }
 
   /**

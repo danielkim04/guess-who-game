@@ -105,5 +105,6 @@
             <AnchorPane fx:id="tablesButtonAnchorPane" layoutX="22.0" layoutY="414.0" onMouseClicked="#onChangeArea" prefHeight="104.0" prefWidth="370.0" />
          </children>
       </AnchorPane>
+      <ImageView fx:id="imgSuspectGif" fitHeight="306.0" fitWidth="415.0" layoutX="491.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>
