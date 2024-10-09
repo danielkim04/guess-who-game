@@ -157,6 +157,9 @@ public class CrimeSceneController implements Controller {
   private MenuItem menuSuspectOne;
   @FXML
   private Button btnGuessNow;
+  @FXML private Rectangle rectDisableButton;
+  @FXML private ImageView imgGuessButton;
+  @FXML private ImageView imgButtonNoColor;
 
   // Variables to store the initial mouse click position
   private double initialX;
@@ -750,6 +753,8 @@ public class CrimeSceneController implements Controller {
 
   @Override
   public void unlockGuessBtn() {
-    btnGuessNow.setDisable(false);
+    imgGuessButton.setVisible(true);
+    imgButtonNoColor.setVisible(false);
+    rectDisableButton.setVisible(false);
   }
 }
