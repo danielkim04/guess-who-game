@@ -160,6 +160,8 @@ public class CrimeSceneController implements Controller {
   @FXML private Rectangle rectDisableButton;
   @FXML private ImageView imgGuessButton;
   @FXML private ImageView imgButtonNoColor;
+  @FXML private AnchorPane paneCrimeSceneIntro;
+  @FXML private ImageView imageCloseIntro;
 
   // Variables to store the initial mouse click position
   private double initialX;
@@ -756,5 +758,10 @@ public class CrimeSceneController implements Controller {
     imgGuessButton.setVisible(true);
     imgButtonNoColor.setVisible(false);
     rectDisableButton.setVisible(false);
+  }
+
+  @FXML
+  public void handleCloseIntroClick(MouseEvent event) {
+    paneCrimeSceneIntro.setVisible(false);
   }
 }

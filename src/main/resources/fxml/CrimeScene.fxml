@@ -401,5 +401,24 @@
             </ImageView>
          </children>
       </AnchorPane>
+      <AnchorPane fx:id="paneCrimeSceneIntro" layoutX="210.0" layoutY="116.0" prefHeight="375.0" prefWidth="573.0">
+         <children>
+            <ImageView fitHeight="446.0" fitWidth="685.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/crime_scene_intro_window.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imgCloseIntro" fitHeight="50.0" fitWidth="48.0" layoutX="557.0" layoutY="27.0" onMouseClicked="#handleCloseIntroClick" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+               <image>
+                  <Image url="@../images/close_button_2.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="78.0" layoutY="61.0" prefHeight="323.0" prefWidth="465.0" text="Explore the crime scene for hidden clues, interrogate three suspicious characters, and piece together the mystery before revealing the culprit!" wrapText="true">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
    </children>
 </Pane>
