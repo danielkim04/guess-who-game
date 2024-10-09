@@ -103,10 +103,6 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <ImageView fitHeight="306.0" fitWidth="329.0" layoutX="579.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../gif/casinoNoWater.gif" />
-         </image>
-      </ImageView>
+      <ImageView fx:id="imgSuspectGif" fitHeight="308.0" fitWidth="332.0" layoutX="579.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true" />
     </children>
 </AnchorPane>

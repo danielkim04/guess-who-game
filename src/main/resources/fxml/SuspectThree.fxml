@@ -85,11 +85,7 @@
             </TextArea>
          </children>
       </AnchorPane>
-      <ImageView fitHeight="301.0" fitWidth="249.0" layoutX="580.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../gif/barNoWater2.gif" />
-         </image>
-      </ImageView>
+      <ImageView fx:id="imgSuspectGif" fitHeight="301.0" fitWidth="249.0" layoutX="580.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true" />
       <AnchorPane layoutX="645.0" layoutY="83.0" prefHeight="519.0" prefWidth="390.0" visible="false">
          <children>
             <ImageView fitHeight="527.0" fitWidth="407.0" layoutX="14.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
