@@ -53,7 +53,7 @@ public class CrimeSceneController implements Controller {
   @FXML
   private Rectangle rectClueNote;
   @FXML
-  private Rectangle rectBagCollection; // This is the collection rectangle for money
+  private ImageView rectBagCollection; // This is the collection rectangle for money
   @FXML
   private Label labelTimer;
   @FXML
@@ -370,12 +370,12 @@ public class CrimeSceneController implements Controller {
   }
 
   @FXML
-  private void onBagExit(ActionEvent event) {
+  private void onBagExit(MouseEvent event) {
     bagInteractPane.setVisible(false);
   }
 
   @FXML
-  private void onNoteExit(ActionEvent event) {
+  private void onNoteExit(MouseEvent event) {
     // Hide the note interaction pane
     noteInteractPane.setVisible(false);
 
@@ -436,7 +436,7 @@ public class CrimeSceneController implements Controller {
   }
 
   @FXML
-  private void onToggleLight(ActionEvent event) {
+  private void onToggleLight(MouseEvent event) {
     // Toggle the visibility of the lightPane
     lightPane.setVisible(!lightPane.isVisible());
 
@@ -457,7 +457,7 @@ public class CrimeSceneController implements Controller {
   }
 
   @FXML
-  private void onTestHair(ActionEvent event) {
+  private void onTestHair(MouseEvent event) {
     // Show the labPane
     labPane.setVisible(true);
 
@@ -466,7 +466,7 @@ public class CrimeSceneController implements Controller {
   }
 
   @FXML
-  private void onFingerprintTestClick(ActionEvent event) {
+  private void onFingerprintTestClick(MouseEvent event) {
     // Show the labPane
     labPane.setVisible(true);
 
