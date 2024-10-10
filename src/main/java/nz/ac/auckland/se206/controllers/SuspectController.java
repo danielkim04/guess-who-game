@@ -73,6 +73,18 @@ public class SuspectController implements Controller {
   private ImageView imgGuessButton;
   @FXML
   private ImageView imgButtonNoColor;
+  @FXML
+  private Label markObjectiveLabel;
+  @FXML
+  private Label susanObjectiveLabel;
+  @FXML
+  private Label anthonyObjectiveLabel;
+  @FXML
+  private Label suspectObjectiveLabel;
+  @FXML
+  private Label clueObjectiveLabel;
+  @FXML
+  private Label allClueObjectiveLabel;
 
   private Suspect suspect;
   private Timeline timeline;
@@ -90,6 +102,7 @@ public class SuspectController implements Controller {
           labelResponse.setText(response);
           loadGif();
         });
+    onSceneOpened();
   }
 
   private void createMap() {
@@ -110,28 +123,44 @@ public class SuspectController implements Controller {
   // Method to update the labels based on character interaction state
   private void updateLabels(CharacterInteractionManager manager) {
     // Update char1 (Mark)
+    int numSuspects = 0;
     if (manager.isTalkedToCharacter1()) {
-      char1.setText("Mark 1/1");
-    } else {
-      char1.setText("Mark 0/1");
+      numSuspects++;
+      markObjectiveLabel.getStylesheets().add(App.class.getResource("/css/Strikethrough.css").toExternalForm());
+
     }
     // Update char2 (Anthony)
     if (manager.isTalkedToCharacter2()) {
-      char2.setText("Anthony 1/1");
-    } else {
-      char2.setText("Anthony 0/1");
+      numSuspects++;
+      anthonyObjectiveLabel.getStylesheets().add(App.class.getResource("/css/Strikethrough.css").toExternalForm());
     }
     // Update char3 (Susan)
     if (manager.isTalkedToCharacter3()) {
-      char3.setText("Susan 1/1");
-    } else {
-      char3.setText("Susan 0/1");
+      numSuspects++;
+      susanObjectiveLabel.getStylesheets().add(App.class.getResource("/css/Strikethrough.css").toExternalForm());
+    }
+
+    suspectObjectiveLabel.setText(" - Speak to Suspects " + numSuspects + "/3");
+    if (numSuspects >= 3) {
+      suspectObjectiveLabel.getStylesheets().add(App.class.getResource("/css/Strikethrough.css").toExternalForm());
     }
     // Update char4 (Interactable)
-    if (manager.isInteractableClicked()) {
-      char4.setText("Interactable 1/1");
-    } else {
-      char4.setText("Interactable 0/1");
+    int numClues = 0;
+    if (manager.isInteractableClicked1()) {
+      numClues++;
+    }
+    if (manager.isInteractableClicked2()) {
+      numClues++;
+    }
+    if (manager.isInteractableClicked3()) {
+      numClues++;
+    }
+    if (numClues > 0) {
+      clueObjectiveLabel.getStylesheets().add(App.class.getResource("/css/Strikethrough.css").toExternalForm());
+      allClueObjectiveLabel.setText("- (optional) Find All Clues " + numClues + "/3");
+      if (numClues >= 3) {
+        allClueObjectiveLabel.getStylesheets().add(App.class.getResource("/css/Strikethrough.css").toExternalForm());
+      }
     }
   }
 
@@ -173,7 +202,7 @@ public class SuspectController implements Controller {
   // Example: Call this method to check if an interactable object has been clicked
   public void checkInteractable() {
     CharacterInteractionManager manager = CharacterInteractionManager.getInstance();
-    if (manager.isInteractableClicked()) {
+    if (manager.isInteractableClicked1()) {
       System.out.println("The interactable object has been clicked.");
     } else {
       System.out.println("The interactable object has not been clicked yet.");
