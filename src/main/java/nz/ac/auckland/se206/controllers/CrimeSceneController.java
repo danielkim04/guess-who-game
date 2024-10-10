@@ -97,6 +97,8 @@ public class CrimeSceneController implements Controller {
   @FXML
   private Label char3; // Susan 0/1
   @FXML
+  private Label char4; // Interactable 0/1
+  @FXML
   private ImageView imgMap;
   @FXML
   private Button hairTest;
@@ -535,6 +537,13 @@ public class CrimeSceneController implements Controller {
     } else {
       char3.setText("Susan 0/1");
     }
+
+    // Update char4 (Interactable)
+    if (manager.isInteractableClicked()) {
+      char4.setText("Interactable 1/1");
+    } else {
+      char4.setText("Interactable 0/1");
+    }
   }
 
   // Handle interaction with Interactable
@@ -542,6 +551,7 @@ public class CrimeSceneController implements Controller {
     CharacterInteractionManager manager = CharacterInteractionManager.getInstance();
     manager.setInteractableClicked(true);
     System.out.println("Interactable object clicked!");
+    onSceneOpened();
   }
 
   // Check if all characters have been interacted with

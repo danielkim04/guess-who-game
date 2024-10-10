@@ -35,6 +35,8 @@ public class SuspectController implements Controller {
   @FXML
   private Label char3;
   @FXML
+  private Label char4; // Interactable 0/1
+  @FXML
   private TextArea txtMessage;
   @FXML
   private Button btnSend;
@@ -119,6 +121,12 @@ public class SuspectController implements Controller {
       char3.setText("Susan 1/1");
     } else {
       char3.setText("Susan 0/1");
+    }
+    // Update char4 (Interactable)
+    if (manager.isInteractableClicked()) {
+      char4.setText("Interactable 1/1");
+    } else {
+      char4.setText("Interactable 0/1");
     }
   }
 
