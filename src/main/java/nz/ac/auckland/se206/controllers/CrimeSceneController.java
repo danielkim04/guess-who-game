@@ -53,7 +53,7 @@ public class CrimeSceneController implements Controller {
   @FXML
   private Rectangle rectClueNote;
   @FXML
-  private Rectangle rectBagCollection; // This is the collection rectangle for money
+  private ImageView rectBagCollection; // This is the collection rectangle for money
   @FXML
   private Label labelTimer;
   @FXML
@@ -63,7 +63,7 @@ public class CrimeSceneController implements Controller {
   @FXML
   private Rectangle rectCloseNotes;
   @FXML
-  private Rectangle glow;
+  private ImageView glow;
   @FXML
   private AnchorPane paneOpenChat;
   @FXML
@@ -184,10 +184,23 @@ public class CrimeSceneController implements Controller {
   private ImageView imageCloseIntro;
   @FXML
   private AnchorPane mapMenuAnchorPane;
-
+  @FXML
+  private Label markObjectiveLabel;
+  @FXML
+  private Label susanObjectiveLabel;
+  @FXML
+  private Label anthonyObjectiveLabel;
+  @FXML
+  private Label suspectObjectiveLabel;
+  @FXML
+  private Label clueObjectiveLabel;
+  @FXML
+  private Label allClueObjectiveLabel;
   // Variables to store the initial mouse click position
   private double initialX;
   private double initialY;
+
+  private CharacterInteractionManager manager = CharacterInteractionManager.getInstance();
 
   /**
    * Initializes the room view. If it's the first time initialization, it will
@@ -355,6 +368,7 @@ public class CrimeSceneController implements Controller {
   private void handleBookClueClick(MouseEvent event) {
     // opens cash book clue
     cashbookPane.setVisible(true);
+    manager.setInteractableClicked1(true);
     onInteractableClicked();
 
     // set clue interaction status
@@ -366,16 +380,17 @@ public class CrimeSceneController implements Controller {
     } else {
       System.out.println("Not investigating");
     }
-    System.out.println("clue opened");
+    System.out.println("Clue 1 opened");
+
   }
 
   @FXML
-  private void onBagExit(ActionEvent event) {
+  private void onBagExit(MouseEvent event) {
     bagInteractPane.setVisible(false);
   }
 
   @FXML
-  private void onNoteExit(ActionEvent event) {
+  private void onNoteExit(MouseEvent event) {
     // Hide the note interaction pane
     noteInteractPane.setVisible(false);
 
@@ -402,6 +417,7 @@ public class CrimeSceneController implements Controller {
   private void handleNoteClueClick(MouseEvent event) {
     // Show the noteInteractPane when rectClueNote is clicked
     noteInteractPane.setVisible(true);
+    manager.setInteractableClicked2(true);
     onInteractableClicked();
 
     // set clue interaction status
@@ -413,7 +429,8 @@ public class CrimeSceneController implements Controller {
     } else {
       System.out.println("Not investigating");
     }
-    System.out.println("clue opened");
+    System.out.println("clue 2 opened");
+
   }
 
   // New method to handle clicks on rectClueBag
@@ -421,6 +438,7 @@ public class CrimeSceneController implements Controller {
   private void handleClueBagClick(MouseEvent event) {
     // Show the bagInteractPane when rectClueBag is clicked
     bagInteractPane.setVisible(true);
+    manager.setInteractableClicked3(true);
     onInteractableClicked();
 
     // set clue interaction status
@@ -432,11 +450,12 @@ public class CrimeSceneController implements Controller {
     } else {
       System.out.println("Not investigating");
     }
-    System.out.println("clue opened");
+    System.out.println("clue 3 opened");
+
   }
 
   @FXML
-  private void onToggleLight(ActionEvent event) {
+  private void onToggleLight(MouseEvent event) {
     // Toggle the visibility of the lightPane
     lightPane.setVisible(!lightPane.isVisible());
 
@@ -457,7 +476,7 @@ public class CrimeSceneController implements Controller {
   }
 
   @FXML
-  private void onTestHair(ActionEvent event) {
+  private void onTestHair(MouseEvent event) {
     // Show the labPane
     labPane.setVisible(true);
 
@@ -466,7 +485,7 @@ public class CrimeSceneController implements Controller {
   }
 
   @FXML
-  private void onFingerprintTestClick(ActionEvent event) {
+  private void onFingerprintTestClick(MouseEvent event) {
     // Show the labPane
     labPane.setVisible(true);
 
@@ -516,7 +535,6 @@ public class CrimeSceneController implements Controller {
   // Method to update the labels when the scene is opened
   public void onSceneOpened() {
     // Get the instance of the singleton to check the character states
-    CharacterInteractionManager manager = CharacterInteractionManager.getInstance();
 
     // Update the labels based on the interaction status of the characters
     updateLabels(manager);
@@ -525,38 +543,51 @@ public class CrimeSceneController implements Controller {
   // Method to update the labels based on character interaction state
   private void updateLabels(CharacterInteractionManager manager) {
     // Update char1 (Mark)
+    int numSuspects = 0;
     if (manager.isTalkedToCharacter1()) {
-      char1.setText("Mark 1/1");
-    } else {
-      char1.setText("Mark 0/1");
-    }
+      numSuspects++;
+      markObjectiveLabel.getStylesheets().add(App.class.getResource("/css/Strikethrough.css").toExternalForm());
 
+    }
     // Update char2 (Anthony)
     if (manager.isTalkedToCharacter2()) {
-      char2.setText("Anthony 1/1");
-    } else {
-      char2.setText("Anthony 0/1");
+      numSuspects++;
+      anthonyObjectiveLabel.getStylesheets().add(App.class.getResource("/css/Strikethrough.css").toExternalForm());
     }
-
     // Update char3 (Susan)
     if (manager.isTalkedToCharacter3()) {
-      char3.setText("Susan 1/1");
-    } else {
-      char3.setText("Susan 0/1");
+      numSuspects++;
+      susanObjectiveLabel.getStylesheets().add(App.class.getResource("/css/Strikethrough.css").toExternalForm());
     }
 
+    suspectObjectiveLabel.setText(" - Speak to Suspects " + numSuspects + "/3");
+    if (numSuspects >= 3) {
+      suspectObjectiveLabel.getStylesheets().add(App.class.getResource("/css/Strikethrough.css").toExternalForm());
+    }
     // Update char4 (Interactable)
-    if (manager.isInteractableClicked()) {
-      char4.setText("Interactable 1/1");
-    } else {
-      char4.setText("Interactable 0/1");
+    int numClues = 0;
+    if (manager.isInteractableClicked1()) {
+      numClues++;
+    }
+    if (manager.isInteractableClicked2()) {
+      numClues++;
+    }
+    if (manager.isInteractableClicked3()) {
+      numClues++;
+    }
+    if (numClues > 0) {
+      clueObjectiveLabel.getStylesheets().add(App.class.getResource("/css/Strikethrough.css").toExternalForm());
+      allClueObjectiveLabel.setText("- (optional) Find All Clues " + numClues + "/3");
+      if (numClues >= 3) {
+        allClueObjectiveLabel.getStylesheets().add(App.class.getResource("/css/Strikethrough.css").toExternalForm());
+      }
     }
   }
 
   // Handle interaction with Interactable
   public void onInteractableClicked() {
     CharacterInteractionManager manager = CharacterInteractionManager.getInstance();
-    manager.setInteractableClicked(true);
+    // manager.setInteractableClicked(true);
     System.out.println("Interactable object clicked!");
     onSceneOpened();
   }
@@ -575,11 +606,6 @@ public class CrimeSceneController implements Controller {
   // Example: Call this method to check if an interactable object has been clicked
   public void checkInteractable() {
     CharacterInteractionManager manager = CharacterInteractionManager.getInstance();
-    if (manager.isInteractableClicked()) {
-      System.out.println("The interactable object has been clicked.");
-    } else {
-      System.out.println("The interactable object has not been clicked yet.");
-    }
   }
 
   private void makeImageViewDraggableWithCustomCursor(ImageView imageView) {
@@ -784,7 +810,7 @@ public class CrimeSceneController implements Controller {
   }
 
   // Method to make the rectangle glow for 1 second
-  private void makeRectangleGlow(Rectangle rect) {
+  private void makeRectangleGlow(ImageView rect) {
     DropShadow dropShadow = new DropShadow();
     dropShadow.setColor(Color.YELLOW); // Set the glow color (adjust as needed)
     dropShadow.setRadius(20); // Set the initial glow radius

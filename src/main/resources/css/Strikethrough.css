@@ -1,0 +1,8 @@
+/* Styling for Label */
+.label {
+  -fx-text-fill: Grey;
+}
+
+.label .text {
+  -fx-strikethrough: true;
+}

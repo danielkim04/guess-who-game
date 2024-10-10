@@ -11,7 +11,9 @@ public class CharacterInteractionManager {
   private boolean talkedToCharacter3;
 
   // Boolean to track if an interactable was clicked
-  private boolean interactableClicked;
+  private boolean interactableClicked1;
+  private boolean interactableClicked2;
+  private boolean interactableClicked3;
 
   // Private constructor to prevent instantiation
   private CharacterInteractionManager() {
@@ -31,7 +33,9 @@ public class CharacterInteractionManager {
     this.talkedToCharacter1 = false;
     this.talkedToCharacter2 = false;
     this.talkedToCharacter3 = false;
-    this.interactableClicked = false;
+    this.interactableClicked1 = false;
+    this.interactableClicked2 = false;
+    this.interactableClicked3 = false;
   }
 
   // Getters and setters for the booleans
@@ -59,11 +63,27 @@ public class CharacterInteractionManager {
     this.talkedToCharacter3 = talkedToCharacter3;
   }
 
-  public boolean isInteractableClicked() {
-    return interactableClicked;
+  public boolean isInteractableClicked1() {
+    return interactableClicked1;
   }
 
-  public void setInteractableClicked(boolean interactableClicked) {
-    this.interactableClicked = interactableClicked;
+  public boolean isInteractableClicked2() {
+    return interactableClicked2;
+  }
+
+  public boolean isInteractableClicked3() {
+    return interactableClicked3;
+  }
+
+  public void setInteractableClicked1(boolean interactableClicked) {
+    this.interactableClicked1 = interactableClicked;
+  }
+
+  public void setInteractableClicked2(boolean interactableClicked) {
+    this.interactableClicked2 = interactableClicked;
+  }
+
+  public void setInteractableClicked3(boolean interactableClicked) {
+    this.interactableClicked3 = interactableClicked;
   }
 }
