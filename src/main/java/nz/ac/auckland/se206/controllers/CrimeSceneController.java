@@ -22,6 +22,7 @@ import javafx.scene.Cursor;
 import javafx.scene.ImageCursor;
 import javafx.scene.image.Image;
 import nz.ac.auckland.se206.App;
+import nz.ac.auckland.se206.classes.CharacterInteractionManager;
 import nz.ac.auckland.se206.classes.Controller;
 import nz.ac.auckland.se206.classes.NotesSyncManager;
 import nz.ac.auckland.se206.states.GameState;
@@ -89,6 +90,14 @@ public class CrimeSceneController implements Controller {
   private Label hairText; // Label for hair collection message
   @FXML
   private Label printLabel;
+  @FXML
+  private Label char1; // Mark 0/1
+  @FXML
+  private Label char2; // Anthony 0/1
+  @FXML
+  private Label char3; // Susan 0/1
+  @FXML
+  private Label char4; // Interactable 0/1
   @FXML
   private ImageView imgMap;
   @FXML
@@ -339,6 +348,7 @@ public class CrimeSceneController implements Controller {
   private void handleBookClueClick(MouseEvent event) {
     // opens cash book clue
     cashbookPane.setVisible(true);
+    onInteractableClicked();
 
     // set clue interaction status
     Investigating investigatingState = (Investigating) App.getContext().getInvestigatingState();
@@ -390,6 +400,7 @@ public class CrimeSceneController implements Controller {
   private void handleNoteClueClick(MouseEvent event) {
     // Show the noteInteractPane when rectClueNote is clicked
     noteInteractPane.setVisible(true);
+    onInteractableClicked();
 
     // set clue interaction status
     Investigating investigatingState = (Investigating) App.getContext().getInvestigatingState();
@@ -408,6 +419,7 @@ public class CrimeSceneController implements Controller {
   private void handleClueBagClick(MouseEvent event) {
     // Show the bagInteractPane when rectClueBag is clicked
     bagInteractPane.setVisible(true);
+    onInteractableClicked();
 
     // set clue interaction status
     Investigating investigatingState = (Investigating) App.getContext().getInvestigatingState();
@@ -497,6 +509,75 @@ public class CrimeSceneController implements Controller {
 
     // Display "Fingerprint Collected!" slowly
     displayFingerprintTextSlowly("Fingerprint Collected, Sample must be tested in the lab!");
+  }
+
+  // Method to update the labels when the scene is opened
+  public void onSceneOpened() {
+    // Get the instance of the singleton to check the character states
+    CharacterInteractionManager manager = CharacterInteractionManager.getInstance();
+
+    // Update the labels based on the interaction status of the characters
+    updateLabels(manager);
+  }
+
+  // Method to update the labels based on character interaction state
+  private void updateLabels(CharacterInteractionManager manager) {
+    // Update char1 (Mark)
+    if (manager.isTalkedToCharacter1()) {
+      char1.setText("Mark 1/1");
+    } else {
+      char1.setText("Mark 0/1");
+    }
+
+    // Update char2 (Anthony)
+    if (manager.isTalkedToCharacter2()) {
+      char2.setText("Anthony 1/1");
+    } else {
+      char2.setText("Anthony 0/1");
+    }
+
+    // Update char3 (Susan)
+    if (manager.isTalkedToCharacter3()) {
+      char3.setText("Susan 1/1");
+    } else {
+      char3.setText("Susan 0/1");
+    }
+
+    // Update char4 (Interactable)
+    if (manager.isInteractableClicked()) {
+      char4.setText("Interactable 1/1");
+    } else {
+      char4.setText("Interactable 0/1");
+    }
+  }
+
+  // Handle interaction with Interactable
+  public void onInteractableClicked() {
+    CharacterInteractionManager manager = CharacterInteractionManager.getInstance();
+    manager.setInteractableClicked(true);
+    System.out.println("Interactable object clicked!");
+    onSceneOpened();
+  }
+
+  // Check if all characters have been interacted with
+  public void checkAllInteractions() {
+    CharacterInteractionManager manager = CharacterInteractionManager.getInstance();
+
+    if (manager.isTalkedToCharacter1() && manager.isTalkedToCharacter2() && manager.isTalkedToCharacter3()) {
+      System.out.println("All characters have been interacted with.");
+    } else {
+      System.out.println("Some characters have not been interacted with yet.");
+    }
+  }
+
+  // Example: Call this method to check if an interactable object has been clicked
+  public void checkInteractable() {
+    CharacterInteractionManager manager = CharacterInteractionManager.getInstance();
+    if (manager.isInteractableClicked()) {
+      System.out.println("The interactable object has been clicked.");
+    } else {
+      System.out.println("The interactable object has not been clicked yet.");
+    }
   }
 
   private void makeImageViewDraggableWithCustomCursor(ImageView imageView) {

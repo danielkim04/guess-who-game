@@ -12,8 +12,11 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import nz.ac.auckland.se206.classes.CharacterInteractionManager;
 import nz.ac.auckland.se206.classes.Controller;
 import nz.ac.auckland.se206.classes.Suspect;
+import nz.ac.auckland.se206.controllers.CrimeSceneController;
+import nz.ac.auckland.se206.controllers.SuspectController;
 import nz.ac.auckland.se206.speech.FreeTextToSpeech;
 import nz.ac.auckland.se206.states.GameState;
 import nz.ac.auckland.se206.states.Investigating;
@@ -51,17 +54,34 @@ public class App extends Application {
    */
   public static void setRoot(String fxml) throws IOException {
     currentSuspect = suspectMap.get(fxml);
+
     if (!sceneMap.containsKey(fxml)) {
-      // if scene has not been initialised, load the FXML file and store it in the map
+      // If scene has not been initialized, load the FXML file and store it in the map
       Parent root = loadFxml(fxml);
       sceneMap.put(fxml, root);
     }
-    // retrieve the FXML loader from the map
+
+    // Retrieve the FXML loader from the map
     fxmlHandler = fxmlLoaderMap.get(fxml);
-    // retrieve the scene from the map and set it as the root
+
+    // Retrieve the scene from the map and set it as the root
     scene.setRoot(sceneMap.get(fxml));
+
+    // Call sceneChange if in Investigating state
     if (context.getState() instanceof Investigating) {
       ((Investigating) context.getState()).sceneChange();
+    }
+
+    // Check if the scene is the "Crime Scene" and call onSceneOpened
+    if (fxml.equals("CrimeScene")) {
+      CrimeSceneController controller = fxmlHandler.getController();
+      controller.onSceneOpened();
+    }
+
+    // Check if the scene is the "SuspectOne" scene and call onSceneOpened
+    if (fxml.equals("SuspectOne") || fxml.equals("SuspectTwo") || fxml.equals("SuspectThree")) {
+      SuspectController controller = fxmlHandler.getController();
+      controller.onSceneOpened();
     }
   }
 
@@ -94,6 +114,9 @@ public class App extends Application {
     initialiseSuspectMap();
     sceneMap.clear();
     fxmlLoaderMap.clear();
+    // Reset the character interaction states
+    CharacterInteractionManager manager = CharacterInteractionManager.getInstance();
+    manager.reset(); // Call the reset method to clear all interactions
   }
 
   public static Suspect getCurrentSuspect() {
