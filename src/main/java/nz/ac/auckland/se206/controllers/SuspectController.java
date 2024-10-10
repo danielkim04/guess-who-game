@@ -22,6 +22,9 @@ import nz.ac.auckland.se206.classes.Suspect;
 import nz.ac.auckland.se206.states.GameState;
 import nz.ac.auckland.se206.states.Investigating;
 
+/**
+ * Controller for the Suspect scene
+ */
 public class SuspectController implements Controller {
   @FXML
   private Label labelTimer;
@@ -89,6 +92,10 @@ public class SuspectController implements Controller {
   private Suspect suspect;
   private Timeline timeline;
 
+  /**
+   * Initializes the controller class. This method is automatically called after the fxml file has
+   * been loaded.
+   */
   @FXML
   public void initialize() {
     this.suspect = App.getCurrentSuspect();
@@ -112,7 +119,9 @@ public class SuspectController implements Controller {
     App.addToLocationMap(crimeSceneButtonAnchorPane, "CrimeScene");
   }
 
-  // Method to update the labels when the scene is opened
+  /**
+   * Method to update the labels based on the interaction status of the characters.
+   */
   public void onSceneOpened() {
     // Get the instance of the singleton to check the character states
     CharacterInteractionManager manager = CharacterInteractionManager.getInstance();
@@ -120,7 +129,10 @@ public class SuspectController implements Controller {
     updateLabels(manager);
   }
 
-  // Method to update the labels based on character interaction state
+  /**
+   * Method to update the labels based on the interaction status of the characters.
+   * @param manager
+   */
   private void updateLabels(CharacterInteractionManager manager) {
     // Update char1 (Mark)
     int numSuspects = 0;
@@ -164,7 +176,9 @@ public class SuspectController implements Controller {
     }
   }
 
-  // Handle interaction with Character 1
+  /**
+   * Method to handle the interaction with character 1 (Mark).
+   */
   public void onCharacter1Interaction() {
     CharacterInteractionManager manager = CharacterInteractionManager.getInstance();
     manager.setTalkedToCharacter1(true);
@@ -172,7 +186,9 @@ public class SuspectController implements Controller {
     onSceneOpened();
   }
 
-  // Handle interaction with Character 2
+  /**
+   * Handle interaction with Character 2.
+   */
   public void onCharacter2Interaction() {
     CharacterInteractionManager manager = CharacterInteractionManager.getInstance();
     manager.setTalkedToCharacter2(true);
@@ -180,7 +196,9 @@ public class SuspectController implements Controller {
     onSceneOpened();
   }
 
-  // Handle interaction with Character 3
+  /**
+   * Handle interaction with Character 3.
+   */
   public void onCharacter3Interaction() {
     CharacterInteractionManager manager = CharacterInteractionManager.getInstance();
     manager.setTalkedToCharacter3(true);
@@ -188,7 +206,9 @@ public class SuspectController implements Controller {
     onSceneOpened();
   }
 
-  // Check if all characters have been interacted with
+  /**
+   * Check if all characters have been interacted with.
+   */
   public void checkAllInteractions() {
     CharacterInteractionManager manager = CharacterInteractionManager.getInstance();
 
@@ -199,7 +219,9 @@ public class SuspectController implements Controller {
     }
   }
 
-  // Example: Call this method to check if an interactable object has been clicked
+  /**
+   * Check if the interactable object has been clicked.
+   */
   public void checkInteractable() {
     CharacterInteractionManager manager = CharacterInteractionManager.getInstance();
     if (manager.isInteractableClicked1()) {
@@ -209,6 +231,9 @@ public class SuspectController implements Controller {
     }
   }
 
+  /**
+   * Handle the send message button click event.
+   */
   @FXML
   private void onSendMessage() {
     String message = txtMessage.getText().trim();
@@ -294,6 +319,9 @@ public class SuspectController implements Controller {
     timeline.play();
   }
 
+  /**
+   * Load the gif of the suspect.
+   */
   public void loadGif() {
     Image gif = null;
     switch (suspect.getName()) {

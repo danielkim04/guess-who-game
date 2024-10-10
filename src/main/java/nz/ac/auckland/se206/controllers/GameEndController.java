@@ -11,6 +11,9 @@ import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.classes.Controller;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 
+/**
+ * Controller for the GameEnd scene
+ */
 public class GameEndController implements Controller {
 
   @FXML
@@ -58,6 +61,11 @@ public class GameEndController implements Controller {
     labelExplain.setText(chat);
   }
 
+  /**
+   * Displays the explanation for the wrong guess
+   *
+   * @param suspectName the name of the suspect that was guessed
+   */
   public void onWrongGuess(String suspectName) {
     // displays the explanation for the wrong guess
     String explanation = suspectName + " is not the thief.\n"; // first line
@@ -73,6 +81,11 @@ public class GameEndController implements Controller {
     setWinOrLose(false);
   }
 
+  /**
+   * Sets the win or lose message
+   *
+   * @param win true if the player won, false if the player lost
+   */
   public void setWinOrLose(boolean win) {
     if (win) {
       labelVictory.setVisible(true);

@@ -1,5 +1,8 @@
 package nz.ac.auckland.se206.classes;
 
+/**
+ * Class responsible for notes sync
+ */
 public class NotesSyncManager {
 
   // Static variable to store the shared notes

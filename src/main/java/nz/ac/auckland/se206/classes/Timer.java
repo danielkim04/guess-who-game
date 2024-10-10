@@ -1,6 +1,8 @@
 package nz.ac.auckland.se206.classes;
 
-// Class responsible for all timer
+/**
+ * Timer class that counts down from a given value and executes a thread after a given interval
+ */
 public class Timer {
 
   private Time time = new Time();
@@ -66,7 +68,9 @@ public class Timer {
     }
   }
 
-  // Resets timer
+  /**
+   * Clears the timer
+   */
   public void clear() {
     this.counter = 0;
     this.activeTimerThread = new Thread(timerThread);
@@ -102,7 +106,9 @@ public class Timer {
     return (this.counter);
   }
 
-  // Begins timer
+  /**
+   * Starts the timer
+   */
   public void start() {
     // Check if thread exists
     if (this.activeTimerThread != null) {
