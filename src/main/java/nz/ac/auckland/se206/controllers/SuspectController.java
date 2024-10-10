@@ -81,6 +81,10 @@ public class SuspectController implements Controller {
   private Label anthonyObjectiveLabel;
   @FXML
   private Label suspectObjectiveLabel;
+  @FXML
+  private Label clueObjectiveLabel;
+  @FXML
+  private Label allClueObjectiveLabel;
 
   private Suspect suspect;
   private Timeline timeline;
@@ -152,10 +156,22 @@ public class SuspectController implements Controller {
       suspectObjectiveLabel.getStylesheets().add(App.class.getResource("/css/Strikethrough.css").toExternalForm());
     }
     // Update char4 (Interactable)
-    if (manager.isInteractableClicked()) {
-      char4.setText("Interactable 1/1");
-    } else {
-      char4.setText("Interactable 0/1");
+    int numClues = 0;
+    if (manager.isInteractableClicked1()) {
+      numClues++;
+    }
+    if (manager.isInteractableClicked2()) {
+      numClues++;
+    }
+    if (manager.isInteractableClicked3()) {
+      numClues++;
+    }
+    if (numClues > 0) {
+      clueObjectiveLabel.getStylesheets().add(App.class.getResource("/css/Strikethrough.css").toExternalForm());
+      allClueObjectiveLabel.setText("- (optional) Find All Clues " + numClues + "/3");
+      if (numClues >= 3) {
+        allClueObjectiveLabel.getStylesheets().add(App.class.getResource("/css/Strikethrough.css").toExternalForm());
+      }
     }
   }
 
@@ -197,7 +213,7 @@ public class SuspectController implements Controller {
   // Example: Call this method to check if an interactable object has been clicked
   public void checkInteractable() {
     CharacterInteractionManager manager = CharacterInteractionManager.getInstance();
-    if (manager.isInteractableClicked()) {
+    if (manager.isInteractableClicked1()) {
       System.out.println("The interactable object has been clicked.");
     } else {
       System.out.println("The interactable object has not been clicked yet.");

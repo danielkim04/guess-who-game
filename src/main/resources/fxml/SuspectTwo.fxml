@@ -193,6 +193,16 @@
                               </Label>
                            </children>
                         </AnchorPane>
+                        <Label fx:id="clueObjectiveLabel" layoutX="158.0" layoutY="20.0" text=" - Find a clue" textFill="WHITE">
+                           <font>
+                              <Font name="Candara Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="allClueObjectiveLabel" layoutX="172.0" layoutY="34.0" text="- (optional) Find All Clues 0/3" textFill="WHITE">
+                           <font>
+                              <Font name="Candara" size="12.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
                </children>
