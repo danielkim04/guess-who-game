@@ -30,7 +30,7 @@ import nz.ac.auckland.se206.classes.NotesSyncManager;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 import nz.ac.auckland.se206.states.Guessing;
 
-/** Controller for the Guessing scene */
+/** Controller for the Guessing scene. */
 public class GuessingController implements Controller {
   @FXML private Label labelTimer;
   @FXML private AnchorPane paneNoteWindow;
@@ -135,8 +135,8 @@ public class GuessingController implements Controller {
    * This method loads the system prompt.
    *
    * @return the system prompt
-   * @throws IOException
-   * @throws URISyntaxException
+   * @throws IOException if there is an I/O error
+   * @throws URISyntaxException if there is a syntax error in the URI
    */
   private String loadSystemPrompt() throws IOException, URISyntaxException {
     Map<String, String> map = new HashMap<>();

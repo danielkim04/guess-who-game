@@ -113,9 +113,8 @@ public class Investigating implements GameState {
   }
 
   /**
-   * This method returns the timer of the game state.
-   *
-   * @return the timer of the game state
+   * This method returns the timer in the investigating state.
+   * @return the timer in the investigating state
    */
   public Timer getTimer() {
     return timer;

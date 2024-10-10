@@ -327,7 +327,7 @@ public class Suspect {
    *
    * @param msg the chat message
    * @return the chat message
-   * @throws ApiProxyException
+   * @throws ApiProxyException if there is an API proxy exception
    */
   private ChatMessage runGpt(ChatMessage msg) throws ApiProxyException {
     // not used in the current implementation
