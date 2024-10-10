@@ -1,6 +1,8 @@
 package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException;
+
+import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -43,86 +45,177 @@ public class CrimeSceneController implements Controller {
   // Add these fields to the controller
   private Cursor grabCursor;
 
-  @FXML private Rectangle rectClueBag;
-  @FXML private Rectangle rectClueBook;
-  @FXML private Rectangle rectClueNote;
-  @FXML private ImageView rectBagCollection; // This is the collection rectangle for money
-  @FXML private Label labelTimer;
-  @FXML private Label moneyCounter; // Label to display the money collected
-  @FXML private AnchorPane paneNoteWindow;
-  @FXML private Rectangle rectCloseNotes;
-  @FXML private ImageView glow;
-  @FXML private AnchorPane paneOpenChat;
-  @FXML private AnchorPane bagInteractPane;
-  @FXML private AnchorPane noteInteractPane;
-  @FXML private Pane paneBase;
-  @FXML private Pane hairSamplePane;
-  @FXML private Pane fingerprintSamplePane;
-  @FXML private Pane moneyCollectedPane;
-  @FXML private Pane lightPane;
-  @FXML private Pane fingerCollectedPane;
-  @FXML private Pane cashbookPane;
-  @FXML private Pane hairCollectedPane; // Pane that becomes visible when hair is collected
-  @FXML private Label hairText; // Label for hair collection message
-  @FXML private Label printLabel;
-  @FXML private Label char1;
-  @FXML private Label char2;
-  @FXML private Label char3;
-  @FXML private Label char4;
-  @FXML private ImageView imgMap;
-  @FXML private Button hairTest;
-  @FXML private Button fingerprintTest;
-  @FXML private Button bagExit;
-  @FXML private Button cashbookExit;
-  @FXML private Button checkBalance;
-  @FXML private ImageView correct;
-  @FXML private ImageView moneyOne;
-  @FXML private ImageView moneyTwo;
-  @FXML private ImageView moneyThree;
-  @FXML private ImageView moneyFour;
-  @FXML private ImageView moneyFive;
-  @FXML private ImageView moneySix;
-  @FXML private ImageView moneySeven;
-  @FXML private ImageView moneyEight;
-  @FXML private ImageView moneyNine;
-  @FXML private ImageView moneyTen;
-  @FXML private ImageView hair;
-  @FXML private ImageView dark;
-  @FXML private ImageView web1;
-  @FXML private ImageView web2;
-  @FXML private ImageView web3;
-  @FXML private Button noteExit;
-  @FXML private Button toggleLight;
-  @FXML private ImageView blueLight;
-  @FXML private ImageView fingerprint;
-  @FXML private ImageView bagGlow;
-  @FXML private ImageView notebookGlow;
-  @FXML private ImageView noteGlow;
-  @FXML private TextArea balanceArea;
-  @FXML private TextArea notesText;
-  @FXML private Pane labPane;
-  @FXML private Label labLabel;
-  @FXML private MenuItem menuSuspectTwo;
-  @FXML private MenuItem menuSuspectThree;
-  @FXML private MenuItem menuSuspectOne;
-  @FXML private Button btnGuessNow;
-  @FXML private Rectangle rectDisableButton;
-  @FXML private ImageView imgGuessButton;
-  @FXML private ImageView imgButtonNoColor;
-  @FXML private AnchorPane paneCrimeSceneIntro;
-  @FXML private ImageView imageCloseIntro;
-  @FXML private AnchorPane mapMenuAnchorPane;
-  @FXML private Label markObjectiveLabel;
-  @FXML private Label susanObjectiveLabel;
-  @FXML private Label anthonyObjectiveLabel;
-  @FXML private Label suspectObjectiveLabel;
-  @FXML private Label clueObjectiveLabel;
-  @FXML private Label allClueObjectiveLabel;
+  @FXML
+  private Rectangle rectClueBag;
+  @FXML
+  private Rectangle rectClueBook;
+  @FXML
+  private Rectangle rectClueNote;
+  @FXML
+  private ImageView rectBagCollection; // This is the collection rectangle for money
+  @FXML
+  private Label labelTimer;
+  @FXML
+  private Label moneyCounter; // Label to display the money collected
+  @FXML
+  private AnchorPane paneNoteWindow;
+  @FXML
+  private Rectangle rectCloseNotes;
+  @FXML
+  private ImageView glow;
+  @FXML
+  private AnchorPane paneOpenChat;
+  @FXML
+  private AnchorPane bagInteractPane;
+  @FXML
+  private AnchorPane noteInteractPane;
+  @FXML
+  private Pane paneBase;
+  @FXML
+  private Pane hairSamplePane;
+  @FXML
+  private Pane fingerprintSamplePane;
+  @FXML
+  private Pane moneyCollectedPane;
+  @FXML
+  private Pane lightPane;
+  @FXML
+  private Pane fingerCollectedPane;
+  @FXML
+  private Pane cashbookPane;
+  @FXML
+  private Pane hairCollectedPane; // Pane that becomes visible when hair is collected
+  @FXML
+  private Label hairText; // Label for hair collection message
+  @FXML
+  private Label printLabel;
+  @FXML
+  private Label char1; // Mark 0/1
+  @FXML
+  private Label char2; // Anthony 0/1
+  @FXML
+  private Label char3; // Susan 0/1
+  @FXML
+  private Label char4; // Interactable 0/1
+  @FXML
+  private ImageView imgMap;
+  @FXML
+  private Button hairTest;
+  @FXML
+  private Button fingerprintTest;
+  @FXML
+  private Button bagExit;
+  @FXML
+  private Button cashbookExit;
+  @FXML
+  private Button checkBalance;
+  @FXML
+  private ImageView correct;
+  @FXML
+  private ImageView moneyOne;
+  @FXML
+  private ImageView moneyTwo;
+  @FXML
+  private ImageView moneyThree;
+  @FXML
+  private ImageView moneyFour;
+  @FXML
+  private ImageView moneyFive;
+  @FXML
+  private ImageView moneySix;
+  @FXML
+  private ImageView moneySeven;
+  @FXML
+  private ImageView moneyEight;
+  @FXML
+  private ImageView moneyNine;
+  @FXML
+  private ImageView moneyTen;
+  @FXML
+  private ImageView hair;
+  @FXML
+  private ImageView dark;
+  @FXML
+  private ImageView web1;
+  @FXML
+  private ImageView web2;
+  @FXML
+  private ImageView web3;
+  @FXML
+  private Button noteExit;
+  @FXML
+  private Button toggleLight;
+  @FXML
+  private ImageView blueLight;
+  @FXML
+  private ImageView fingerprint;
+  @FXML
+  private ImageView bagGlow;
+  @FXML
+  private ImageView notebookGlow;
+  @FXML
+  private ImageView noteGlow;
+  @FXML
+  private TextArea balanceArea;
+  @FXML
+  private TextArea notesText;
+  @FXML
+  private Pane labPane;
+  @FXML
+  private Label labLabel;
+  @FXML
+  private MenuItem menuSuspectTwo;
+  @FXML
+  private MenuItem menuSuspectThree;
+  @FXML
+  private MenuItem menuSuspectOne;
+  @FXML
+  private Button btnGuessNow;
+  @FXML
+  private Rectangle rectDisableButton;
+  @FXML
+  private ImageView imgGuessButton;
+  @FXML
+  private ImageView imgButtonNoColor;
+  @FXML
+  private AnchorPane paneCrimeSceneIntro;
+  @FXML
+  private ImageView imageCloseIntro;
+  @FXML
+  private ImageView spider1; // fx:id="spider1"
+  @FXML
+  private ImageView spider2; // fx:id="spider2"
+  @FXML
+  private AnchorPane mapMenuAnchorPane;
+  @FXML
+  private Label markObjectiveLabel;
+  @FXML
+  private Label susanObjectiveLabel;
+  @FXML
+  private Label anthonyObjectiveLabel;
+  @FXML
+  private Label suspectObjectiveLabel;
+  @FXML
+  private Label clueObjectiveLabel;
+  @FXML
+  private Label allClueObjectiveLabel;
+
   // Variables to store the initial mouse click position
   private double initialX;
   private double initialY;
 
+  private boolean web1Dragged;
+  private boolean web2Dragged;
+  private boolean web3Dragged;
+
+  // Variable to track if the spider animation has been played
+  private boolean animationPlayed;
+
   private CharacterInteractionManager manager = CharacterInteractionManager.getInstance();
+
+  // Load your GIFs (Make sure the paths are correct)
+  private Image spiderGif1 = new Image(getClass().getResourceAsStream("/gif/spiderLeft.gif"));
+  private Image spiderGif2 = new Image(getClass().getResourceAsStream("/gif/spiderRight.gif"));
 
   /**
    * Initializes the room view. If it's the first time initialization, it will provide instructions
@@ -130,6 +223,19 @@ public class CrimeSceneController implements Controller {
    */
   @FXML
   public void initialize() {
+
+    web1Dragged = false;
+    web2Dragged = false;
+    web3Dragged = false;
+
+    animationPlayed = false;
+
+    // Set the GIFs for both spiders but make them invisible at first
+    spider1.setImage(spiderGif1);
+    spider2.setImage(spiderGif2);
+
+    spider1.setVisible(false);
+    spider2.setVisible(false);
 
     // Initially hide the bagGlow
     bagGlow.setVisible(false);
@@ -528,6 +634,60 @@ public class CrimeSceneController implements Controller {
   }
 
   /** Handles the scene opened event. */
+  // This method is called to show the spiders and play their animations
+public void showSpiders() {
+  // Reload the GIF images to restart their animations
+  Image spiderGif1 = new Image(getClass().getResourceAsStream("/gif/spiderLeft.gif"));
+  Image spiderGif2 = new Image(getClass().getResourceAsStream("/gif/spiderRight.gif"));
+
+  // Set the reloaded images to the spiders (this restarts the GIF)
+  spider1.setImage(spiderGif1);
+  spider2.setImage(spiderGif2);
+
+
+  // Set opacity to 0 initially (so they are invisible before the fade-in starts)
+  spider1.setOpacity(0);
+  spider2.setOpacity(0);
+  spider1.setVisible(true); // Ensure the spiders are visible but invisible due to opacity
+  spider2.setVisible(true);
+
+  // Create fade-in animations for both spiders
+  FadeTransition fadeInSpider1 = new FadeTransition(Duration.seconds(1), spider1);
+  fadeInSpider1.setFromValue(0); // Start fully transparent
+  fadeInSpider1.setToValue(1);   // Fade to fully visible
+  fadeInSpider1.play();          // Play the fade-in animation
+
+  FadeTransition fadeInSpider2 = new FadeTransition(Duration.seconds(1), spider2);
+  fadeInSpider2.setFromValue(0); // Start fully transparent
+  fadeInSpider2.setToValue(1);   // Fade to fully visible
+  fadeInSpider2.play();          // Play the fade-in animation
+
+  // Now we wait for the GIF to finish before hiding the spiders.
+  // Assuming the GIF duration is around 2 seconds (adjust as necessary)
+  Timeline delayTimeline = new Timeline(new KeyFrame(Duration.seconds(2), e -> {
+      // Create fade-out animations for both spiders
+      FadeTransition fadeOutSpider1 = new FadeTransition(Duration.seconds(1), spider1);
+      fadeOutSpider1.setFromValue(1); // Fully visible
+      fadeOutSpider1.setToValue(0);   // Fully hidden
+      fadeOutSpider1.setOnFinished(ev -> spider1.setVisible(false)); // Hide after fade out
+      fadeOutSpider1.play();          // Play the fade-out animation
+
+      FadeTransition fadeOutSpider2 = new FadeTransition(Duration.seconds(1), spider2);
+      fadeOutSpider2.setFromValue(1); // Fully visible
+      fadeOutSpider2.setToValue(0);   // Fully hidden
+      fadeOutSpider2.setOnFinished(ev -> spider2.setVisible(false)); // Hide after fade out
+      fadeOutSpider2.play();          // Play the fade-out animation
+  }));
+
+  // Start the delay after the fade-in animations are completed
+  delayTimeline.play();
+}
+
+
+
+  /**
+   * Handles the scene opened event.
+   */
   public void onSceneOpened() {
     // Get the instance of the singleton to check the character states
 
@@ -618,35 +778,40 @@ public class CrimeSceneController implements Controller {
    *
    * @param imageView the ImageView to make glow
    */
-  private void makeImageViewDraggableWithCustomCursor(ImageView imageView) {
-    // Handle mouse press event (when user clicks on the ImageView)
-    imageView.setOnMousePressed(
-        event -> {
-          handleMousePressed(event, imageView);
-          paneBase.setCursor(dusterCursor); // Set the custom duster cursor when pressed
-        });
+  public void checkInteractable() {
+    CharacterInteractionManager manager = CharacterInteractionManager.getInstance();
+  }
 
-    // Handle mouse drag event (when user drags the ImageView)
+  /**
+   * Handles the mouse clicked event.
+   *
+   * @param imageView the ImageView to make glow
+   */
+  private void makeImageViewDraggableWithCustomCursor(ImageView imageView) {
+    imageView.setOnMousePressed(event -> {
+      handleMousePressed(event, imageView);
+      paneBase.setCursor(dusterCursor); // Set the custom duster cursor when pressed
+    });
+
     imageView.setOnMouseDragged(event -> handleMouseDragged(event, imageView));
 
-    // Handle mouse release event (when user releases the ImageView)
-    imageView.setOnMouseReleased(
-        event -> {
-          // Check if the mouse is still over the image after releasing
-          if (imageView.contains(event.getX(), event.getY())) {
-            // Keep the duster cursor if the mouse is still over the image
-            paneBase.setCursor(dusterCursor);
-          } else {
-            // Otherwise, reset to default
-            paneBase.setCursor(Cursor.DEFAULT);
-          }
-          checkMoneyIntersectionAndHide(imageView);
-        });
+    imageView.setOnMouseReleased(event -> {
+      paneBase.setCursor(Cursor.DEFAULT);
 
-    // Handle mouse entered event to set custom cursor
+      // Check if the ImageView being dragged is one of the webs
+      if (imageView == web1) {
+        web1Dragged = true;
+      } else if (imageView == web2) {
+        web2Dragged = true;
+      } else if (imageView == web3) {
+        web3Dragged = true;
+      }
+
+      // Check if all webs have been dragged
+      checkAllWebsDragged();
+    });
+
     imageView.setOnMouseEntered(event -> paneBase.setCursor(dusterCursor));
-
-    // Handle mouse exited event to reset the cursor
     imageView.setOnMouseExited(event -> paneBase.setCursor(Cursor.DEFAULT));
   }
 
@@ -655,6 +820,18 @@ public class CrimeSceneController implements Controller {
    *
    * @param text the text to display
    */
+  // Check if all webs have been dragged and animation has not been played yet
+  private void checkAllWebsDragged() {
+    if (web1Dragged && web2Dragged && web3Dragged && !animationPlayed) {
+      System.out.println("All webs have been dragged! Playing spider animation.");
+      showSpiders(); // Play the spider animation
+
+      // Set the flag to true to ensure the animation is only played once
+      animationPlayed = true;
+    }
+  }
+
+  // Method to display "Fingerprint Collected!" slowly in the printLabel
   private void displayFingerprintTextSlowly(String text) {
     final StringBuilder displayedText = new StringBuilder();
     printLabel.setText(""); // Clear the label initially
