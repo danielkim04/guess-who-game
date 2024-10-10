@@ -45,160 +45,83 @@ public class CrimeSceneController implements Controller {
   // Add these fields to the controller
   private Cursor grabCursor;
 
-  @FXML
-  private Rectangle rectClueBag;
-  @FXML
-  private Rectangle rectClueBook;
-  @FXML
-  private Rectangle rectClueNote;
-  @FXML
-  private ImageView rectBagCollection; // This is the collection rectangle for money
-  @FXML
-  private Label labelTimer;
-  @FXML
-  private Label moneyCounter; // Label to display the money collected
-  @FXML
-  private AnchorPane paneNoteWindow;
-  @FXML
-  private Rectangle rectCloseNotes;
-  @FXML
-  private ImageView glow;
-  @FXML
-  private AnchorPane paneOpenChat;
-  @FXML
-  private AnchorPane bagInteractPane;
-  @FXML
-  private AnchorPane noteInteractPane;
-  @FXML
-  private Pane paneBase;
-  @FXML
-  private Pane hairSamplePane;
-  @FXML
-  private Pane fingerprintSamplePane;
-  @FXML
-  private Pane moneyCollectedPane;
-  @FXML
-  private Pane lightPane;
-  @FXML
-  private Pane fingerCollectedPane;
-  @FXML
-  private Pane cashbookPane;
-  @FXML
-  private Pane hairCollectedPane; // Pane that becomes visible when hair is collected
-  @FXML
-  private Label hairText; // Label for hair collection message
-  @FXML
-  private Label printLabel;
-  @FXML
-  private Label char1; // Mark 0/1
-  @FXML
-  private Label char2; // Anthony 0/1
-  @FXML
-  private Label char3; // Susan 0/1
-  @FXML
-  private Label char4; // Interactable 0/1
-  @FXML
-  private ImageView imgMap;
-  @FXML
-  private Button hairTest;
-  @FXML
-  private Button fingerprintTest;
-  @FXML
-  private Button bagExit;
-  @FXML
-  private Button cashbookExit;
-  @FXML
-  private Button checkBalance;
-  @FXML
-  private ImageView correct;
-  @FXML
-  private ImageView moneyOne;
-  @FXML
-  private ImageView moneyTwo;
-  @FXML
-  private ImageView moneyThree;
-  @FXML
-  private ImageView moneyFour;
-  @FXML
-  private ImageView moneyFive;
-  @FXML
-  private ImageView moneySix;
-  @FXML
-  private ImageView moneySeven;
-  @FXML
-  private ImageView moneyEight;
-  @FXML
-  private ImageView moneyNine;
-  @FXML
-  private ImageView moneyTen;
-  @FXML
-  private ImageView hair;
-  @FXML
-  private ImageView dark;
-  @FXML
-  private ImageView web1;
-  @FXML
-  private ImageView web2;
-  @FXML
-  private ImageView web3;
-  @FXML
-  private Button noteExit;
-  @FXML
-  private Button toggleLight;
-  @FXML
-  private ImageView blueLight;
-  @FXML
-  private ImageView fingerprint;
-  @FXML
-  private ImageView bagGlow;
-  @FXML
-  private ImageView notebookGlow;
-  @FXML
-  private ImageView noteGlow;
-  @FXML
-  private TextArea balanceArea;
-  @FXML
-  private TextArea notesText;
-  @FXML
-  private Pane labPane;
-  @FXML
-  private Label labLabel;
-  @FXML
-  private MenuItem menuSuspectTwo;
-  @FXML
-  private MenuItem menuSuspectThree;
-  @FXML
-  private MenuItem menuSuspectOne;
-  @FXML
-  private Button btnGuessNow;
-  @FXML
-  private Rectangle rectDisableButton;
-  @FXML
-  private ImageView imgGuessButton;
-  @FXML
-  private ImageView imgButtonNoColor;
-  @FXML
-  private AnchorPane paneCrimeSceneIntro;
-  @FXML
-  private ImageView imageCloseIntro;
-  @FXML
-  private ImageView spider1; // fx:id="spider1"
-  @FXML
-  private ImageView spider2; // fx:id="spider2"
-  @FXML
-  private AnchorPane mapMenuAnchorPane;
-  @FXML
-  private Label markObjectiveLabel;
-  @FXML
-  private Label susanObjectiveLabel;
-  @FXML
-  private Label anthonyObjectiveLabel;
-  @FXML
-  private Label suspectObjectiveLabel;
-  @FXML
-  private Label clueObjectiveLabel;
-  @FXML
-  private Label allClueObjectiveLabel;
+  @FXML private Rectangle rectClueBag;
+  @FXML private Rectangle rectClueBook;
+  @FXML private Rectangle rectClueNote;
+  @FXML private ImageView rectBagCollection; // This is the collection rectangle for money
+  @FXML private Label labelTimer;
+  @FXML private Label moneyCounter; // Label to display the money collected
+  @FXML private AnchorPane paneNoteWindow;
+  @FXML private Rectangle rectCloseNotes;
+  @FXML private ImageView glow;
+  @FXML private AnchorPane paneOpenChat;
+  @FXML private AnchorPane bagInteractPane;
+  @FXML private AnchorPane noteInteractPane;
+  @FXML private Pane paneBase;
+  @FXML private Pane hairSamplePane;
+  @FXML private Pane fingerprintSamplePane;
+  @FXML private Pane moneyCollectedPane;
+  @FXML private Pane lightPane;
+  @FXML private Pane fingerCollectedPane;
+  @FXML private Pane cashbookPane;
+  @FXML private Pane hairCollectedPane; // Pane that becomes visible when hair is collected
+  @FXML private Label hairText; // Label for hair collection message
+  @FXML private Label printLabel;
+  @FXML private Label char1;
+  @FXML private Label char2;
+  @FXML private Label char3;
+  @FXML private Label char4;
+  @FXML private ImageView imgMap;
+  @FXML private Button hairTest;
+  @FXML private Button fingerprintTest;
+  @FXML private Button bagExit;
+  @FXML private Button cashbookExit;
+  @FXML private Button checkBalance;
+  @FXML private ImageView correct;
+  @FXML private ImageView moneyOne;
+  @FXML private ImageView moneyTwo;
+  @FXML private ImageView moneyThree;
+  @FXML private ImageView moneyFour;
+  @FXML private ImageView moneyFive;
+  @FXML private ImageView moneySix;
+  @FXML private ImageView moneySeven;
+  @FXML private ImageView moneyEight;
+  @FXML private ImageView moneyNine;
+  @FXML private ImageView moneyTen;
+  @FXML private ImageView hair;
+  @FXML private ImageView dark;
+  @FXML private ImageView web1;
+  @FXML private ImageView web2;
+  @FXML private ImageView web3;
+  @FXML private Button noteExit;
+  @FXML private Button toggleLight;
+  @FXML private ImageView blueLight;
+  @FXML private ImageView fingerprint;
+  @FXML private ImageView bagGlow;
+  @FXML private ImageView notebookGlow;
+  @FXML private ImageView noteGlow;
+  @FXML private TextArea balanceArea;
+  @FXML private TextArea notesText;
+  @FXML private Pane labPane;
+  @FXML private Label labLabel;
+  @FXML private MenuItem menuSuspectTwo;
+  @FXML private MenuItem menuSuspectThree;
+  @FXML private MenuItem menuSuspectOne;
+  @FXML private Button btnGuessNow;
+  @FXML private Rectangle rectDisableButton;
+  @FXML private ImageView imgGuessButton;
+  @FXML private ImageView imgButtonNoColor;
+  @FXML private AnchorPane paneCrimeSceneIntro;
+  @FXML private ImageView imageCloseIntro;
+  @FXML private ImageView spider1;
+  @FXML private ImageView spider2;
+  @FXML private AnchorPane mapMenuAnchorPane;
+  @FXML private Label markObjectiveLabel;
+  @FXML private Label susanObjectiveLabel;
+  @FXML private Label anthonyObjectiveLabel;
+  @FXML private Label suspectObjectiveLabel;
+  @FXML private Label clueObjectiveLabel;
+  @FXML private Label allClueObjectiveLabel;
 
   // Variables to store the initial mouse click position
   private double initialX;
@@ -334,7 +257,7 @@ public class CrimeSceneController implements Controller {
   }
 
   /**
-   * Handles the key pressed event.
+   * This method prints the pressed key to command line.
    *
    * @param event the key event
    */
@@ -344,7 +267,7 @@ public class CrimeSceneController implements Controller {
   }
 
   /**
-   * Handles the key released event.
+   * This method prints the released key to command line.
    *
    * @param event the key event
    */
@@ -353,7 +276,7 @@ public class CrimeSceneController implements Controller {
     System.out.println("Key " + event.getCode() + " released");
   }
 
-  /** Handles the mouse clicked event. */
+  /** This method handles the mouse pressed event. */
   @FXML
   private void onNotesTextChanged() {
     // Update the notes in NotesSyncManager when the user edits the TextArea
@@ -361,7 +284,7 @@ public class CrimeSceneController implements Controller {
   }
 
   /**
-   * Handles the mouse clicked event.
+   * This method handles the click event on the guess button.
    *
    * @param event the mouse event
    */
@@ -375,7 +298,7 @@ public class CrimeSceneController implements Controller {
   }
 
   /**
-   * Handles the mouse clicked event.
+   * This method handles the click event on the check balance button.
    *
    * @param event the mouse event
    */
@@ -397,7 +320,7 @@ public class CrimeSceneController implements Controller {
   }
 
   /**
-   * Handles the mouse clicked event.
+   * This method handles the click event on the box open button.
    *
    * @param event the mouse event
    */
@@ -408,7 +331,7 @@ public class CrimeSceneController implements Controller {
   }
 
   /**
-   * Handles the mouse clicked event.
+   * This method handles the click event on the close button.
    *
    * @param event the mouse event
    */
@@ -419,7 +342,7 @@ public class CrimeSceneController implements Controller {
   }
 
   /**
-   * Handles the mouse clicked event.
+   * This method handles the click event on the close button.
    *
    * @param event the mouse event
    */
@@ -443,7 +366,7 @@ public class CrimeSceneController implements Controller {
   }
 
   /**
-   * Handles the mouse clicked event.
+   * This method handles the click event on the close button.
    *
    * @param event the mouse event
    */
@@ -453,7 +376,7 @@ public class CrimeSceneController implements Controller {
   }
 
   /**
-   * Handles the mouse clicked event.
+   * This method handles the click event on the close button.
    *
    * @param event the mouse event
    */
@@ -473,7 +396,7 @@ public class CrimeSceneController implements Controller {
   }
 
   /**
-   * Handles the mouse clicked event.
+   * This method handles the click event on the close button.
    *
    * @param event the mouse event
    */
@@ -487,7 +410,7 @@ public class CrimeSceneController implements Controller {
   }
 
   /**
-   * Handles the mouse clicked event.
+   * This method handles the click event on the close button.
    *
    * @param event the mouse event
    */
@@ -511,7 +434,7 @@ public class CrimeSceneController implements Controller {
   }
 
   /**
-   * Handles the mouse clicked event.
+   * This method handles the click event on the bag clue button.
    *
    * @param event the mouse event
    */
@@ -535,7 +458,7 @@ public class CrimeSceneController implements Controller {
   }
 
   /**
-   * Handles the mouse clicked event.
+   * This method handles the click on the light toggle button.
    *
    * @param event the mouse event
    */
@@ -561,7 +484,7 @@ public class CrimeSceneController implements Controller {
   }
 
   /**
-   * Handles the mouse clicked event.
+   * This method handles the click on hair test button.
    *
    * @param event the mouse event
    */
@@ -575,7 +498,7 @@ public class CrimeSceneController implements Controller {
   }
 
   /**
-   * Handles the mouse clicked event.
+   * This method handles the click on fingerprint test button.
    *
    * @param event the mouse event
    */
@@ -588,7 +511,7 @@ public class CrimeSceneController implements Controller {
     displayLabTextSlowly("The fingerprint tested likely belongs to Anthony...");
   }
 
-  /** Handles the mouse clicked event. */
+  /** This method is responsible for the interactive mouse cursor. */
   @FXML
   private void enableBothLightsToFollowCursor() {
     // Define the offset values for both blueLight and dark
@@ -615,7 +538,7 @@ public class CrimeSceneController implements Controller {
   }
 
   /**
-   * Handles the mouse clicked event.
+   * This method checks if the blueLight ImageView intersects with the fingerprint ImageView.
    *
    * @param event the mouse event
    */
@@ -633,61 +556,54 @@ public class CrimeSceneController implements Controller {
     displayFingerprintTextSlowly("Fingerprint Collected, Sample must be tested in the lab!");
   }
 
-  /** Handles the scene opened event. */
-  // This method is called to show the spiders and play their animations
-public void showSpiders() {
-  // Reload the GIF images to restart their animations
-  Image spiderGif1 = new Image(getClass().getResourceAsStream("/gif/spiderLeft.gif"));
-  Image spiderGif2 = new Image(getClass().getResourceAsStream("/gif/spiderRight.gif"));
+  /** This method is responsible for managing spider animations. */
+  public void showSpiders() {
+    Image spiderGif1 = new Image(getClass().getResourceAsStream("/gif/spiderLeft.gif"));
+    Image spiderGif2 = new Image(getClass().getResourceAsStream("/gif/spiderRight.gif"));
 
-  // Set the reloaded images to the spiders (this restarts the GIF)
-  spider1.setImage(spiderGif1);
-  spider2.setImage(spiderGif2);
+    spider1.setImage(spiderGif1);
+    spider2.setImage(spiderGif2);
 
+    spider1.setOpacity(0);
+    spider2.setOpacity(0);
+    spider1.setVisible(true);
+    spider2.setVisible(true);
 
-  // Set opacity to 0 initially (so they are invisible before the fade-in starts)
-  spider1.setOpacity(0);
-  spider2.setOpacity(0);
-  spider1.setVisible(true); // Ensure the spiders are visible but invisible due to opacity
-  spider2.setVisible(true);
+    // Create fade-in animations for both spiders
+    FadeTransition fadeInSpider1 = new FadeTransition(Duration.seconds(1), spider1);
+    fadeInSpider1.setFromValue(0); // Start fully transparent
+    fadeInSpider1.setToValue(1); // Fade to fully visible
+    fadeInSpider1.play(); // Play the fade-in animation
 
-  // Create fade-in animations for both spiders
-  FadeTransition fadeInSpider1 = new FadeTransition(Duration.seconds(1), spider1);
-  fadeInSpider1.setFromValue(0); // Start fully transparent
-  fadeInSpider1.setToValue(1);   // Fade to fully visible
-  fadeInSpider1.play();          // Play the fade-in animation
+    FadeTransition fadeInSpider2 = new FadeTransition(Duration.seconds(1), spider2);
+    fadeInSpider2.setFromValue(0); // Start fully transparent
+    fadeInSpider2.setToValue(1); // Fade to fully visible
+    fadeInSpider2.play(); // Play the fade-in animation
 
-  FadeTransition fadeInSpider2 = new FadeTransition(Duration.seconds(1), spider2);
-  fadeInSpider2.setFromValue(0); // Start fully transparent
-  fadeInSpider2.setToValue(1);   // Fade to fully visible
-  fadeInSpider2.play();          // Play the fade-in animation
+    Timeline delayTimeline =
+        new Timeline(
+            new KeyFrame(
+                Duration.seconds(2),
+                e -> {
+                  // Create fade-out animations for both spiders
+                  FadeTransition fadeOutSpider1 = new FadeTransition(Duration.seconds(1), spider1);
+                  fadeOutSpider1.setFromValue(1); // Fully visible
+                  fadeOutSpider1.setToValue(0); // Fully hidden
+                  fadeOutSpider1.setOnFinished(
+                      ev -> spider1.setVisible(false)); // Hide after fade out
+                  fadeOutSpider1.play(); // Play the fade-out animation
 
-  // Now we wait for the GIF to finish before hiding the spiders.
-  // Assuming the GIF duration is around 2 seconds (adjust as necessary)
-  Timeline delayTimeline = new Timeline(new KeyFrame(Duration.seconds(2), e -> {
-      // Create fade-out animations for both spiders
-      FadeTransition fadeOutSpider1 = new FadeTransition(Duration.seconds(1), spider1);
-      fadeOutSpider1.setFromValue(1); // Fully visible
-      fadeOutSpider1.setToValue(0);   // Fully hidden
-      fadeOutSpider1.setOnFinished(ev -> spider1.setVisible(false)); // Hide after fade out
-      fadeOutSpider1.play();          // Play the fade-out animation
+                  FadeTransition fadeOutSpider2 = new FadeTransition(Duration.seconds(1), spider2);
+                  fadeOutSpider2.setFromValue(1);
+                  fadeOutSpider2.setToValue(0);
+                  fadeOutSpider2.setOnFinished(ev -> spider2.setVisible(false));
+                  fadeOutSpider2.play();
+                }));
 
-      FadeTransition fadeOutSpider2 = new FadeTransition(Duration.seconds(1), spider2);
-      fadeOutSpider2.setFromValue(1); // Fully visible
-      fadeOutSpider2.setToValue(0);   // Fully hidden
-      fadeOutSpider2.setOnFinished(ev -> spider2.setVisible(false)); // Hide after fade out
-      fadeOutSpider2.play();          // Play the fade-out animation
-  }));
+    delayTimeline.play();
+  }
 
-  // Start the delay after the fade-in animations are completed
-  delayTimeline.play();
-}
-
-
-
-  /**
-   * Handles the scene opened event.
-   */
+  /** This method is responsible for managing the glow effect on the rectangle. */
   public void onSceneOpened() {
     // Get the instance of the singleton to check the character states
 
@@ -696,7 +612,8 @@ public void showSpiders() {
   }
 
   /**
-   * Handles the mouse clicked event.
+   * This method is responsible for updating the checklists based on the interaction status of the
+   * characters.
    *
    * @param manager the character interaction manager
    */
@@ -754,16 +671,20 @@ public void showSpiders() {
     }
   }
 
-  /** Handles the mouse clicked event. */
+  /** This method is responsible for responding to interactable clicks. */
   public void onInteractableClicked() {
     System.out.println("Interactable object clicked!");
     onSceneOpened();
   }
 
-  /** Checks if all interactions have been completed. */
+  /**
+   * This method is responsible for checking all interaction status and moving onto next stage when
+   * ready.
+   */
   public void checkAllInteractions() {
+    // Get the instance of the singleton to check the character states
     CharacterInteractionManager manager = CharacterInteractionManager.getInstance();
-
+    // Check if all characters have been interacted with
     if (manager.isTalkedToCharacter1()
         && manager.isTalkedToCharacter2()
         && manager.isTalkedToCharacter3()) {
@@ -773,53 +694,47 @@ public void showSpiders() {
     }
   }
 
-  /**
-   * Handles the mouse clicked event.
-   *
-   * @param imageView the ImageView to make glow
-   */
+  /** This method is called to check the state of the interactable objects. */
   public void checkInteractable() {
     CharacterInteractionManager manager = CharacterInteractionManager.getInstance();
   }
 
   /**
-   * Handles the mouse clicked event.
+   * This method allows the images to be draggable.
    *
    * @param imageView the ImageView to make glow
    */
   private void makeImageViewDraggableWithCustomCursor(ImageView imageView) {
-    imageView.setOnMousePressed(event -> {
-      handleMousePressed(event, imageView);
-      paneBase.setCursor(dusterCursor); // Set the custom duster cursor when pressed
-    });
+    imageView.setOnMousePressed(
+        event -> {
+          handleMousePressed(event, imageView);
+          paneBase.setCursor(dusterCursor); // Set the custom duster cursor when pressed
+        });
 
     imageView.setOnMouseDragged(event -> handleMouseDragged(event, imageView));
 
-    imageView.setOnMouseReleased(event -> {
-      paneBase.setCursor(Cursor.DEFAULT);
+    imageView.setOnMouseReleased(
+        event -> {
+          paneBase.setCursor(Cursor.DEFAULT);
 
-      // Check if the ImageView being dragged is one of the webs
-      if (imageView == web1) {
-        web1Dragged = true;
-      } else if (imageView == web2) {
-        web2Dragged = true;
-      } else if (imageView == web3) {
-        web3Dragged = true;
-      }
+          // Check if the ImageView being dragged is one of the webs
+          if (imageView == web1) {
+            web1Dragged = true;
+          } else if (imageView == web2) {
+            web2Dragged = true;
+          } else if (imageView == web3) {
+            web3Dragged = true;
+          }
 
-      // Check if all webs have been dragged
-      checkAllWebsDragged();
-    });
+          // Check if all webs have been dragged
+          checkAllWebsDragged();
+        });
 
     imageView.setOnMouseEntered(event -> paneBase.setCursor(dusterCursor));
     imageView.setOnMouseExited(event -> paneBase.setCursor(Cursor.DEFAULT));
   }
 
-  /**
-   * Handles the mouse clicked event.
-   *
-   * @param text the text to display
-   */
+  /** This method is responsible for initiating spider animation when all webs have been dragged. */
   // Check if all webs have been dragged and animation has not been played yet
   private void checkAllWebsDragged() {
     if (web1Dragged && web2Dragged && web3Dragged && !animationPlayed) {
@@ -831,7 +746,11 @@ public void showSpiders() {
     }
   }
 
-  // Method to display "Fingerprint Collected!" slowly in the printLabel
+  /**
+   * This method is responsible for displaying text slowly in the labLabel.
+   *
+   * @param text the text to display
+   */
   private void displayFingerprintTextSlowly(String text) {
     final StringBuilder displayedText = new StringBuilder();
     printLabel.setText(""); // Clear the label initially
@@ -854,7 +773,7 @@ public void showSpiders() {
     timeline.play();
   }
 
-  /** Handles the mouse clicked event. */
+  /** This method is responsible for hiding fingerprint pane after a delay. */
   private void hideFingerprintPaneAfterDelay() {
     Timeline hidePaneTimeline =
         new Timeline(
@@ -866,7 +785,7 @@ public void showSpiders() {
   }
 
   /**
-   * Handles the mouse clicked event.
+   * This method allows the images to be draggable.
    *
    * @param imageView the ImageView to make glow
    */
@@ -897,7 +816,7 @@ public void showSpiders() {
   }
 
   /**
-   * Handles the mouse clicked event.
+   * This method is responsible for responding to a click.
    *
    * @param event the mouse event
    * @param imageView the ImageView to make glow
@@ -909,7 +828,7 @@ public void showSpiders() {
   }
 
   /**
-   * Handles the mouse clicked event.
+   * This method is responsible for responding to drags using mouse.
    *
    * @param event the mouse event
    * @param imageView the ImageView to make glow
@@ -921,7 +840,7 @@ public void showSpiders() {
   }
 
   /**
-   * Handles the mouse clicked event.
+   * This method is responsible for checking interaction with the money clue.
    *
    * @param draggedItem the ImageView to check for intersection
    */
@@ -954,7 +873,7 @@ public void showSpiders() {
   }
 
   /**
-   * Handles the mouse clicked event.
+   * This method is responsible for displaying text slowly in the Label.
    *
    * @param text the text to display
    */
@@ -991,13 +910,13 @@ public void showSpiders() {
     timeline.play();
   }
 
-  /** Handles the mouse clicked event. */
+  /** This method is responsible for updating the money counter label. */
   private void updateMoneyCounter() {
     moneyCounter.setText("Money Collected: " + moneyCollected);
   }
 
   /**
-   * Handles the mouse clicked event.
+   * This method is not implemented it seems. But it has two usages not sure why.
    *
    * @param chat the chat to display
    */
@@ -1007,7 +926,7 @@ public void showSpiders() {
   }
 
   /**
-   * Handles the mouse clicked event.
+   * This method is called for updating the timer.
    *
    * @param time the time to display
    */
@@ -1016,7 +935,7 @@ public void showSpiders() {
     labelTimer.setText(time);
   }
 
-  /** Handles the mouse clicked event. */
+  /** This method is responsible for managing fingerprint interaction status. */
   private void checkFingerprintIntersection() {
     // Define the smaller hitbox dimensions (adjust as needed)
     double hitboxWidth = blueLight.getFitWidth() * 0.3;
@@ -1038,7 +957,7 @@ public void showSpiders() {
   }
 
   /**
-   * Handles the mouse clicked event.
+   * This method is responsible for making the rectangle glow when necessary.
    *
    * @param rect the rectangle to make glow
    */
@@ -1068,7 +987,7 @@ public void showSpiders() {
   }
 
   /**
-   * Handles the mouse clicked event.
+   * This method is responsible for displaying text slowly in the labLabel.
    *
    * @param text the text to display
    */
@@ -1094,7 +1013,7 @@ public void showSpiders() {
     timeline.play();
   }
 
-  /** Handles the mouse clicked event. */
+  /** This method is responsible for hiding the lab pane after a delay. */
   private void hideLabPaneAfterDelay() {
     Timeline hidePaneTimeline =
         new Timeline(
@@ -1106,7 +1025,7 @@ public void showSpiders() {
   }
 
   /**
-   * Handles the mouse clicked event.
+   * This method is responsible for changing scene to suspect one.
    *
    * @param event the mouse event
    */
@@ -1116,7 +1035,7 @@ public void showSpiders() {
   }
 
   /**
-   * Handles the mouse clicked event.
+   * This method is responsible for changing scene to suspect one.
    *
    * @param event the mouse event
    */
@@ -1126,7 +1045,7 @@ public void showSpiders() {
   }
 
   /**
-   * Handles the mouse clicked event.
+   * This method is responsible for changing scene to suspect three.
    *
    * @param event the mouse event
    */
@@ -1136,7 +1055,7 @@ public void showSpiders() {
   }
 
   /**
-   * Handles the mouse clicked event.
+   * This method is responsible for changing maps depending on the location.
    *
    * @param location the location to change to
    */
@@ -1150,7 +1069,7 @@ public void showSpiders() {
   }
 
   /**
-   * Handles the mouse clicked event.
+   * This method is responsible for handling the mouse click event on the map.
    *
    * @param event the mouse event
    */
@@ -1161,14 +1080,14 @@ public void showSpiders() {
     mapMenuAnchorPane.setVisible(!menuStatus);
   }
 
-  /** Handles the mouse clicked event. */
+  /** Handles the mouse clicked event on the close map button. */
   @FXML
   private void handleCloseMap() {
     mapMenuAnchorPane.setDisable(true);
     mapMenuAnchorPane.setVisible(false);
   }
 
-  /** Handles the mouse clicked event. */
+  /** This method is responsible for unlocking the guess button. */
   @Override
   public void unlockGuessBtn() {
     imgGuessButton.setVisible(true);
@@ -1177,7 +1096,7 @@ public void showSpiders() {
   }
 
   /**
-   * Handles the mouse clicked event.
+   * This method is responsible for closing the initial crime scene intro.
    *
    * @param event the mouse event
    */

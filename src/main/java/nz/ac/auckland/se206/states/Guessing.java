@@ -93,7 +93,7 @@ public class Guessing implements GameState {
     }
   }
 
-  /** Changes the state to GameOverState. */
+  /** This method is responsible for state transition to GameOverState. */
   public void nextState() {
     context.setState(context.getGameOverState());
     try {
@@ -104,7 +104,7 @@ public class Guessing implements GameState {
   }
 
   /**
-   * Gets the timer.
+   * This method is responsible for getting the timer.
    *
    * @return the timer
    */

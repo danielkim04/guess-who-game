@@ -163,7 +163,7 @@ public class App extends Application {
   }
 
   /**
-   * Returns the suspect map.
+   * This method returns the suspect map.
    *
    * @return the suspect map
    */

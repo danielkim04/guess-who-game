@@ -8,7 +8,7 @@ import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.classes.Controller;
 
-/** Controller for the Menu scene. */
+/** This class is the controller class for the menu scene */
 public class MenuController implements Controller {
 
   @FXML private Rectangle startRectangle;
@@ -35,7 +35,7 @@ public class MenuController implements Controller {
   }
 
   /**
-   * Handles the start button click event.
+   * This method handles the start button click event.
    *
    * @param event the mouse event
    */
@@ -46,7 +46,7 @@ public class MenuController implements Controller {
   }
 
   /**
-   * Handles the start label click event.
+   * This method handles the start label click event.
    *
    * @param event the mouse event
    */
@@ -56,7 +56,7 @@ public class MenuController implements Controller {
     startGame();
   }
 
-  /** Starts the game. */
+  /** This method is called to start the game. */
   private void startGame() {
     System.out.println("Game Starting");
     App.getContext().getGameStartedState().nextState();
@@ -80,7 +80,7 @@ public class MenuController implements Controller {
   }
 
   /**
-   * Handles the timer update event.
+   * This method handles the timer update event.
    *
    * @param time the current time
    */
@@ -89,7 +89,7 @@ public class MenuController implements Controller {
     // irrelevant for this controller
   }
 
-  /** Unlocks the guess button. */
+  /** This method unlocks the guess button. */
   @Override
   public void unlockGuessBtn() {}
 }

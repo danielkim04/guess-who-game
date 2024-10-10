@@ -11,7 +11,7 @@ import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.classes.Controller;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 
-/** Controller for the GameEnd scene. */
+/** This is the controller class for the game end scene. */
 public class GameEndController implements Controller {
 
   @FXML private Label labelVictory;
@@ -21,19 +21,19 @@ public class GameEndController implements Controller {
   @FXML private Button buttonPlayAgain;
   @FXML private ImageView imgLoadingWheel;
 
-  /** Initialises the controller. */
+  /** This method is called when the scene is first loaded. */
   @FXML
   public void initialize() {
     // Initialization code if necessary
   }
 
-  /** Handles the play again button click event. */
+  /** This method is called when the play again button is clicked. */
   @FXML
   public void playAgainClick() {
     App.getContext().getGameOverState().nextState();
   }
 
-  /** Displays the explanation for the wrong guess. */
+  /** This method is called when the play again button is clicked. */
   @FXML
   private void onPlayAgain() {
     App.getContext().getGameOverState().nextState();
@@ -83,7 +83,7 @@ public class GameEndController implements Controller {
   }
 
   /**
-   * Sets the win or lose message.
+   * This method is responsible for setting the win/loss message in the game over scene.
    *
    * @param win true if the player won, false if the player lost
    */
@@ -98,7 +98,7 @@ public class GameEndController implements Controller {
   }
 
   /**
-   * Shows or hides the loading wheel.
+   * This method shows the loading wheel while the gpt response loads in.
    *
    * @param show true if the loading wheel should be shown, false if it should be hidden
    */
@@ -107,7 +107,7 @@ public class GameEndController implements Controller {
   }
 
   /**
-   * Runs when timer iterates and gives current time.
+   * This method is run when the timer runs out.
    *
    * @param time the current time
    */
@@ -116,7 +116,7 @@ public class GameEndController implements Controller {
     System.out.println("Ignoring timer");
   }
 
-  /** Runs when the timer runs out. */
+  /** This method runs when the timer runs out. */
   public void timeOut() {
     setWinOrLose(false);
     labelExplain.setText("Time's up! You failed to solve the case.");

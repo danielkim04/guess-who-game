@@ -47,9 +47,11 @@ public class GameOver implements GameState {
 
   /** Handles the time out event. */
   public void nextState() {
+    // Reset the game and set the root scene to "menu"
     App.resetAll();
     context = App.getContext();
     context.setState(context.getGameStartedState());
+    // set the root scene to "Menu"
     try {
       App.setRoot("Menu");
     } catch (IOException e) {
