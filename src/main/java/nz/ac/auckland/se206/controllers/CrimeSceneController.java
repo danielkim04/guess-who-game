@@ -267,7 +267,7 @@ public class CrimeSceneController implements Controller {
   }
 
   @FXML
-  private void onGuessNow(ActionEvent event) {
+  private void onGuessNow(MouseEvent event) {
     try {
       App.getContext().getInvestigatingState().onGuessNow();
     } catch (IOException e) {
