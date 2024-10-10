@@ -7,7 +7,6 @@ import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.classes.Suspect;
 import nz.ac.auckland.se206.classes.Timer;
-import nz.ac.auckland.se206.states.Guessing;
 
 /**
  * The Guessing state of the game. Handles the logic for when the player is
@@ -19,7 +18,7 @@ public class Investigating implements GameState {
   private final GameStateContext context;
   private boolean hasClueBeenInspected = false;
 
-  private Timer timer = new Timer(30);
+  private Timer timer = new Timer(60 * 5);
 
   private Thread updateThread = new Thread(
       () -> {
