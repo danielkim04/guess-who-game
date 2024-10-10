@@ -45,24 +45,6 @@
          </children>
       </AnchorPane>
       <ImageView fx:id="imgSuspectGif" fitHeight="306.0" fitWidth="415.0" layoutX="491.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true" />
-      <AnchorPane fx:id="mapMenuAnchorPane" layoutX="643.0" layoutY="78.0" prefHeight="519.0" prefWidth="390.0" visible="false">
-         <children>
-            <ImageView fitHeight="531.0" fitWidth="409.0" layoutX="6.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/map_new_lobby.png" />
-               </image>
-            </ImageView>
-            <AnchorPane layoutX="20.0" layoutY="21.0" onMouseClicked="#handleCloseMap" prefHeight="52.0" prefWidth="39.0" />
-            <AnchorPane fx:id="crimeSceneButtonAnchorPane" layoutX="21.0" layoutY="78.0" onMouseClicked="#onChangeArea" prefHeight="104.0" prefWidth="370.0" style="-fx-cursor: hand;" />
-            <AnchorPane fx:id="barButtonAnchorPane" layoutX="22.0" layoutY="299.0" onMouseClicked="#onChangeArea" prefHeight="104.0" prefWidth="370.0" style="-fx-cursor: hand;" />
-            <AnchorPane fx:id="tablesButtonAnchorPane" layoutX="22.0" layoutY="414.0" onMouseClicked="#onChangeArea" prefHeight="104.0" prefWidth="370.0" style="-fx-cursor: hand;" />
-            <ImageView fitHeight="40.0" fitWidth="98.0" layoutX="343.0" layoutY="23.0" onMouseClicked="#handleCloseMap" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
-               <image>
-                  <Image url="@../images/close_button_2.png" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
       <AnchorPane prefHeight="79.0" prefWidth="700.0">
          <children>
             <ImageView fitHeight="118.0" fitWidth="1050.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
@@ -94,21 +76,46 @@
                   </ImageView>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="836.0" layoutY="20.0" prefHeight="19.0" prefWidth="110.0">
+            <AnchorPane layoutX="150.0" prefHeight="84.0" prefWidth="200.0">
                <children>
-                  <ImageView fx:id="imgButtonNoColor" fitHeight="40.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/guess_button_no_color.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="imgGuessButton" fitHeight="40.0" fitWidth="136.0" onMouseClicked="#onGuessNow" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" visible="false">
-                     <image>
-                        <Image url="@../images/Guess_button.png" />
-                     </image>
-                  </ImageView>
-                  <Rectangle fx:id="rectDisableButton" arcHeight="5.0" arcWidth="5.0" fill="#616161c3" height="40.0" stroke="TRANSPARENT" strokeType="INSIDE" width="120.0" />
+                  <Label fx:id="char1" stylesheets="@../css/styleRequirements.css" text="Mark 0/1" />
+                  <Label fx:id="char2" layoutY="25.0" stylesheets="@../css/styleRequirements.css" text="Anthony 0/1" />
+                  <Label fx:id="char3" layoutY="50.0" stylesheets="@../css/styleRequirements.css" text="Susan 0/1" />
+                  <Label fx:id="char4" layoutY="75.0" stylesheets="@../css/styleRequirements.css" text="Interactable 0/1" />
                </children>
             </AnchorPane>
+            <AnchorPane layoutX="806.0" layoutY="20.0" onMouseClicked="#handleCloseMap" prefHeight="15.0" prefWidth="122.0">
+            <ImageView fx:id="imgButtonNoColor" fitHeight="40.0" fitWidth="120.0" layoutX="2.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/guess_button_no_color.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imgGuessButton" fitHeight="40.0" fitWidth="136.0" layoutX="2.0" layoutY="-2.0" onMouseClicked="#onGuessNow" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" visible="false">
+               <image>
+                  <Image url="@../images/Guess_button.png" />
+               </image>
+            </ImageView>
+            <Rectangle fx:id="rectDisableButton" arcHeight="5.0" arcWidth="5.0" fill="#616161c3" height="40.0" layoutX="2.0" layoutY="-2.0" stroke="TRANSPARENT" strokeType="INSIDE" width="120.0" />
+          </AnchorPane>
+         </children>
+      </AnchorPane>
+      <ImageView fx:id="imgSuspectGif" fitHeight="306.0" fitWidth="415.0" layoutX="491.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true" />
+      <AnchorPane fx:id="mapMenuAnchorPane" layoutX="643.0" layoutY="78.0" prefHeight="519.0" prefWidth="390.0" visible="false">
+         <children>
+            <ImageView fitHeight="531.0" fitWidth="409.0" layoutX="6.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/map_new_lobby.png" />
+               </image>
+            </ImageView>
+            <AnchorPane layoutX="20.0" layoutY="21.0" onMouseClicked="#handleCloseMap" prefHeight="52.0" prefWidth="39.0" />
+            <AnchorPane fx:id="crimeSceneButtonAnchorPane" layoutX="21.0" layoutY="78.0" onMouseClicked="#onChangeArea" prefHeight="104.0" prefWidth="370.0" style="-fx-cursor: hand;" />
+            <AnchorPane fx:id="barButtonAnchorPane" layoutX="22.0" layoutY="299.0" onMouseClicked="#onChangeArea" prefHeight="104.0" prefWidth="370.0" style="-fx-cursor: hand;" />
+            <AnchorPane fx:id="tablesButtonAnchorPane" layoutX="22.0" layoutY="414.0" onMouseClicked="#onChangeArea" prefHeight="104.0" prefWidth="370.0" style="-fx-cursor: hand;" />
+            <ImageView fitHeight="40.0" fitWidth="98.0" layoutX="343.0" layoutY="23.0" onMouseClicked="#handleCloseMap" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+               <image>
+                  <Image url="@../images/close_button_2.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>

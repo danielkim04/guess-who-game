@@ -4,7 +4,6 @@ import java.io.IOException;
 import javafx.scene.input.MouseEvent;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameStateContext;
-import nz.ac.auckland.se206.speech.TextToSpeech;
 
 /**
  * The GameOver state of the game. Handles interactions after the game has
@@ -39,11 +38,6 @@ public class GameOver implements GameState {
    */
   @Override
   public void handleRectangleClick(MouseEvent event, String rectangleId) throws IOException {
-    if (rectangleId.equals("rectCashier") || rectangleId.equals("rectWaitress")) {
-      return;
-    }
-    String clickedProfession = context.getProfession(rectangleId);
-    TextToSpeech.speak("Game Over, you have already guessed! This is the " + clickedProfession);
   }
 
   /**
@@ -55,7 +49,6 @@ public class GameOver implements GameState {
    */
   @Override
   public void onGuessNow() throws IOException {
-    TextToSpeech.speak("You have already guessed!");
   }
 
   public void nextState() {

@@ -89,7 +89,7 @@ public class GameEndController implements Controller {
 
   @Override
   public void onTimerUpdate(String time) {
-    throw new UnsupportedOperationException("Unimplemented method 'onTimerUpdate'");
+    System.out.println("Ignoring timer");
   }
 
   public void timeOut() {
