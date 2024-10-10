@@ -34,7 +34,7 @@
                </font></Label>
             <Label alignment="CENTER" layoutX="80.0" layoutY="-2.0" prefHeight="52.0" prefWidth="199.0" text="Mark" textAlignment="CENTER" textFill="WHITE">
                <font>
-                  <Font name="Candara" size="36.0" />
+                  <Font name="Candara Bold" size="36.0" />
                </font>
             </Label>
             <Rectangle fx:id="rectSendButton" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="31.0" layoutX="834.0" layoutY="164.0" onMouseClicked="#onSendMessage" opacity="0.0" stroke="BLACK" strokeType="INSIDE" style="-fx-cursor: hand;" width="98.0" />
@@ -52,21 +52,11 @@
                   <Image url="@../images/banner_darker.png" />
                </image>
             </ImageView>
-            <Label alignment="CENTER" layoutX="448.0" layoutY="19.0" prefHeight="31.0" prefWidth="155.0" text="Lobby" textFill="WHITE">
+            <Label alignment="CENTER" layoutX="425.0" layoutY="20.0" prefHeight="31.0" prefWidth="155.0" text="Lobby" textFill="WHITE">
                <font>
-                  <Font name="Mongolian Baiti" size="35.0" />
+                  <Font name="Times New Roman" size="35.0" />
                </font>
             </Label>
-            <AnchorPane layoutX="966.0" layoutY="1.0" prefHeight="61.0" prefWidth="60.0">
-               <children>
-                  <Circle fill="#ffffff00" layoutX="35.0" layoutY="38.0" radius="35.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Label fx:id="labelTimer" alignment="CENTER" contentDisplay="CENTER" layoutY="23.0" prefHeight="28.0" prefWidth="70.0" text="X:XX" textAlignment="CENTER" textFill="WHITE">
-                     <font>
-                        <Font name="Mongolian Baiti" size="24.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
             <AnchorPane layoutX="14.0" onMouseClicked="#handleMapClick" prefHeight="73.0" prefWidth="83.0">
                <children>
                   <ImageView fitHeight="81.0" fitWidth="76.0" layoutX="4.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
@@ -132,6 +122,16 @@
             </ImageView>
             <Rectangle fx:id="rectDisableButton" arcHeight="5.0" arcWidth="5.0" fill="#616161c3" height="40.0" layoutX="2.0" layoutY="-2.0" stroke="TRANSPARENT" strokeType="INSIDE" width="120.0" />
           </AnchorPane>
+            <AnchorPane layoutX="970.0" layoutY="4.0" prefHeight="65.0" prefWidth="63.0">
+               <children>
+                  <Circle fill="#ffffff00" layoutX="31.0" layoutY="36.0" radius="31.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Label fx:id="labelTimer" layoutX="7.0" layoutY="20.0" text="X:XX" textFill="WHITE">
+                     <font>
+                        <Font name="Calibri" size="26.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
       <ImageView fx:id="imgSuspectGif" fitHeight="306.0" fitWidth="415.0" layoutX="491.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true" />

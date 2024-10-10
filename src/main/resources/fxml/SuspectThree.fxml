@@ -29,12 +29,12 @@
                     <Image url="@../images/banner_darker.png" />
                 </image>
               </ImageView>
-                  <Label alignment="CENTER" layoutX="450.0" layoutY="19.0" prefHeight="31.0" prefWidth="155.0" text="Bar" textFill="WHITE">
+                  <Label alignment="CENTER" layoutX="425.0" layoutY="20.0" prefHeight="31.0" prefWidth="155.0" text="Bar" textFill="WHITE">
                       <font>
-                          <Font name="Gill Sans MT Bold" size="35.0" />
+                          <Font name="Times New Roman" size="35.0" />
                       </font>
                   </Label>
-              <AnchorPane layoutX="972.0" layoutY="6.0" prefHeight="65.0" prefWidth="63.0">
+              <AnchorPane layoutX="970.0" layoutY="4.0" prefHeight="65.0" prefWidth="63.0">
                 <children>
                     <Circle fill="#ffffff00" layoutX="31.0" layoutY="36.0" radius="31.0" stroke="BLACK" strokeType="INSIDE" />
                     <Label fx:id="labelTimer" layoutX="7.0" layoutY="20.0" text="X:XX" textFill="WHITE">
@@ -126,12 +126,12 @@
             </ImageView>
             <Label fx:id="labelResponse" layoutX="91.0" layoutY="48.0" prefHeight="104.0" prefWidth="841.0" text="Label" wrapText="true">
                <font>
-                  <Font name="Gill Sans MT" size="18.0" />
+                  <Font name="Candara Italic" size="18.0" />
                </font>
             </Label>
             <Label alignment="CENTER" layoutX="80.0" layoutY="-2.0" prefHeight="52.0" prefWidth="199.0" text="Susan" textAlignment="CENTER" textFill="WHITE">
                <font>
-                  <Font name="Gill Sans MT Bold" size="20.0" />
+                  <Font name="Candara Bold" size="36.0" />
                </font>
             </Label>
             <Rectangle fx:id="rectSendButton" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="31.0" layoutX="834.0" layoutY="164.0" onMouseClicked="#onSendMessage" opacity="0.0" stroke="BLACK" strokeType="INSIDE" style="-fx-cursor: hand;" width="98.0" />

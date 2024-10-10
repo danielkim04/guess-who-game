@@ -411,9 +411,9 @@
                   <Image url="@../images/banner_darker.png" />
                </image>
             </ImageView>
-            <Label alignment="CENTER" layoutX="409.0" layoutY="20.0" prefHeight="46.5" prefWidth="232.5" text="Crime Scene" textFill="WHITE">
+            <Label alignment="CENTER" layoutX="425.0" layoutY="20.0" prefHeight="46.5" prefWidth="232.5" text="Crime Scene" textFill="WHITE">
                <font>
-                  <Font name="Gill Sans MT Bold" size="35.0" />
+                  <Font name="Times New Roman" size="35.0" />
                </font>
             </Label>
             <AnchorPane layoutX="90.0" prefHeight="70.0" prefWidth="143.0">
@@ -459,7 +459,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="974.0" layoutY="10.0" prefHeight="65.0" prefWidth="55.0">
+            <AnchorPane layoutX="970.0" layoutY="4.0" prefHeight="65.0" prefWidth="55.0">
                <children>
                   <Circle fill="#ffffff00" layoutX="31.0" layoutY="36.0" radius="31.0" stroke="BLACK" strokeType="INSIDE" />
                   <Label fx:id="labelTimer" layoutX="7.0" layoutY="20.0" text="X:XX" textFill="WHITE">
