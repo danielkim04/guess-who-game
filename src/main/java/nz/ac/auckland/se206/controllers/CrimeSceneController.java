@@ -63,7 +63,7 @@ public class CrimeSceneController implements Controller {
   @FXML
   private Rectangle rectCloseNotes;
   @FXML
-  private Rectangle glow;
+  private ImageView glow;
   @FXML
   private AnchorPane paneOpenChat;
   @FXML
@@ -784,7 +784,7 @@ public class CrimeSceneController implements Controller {
   }
 
   // Method to make the rectangle glow for 1 second
-  private void makeRectangleGlow(Rectangle rect) {
+  private void makeRectangleGlow(ImageView rect) {
     DropShadow dropShadow = new DropShadow();
     dropShadow.setColor(Color.YELLOW); // Set the glow color (adjust as needed)
     dropShadow.setRadius(20); // Set the initial glow radius
