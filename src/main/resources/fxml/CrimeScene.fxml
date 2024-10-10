@@ -249,7 +249,7 @@
             </ImageView>
          </children>
       </AnchorPane>
-            <AnchorPane prefHeight="118.5" prefWidth="1050.0">
+      <AnchorPane prefHeight="118.5" prefWidth="1050.0">
          <children>
             <Rectangle arcHeight="7.5" arcWidth="7.5" fill="#393737f7" height="94.0" layoutY="-7.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1050.0" />
             <ImageView fitHeight="287.0" fitWidth="1109.0" pickOnBounds="true" preserveRatio="true">
@@ -290,7 +290,6 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-
       <AnchorPane fx:id="paneOpenChat" layoutX="1021.5" layoutY="277.5" onMouseClicked="#onHandleOpenButtonClick" prefHeight="145.5" prefWidth="31.5">
          <children>
             <Rectangle fx:id="glow" arcHeight="30.0" arcWidth="30.0" fill="#adadadeb" height="165.0" stroke="TRANSPARENT" strokeType="INSIDE" width="54.0" />
@@ -397,16 +396,83 @@
       </AnchorPane>
       <AnchorPane layoutX="660.0" layoutY="76.0" prefHeight="525.0" prefWidth="393.0" visible="false">
          <children>
-            <ImageView fitHeight="525.0" fitWidth="393.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="518.0" fitWidth="393.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/map_crimescene.png" />
+                  <Image url="@../images/map_new_crimescene.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="40.0" fitWidth="98.0" layoutX="14.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="40.0" fitWidth="98.0" layoutX="327.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/close_button.png" />
+                  <Image url="@../images/close_button_2.png" />
                </image>
             </ImageView>
+         </children>
+      </AnchorPane>
+            <AnchorPane prefHeight="118.5" prefWidth="1050.0">
+         <children>
+            <Rectangle arcHeight="7.5" arcWidth="7.5" fill="#393737f7" height="94.0" layoutY="-7.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1050.0" />
+            <ImageView fitHeight="87.0" fitWidth="1109.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/banner_darker.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="409.0" layoutY="20.0" prefHeight="46.5" prefWidth="232.5" text="Crime Scene" textFill="WHITE">
+               <font>
+                  <Font name="Gill Sans MT Bold" size="35.0" />
+               </font>
+            </Label>
+            <AnchorPane layoutX="974.0" layoutY="10.0" prefHeight="65.0" prefWidth="55.0">
+               <children>
+                  <Circle fill="#ffffff00" layoutX="31.0" layoutY="36.0" radius="31.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Label fx:id="labelTimer" layoutX="7.0" layoutY="20.0" text="X:XX" textFill="WHITE">
+                     <font>
+                        <Font name="Calibri" size="26.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <MenuButton layoutX="28.0" layoutY="31.0" mnemonicParsing="false" text="Locations">
+               <items>
+                  <MenuItem fx:id="menuSuspectOne" mnemonicParsing="false" onAction="#onSuspectOne" text="Lobby" />
+                  <MenuItem fx:id="menuSuspectTwo" mnemonicParsing="false" onAction="#onSuspectTwo" text="Tables" />
+                  <MenuItem fx:id="menuSuspectThree" mnemonicParsing="false" onAction="#onSuspectThree" text="Bar" />
+               </items>
+            </MenuButton>
+            <AnchorPane layoutX="840.0" layoutY="24.0" prefHeight="19.0" prefWidth="110.0" />
+            <AnchorPane layoutX="840.0" layoutY="24.0" prefHeight="19.0" prefWidth="110.0">
+               <children>
+                  <ImageView fx:id="imgButtonNoColor" fitHeight="40.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/guess_button_no_color.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imgGuessButton" fitHeight="40.0" fitWidth="136.0" onMouseClicked="#onGuessNow" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" visible="false">
+                     <image>
+                        <Image url="@../images/Guess_button.png" />
+                     </image>
+                  </ImageView>
+                  <Rectangle fx:id="rectDisableButton" arcHeight="5.0" arcWidth="5.0" fill="#616161c3" height="40.0" stroke="TRANSPARENT" strokeType="INSIDE" width="120.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="paneCrimeSceneIntro" layoutX="210.0" layoutY="116.0" prefHeight="375.0" prefWidth="573.0">
+         <children>
+            <ImageView fitHeight="446.0" fitWidth="685.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/crime_scene_intro_window.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imgCloseIntro" fitHeight="50.0" fitWidth="48.0" layoutX="557.0" layoutY="27.0" onMouseClicked="#handleCloseIntroClick" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+               <image>
+                  <Image url="@../images/close_button_2.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="78.0" layoutY="61.0" prefHeight="323.0" prefWidth="465.0" text="Explore the crime scene for hidden clues, interrogate three suspicious characters, and piece together the mystery before revealing the culprit!" wrapText="true">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>

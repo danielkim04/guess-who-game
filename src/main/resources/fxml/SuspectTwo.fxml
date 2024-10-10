@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
@@ -72,14 +71,14 @@
                   <Image url="@../images/chatbox_darker.png" />
                </image>
             </ImageView>
-            <Label fx:id="labelResponse" layoutX="91.0" layoutY="59.0" prefHeight="87.0" prefWidth="841.0" text="Label" wrapText="true">
+            <Label fx:id="labelResponse" layoutX="91.0" layoutY="49.0" prefHeight="104.0" prefWidth="841.0" text="Label" wrapText="true">
                <font>
-                  <Font size="19.0" />
+                  <Font name="Gill Sans MT" size="18.0" />
                </font>
             </Label>
             <Label alignment="CENTER" layoutX="80.0" layoutY="-2.0" prefHeight="52.0" prefWidth="199.0" text="Anthony" textAlignment="CENTER" textFill="WHITE">
                <font>
-                  <Font size="20.0" />
+                  <Font name="Gill Sans MT Bold" size="20.0" />
                </font>
             </Label>
             <Rectangle fx:id="rectSendButton" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="31.0" layoutX="834.0" layoutY="163.0" onMouseClicked="#onSendMessage" opacity="0.0" stroke="BLACK" strokeType="INSIDE" style="-fx-cursor: hand;" width="98.0" />
@@ -88,7 +87,7 @@
                   <Insets />
                </opaqueInsets>
                <font>
-                  <Font size="15.0" />
+                  <Font name="Gill Sans MT" size="18.0" />
                </font>
             </TextArea>
          </children>
@@ -98,22 +97,70 @@
          <children>
             <ImageView fitHeight="529.0" fitWidth="396.0" layoutX="14.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/map_tables.png" />
+                  <Image url="@../images/map_new_tables.png" />
                </image>
             </ImageView>
-            <AnchorPane layoutX="25.0" layoutY="30.0" onMouseClicked="#handleCloseMap" prefHeight="52.0" prefWidth="98.0">
+            <AnchorPane layoutX="348.0" layoutY="23.0" onMouseClicked="#handleCloseMap" prefHeight="52.0" prefWidth="48.0">
                <children>
-                  <ImageView fitHeight="40.0" fitWidth="98.0" layoutX="3.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="40.0" fitWidth="98.0" layoutX="3.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                      <image>
-                        <Image url="@../images/close_button.png" />
+                        <Image url="@../images/close_button_2.png" />
                      </image>
                   </ImageView>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="crimeSceneButtonAnchorPane" layoutX="27.0" layoutY="82.0" onMouseClicked="#onChangeArea" prefHeight="104.0" prefWidth="370.0" />
-            <AnchorPane fx:id="lobbyButtonAnchorPane" layoutX="27.0" layoutY="195.0" onMouseClicked="#onChangeArea" prefHeight="104.0" prefWidth="370.0" />
-            <AnchorPane fx:id="barButtonAnchorPane" layoutX="27.0" layoutY="309.0" onMouseClicked="#onChangeArea" prefHeight="104.0" prefWidth="370.0" />
+            <AnchorPane fx:id="crimeSceneButtonAnchorPane" layoutX="27.0" layoutY="82.0" onMouseClicked="#onChangeArea" prefHeight="104.0" prefWidth="370.0" style="-fx-cursor: hand;" />
+            <AnchorPane fx:id="lobbyButtonAnchorPane" layoutX="27.0" layoutY="195.0" onMouseClicked="#onChangeArea" prefHeight="104.0" prefWidth="370.0" style="-fx-cursor: hand;" />
+            <AnchorPane fx:id="barButtonAnchorPane" layoutX="27.0" layoutY="306.0" onMouseClicked="#onChangeArea" prefHeight="98.0" prefWidth="370.0" style="-fx-cursor: hand;" />
          </children>
       </AnchorPane>
+        <AnchorPane prefHeight="79.0" prefWidth="700.0">
+            <children>
+            <ImageView fitHeight="87.0" fitWidth="1050.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/banner_darker.png" />
+               </image>
+            </ImageView>
+                <Label alignment="CENTER" layoutX="447.0" layoutY="21.0" prefHeight="31.0" prefWidth="155.0" text="Tables" textFill="WHITE">
+                    <font>
+                        <Font name="Gill Sans MT Bold" size="35.0" />
+                    </font>
+                </Label>
+            <AnchorPane layoutX="970.0" layoutY="6.0" prefHeight="65.0" prefWidth="65.0">
+               <children>
+                  <Circle fill="#ffffff00" layoutX="31.0" layoutY="36.0" radius="31.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Label fx:id="labelTimer" layoutX="7.0" layoutY="20.0" text="X:XX" textFill="WHITE">
+                     <font>
+                        <Font name="Calibri" size="26.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="14.0" onMouseClicked="#handleMapClick" prefHeight="73.0" prefWidth="83.0">
+               <children>
+                  <ImageView fitHeight="81.0" fitWidth="76.0" layoutX="4.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                     <image>
+                        <Image url="@../images/mapicon2.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="835.0" layoutY="21.0" prefHeight="19.0" prefWidth="110.0">
+               <children>
+                  <ImageView fx:id="imgButtonNoColor" fitHeight="40.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/guess_button_no_color.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imgGuessButton" fitHeight="40.0" fitWidth="136.0" onMouseClicked="#onGuessNow" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" visible="false">
+                     <image>
+                        <Image url="@../images/Guess_button.png" />
+                     </image>
+                  </ImageView>
+                  <Rectangle fx:id="rectDisableButton" arcHeight="5.0" arcWidth="5.0" fill="#616161c3" height="40.0" stroke="TRANSPARENT" strokeType="INSIDE" width="120.0" />
+               </children>
+            </AnchorPane>
+            </children>
+        </AnchorPane>
     </children>
 </AnchorPane>

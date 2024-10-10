@@ -63,7 +63,7 @@
                   </ImageView>
                   <TextArea fx:id="txtaExplanation" layoutX="25.0" layoutY="20.0" onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="427.0" prefWidth="651.0" promptText="Enter reason here" wrapText="true">
                      <font>
-                        <Font size="23.0" />
+                        <Font name="Gill Sans MT" size="23.0" />
                      </font>
                   </TextArea>
                   <AnchorPane layoutX="10.0" layoutY="467.0" onMouseClicked="#onSendExplanation" prefHeight="48.0" prefWidth="651.0" style="-fx-cursor: hand;">
@@ -98,7 +98,7 @@
             </ImageView>
             <Label fx:id="labelTitle" alignment="CENTER" layoutX="247.0" layoutY="20.0" prefHeight="40.0" prefWidth="555.0" text="Who is the thief?" textFill="WHITE">
                <font>
-                  <Font name="Algerian" size="35.0" />
+                  <Font name="Gill Sans MT Bold" size="35.0" />
                </font>
             </Label>
             <AnchorPane layoutX="972.0" layoutY="6.0" prefHeight="65.0" prefWidth="63.0">
@@ -113,7 +113,7 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="paneOpenChat" layoutX="1031.0" layoutY="153.0" onMouseClicked="#handleOpenButtonClick" prefHeight="97.0" prefWidth="21.0">
+      <AnchorPane fx:id="paneOpenChat" layoutX="1031.0" layoutY="153.0" onMouseClicked="#handleOpenButtonClick" prefHeight="97.0" prefWidth="21.0" visible="false">
          <children>
             <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#adadadeb" height="110.0" stroke="TRANSPARENT" strokeType="INSIDE" width="36.0" />
             <Label alignment="CENTER" layoutX="4.0" layoutY="37.0" prefHeight="23.0" prefWidth="18.0" rotate="-90.0" text="^" textAlignment="CENTER" textFill="WHITE">

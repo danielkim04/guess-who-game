@@ -68,6 +68,12 @@ public class SuspectController implements Controller {
   private AnchorPane tablesButtonAnchorPane;
   @FXML
   private AnchorPane mapMenuAnchorPane;
+  @FXML 
+  private Rectangle rectDisableButton;
+  @FXML 
+  private ImageView imgGuessButton;
+  @FXML 
+  private ImageView imgButtonNoColor;
 
   private Suspect suspect;
   private Timeline timeline;
@@ -230,7 +236,7 @@ public class SuspectController implements Controller {
   }
 
   @FXML
-  private void onGuessNow(ActionEvent event) {
+  private void onGuessNow(MouseEvent event) {
     try {
       App.getContext().getState().onGuessNow();
     } catch (IOException e) {
@@ -323,6 +329,9 @@ public class SuspectController implements Controller {
 
   @Override
   public void unlockGuessBtn() {
-    btnGuessNow.setDisable(false);
+    // btnGuessNow.setDisable(false);
+    imgGuessButton.setVisible(true);
+    imgButtonNoColor.setVisible(false);
+    rectDisableButton.setVisible(false);
   }
 }
