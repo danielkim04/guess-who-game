@@ -98,6 +98,7 @@ public class SuspectController implements Controller {
           labelResponse.setText(response);
           loadGif();
         });
+    onSceneOpened();
   }
 
   private void createMap() {
