@@ -1,5 +1,8 @@
 package nz.ac.auckland.se206.classes;
 
+/**
+ * Class responsible for managing the interactions with the characters in the game
+ */
 public class Interactable {
 
   private String name;

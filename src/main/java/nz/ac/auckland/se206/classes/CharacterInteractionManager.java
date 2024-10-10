@@ -1,5 +1,8 @@
 package nz.ac.auckland.se206.classes;
 
+/**
+ * Class responsible for managing the interactions with the characters in the game
+ */
 public class CharacterInteractionManager {
 
   // Singleton instance
@@ -18,7 +21,11 @@ public class CharacterInteractionManager {
     reset(); // Initialize all values to false by default
   }
 
-  // Public method to get the singleton instance
+  /**
+   * Returns the singleton instance of the CharacterInteractionManager
+   *
+   * @return the singleton instance of the CharacterInteractionManager
+   */
   public static CharacterInteractionManager getInstance() {
     if (instance == null) {
       instance = new CharacterInteractionManager();
@@ -26,7 +33,9 @@ public class CharacterInteractionManager {
     return instance;
   }
 
-  // Method to reset all interaction states
+  /**
+   * Resets all the booleans to false
+   */
   public void reset() {
     this.talkedToCharacter1 = false;
     this.talkedToCharacter2 = false;

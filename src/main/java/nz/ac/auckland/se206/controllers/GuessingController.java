@@ -30,6 +30,9 @@ import nz.ac.auckland.se206.classes.NotesSyncManager;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 import nz.ac.auckland.se206.states.Guessing;
 
+/**
+ * Controller for the Guessing scene
+ */
 public class GuessingController implements Controller {
   @FXML private Label labelTimer;
   @FXML private AnchorPane paneNoteWindow;
@@ -48,6 +51,10 @@ public class GuessingController implements Controller {
   private String suspectName;
   private ChatCompletionRequest chatCompletionRequest;
 
+  /**
+   * Initializes the controller class. This method is automatically called after the fxml file has
+   * been loaded.
+   */
   @FXML
   public void initialize() {
     // Load the synced notes from NotesSyncManager when the scene is initialized
@@ -126,6 +133,9 @@ public class GuessingController implements Controller {
     return PromptEngineering.getPrompt("chat.txt", map);
   }
 
+  /**
+   * Initialises the chat completion request.
+   */
   public void initialiseChat() {
     try {
       ApiProxyConfig config = ApiProxyConfig.readConfig();

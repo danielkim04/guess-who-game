@@ -11,6 +11,9 @@ import javafx.scene.layout.AnchorPane;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.classes.Controller;
 
+/**
+ * Controller for the IntroDialogue scene
+ */
 public class IntroDialogueSceneController implements Controller {
 
   @FXML
@@ -67,6 +70,9 @@ public class IntroDialogueSceneController implements Controller {
     showNextDialogue();
   }
 
+  /**
+   * Shows the next dialogue in the list.
+   */
   public void showNextDialogue() {
     if (currentDialogueIndex < dialogues.size()) {
       labelDialogue.setText(dialogues.get(currentDialogueIndex));

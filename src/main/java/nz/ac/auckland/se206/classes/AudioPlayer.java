@@ -5,6 +5,9 @@ import java.util.List;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
+/**
+ * Class responsible for playing audio
+ */
 public class AudioPlayer {
 
   private volatile List<Media> audioQueue = new ArrayList<Media>();

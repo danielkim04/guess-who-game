@@ -8,6 +8,9 @@ import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.classes.Controller;
 
+/**
+ * Controller for the Menu scene
+ */
 public class MenuController implements Controller {
 
   @FXML
@@ -16,7 +19,9 @@ public class MenuController implements Controller {
   @FXML
   private Label labelStart; // Reference to StartLabel
 
-  // Called after FXML file has been loaded
+  /**
+   * Initializes the controller class. This method is automatically called after the fxml file has
+   */
   @FXML
   public void initialize() {
     System.out.println("MenuController initialized");
