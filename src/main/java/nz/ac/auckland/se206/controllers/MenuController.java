@@ -8,7 +8,7 @@ import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.classes.Controller;
 
-/** This class is the controller class for the menu scene */
+/** This class is the controller class for the menu scene. */
 public class MenuController implements Controller {
 
   @FXML private Rectangle startRectangle;

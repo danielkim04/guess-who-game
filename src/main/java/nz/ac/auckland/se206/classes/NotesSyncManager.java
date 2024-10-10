@@ -15,12 +15,12 @@ public class NotesSyncManager {
     notesText = notes;
   }
 
-  /** Append the notes text. */
+  /** This method is responsible for appending the notes text. */
   public static String getNotesText() {
     return notesText;
   }
 
-  /** Clear the notes text. */
+  /** This method is responsible for clearing the notes text. */
   public static void clearNotes() {
     notesText = ""; // Clear the static notes
   }

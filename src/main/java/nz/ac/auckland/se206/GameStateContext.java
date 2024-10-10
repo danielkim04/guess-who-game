@@ -11,10 +11,10 @@ import java.util.Set;
 import javafx.scene.input.MouseEvent;
 import org.yaml.snakeyaml.Yaml;
 import nz.ac.auckland.se206.states.GameStarted;
-import nz.ac.auckland.se206.states.Investigating;
 import nz.ac.auckland.se206.states.Guessing;
 import nz.ac.auckland.se206.states.GameOver;
 import nz.ac.auckland.se206.states.GameState;
+import nz.ac.auckland.se206.states.Investigating;
 
 /**
  * Context class for managing the state of the game. Handles transitions between different game
