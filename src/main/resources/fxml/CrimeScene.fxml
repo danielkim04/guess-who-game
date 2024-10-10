@@ -242,7 +242,6 @@
                </font>
             </Label>
             <TextArea fx:id="balanceArea" layoutX="540.0" layoutY="504.0" prefHeight="48.0" prefWidth="108.0" />
-            <Button fx:id="checkBalance" layoutX="655.5" layoutY="514.5" mnemonicParsing="false" onAction="#onCheckBalance" stylesheets="@../css/styles.css" text="Check" />
             <Label layoutX="540.0" layoutY="478.5" prefHeight="24.0" prefWidth="187.5" text="Missing Balance?">
                <font>
                   <Font size="15.0" />
@@ -253,7 +252,16 @@
                   <Image url="@../images/correct.png" />
                </image>
             </ImageView>
-            <Button fx:id="cashbookExit" layoutX="279.0" layoutY="514.5" mnemonicParsing="false" onAction="#onCashBookExit" stylesheets="@../css/styles.css" text="Back" />
+            <ImageView fx:id="spider1" fitHeight="300.0" fitWidth="500.0" layoutX="500.0" layoutY="250.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../gif/spiderRight.gif" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="spider2" fitHeight="300.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true" x="100.0" y="150.0">
+               <image>
+                  <Image url="@../gif/spiderLeft.gif" />
+               </image>
+            </ImageView>
             <ImageView fx:id="web1" fitHeight="306.0" fitWidth="484.5" layoutX="375.0" layoutY="187.5" opacity="0.5" pickOnBounds="true" preserveRatio="true" rotate="72.2">
                <image>
                   <Image url="@../images/cobweb2.png" />
@@ -269,6 +277,8 @@
                   <Image url="@../images/cobweb2.png" />
                </image>
             </ImageView>
+            <Button fx:id="checkBalance" layoutX="655.5" layoutY="514.5" mnemonicParsing="false" onAction="#onCheckBalance" stylesheets="@../css/styles.css" text="Check" />
+            <Button fx:id="cashbookExit" layoutX="279.0" layoutY="514.5" mnemonicParsing="false" onAction="#onCashBookExit" stylesheets="@../css/styles.css" text="Back" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="paneOpenChat" layoutX="973.0" layoutY="224.0" onMouseClicked="#onHandleOpenButtonClick" prefHeight="75.0" prefWidth="81.0" style="-fx-cursor: hand;">
