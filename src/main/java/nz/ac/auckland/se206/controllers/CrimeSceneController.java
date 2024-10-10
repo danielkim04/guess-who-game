@@ -172,11 +172,18 @@ public class CrimeSceneController implements Controller {
   private MenuItem menuSuspectOne;
   @FXML
   private Button btnGuessNow;
-  @FXML private Rectangle rectDisableButton;
-  @FXML private ImageView imgGuessButton;
-  @FXML private ImageView imgButtonNoColor;
-  @FXML private AnchorPane paneCrimeSceneIntro;
-  @FXML private ImageView imageCloseIntro;
+  @FXML
+  private Rectangle rectDisableButton;
+  @FXML
+  private ImageView imgGuessButton;
+  @FXML
+  private ImageView imgButtonNoColor;
+  @FXML
+  private AnchorPane paneCrimeSceneIntro;
+  @FXML
+  private ImageView imageCloseIntro;
+  @FXML
+  private AnchorPane mapMenuAnchorPane;
 
   // Variables to store the initial mouse click position
   private double initialX;
@@ -360,11 +367,6 @@ public class CrimeSceneController implements Controller {
       System.out.println("Not investigating");
     }
     System.out.println("clue opened");
-  }
-
-  @FXML
-  private void handleMapClick(MouseEvent event) throws IOException {
-    // to be implemented
   }
 
   @FXML
@@ -839,30 +841,40 @@ public class CrimeSceneController implements Controller {
   }
 
   @FXML
-  private void onSuspectOne(ActionEvent event) {
-    try {
-      App.setRoot("SuspectOne");
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+  private void onSuspectOne(MouseEvent event) {
+    changeSceneMap("SuspectOne");
   }
 
   @FXML
-  private void onSuspectTwo(ActionEvent event) {
-    try {
-      App.setRoot("SuspectTwo");
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+  private void onSuspectTwo(MouseEvent event) {
+    changeSceneMap("SuspectTwo");
   }
 
   @FXML
-  private void onSuspectThree(ActionEvent event) {
+  private void onSuspectThree(MouseEvent event) {
+    changeSceneMap("SuspectThree");
+  }
+
+  private void changeSceneMap(String location) {
     try {
-      App.setRoot("SuspectThree");
+      App.setRoot(location);
     } catch (IOException e) {
       e.printStackTrace();
     }
+    handleCloseMap();
+  }
+
+  @FXML
+  private void handleMapClick(MouseEvent event) {
+    Boolean menuStatus = mapMenuAnchorPane.isVisible();
+    mapMenuAnchorPane.setDisable(menuStatus);
+    mapMenuAnchorPane.setVisible(!menuStatus);
+  }
+
+  @FXML
+  private void handleCloseMap() {
+    mapMenuAnchorPane.setDisable(true);
+    mapMenuAnchorPane.setVisible(false);
   }
 
   @Override

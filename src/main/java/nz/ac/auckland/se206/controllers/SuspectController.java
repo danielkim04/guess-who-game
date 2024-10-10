@@ -5,7 +5,6 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -68,11 +67,11 @@ public class SuspectController implements Controller {
   private AnchorPane tablesButtonAnchorPane;
   @FXML
   private AnchorPane mapMenuAnchorPane;
-  @FXML 
+  @FXML
   private Rectangle rectDisableButton;
-  @FXML 
+  @FXML
   private ImageView imgGuessButton;
-  @FXML 
+  @FXML
   private ImageView imgButtonNoColor;
 
   private Suspect suspect;

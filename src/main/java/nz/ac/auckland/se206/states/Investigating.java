@@ -7,6 +7,7 @@ import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.classes.Suspect;
 import nz.ac.auckland.se206.classes.Timer;
+import nz.ac.auckland.se206.states.Guessing;
 
 /**
  * The Guessing state of the game. Handles the logic for when the player is
@@ -18,7 +19,7 @@ public class Investigating implements GameState {
   private final GameStateContext context;
   private boolean hasClueBeenInspected = false;
 
-  private Timer timer = new Timer(5 * 60);
+  private Timer timer = new Timer(30);
 
   private Thread updateThread = new Thread(
       () -> {
@@ -89,13 +90,9 @@ public class Investigating implements GameState {
 
   @Override
   public void onGuessNow() {
-    for (Suspect currentSuspect : App.getSuspects()) {
-      if (!currentSuspect.getInteracted()) {
-        System.out.println("Interact will all suspects first");
-        return;
-      }
+    if (guessNowCheck()) {
+      nextState();
     }
-    nextState();
   }
 
   public void handleTimeOut() {
@@ -115,6 +112,10 @@ public class Investigating implements GameState {
     } catch (IOException e) {
       e.printStackTrace();
     }
+    if (!guessNowCheck()) {
+      ((Guessing) context.getState()).handleTimeOut();
+    }
+
   }
 
   public void setClueInteractionStatus() {
