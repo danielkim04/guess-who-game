@@ -14,9 +14,7 @@ import nz.ac.auckland.apiproxy.tts.TextToSpeechRequest.Provider;
 import nz.ac.auckland.apiproxy.tts.TextToSpeechRequest.Voice;
 import nz.ac.auckland.apiproxy.tts.TextToSpeechResult;
 
-/**
- * A utility class for converting text to speech using the specified API proxy.
- */
+/** A utility class for converting text to speech using the specified API proxy. */
 public class TextToSpeech {
 
   /**
@@ -26,37 +24,43 @@ public class TextToSpeech {
    * @throws IllegalArgumentException if the text is null or empty
    */
   public static void speak(String text) {
+    // Check if the text is null or empty
     if (text == null || text.isEmpty()) {
       throw new IllegalArgumentException("Text should not be null or empty");
     }
 
-    Task<Void> backgroundTask = new Task<>() {
-      @Override
-      protected Void call() {
-        try {
-          ApiProxyConfig config = ApiProxyConfig.readConfig();
-          Provider provider = Provider.GOOGLE;
-          Voice voice = Voice.GOOGLE_EN_US_STANDARD_H;
+    Task<Void> backgroundTask =
+        new Task<>() {
+          // Play the audio in the background
+          @Override
+          protected Void call() {
+            try {
+              ApiProxyConfig config = ApiProxyConfig.readConfig();
+              Provider provider = Provider.GOOGLE; // Default provider
+              Voice voice = Voice.GOOGLE_EN_US_STANDARD_H; // Default voice
 
-          TextToSpeechRequest ttsRequest = new TextToSpeechRequest(config);
-          ttsRequest.setText(text).setProvider(provider).setVoice(voice);
+              // Create a new text-to-speech request
+              TextToSpeechRequest ttsRequest = new TextToSpeechRequest(config);
+              ttsRequest.setText(text).setProvider(provider).setVoice(voice);
 
-          TextToSpeechResult ttsResult = ttsRequest.execute();
-          String audioUrl = ttsResult.getAudioUrl();
+              TextToSpeechResult ttsResult = ttsRequest.execute();
+              String audioUrl = ttsResult.getAudioUrl();
 
-          try (InputStream inputStream = new BufferedInputStream(new URL(audioUrl).openStream())) {
-            Player player = new Player(inputStream);
-            player.play();
-          } catch (JavaLayerException | IOException e) {
-            e.printStackTrace();
+              // Play the audio
+              try (InputStream inputStream =
+                  new BufferedInputStream(new URL(audioUrl).openStream())) {
+                Player player = new Player(inputStream);
+                player.play();
+              } catch (JavaLayerException | IOException e) {
+                e.printStackTrace();
+              }
+
+            } catch (ApiProxyException e) {
+              e.printStackTrace();
+            }
+            return null;
           }
-
-        } catch (ApiProxyException e) {
-          e.printStackTrace();
-        }
-        return null;
-      }
-    };
+        };
 
     Thread backgroundThread = new Thread(backgroundTask);
     backgroundThread.setDaemon(true); // Ensure the thread does not prevent JVM shutdown

@@ -21,9 +21,10 @@ public class ChatCompletionResult {
 
   private void parse(Map<String, Object> chatCompletion) {
     model = chatCompletion.get("model").toString();
-    created = chatCompletion.get("created") == null
-        ? 0
-        : Long.parseLong(chatCompletion.get("created").toString());
+    created =
+        chatCompletion.get("created") == null
+            ? 0
+            : Long.parseLong(chatCompletion.get("created").toString());
     usagePromptToken = getUsage("prompt_tokens", chatCompletion);
     usageCompletionTokens = getUsage("completion_tokens", chatCompletion);
     usageTotalTokens = getUsage("total_tokens", chatCompletion);

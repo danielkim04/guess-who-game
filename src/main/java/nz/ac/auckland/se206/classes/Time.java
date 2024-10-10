@@ -1,46 +1,68 @@
 package nz.ac.auckland.se206.classes;
 
-// Class responsible for time values
+/** Class responsible for managing the time in the game. */
 public class Time {
 
   // Creates inital varibles for time
   private Integer minutes;
   private Integer seconds;
 
+  /** Constructor for the Time class. */
   public Time() {
     // Initalises time varibles to 0
     this.minutes = 0;
     this.seconds = 0;
   }
 
-  // Returns Minutes on time
+  /**
+   * Constructor for the Time class.
+   *
+   * @return Time in minutes
+   */
   public Integer getMins() {
     return (this.minutes);
   }
 
-  // Returns Seconds on time
+  /**
+   * Constructor for the Time class.
+   *
+   * @return Time in seconds
+   */
   public Integer getSecs() {
     return (this.seconds);
   }
 
-  // Returns full time in seconds
+  /**
+   * returns the full time in seconds.
+   *
+   * @return Time in seconds
+   */
   public Integer getTime() {
     return (this.minutes * 60 + this.seconds);
   }
 
-  // Sets minutes exclusivly
+  /**
+   * Sets minutes exclusivly.
+   *
+   * @param mins the minutes to set
+   */
   public void setMins(Integer mins) {
     this.minutes = mins % 60;
   }
 
-  // Sets seconds exclusivly
+  /**
+   * Sets seconds exclusivly.
+   *
+   * @param secs the seconds to set
+   */
   public void setSecs(Integer secs) {
     seconds = secs % 60;
   }
 
   /**
-   * Sets time given a second input
-   * @param secs
+   * Sets time given a second input.
+   *
+   * @param secs the seconds to set
    */
   public void setTime(Integer secs) {
     // Adds minute periods within the input
@@ -57,9 +79,10 @@ public class Time {
   }
 
   /**
-   * Sets time given a minute and second input
-   * @param mins
-   * @param secs
+   * Sets time given a minute and second input.
+   *
+   * @param mins the minutes to set
+   * @param secs the seconds to set
    */
   public void setTime(Integer mins, Integer secs) {
     // Sets time given a minute and second input
@@ -77,8 +100,9 @@ public class Time {
   }
 
   /**
-   * Adds a given number of minutes to the time
-   * @param mins
+   * Adds a given number of minutes to the time.
+   *
+   * @param mins the minutes to add
    */
   public void addMins(Integer mins) {
     // Adds a given number of minutes to the time
@@ -87,8 +111,9 @@ public class Time {
   }
 
   /**
-   * Adds a given number of seconds to the time
-   * @param secs
+   * Adds a given number of seconds to the time.
+   *
+   * @param secs the seconds to add
    */
   public void addSecs(Integer secs) {
     // Adds a given number of seconds to the time
@@ -107,8 +132,9 @@ public class Time {
   }
 
   /**
-   * Subtracts an amount of minutes from the time
-   * @param mins
+   * Subtracts an amount of minutes from the time.
+   *
+   * @param mins the minutes to subtract
    */
   public void subMins(Integer mins) {
     // Subtracts an amount of minutes from the time
@@ -120,8 +146,9 @@ public class Time {
   }
 
   /**
-   * Subtracts an amount of seconds from the time
-   * @param secs
+   * Subtracts an amount of seconds from the time.
+   *
+   * @param secs the seconds to subtract
    */
   public void subSecs(Integer secs) {
     // Subtracts an amount of seconds from the time
@@ -132,7 +159,11 @@ public class Time {
     }
   }
 
-  // Over rides toString() method to output minutes and seconds in format XX:XX
+  /**
+   * Subtracts an amount of time from the time.
+   *
+   * @return Time in string format
+   */
   @Override
   public String toString() {
     return (this.minutes.toString() + ":" + (this.seconds / 10) + (this.seconds % 10));

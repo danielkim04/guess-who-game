@@ -84,6 +84,11 @@ public class GameStateContext {
     this.gameState.start();
   }
 
+  /**
+   * Gets the current state of the game.
+   *
+   * @return the current state of the game
+   */
   public GameState getState() {
     return (this.gameState);
   }

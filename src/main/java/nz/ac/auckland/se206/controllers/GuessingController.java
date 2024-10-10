@@ -30,9 +30,7 @@ import nz.ac.auckland.se206.classes.NotesSyncManager;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 import nz.ac.auckland.se206.states.Guessing;
 
-/**
- * Controller for the Guessing scene
- */
+/** Controller for the Guessing scene */
 public class GuessingController implements Controller {
   @FXML private Label labelTimer;
   @FXML private AnchorPane paneNoteWindow;
@@ -62,13 +60,14 @@ public class GuessingController implements Controller {
     refreshNotes();
   }
 
+  /** Handles the close notes button click event. */
   @FXML
   private void onGuessingNotesChanged() {
     // Update the notes in NotesSyncManager when the user edits the TextArea
     NotesSyncManager.setNotesText(guessingNotes.getText());
   }
 
-  // Call this method when you want to manually refresh the notes
+  /** Refreshes the notes in the TextArea. */
   public void refreshNotes() {
     guessingNotes.setText(NotesSyncManager.getNotesText());
   }
@@ -120,6 +119,11 @@ public class GuessingController implements Controller {
     transitionToExplanation(getClass().getResource("/images/" + filename));
   }
 
+  /**
+   * Transitions to the explanation screen.
+   *
+   * @param url the URL of the image to display
+   */
   private void transitionToExplanation(URL url) {
     paneExplanation.setVisible(true);
     labelTitle.setText("Present Evidence");
@@ -127,15 +131,20 @@ public class GuessingController implements Controller {
     imgChosenSuspect.setImage(image);
   }
 
+  /**
+   * Loads the system prompt.
+   *
+   * @return the system prompt
+   * @throws IOException
+   * @throws URISyntaxException
+   */
   private String loadSystemPrompt() throws IOException, URISyntaxException {
     Map<String, String> map = new HashMap<>();
     map.put("suspect", suspectName);
     return PromptEngineering.getPrompt("chat.txt", map);
   }
 
-  /**
-   * Initialises the chat completion request.
-   */
+  /** Initialises the chat completion request. */
   public void initialiseChat() {
     try {
       ApiProxyConfig config = ApiProxyConfig.readConfig();
@@ -151,6 +160,11 @@ public class GuessingController implements Controller {
     }
   }
 
+  /**
+   * Runs the GPT-3 model.
+   *
+   * @param msg the chat message
+   */
   private void runGpt(ChatMessage msg) {
     chatCompletionRequest.addMessage(msg);
 
@@ -180,6 +194,7 @@ public class GuessingController implements Controller {
     backgroundThread.start();
   }
 
+  /** Handles the send explanation button click event. */
   @FXML
   private void onSendExplanation() {
     // evaluate user input using gpt and display the result only if player chooses
@@ -219,34 +234,64 @@ public class GuessingController implements Controller {
     }
   }
 
+  /**
+   * Handles the open notes button click event.
+   *
+   * @param event the mouse event triggered by clicking the open notes button
+   * @throws IOException if there is an I/O error
+   */
   @FXML
   private void handleOpenButtonClick(MouseEvent event) throws IOException {
     paneNoteWindow.setVisible(true);
   }
 
+  /**
+   * Handles the close notes button click event.
+   *
+   * @param event the mouse event triggered by clicking the close notes button
+   * @throws IOException if there is an I/O error
+   */
   @FXML
   private void handleCloseButtonClick(MouseEvent event) throws IOException {
     paneNoteWindow.setVisible(false);
   }
 
+  /**
+   * Handles the send button click event.
+   *
+   * @param chat the chat message
+   * @throws IOException if there is an I/O error
+   */
   @Override
   public void onNewChat(String chat) {
     // TODO Auto-generated method stub
     throw new UnsupportedOperationException("Unimplemented method 'onNewChat'");
   }
 
+  /**
+   * Handles the timer update event.
+   *
+   * @param time the current time
+   */
   @Override
   public void onTimerUpdate(String time) {
     labelTimer.setText(time);
   }
 
+  /** Unlocks the guess button. */
   @Override
   public void unlockGuessBtn() {}
 
+  /**
+   * Gets the player's explanation.
+   *
+   * @return the player's explanation
+   */
   public String getPlayerExplanation() {
     return txtaExplanation.getText().trim();
   }
 
+  /** Sends the explanation to the GPT-3 model. */
   public void sendExplanationTimeOut() {
     onSendExplanation();
   }

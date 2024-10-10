@@ -1,24 +1,26 @@
 package nz.ac.auckland.se206.classes;
 
-/**
- * Class responsible for notes sync
- */
+/** Class responsible for notes sync. */
 public class NotesSyncManager {
 
   // Static variable to store the shared notes
   private static String notesText = "";
 
-  // Method to update notes
+  /**
+   * Set the notes text.
+   *
+   * @param notes
+   */
   public static void setNotesText(String notes) {
     notesText = notes;
   }
 
-  // Method to retrieve the current notes
+  /** Append the notes text. */
   public static String getNotesText() {
     return notesText;
   }
 
-  // Method to clear the notes
+  /** Clear the notes text. */
   public static void clearNotes() {
     notesText = ""; // Clear the static notes
   }

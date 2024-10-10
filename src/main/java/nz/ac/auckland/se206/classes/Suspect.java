@@ -21,9 +21,7 @@ import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 import nz.ac.auckland.se206.speech.TextToSpeech;
 
-/**
- * Class responsible for suspect values
- */
+/** Class responsible for suspect values. */
 public class Suspect {
 
   private String name;
@@ -43,6 +41,13 @@ public class Suspect {
 
   private String promptFilename;
 
+  /**
+   * Constructor for the Suspect class.
+   *
+   * @param name the name of the suspect
+   * @param role the role of the suspect
+   * @param promptFilename the filename of the prompt
+   */
   public Suspect(String name, String role, String promptFilename) {
     this.name = name;
     setPromptFilename(promptFilename);
@@ -50,55 +55,106 @@ public class Suspect {
     initialiseChat();
   }
 
+  /**
+   * Set name of suspect.
+   *
+   * @param name the name of the suspect
+   */
   public void setName(String name) {
     this.name = name;
   }
 
+  /**
+   * Get name of suspect.
+   *
+   * @return the name of the suspect
+   */
   public String getName() {
     return (this.name);
   }
 
+  /**
+   * Set role of suspect.
+   *
+   * @param role the role of the suspect
+   */
   public void setRole(String role) {
     this.role = role;
   }
 
+  /**
+   * Get role of suspect.
+   *
+   * @return the role of the suspect
+   */
   public String getRole() {
     return (role);
   }
 
+  /** Set interacted to true */
   public void interacted() {
     this.interacted = true;
   }
 
+  /**
+   * Get interacted.
+   *
+   * @return interacted status of suspect
+   */
   public Boolean getInteracted() {
     return (this.interacted);
   }
 
-  // Set hitbox
+  /**
+   * Set hitbox.
+   *
+   * @param rect the hitbox of the suspect
+   */
   public void setRect(Rectangle rect) {
     this.rect = rect;
   }
 
-  // Get hitbox
+  /**
+   * Get hitbox.
+   *
+   * @return the hitbox of the suspect
+   */
   public Rectangle getRect() {
     return (this.rect);
   }
 
-  // Append to chat history
+  /**
+   * Add chat history.
+   *
+   * @param text the text to be added to chat history
+   */
   public void addChatHistory(String text) {
     this.chatHistory += text;
   }
 
-  // Reset chat history to a single string
+  /**
+   * Set chat history.
+   *
+   * @param text the text to be set as chat history
+   */
   public void setChatHistory(String text) {
     this.chatHistory = text;
   }
 
-  // Returns full chat history of this characters responses
+  /**
+   * Get chat history.
+   *
+   * @return the chat history
+   */
   public String getChatHistory() {
     return (this.chatHistory);
   }
 
+  /**
+   * Get chat completion request.
+   *
+   * @return the chat completion request
+   */
   private void initialiseChat() {
     // initialise chat upon creation of suspect
     if (this.chatCompletionRequest == null) {
@@ -119,8 +175,11 @@ public class Suspect {
     }
   }
 
-  // Returns new GPT prompt message for GPT to process later
-  // old implementation
+  /**
+   * Get system prompt.
+   *
+   * @return the system prompt
+   */
   private String getSystemPrompt() {
     Map<String, String> map = new HashMap<>();
     map.put("name", toString()); // bar_name , gambler_name , victim_name
@@ -128,7 +187,11 @@ public class Suspect {
     return PromptEngineering.getPrompt("chat.txt", map);
   }
 
-  // Loads system prompt from file
+  /**
+   * Load system prompt.
+   *
+   * @return the system prompt
+   */
   private String loadSystemPrompt() throws IOException, URISyntaxException {
     System.out.println(this.promptFilename);
     URL resourceUrl =
@@ -140,7 +203,8 @@ public class Suspect {
   }
 
   /**
-   * Talk to the suspect
+   * Talk to the suspect.
+   *
    * @param msg
    * @return
    */
@@ -179,7 +243,12 @@ public class Suspect {
     return (this.currentChatMessage.getContent());
   }
 
-  // Returns GPT chat message
+  /**
+   * Run GPT asynchronously.
+   *
+   * @param msg the chat message
+   * @param callback the callback function
+   */
   private void runGptAsync(ChatMessage msg, Consumer<ChatMessage> callback)
       throws ApiProxyException {
     // used to display gpt response to suspect chat scenes.
@@ -221,18 +290,21 @@ public class Suspect {
     backgroundThread.start();
   }
 
-  // Returns the name of the suspect whenever the suspect class is converted to
-  // string
+  /**
+   * Get name of suspect.
+   *
+   * @return the name of the suspect
+   */
   @Override
   public String toString() {
     return this.name;
   }
 
   /**
-   * Get response from GPT
+   * Get response from GPT.
    *
-   * @param message
-   * @param callback
+   * @param message the message
+   * @param callback the callback function
    */
   public void getResponse(String message, Consumer<String> callback) {
     // called by suspect room controllers to get response from GPT
@@ -250,7 +322,13 @@ public class Suspect {
     }
   }
 
-  // Returns GPT chat message
+  /**
+   * Run GPT.
+   *
+   * @param msg the chat message
+   * @return the chat message
+   * @throws ApiProxyException
+   */
   private ChatMessage runGpt(ChatMessage msg) throws ApiProxyException {
     // not used in the current implementation
     if (msg != null) {
@@ -269,6 +347,11 @@ public class Suspect {
     }
   }
 
+  /**
+   * Set prompt filename.
+   *
+   * @param filename the filename of the prompt
+   */
   public void setPromptFilename(String filename) {
     this.promptFilename = filename;
   }
