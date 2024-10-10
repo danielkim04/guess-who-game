@@ -163,6 +163,11 @@ public class CrimeSceneController implements Controller {
   private MenuItem menuSuspectOne;
   @FXML
   private Button btnGuessNow;
+  @FXML private Rectangle rectDisableButton;
+  @FXML private ImageView imgGuessButton;
+  @FXML private ImageView imgButtonNoColor;
+  @FXML private AnchorPane paneCrimeSceneIntro;
+  @FXML private ImageView imageCloseIntro;
 
   // Variables to store the initial mouse click position
   private double initialX;
@@ -293,7 +298,7 @@ public class CrimeSceneController implements Controller {
   }
 
   @FXML
-  private void onGuessNow(ActionEvent event) {
+  private void onGuessNow(MouseEvent event) {
     try {
       App.getContext().getInvestigatingState().onGuessNow();
     } catch (IOException e) {
@@ -781,6 +786,13 @@ public class CrimeSceneController implements Controller {
 
   @Override
   public void unlockGuessBtn() {
-    btnGuessNow.setDisable(false);
+    imgGuessButton.setVisible(true);
+    imgButtonNoColor.setVisible(false);
+    rectDisableButton.setVisible(false);
+  }
+
+  @FXML
+  public void handleCloseIntroClick(MouseEvent event) {
+    paneCrimeSceneIntro.setVisible(false);
   }
 }
