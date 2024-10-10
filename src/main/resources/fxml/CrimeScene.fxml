@@ -46,7 +46,7 @@
                </image>
             </ImageView>
             <Rectangle fx:id="rectBagCollectionOld" arcHeight="7.5" arcWidth="7.5" fill="#393737" height="512.0" layoutY="88.0" stroke="#008663" strokeType="INSIDE" visible="false" width="156.0" />
-            <ImageView fx:id="rectBagCollection" fitHeight="512.0" fitWidth="188.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="rectBagCollection" fitHeight="518.0" fitWidth="201.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/clue_side_panel.png" />
                </image>
@@ -129,7 +129,7 @@
       </AnchorPane>
       <AnchorPane fx:id="noteInteractPane" prefHeight="600.0" prefWidth="1609.5" visible="false">
          <children>
-            <ImageView fitHeight="518.0" fitWidth="906.0" layoutX="146.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="518.0" fitWidth="913.0" layoutX="146.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/note2.png" />
                </image>
@@ -168,7 +168,7 @@
                   <Label fx:id="printLabel" layoutX="255.0" layoutY="210.0" stylesheets="@../css/style.css" text="poo" />
                </children>
             </AnchorPane>
-            <ImageView fitHeight="512.0" fitWidth="240.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="518.0" fitWidth="188.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/clue_side_panel.png" />
                </image>
@@ -281,15 +281,6 @@
             <Button fx:id="cashbookExit" layoutX="279.0" layoutY="514.5" mnemonicParsing="false" onAction="#onCashBookExit" stylesheets="@../css/styles.css" text="Back" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="paneOpenChat" layoutX="973.0" layoutY="224.0" onMouseClicked="#onHandleOpenButtonClick" prefHeight="75.0" prefWidth="81.0" style="-fx-cursor: hand;">
-         <children>
-            <ImageView fx:id="glow" fitHeight="76.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/icon_inventory.png" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
       
             <AnchorPane fx:id="paneNoteWindow" layoutX="652.0" layoutY="80.0" prefHeight="518.0" prefWidth="427.0" visible="false">
          <children>
@@ -321,7 +312,7 @@
                               <Image url="@../images/fingerprintInv1.png" />
                            </image>
                         </ImageView>
-                        <Label layoutX="165.0" layoutY="22.5" stylesheets="@../css/style.css" text="Hair Sample">
+                        <Label layoutX="165.0" layoutY="30.0" prefHeight="24.0" prefWidth="97.0" stylesheets="@../css/style.css" text="Hair Sample">
                            <font>
                               <Font name="Dubai Bold" size="27.0" />
                            </font>
@@ -341,7 +332,7 @@
                               <Image url="@../images/fingerprintInv2.png" />
                            </image>
                         </ImageView>
-                        <Label layoutX="165.0" layoutY="7.5" stylesheets="@../css/style.css" text="Fingerprint">
+                        <Label layoutX="165.0" layoutY="21.0" prefHeight="27.0" prefWidth="90.0" stylesheets="@../css/style.css" text="Fingerprint">
                            <font>
                               <Font name="Dubai Bold" size="27.0" />
                            </font>
@@ -361,7 +352,7 @@
                               <Image url="@../images/cashInv.png" />
                            </image>
                         </ImageView>
-                        <Label layoutX="187.5" layoutY="292.5" stylesheets="@../css/style.css" text="Money">
+                        <Label layoutX="166.0" layoutY="309.0" prefHeight="22.0" prefWidth="77.0" stylesheets="@../css/style.css" text="Money">
                            <font>
                               <Font name="Dubai Bold" size="27.0" />
                            </font>
@@ -370,7 +361,7 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <Label layoutX="114.0" layoutY="36.0" text="Inventory">
+            <Label layoutX="44.0" layoutY="36.0" text="Inventory">
                <font>
                   <Font size="39.0" />
                </font>
@@ -415,8 +406,7 @@
       </AnchorPane>
             <AnchorPane prefHeight="89.0" prefWidth="1085.0">
          <children>
-            <Rectangle arcHeight="7.5" arcWidth="7.5" fill="#393737f7" height="94.0" layoutY="-7.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1050.0" />
-            <ImageView fitHeight="87.0" fitWidth="1109.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="87.0" fitWidth="1109.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/banner_darker.png" />
                </image>
@@ -480,7 +470,7 @@
                </children>
             </AnchorPane>
             <AnchorPane layoutX="840.0" layoutY="24.0" prefHeight="19.0" prefWidth="110.0" />
-            <AnchorPane layoutX="840.0" layoutY="24.0" prefHeight="19.0" prefWidth="110.0">
+            <AnchorPane layoutX="835.0" layoutY="21.0" prefHeight="19.0" prefWidth="110.0">
                <children>
                   <ImageView fx:id="imgButtonNoColor" fitHeight="40.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -495,11 +485,20 @@
                   <Rectangle fx:id="rectDisableButton" arcHeight="5.0" arcWidth="5.0" fill="#616161c3" height="40.0" stroke="TRANSPARENT" strokeType="INSIDE" width="120.0" />
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="14.0" onMouseClicked="#handleMapClick" prefHeight="73.0" prefWidth="83.0">
+            <AnchorPane layoutY="4.0" onMouseClicked="#handleMapClick" prefHeight="73.0" prefWidth="73.0">
                <children>
-                  <ImageView fitHeight="81.0" fitWidth="76.0" layoutX="4.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                  <ImageView fitHeight="73.0" fitWidth="73.0" layoutX="4.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                      <image>
-                        <Image url="@../images/mapicon2.png" />
+                        <Image url="@../images/icon_map.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="paneOpenChat" layoutX="754.0" layoutY="7.0" onMouseClicked="#onHandleOpenButtonClick" prefHeight="73.0" prefWidth="73.0" style="-fx-cursor: hand;">
+               <children>
+                  <ImageView fx:id="glow" fitHeight="71.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/icon_inventory.png" />
                      </image>
                   </ImageView>
                </children>
@@ -518,27 +517,27 @@
                   <Image url="@../images/close_button_2.png" />
                </image>
             </ImageView>
-            <Label layoutX="72.0" layoutY="193.0" prefHeight="46.0" prefWidth="451.0" text=" - Interrogate the 3 suspicious characters" textAlignment="JUSTIFY" wrapText="true">
+            <Label layoutX="72.0" layoutY="224.0" prefHeight="46.0" prefWidth="451.0" text=" - Interrogate the 3 suspicious characters" textAlignment="JUSTIFY" wrapText="true">
                <font>
                   <Font name="Candara" size="26.0" />
                </font>
             </Label>
-            <Label contentDisplay="CENTER" layoutX="78.0" layoutY="145.0" prefHeight="48.0" prefWidth="474.0" text="- Find the 3 hidden clues in the crime scene" textAlignment="JUSTIFY" wrapText="true">
+            <Label contentDisplay="CENTER" layoutX="61.0" layoutY="176.0" prefHeight="48.0" prefWidth="474.0" text="- Find the 3 hidden clues in the crime scene" textAlignment="JUSTIFY" wrapText="true">
                <font>
                   <Font name="Candara" size="26.0" />
                </font>
             </Label>
-            <Label layoutX="24.0" layoutY="247.0" prefHeight="48.0" prefWidth="583.0" text="And piece together the mystery before revealing the culprit!" wrapText="true">
+            <Label layoutX="23.0" layoutY="280.0" prefHeight="48.0" prefWidth="583.0" text="And piece together the mystery before revealing the culprit!" wrapText="true">
                <font>
                   <Font name="Candara" size="21.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="92.0" layoutY="50.0" prefHeight="48.0" prefWidth="411.0" text="Good Evening Detective" textAlignment="JUSTIFY" wrapText="true">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="92.0" layoutY="67.0" prefHeight="48.0" prefWidth="411.0" text="Good Evening Detective" textAlignment="JUSTIFY" wrapText="true">
                <font>
                   <Font name="Candara" size="40.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="95.0" layoutY="98.0" prefHeight="48.0" prefWidth="411.0" text="Your tasks are as follows:" textAlignment="JUSTIFY" wrapText="true">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="92.0" layoutY="115.0" prefHeight="48.0" prefWidth="411.0" text="Your tasks are as follows:" textAlignment="JUSTIFY" wrapText="true">
                <font>
                   <Font name="Candara Bold" size="30.0" />
                </font>
