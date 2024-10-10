@@ -7,7 +7,7 @@ public class Time {
   private Integer minutes;
   private Integer seconds;
 
-  /** Constructor for the Time class. */
+  /** This class is responsible for managing the time in the game. */
   public Time() {
     // Initalises time varibles to 0
     this.minutes = 0;
@@ -15,7 +15,7 @@ public class Time {
   }
 
   /**
-   * Constructor for the Time class.
+   * This method is responsible for getting the time in mins.
    *
    * @return Time in minutes
    */
@@ -24,7 +24,7 @@ public class Time {
   }
 
   /**
-   * Constructor for the Time class.
+   * This method is responsible for getting the time in seconds.
    *
    * @return Time in seconds
    */
@@ -33,7 +33,7 @@ public class Time {
   }
 
   /**
-   * returns the full time in seconds.
+   * This method is responsible for getting the time in seconds.
    *
    * @return Time in seconds
    */
@@ -42,7 +42,7 @@ public class Time {
   }
 
   /**
-   * Sets minutes exclusivly.
+   * This method is responsible for getting the time in seconds.
    *
    * @param mins the minutes to set
    */
@@ -51,7 +51,7 @@ public class Time {
   }
 
   /**
-   * Sets seconds exclusivly.
+   * This method is responsible for getting the time in seconds.
    *
    * @param secs the seconds to set
    */
@@ -60,7 +60,7 @@ public class Time {
   }
 
   /**
-   * Sets time given a second input.
+   * This method is responsible for getting the time in seconds.
    *
    * @param secs the seconds to set
    */
@@ -79,7 +79,7 @@ public class Time {
   }
 
   /**
-   * Sets time given a minute and second input.
+   * This method is responsible for getting the time in seconds.
    *
    * @param mins the minutes to set
    * @param secs the seconds to set
@@ -100,7 +100,7 @@ public class Time {
   }
 
   /**
-   * Adds a given number of minutes to the time.
+   * This method is responsible for getting the time in seconds.
    *
    * @param mins the minutes to add
    */
@@ -111,7 +111,7 @@ public class Time {
   }
 
   /**
-   * Adds a given number of seconds to the time.
+   * This method is responsible for getting the time in seconds.
    *
    * @param secs the seconds to add
    */
@@ -132,7 +132,7 @@ public class Time {
   }
 
   /**
-   * Subtracts an amount of minutes from the time.
+   * This method is responsible for getting the time in seconds.
    *
    * @param mins the minutes to subtract
    */
@@ -146,7 +146,7 @@ public class Time {
   }
 
   /**
-   * Subtracts an amount of seconds from the time.
+   * This method is responsible for getting the time in seconds.
    *
    * @param secs the seconds to subtract
    */
@@ -160,7 +160,7 @@ public class Time {
   }
 
   /**
-   * Subtracts an amount of time from the time.
+   * This method is responsible for getting the time in seconds.
    *
    * @return Time in string format
    */

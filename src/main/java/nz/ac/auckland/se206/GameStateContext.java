@@ -8,14 +8,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
-
 import javafx.scene.input.MouseEvent;
+import org.yaml.snakeyaml.Yaml;
 import nz.ac.auckland.se206.states.GameStarted;
 import nz.ac.auckland.se206.states.Investigating;
 import nz.ac.auckland.se206.states.Guessing;
 import nz.ac.auckland.se206.states.GameOver;
 import nz.ac.auckland.se206.states.GameState;
-import org.yaml.snakeyaml.Yaml;
 
 /**
  * Context class for managing the state of the game. Handles transitions between different game
@@ -75,7 +74,7 @@ public class GameStateContext {
   }
 
   /**
-   * Sets the current state of the game.
+   * This method sets the current state of the game.
    *
    * @param state the new state to set
    */
@@ -85,7 +84,7 @@ public class GameStateContext {
   }
 
   /**
-   * Gets the current state of the game.
+   * This method gets the current state of the game.
    *
    * @return the current state of the game
    */
@@ -94,7 +93,7 @@ public class GameStateContext {
   }
 
   /**
-   * Gets the initial game started state.
+   * This method gets the initial game started state.
    *
    * @return the game started state
    */
@@ -103,7 +102,7 @@ public class GameStateContext {
   }
 
   /**
-   * Gets the investigating state.
+   * This method gets the investigating state.
    *
    * @return the investigating state
    */
@@ -112,7 +111,7 @@ public class GameStateContext {
   }
 
   /**
-   * Gets the guessing state.
+   * This method gets the guessing state.
    *
    * @return the guessing state
    */
@@ -121,7 +120,7 @@ public class GameStateContext {
   }
 
   /**
-   * Gets the game over state.
+   * This method gets the game over state.
    *
    * @return the game over state
    */
@@ -130,7 +129,7 @@ public class GameStateContext {
   }
 
   /**
-   * Gets the profession to be guessed.
+   * This method gets the profession to be guessed.
    *
    * @return the profession to guess
    */
@@ -139,7 +138,7 @@ public class GameStateContext {
   }
 
   /**
-   * Gets the ID of the rectangle to be guessed.
+   * This method gets the ID of the rectangle to be guessed.
    *
    * @return the rectangle ID to guess
    */
@@ -148,7 +147,7 @@ public class GameStateContext {
   }
 
   /**
-   * Gets the profession associated with a specific rectangle ID.
+   * This method gets the profession associated with a specific rectangle ID.
    *
    * @param rectangleId the rectangle ID
    * @return the profession associated with the rectangle ID
@@ -158,7 +157,7 @@ public class GameStateContext {
   }
 
   /**
-   * Handles the event when a rectangle is clicked.
+   * This method handles the event when a rectangle is clicked.
    *
    * @param event the mouse event triggered by clicking a rectangle
    * @param rectangleId the ID of the clicked rectangle
@@ -171,7 +170,7 @@ public class GameStateContext {
   public void handleAnchorClick(MouseEvent event, String anchorId) {}
 
   /**
-   * Handles the event when the guess button is clicked.
+   * This method handles the event when the guess button is clicked.
    *
    * @throws IOException if there is an I/O error
    */

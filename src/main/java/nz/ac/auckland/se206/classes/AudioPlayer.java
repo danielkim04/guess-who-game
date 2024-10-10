@@ -5,7 +5,7 @@ import java.util.List;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
-/** Class responsible for playing audio */
+/** This class is responsible for playing audio from a queue of audio files. */
 public class AudioPlayer {
 
   private volatile List<Media> audioQueue = new ArrayList<Media>();
@@ -13,7 +13,7 @@ public class AudioPlayer {
   private Boolean playing = false;
 
   /**
-   * Add audio to queue
+   * Add audio to queue to be played.
    *
    * @param sound audio to be added to queue
    */
@@ -28,7 +28,7 @@ public class AudioPlayer {
     }
   }
 
-  /** Play audio from queue */
+  /** This method is responsible for playing the next audio in the queue. */
   private void playNextInQueue() {
     // Change item to currently be played
     if (audioQueue.size() > 0) {
@@ -48,7 +48,7 @@ public class AudioPlayer {
   }
 
   /**
-   * Set playing status
+   * This method is responsible for stopping the audio player.
    *
    * @param playing status of playing
    */
@@ -57,7 +57,7 @@ public class AudioPlayer {
   }
 
   /**
-   * Get playing status
+   * This method is responsible for getting the playing status.
    *
    * @return playing status
    */
@@ -65,7 +65,7 @@ public class AudioPlayer {
     return (this.playing);
   }
 
-  /** Play audio from queue */
+  /** This method is responsible for playing the audio queue. */
   public synchronized void playAudioQueue() {
     // Start playing from queue
     Thread audioStoppedThread =

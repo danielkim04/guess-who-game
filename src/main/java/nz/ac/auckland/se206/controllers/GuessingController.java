@@ -60,20 +60,20 @@ public class GuessingController implements Controller {
     refreshNotes();
   }
 
-  /** Handles the close notes button click event. */
+  /** This method is called when the scene is first loaded. */
   @FXML
   private void onGuessingNotesChanged() {
     // Update the notes in NotesSyncManager when the user edits the TextArea
     NotesSyncManager.setNotesText(guessingNotes.getText());
   }
 
-  /** Refreshes the notes in the TextArea. */
+  /** This method is called when the scene is first loaded. */
   public void refreshNotes() {
     guessingNotes.setText(NotesSyncManager.getNotesText());
   }
 
   /**
-   * Handles the key pressed event.
+   * This method responds to key presses and prints them to command line.
    *
    * @param event the key event
    */
@@ -81,7 +81,7 @@ public class GuessingController implements Controller {
   public void onKeyPressed(KeyEvent event) {}
 
   /**
-   * Handles the key released event.
+   * This method responds to key releases and prints them to command line.
    *
    * @param event the key event
    */
@@ -93,7 +93,7 @@ public class GuessingController implements Controller {
   }
 
   /**
-   * Handles mouse clicks on rectangles representing people in the room.
+   * This method handles mouse clicks on rectangles representing people in the room.
    *
    * @param event the mouse event triggered by clicking a rectangle
    * @throws IOException if there is an I/O error
@@ -120,7 +120,7 @@ public class GuessingController implements Controller {
   }
 
   /**
-   * Transitions to the explanation screen.
+   * This method handles transitions to the explanation screen.
    *
    * @param url the URL of the image to display
    */
@@ -132,7 +132,7 @@ public class GuessingController implements Controller {
   }
 
   /**
-   * Loads the system prompt.
+   * This method loads the system prompt.
    *
    * @return the system prompt
    * @throws IOException
@@ -161,7 +161,7 @@ public class GuessingController implements Controller {
   }
 
   /**
-   * Runs the GPT-3 model.
+   * This method runs the GPT-3 model and displays the result.
    *
    * @param msg the chat message
    */
@@ -194,7 +194,7 @@ public class GuessingController implements Controller {
     backgroundThread.start();
   }
 
-  /** Handles the send explanation button click event. */
+  /** This method handles the send explanation button click event. */
   @FXML
   private void onSendExplanation() {
     // evaluate user input using gpt and display the result only if player chooses
@@ -235,7 +235,7 @@ public class GuessingController implements Controller {
   }
 
   /**
-   * Handles the open notes button click event.
+   * This method handles the open notes button click event.
    *
    * @param event the mouse event triggered by clicking the open notes button
    * @throws IOException if there is an I/O error
@@ -246,7 +246,7 @@ public class GuessingController implements Controller {
   }
 
   /**
-   * Handles the close notes button click event.
+   * This method handles the close notes button click event.
    *
    * @param event the mouse event triggered by clicking the close notes button
    * @throws IOException if there is an I/O error
@@ -257,7 +257,7 @@ public class GuessingController implements Controller {
   }
 
   /**
-   * Handles the send button click event.
+   * This method handles the send button click event.
    *
    * @param chat the chat message
    * @throws IOException if there is an I/O error
@@ -269,7 +269,7 @@ public class GuessingController implements Controller {
   }
 
   /**
-   * Handles the timer update event.
+   * This method handles the timer update event.
    *
    * @param time the current time
    */
@@ -278,12 +278,12 @@ public class GuessingController implements Controller {
     labelTimer.setText(time);
   }
 
-  /** Unlocks the guess button. */
+  /** This method unlocks the guess button. */
   @Override
   public void unlockGuessBtn() {}
 
   /**
-   * Gets the player's explanation.
+   * This method gets the player's explanation.
    *
    * @return the player's explanation
    */
@@ -291,7 +291,7 @@ public class GuessingController implements Controller {
     return txtaExplanation.getText().trim();
   }
 
-  /** Sends the explanation to the GPT-3 model. */
+  /** This method sends the explanation to the GPT-3 model. */
   public void sendExplanationTimeOut() {
     onSendExplanation();
   }

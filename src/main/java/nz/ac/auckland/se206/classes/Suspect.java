@@ -21,7 +21,7 @@ import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 import nz.ac.auckland.se206.speech.TextToSpeech;
 
-/** Class responsible for suspect values. */
+/** The Suspect class represents a suspect in the game. */
 public class Suspect {
 
   private String name;
@@ -42,7 +42,7 @@ public class Suspect {
   private String promptFilename;
 
   /**
-   * Constructor for the Suspect class.
+   * Constructor for the Suspect class. Takes in the name, role and prompt filename of the suspect.
    *
    * @param name the name of the suspect
    * @param role the role of the suspect
@@ -56,7 +56,7 @@ public class Suspect {
   }
 
   /**
-   * Set name of suspect.
+   * This method is responsible for setting the name of the suspect.
    *
    * @param name the name of the suspect
    */
@@ -65,7 +65,7 @@ public class Suspect {
   }
 
   /**
-   * Get name of suspect.
+   * This method is responsible for getting the name of the suspect.
    *
    * @return the name of the suspect
    */
@@ -74,7 +74,7 @@ public class Suspect {
   }
 
   /**
-   * Set role of suspect.
+   * This method is responsible for setting the role of the suspect.
    *
    * @param role the role of the suspect
    */
@@ -83,7 +83,7 @@ public class Suspect {
   }
 
   /**
-   * Get role of suspect.
+   * This method is responsible for getting the role of the suspect.
    *
    * @return the role of the suspect
    */
@@ -91,13 +91,13 @@ public class Suspect {
     return (role);
   }
 
-  /** Set interacted to true */
+  /** This method is responsible for setting the interacted status of the suspect. */
   public void interacted() {
     this.interacted = true;
   }
 
   /**
-   * Get interacted.
+   * This method is responsible for getting the interacted status of the suspect.
    *
    * @return interacted status of suspect
    */
@@ -106,7 +106,7 @@ public class Suspect {
   }
 
   /**
-   * Set hitbox.
+   * This method is responsible for setting the hitbox of the suspect.
    *
    * @param rect the hitbox of the suspect
    */
@@ -115,7 +115,7 @@ public class Suspect {
   }
 
   /**
-   * Get hitbox.
+   * This method is responsible for getting the hitbox of the suspect.
    *
    * @return the hitbox of the suspect
    */
@@ -124,7 +124,7 @@ public class Suspect {
   }
 
   /**
-   * Add chat history.
+   * This method is responsible for adding text to the chat history.
    *
    * @param text the text to be added to chat history
    */
@@ -133,7 +133,7 @@ public class Suspect {
   }
 
   /**
-   * Set chat history.
+   * This method is responsible for setting the chat history.
    *
    * @param text the text to be set as chat history
    */
@@ -142,7 +142,7 @@ public class Suspect {
   }
 
   /**
-   * Get chat history.
+   * This method is responsible for getting the chat history.
    *
    * @return the chat history
    */
@@ -151,7 +151,7 @@ public class Suspect {
   }
 
   /**
-   * Get chat completion request.
+   * This method is responsible for initialising the chat.
    *
    * @return the chat completion request
    */
@@ -176,7 +176,7 @@ public class Suspect {
   }
 
   /**
-   * Get system prompt.
+   * This method is responsible for getting the system prompt.
    *
    * @return the system prompt
    */
@@ -188,7 +188,7 @@ public class Suspect {
   }
 
   /**
-   * Load system prompt.
+   * This method is responsible for loading the system prompt.
    *
    * @return the system prompt
    */
@@ -203,10 +203,10 @@ public class Suspect {
   }
 
   /**
-   * Talk to the suspect.
+   * This method is responsible for talking to the suspect.
    *
-   * @param msg
-   * @return
+   * @param msg the chat message
+   * @return the response from the suspect
    */
   public String talk(ChatMessage msg) {
     // not used in the current implementation
@@ -244,7 +244,7 @@ public class Suspect {
   }
 
   /**
-   * Run GPT asynchronously.
+   * This method is responsible for talking to the suspect asynchronously.
    *
    * @param msg the chat message
    * @param callback the callback function
@@ -291,7 +291,7 @@ public class Suspect {
   }
 
   /**
-   * Get name of suspect.
+   * This method is responsible for getting the name of the suspect.
    *
    * @return the name of the suspect
    */
@@ -301,7 +301,7 @@ public class Suspect {
   }
 
   /**
-   * Get response from GPT.
+   * This method is responsible for getting the response from GPT.
    *
    * @param message the message
    * @param callback the callback function
@@ -323,7 +323,7 @@ public class Suspect {
   }
 
   /**
-   * Run GPT.
+   * This method is responsible for running GPT.
    *
    * @param msg the chat message
    * @return the chat message
@@ -348,7 +348,7 @@ public class Suspect {
   }
 
   /**
-   * Set prompt filename.
+   * This method is responsible for setting the prompt filename.
    *
    * @param filename the filename of the prompt
    */

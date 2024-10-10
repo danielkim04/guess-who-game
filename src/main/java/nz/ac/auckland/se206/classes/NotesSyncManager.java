@@ -7,9 +7,9 @@ public class NotesSyncManager {
   private static String notesText = "";
 
   /**
-   * Set the notes text.
+   * This method is responsible for setting the notes text.
    *
-   * @param notes
+   * @param notes the notes text
    */
   public static void setNotesText(String notes) {
     notesText = notes;

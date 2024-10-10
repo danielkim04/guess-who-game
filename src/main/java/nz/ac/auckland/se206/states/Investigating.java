@@ -67,6 +67,7 @@ public class Investigating implements GameState {
    *     otherwise
    */
   private Boolean guessNowCheck() {
+    // check if the player has interacted with all the suspects
     for (Suspect currentSuspect : App.getSuspects()) {
       if (!currentSuspect.getInteracted()) {
         System.out.println("Interact will all suspects first");
@@ -74,6 +75,7 @@ public class Investigating implements GameState {
       }
     }
 
+    // check if the player has inspected the clue
     if (!hasClueBeenInspected) {
       System.out.println("Inspect the clue first");
       return (false);
@@ -104,14 +106,14 @@ public class Investigating implements GameState {
     }
   }
 
-  /** Handles the time out event. */
+  /** This method handles the time out event. */
   public void handleTimeOut() {
     System.out.println("No more Time");
     nextState();
   }
 
   /**
-   * Returns the timer of the game state.
+   * This method returns the timer of the game state.
    *
    * @return the timer of the game state
    */
@@ -121,8 +123,10 @@ public class Investigating implements GameState {
 
   /** Changes the game state to the next state. */
   public void nextState() {
+    // takes the player to the guessing state
     timer.stop();
     context.setState(context.getGuessingState());
+    // set the root scene to "Guessing"
     try {
       App.setRoot("Guessing");
     } catch (IOException e) {

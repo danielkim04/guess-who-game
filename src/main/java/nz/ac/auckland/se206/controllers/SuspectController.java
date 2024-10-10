@@ -6,7 +6,10 @@ import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -22,7 +25,7 @@ import nz.ac.auckland.se206.classes.Suspect;
 import nz.ac.auckland.se206.states.GameState;
 import nz.ac.auckland.se206.states.Investigating;
 
-/** Controller for the Suspect scene. */
+/** This is the Controller class for the Suspect scenes. */
 public class SuspectController implements Controller {
   @FXML private Label labelTimer;
   @FXML private Label labelResponse;
@@ -38,7 +41,6 @@ public class SuspectController implements Controller {
   @FXML private MenuItem menuCrimeScene;
   @FXML private Button btnGuessNow;
   @FXML private Rectangle rectSendButton;
-  @FXML private MenuButton menuButtonMap;
   @FXML private ImageView imgSuspect;
   @FXML private ImageView imgSuspectGif;
   @FXML private AnchorPane lobbyButtonAnchorPane;
@@ -79,7 +81,7 @@ public class SuspectController implements Controller {
     onSceneOpened();
   }
 
-  /** Method to create the map. */
+  /** This method is responsible for creating the map. */
   private void createMap() {
     App.addToLocationMap(lobbyButtonAnchorPane, "SuspectOne");
     App.addToLocationMap(tablesButtonAnchorPane, "SuspectTwo");
@@ -162,7 +164,7 @@ public class SuspectController implements Controller {
     onSceneOpened();
   }
 
-  /** Handle interaction with Character 2. */
+  /** This method is responsible for handling interaction with Character 2. */
   public void onCharacter2Interaction() {
     CharacterInteractionManager manager = CharacterInteractionManager.getInstance();
     manager.setTalkedToCharacter2(true);
@@ -170,7 +172,7 @@ public class SuspectController implements Controller {
     onSceneOpened();
   }
 
-  /** Handle interaction with Character 3. */
+  /** This method is responsible for handling interaction with Character 3. */
   public void onCharacter3Interaction() {
     CharacterInteractionManager manager = CharacterInteractionManager.getInstance();
     manager.setTalkedToCharacter3(true);
@@ -178,10 +180,11 @@ public class SuspectController implements Controller {
     onSceneOpened();
   }
 
-  /** Check if all characters have been interacted with. */
+  /** This method is used to check if all characters have been interacted with. */
   public void checkAllInteractions() {
+    // Get the instance of the singleton to check the character states
     CharacterInteractionManager manager = CharacterInteractionManager.getInstance();
-
+    // Check if all characters have been interacted with
     if (manager.isTalkedToCharacter1()
         && manager.isTalkedToCharacter2()
         && manager.isTalkedToCharacter3()) {
@@ -201,9 +204,10 @@ public class SuspectController implements Controller {
     }
   }
 
-  /** Handle the send message button click event. */
+  /** This method handles the send message button click event. */
   @FXML
   private void onSendMessage() {
+    // get the message from the text area
     String message = txtMessage.getText().trim();
     if (message.isEmpty()) {
       return;
@@ -227,16 +231,18 @@ public class SuspectController implements Controller {
     displayTextSlowly(". . .");
     txtMessage.clear();
 
+    // get the response from the suspect
     suspect.getResponse(
         message,
         response -> {
+          // display the response
           timeline.stop();
           labelResponse.setText(response);
         });
   }
 
   /**
-   * Handle the map button click event.
+   * This method handles the map button click event.
    *
    * @param event the mouse event
    */
@@ -249,7 +255,7 @@ public class SuspectController implements Controller {
   }
 
   /**
-   * Handle the map button click event.
+   * This method handles the map button click event.
    *
    * @param event the mouse event
    */
@@ -260,7 +266,7 @@ public class SuspectController implements Controller {
     mapMenuAnchorPane.setVisible(!menuStatus);
   }
 
-  /** Handle the close map button click event. */
+  /** This method handles the close map button click event. */
   @FXML
   private void handleCloseMap() {
     mapMenuAnchorPane.setDisable(true);
@@ -268,7 +274,7 @@ public class SuspectController implements Controller {
   }
 
   /**
-   * Handle the guess now button click event.
+   * This method handles the guess now button click event.
    *
    * @param event the mouse event
    */
@@ -282,7 +288,7 @@ public class SuspectController implements Controller {
   }
 
   /**
-   * Display the text slowly.
+   * This method is used to display the text slowly.
    *
    * @param text the text to display
    */
@@ -309,7 +315,7 @@ public class SuspectController implements Controller {
     timeline.play();
   }
 
-  /** Load the gif of the suspect. */
+  /** This method is used to load the gif of the suspect. */
   public void loadGif() {
     Image gif = null;
     switch (suspect.getName()) {
@@ -343,7 +349,7 @@ public class SuspectController implements Controller {
   }
 
   /**
-   * Handles the key pressed event.
+   * This method handles the key pressed event.
    *
    * @param event the key event
    */
@@ -351,7 +357,7 @@ public class SuspectController implements Controller {
   public void onKeyPressed(KeyEvent event) {}
 
   /**
-   * Handles the key released event.
+   * This method handles the key released event.
    *
    * @param event the key event
    */
@@ -366,7 +372,7 @@ public class SuspectController implements Controller {
   public void onNewChat(String chat) {}
 
   /**
-   * Handles the timer update event.
+   * This method handles the timer update event.
    *
    * @param time the current time
    */
@@ -375,7 +381,7 @@ public class SuspectController implements Controller {
     labelTimer.setText(time);
   }
 
-  /** Lock the guess button. */
+  /** this method locks the guess button. */
   @Override
   public void unlockGuessBtn() {
     // btnGuessNow.setDisable(false);

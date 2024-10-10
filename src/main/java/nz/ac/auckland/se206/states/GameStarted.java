@@ -49,7 +49,7 @@ public class GameStarted implements GameState {
     context.setState(context.getInvestigatingState());
   }
 
-  /** Handles the time out event. */
+  /** This method handles the timeout event. */
   public void nextState() {
     try {
       // Attempt to set the root scene to "room"

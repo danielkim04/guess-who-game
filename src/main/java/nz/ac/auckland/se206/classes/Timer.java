@@ -53,12 +53,12 @@ public class Timer {
   // Current timer thread executing
   private Thread activeTimerThread = null;
 
-  /** Constructor for the timer. */
+  /** This is the constructor for the timer. */
   public Timer(int timeoutCount) {
     setTimeOut(timeoutCount);
   }
 
-  /** Constructor for the timer. */
+  /** This method is responsible for handling the timeout. */
   private void handleTimeOut() {
     System.out.println("timeout");
     if (this.timeOutThread != null) {
@@ -68,14 +68,14 @@ public class Timer {
     }
   }
 
-  /** Clears the timer. */
+  /** This method is responsible for clearing the timer. */
   public void clear() {
     this.counter = 0;
     this.activeTimerThread = new Thread(timerThread);
     this.halt = false;
   }
 
-  /** Increments the counter. */
+  /** This method is responsible for counting the timer. */
   private void count() {
     this.counter += increment;
     if (increment > 0) {
@@ -85,27 +85,27 @@ public class Timer {
     }
   }
 
-  /** Sets the interval of the timer. */
+  /** This method is responsible for getting the time. */
   public Time getTime() {
     return (this.time);
   }
 
-  /** Sets the interval of the timer. */
+  /** This method is responsible for getting the time. */
   public Integer getTimeOut() {
     return (this.timeoutCount);
   }
 
-  /** Sets the interval of the timer. */
+  /** This method is responsible for getting the time. */
   public Boolean getStopped() {
     return (halt);
   }
 
-  /** Sets the interval of the timer. */
+  /** This method is responsible for getting the time. */
   public Integer getCount() {
     return (this.counter);
   }
 
-  /** Starts the timer. */
+  /** This method is responsible for starting the timer. */
   public void start() {
     // Check if thread exists
     if (this.activeTimerThread != null) {
@@ -125,14 +125,14 @@ public class Timer {
     this.activeTimerThread.start();
   }
 
-  /** Stops the timer. */
+  /** This method is responsible for stopping the timer. */
   public void stop() {
     this.halt = true;
     System.out.println("Stopping timer");
   }
 
   /**
-   * Sets the interval of the timer.
+   * This method is responsible for setting the interval of the timer.
    *
    * @param timeoutCount the interval to set
    */
@@ -142,7 +142,7 @@ public class Timer {
   }
 
   /**
-   * Sets the interval of the timer.
+   * This method is responsible for setting the interval of the timer.
    *
    * @param exeuctableThread the interval to set
    */
@@ -151,7 +151,7 @@ public class Timer {
   }
 
   /**
-   * Sets the interval of the timer.
+   * This method is responsible for setting the interval of the timer.
    *
    * @param timeOutThread the interval to set
    */
