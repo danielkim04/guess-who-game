@@ -5,7 +5,6 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -23,27 +22,48 @@ import nz.ac.auckland.se206.states.GameState;
 import nz.ac.auckland.se206.states.Investigating;
 
 public class SuspectController implements Controller {
-  @FXML private Label labelTimer;
-  @FXML private Label labelResponse;
-  @FXML private TextArea txtMessage;
-  @FXML private Button btnSend;
-  @FXML private MenuItem menuLobby;
-  @FXML private MenuItem menuBar;
-  @FXML private MenuItem menuTables;
-  @FXML private MenuItem menuCrimeScene;
-  @FXML private Button btnGuessNow;
-  @FXML private Rectangle rectSendButton;
-  @FXML private MenuButton menuButtonMap;
-  @FXML private ImageView imgSuspect;
-  @FXML private ImageView imgSuspectGif;
-  @FXML private AnchorPane lobbyButtonAnchorPane;
-  @FXML private AnchorPane crimeSceneButtonAnchorPane;
-  @FXML private AnchorPane barButtonAnchorPane;
-  @FXML private AnchorPane tablesButtonAnchorPane;
-  @FXML private AnchorPane mapMenuAnchorPane;
-  @FXML private Rectangle rectDisableButton;
-  @FXML private ImageView imgGuessButton;
-  @FXML private ImageView imgButtonNoColor;
+  @FXML
+  private Label labelTimer;
+  @FXML
+  private Label labelResponse;
+  @FXML
+  private TextArea txtMessage;
+  @FXML
+  private Button btnSend;
+  @FXML
+  private MenuItem menuLobby;
+  @FXML
+  private MenuItem menuBar;
+  @FXML
+  private MenuItem menuTables;
+  @FXML
+  private MenuItem menuCrimeScene;
+  @FXML
+  private Button btnGuessNow;
+  @FXML
+  private Rectangle rectSendButton;
+  @FXML
+  private MenuButton menuButtonMap;
+  @FXML
+  private ImageView imgSuspect;
+  @FXML
+  private ImageView imgSuspectGif;
+  @FXML
+  private AnchorPane lobbyButtonAnchorPane;
+  @FXML
+  private AnchorPane crimeSceneButtonAnchorPane;
+  @FXML
+  private AnchorPane barButtonAnchorPane;
+  @FXML
+  private AnchorPane tablesButtonAnchorPane;
+  @FXML
+  private AnchorPane mapMenuAnchorPane;
+  @FXML
+  private Rectangle rectDisableButton;
+  @FXML
+  private ImageView imgGuessButton;
+  @FXML
+  private ImageView imgButtonNoColor;
 
   private Suspect suspect;
   private Timeline timeline;
@@ -134,14 +154,13 @@ public class SuspectController implements Controller {
     timeline = new Timeline();
     for (int i = 0; i < text.length(); i++) {
       final int index = i;
-      KeyFrame keyFrame =
-          new KeyFrame(
-              Duration.millis(500 * index), // Delay each letter by 100ms
-              e -> {
-                displayedText.append(text.charAt(index)); // Append the current letter
-                labelResponse.setText(
-                    displayedText.toString()); // Update the label with the new text
-              });
+      KeyFrame keyFrame = new KeyFrame(
+          Duration.millis(500 * index), // Delay each letter by 100ms
+          e -> {
+            displayedText.append(text.charAt(index)); // Append the current letter
+            labelResponse.setText(
+                displayedText.toString()); // Update the label with the new text
+          });
       timeline.getKeyFrames().add(keyFrame);
     }
 
@@ -163,19 +182,18 @@ public class SuspectController implements Controller {
         break;
     }
     Image finalGif = gif;
-    Task<Void> loadGifTask =
-        new Task<Void>() {
-          @Override
-          protected Void call() throws Exception {
-            // Update the ImageView on the JavaFX Application Thread
-            Platform.runLater(
-                () -> {
-                  imgSuspectGif.setImage(finalGif);
-                });
+    Task<Void> loadGifTask = new Task<Void>() {
+      @Override
+      protected Void call() throws Exception {
+        // Update the ImageView on the JavaFX Application Thread
+        Platform.runLater(
+            () -> {
+              imgSuspectGif.setImage(finalGif);
+            });
 
-            return null;
-          }
-        };
+        return null;
+      }
+    };
 
     // Run the task in a background thread
     new Thread(loadGifTask).start();
@@ -187,7 +205,8 @@ public class SuspectController implements Controller {
    * @param event the key event
    */
   @FXML
-  public void onKeyPressed(KeyEvent event) {}
+  public void onKeyPressed(KeyEvent event) {
+  }
 
   /**
    * Handles the key released event.
@@ -202,7 +221,8 @@ public class SuspectController implements Controller {
   }
 
   @Override
-  public void onNewChat(String chat) {}
+  public void onNewChat(String chat) {
+  }
 
   @Override
   public void onTimerUpdate(String time) {
