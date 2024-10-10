@@ -126,29 +126,18 @@ public class SuspectController implements Controller {
     int numSuspects = 0;
     if (manager.isTalkedToCharacter1()) {
       numSuspects++;
-      char1.setText("Mark 1/1");
       markObjectiveLabel.getStylesheets().add(App.class.getResource("/css/Strikethrough.css").toExternalForm());
 
-    } else
-
-    {
-      char1.setText("Mark 0/1");
     }
     // Update char2 (Anthony)
     if (manager.isTalkedToCharacter2()) {
       numSuspects++;
-      char2.setText("Anthony 1/1");
       anthonyObjectiveLabel.getStylesheets().add(App.class.getResource("/css/Strikethrough.css").toExternalForm());
-    } else {
-      char2.setText("Anthony 0/1");
     }
     // Update char3 (Susan)
     if (manager.isTalkedToCharacter3()) {
       numSuspects++;
-      char3.setText("Susan 1/1");
       susanObjectiveLabel.getStylesheets().add(App.class.getResource("/css/Strikethrough.css").toExternalForm());
-    } else {
-      char3.setText("Susan 0/1");
     }
 
     suspectObjectiveLabel.setText(" - Speak to Suspects " + numSuspects + "/3");
