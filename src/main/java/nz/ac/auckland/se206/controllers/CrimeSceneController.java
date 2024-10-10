@@ -142,6 +142,12 @@ public class CrimeSceneController implements Controller {
   @FXML
   private ImageView fingerprint;
   @FXML
+  private ImageView bagGlow;
+  @FXML
+  private ImageView notebookGlow;
+  @FXML
+  private ImageView noteGlow;
+  @FXML
   private TextArea balanceArea;
   @FXML
   private TextArea notesText;
@@ -170,6 +176,42 @@ public class CrimeSceneController implements Controller {
   @FXML
   public void initialize() {
 
+    // Initially hide the bagGlow
+    bagGlow.setVisible(false);
+
+    // Set hover behavior for rectClueBag (show bagGlow and change cursor)
+    rectClueBag.setOnMouseEntered(event -> {
+      bagGlow.setVisible(true); // Show the glow
+      rectClueBag.setCursor(javafx.scene.Cursor.HAND); // Change cursor to hand
+    });
+
+    rectClueBag.setOnMouseExited(event -> {
+      bagGlow.setVisible(false); // Hide the glow
+      rectClueBag.setCursor(javafx.scene.Cursor.DEFAULT); // Revert cursor to default
+    });
+
+    // Set hover behavior for rectClueBook (show notebookGlow and change cursor)
+    rectClueBook.setOnMouseEntered(event -> {
+      notebookGlow.setVisible(true); // Show the glow for notebook
+      rectClueBook.setCursor(javafx.scene.Cursor.HAND); // Change cursor to hand
+    });
+
+    rectClueBook.setOnMouseExited(event -> {
+      notebookGlow.setVisible(false); // Hide the glow for notebook
+      rectClueBook.setCursor(javafx.scene.Cursor.DEFAULT); // Revert cursor to default
+    });
+
+    // Set hover behavior for rectClueNote (show noteGlow and change cursor)
+    rectClueNote.setOnMouseEntered(event -> {
+      noteGlow.setVisible(true); // Show the glow for note
+      rectClueNote.setCursor(javafx.scene.Cursor.HAND); // Change cursor to hand
+    });
+
+    rectClueNote.setOnMouseExited(event -> {
+      noteGlow.setVisible(false); // Hide the glow for note
+      rectClueNote.setCursor(javafx.scene.Cursor.DEFAULT); // Revert cursor to default
+    });
+
     // Load the duster cursor image (ensure the path is correct)
     if (dusterCursor == null) {
       Image cursorImage = new Image(getClass().getResourceAsStream("/images/duster3.png"));
@@ -192,17 +234,6 @@ public class CrimeSceneController implements Controller {
 
     hairSamplePane.toFront();
     fingerprintSamplePane.toFront();
-
-    rectClueBag.setOnMouseEntered(event -> rectClueBag.setCursor(javafx.scene.Cursor.HAND));
-    rectClueBag.setOnMouseExited(event -> rectClueBag.setCursor(javafx.scene.Cursor.DEFAULT));
-
-    // Change cursor when hovering over rectClueBook
-    rectClueBook.setOnMouseEntered(event -> rectClueBook.setCursor(javafx.scene.Cursor.HAND));
-    rectClueBook.setOnMouseExited(event -> rectClueBook.setCursor(javafx.scene.Cursor.DEFAULT));
-
-    // Change cursor when hovering over rectClueNote
-    rectClueNote.setOnMouseEntered(event -> rectClueNote.setCursor(javafx.scene.Cursor.HAND));
-    rectClueNote.setOnMouseExited(event -> rectClueNote.setCursor(javafx.scene.Cursor.DEFAULT));
 
     // Change cursor when hovering over fingerprint
     fingerprint.setOnMouseEntered(event -> fingerprint.setCursor(javafx.scene.Cursor.HAND));
