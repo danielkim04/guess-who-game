@@ -73,6 +73,8 @@ public class SuspectController implements Controller {
   private ImageView imgGuessButton;
   @FXML
   private ImageView imgButtonNoColor;
+  @FXML
+  private Label markObjectiveLabel;
 
   private Suspect suspect;
   private Timeline timeline;
@@ -112,7 +114,11 @@ public class SuspectController implements Controller {
     // Update char1 (Mark)
     if (manager.isTalkedToCharacter1()) {
       char1.setText("Mark 1/1");
-    } else {
+      markObjectiveLabel.getStylesheets().add(App.class.getResource("/css/Strikethrough.css").toExternalForm());
+
+    } else
+
+    {
       char1.setText("Mark 0/1");
     }
     // Update char2 (Anthony)
