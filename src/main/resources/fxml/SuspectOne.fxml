@@ -76,11 +76,11 @@
                   </ImageView>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="150.0" prefHeight="84.0" prefWidth="200.0">
+            <AnchorPane layoutX="105.0" prefHeight="76.0" prefWidth="142.0">
                <children>
-                  <AnchorPane layoutY="7.0" prefHeight="70.0" prefWidth="143.0">
+                  <AnchorPane layoutY="2.0" prefHeight="70.0" prefWidth="143.0">
                      <children>
-                        <Label fx:id="suspectObjectiveLabel" layoutX="2.0" layoutY="21.0" text=" - Speak to Suspects 0/3" textFill="WHITE">
+                        <Label fx:id="suspectObjectiveLabel" layoutX="2.0" layoutY="19.0" text=" - Speak to Suspects 0/3" textFill="WHITE">
                            <font>
                               <Font name="Candara Bold" size="14.0" />
                            </font>
@@ -92,12 +92,17 @@
                         </Label>
                         <AnchorPane layoutX="25.0" layoutY="35.0" prefHeight="31.0" prefWidth="122.0">
                            <children>
-                              <Label fx:id="markObjectiveLabel" layoutY="-1.0" text="- Mark  - (Victim)" textFill="WHITE">
+                              <Label fx:id="markObjectiveLabel" layoutY="-3.0" text="- Mark  - (Victim)" textFill="WHITE">
                                  <font>
                                     <Font name="Candara" size="12.0" />
                                  </font>
                               </Label>
-                              <Label layoutY="11.0" text="- Susan - (Bartender)" textFill="WHITE">
+                              <Label fx:id="susanObjectiveLabel" layoutY="8.0" text="- Susan - (Bartender)" textFill="WHITE">
+                                 <font>
+                                    <Font name="Candara" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="anthonyObjectiveLabel" layoutY="20.0" text="- Anthony - (Gambler)" textFill="WHITE">
                                  <font>
                                     <Font name="Candara" size="12.0" />
                                  </font>

@@ -75,6 +75,12 @@ public class SuspectController implements Controller {
   private ImageView imgButtonNoColor;
   @FXML
   private Label markObjectiveLabel;
+  @FXML
+  private Label susanObjectiveLabel;
+  @FXML
+  private Label anthonyObjectiveLabel;
+  @FXML
+  private Label suspectObjectiveLabel;
 
   private Suspect suspect;
   private Timeline timeline;
@@ -112,7 +118,9 @@ public class SuspectController implements Controller {
   // Method to update the labels based on character interaction state
   private void updateLabels(CharacterInteractionManager manager) {
     // Update char1 (Mark)
+    int numSuspects = 0;
     if (manager.isTalkedToCharacter1()) {
+      numSuspects++;
       char1.setText("Mark 1/1");
       markObjectiveLabel.getStylesheets().add(App.class.getResource("/css/Strikethrough.css").toExternalForm());
 
@@ -123,15 +131,24 @@ public class SuspectController implements Controller {
     }
     // Update char2 (Anthony)
     if (manager.isTalkedToCharacter2()) {
+      numSuspects++;
       char2.setText("Anthony 1/1");
+      anthonyObjectiveLabel.getStylesheets().add(App.class.getResource("/css/Strikethrough.css").toExternalForm());
     } else {
       char2.setText("Anthony 0/1");
     }
     // Update char3 (Susan)
     if (manager.isTalkedToCharacter3()) {
+      numSuspects++;
       char3.setText("Susan 1/1");
+      susanObjectiveLabel.getStylesheets().add(App.class.getResource("/css/Strikethrough.css").toExternalForm());
     } else {
       char3.setText("Susan 0/1");
+    }
+
+    suspectObjectiveLabel.setText(" - Speak to Suspects " + numSuspects + "/3");
+    if (numSuspects >= 3) {
+      suspectObjectiveLabel.getStylesheets().add(App.class.getResource("/css/Strikethrough.css").toExternalForm());
     }
     // Update char4 (Interactable)
     if (manager.isInteractableClicked()) {
