@@ -51,6 +51,9 @@ public class Investigating implements GameState {
     timer.start();
   }
 
+  /**
+   * Handles the event when the scene changes.
+   */
   public void sceneChange() {
     App.getController().onTimerUpdate(this.timer.getTime().toString());
     if (guessNowCheck()) {
@@ -103,6 +106,9 @@ public class Investigating implements GameState {
     return timer;
   }
 
+  /**
+   * Changes the game state to the next state.
+   */
   public void nextState() {
     timer.stop();
     context.setState(context.getGuessingState());

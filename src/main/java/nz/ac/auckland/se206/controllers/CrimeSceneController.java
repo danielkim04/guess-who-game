@@ -532,7 +532,9 @@ public class CrimeSceneController implements Controller {
     displayFingerprintTextSlowly("Fingerprint Collected, Sample must be tested in the lab!");
   }
 
-  // Method to update the labels when the scene is opened
+  /**
+   * Handles the scene opened event.
+   */
   public void onSceneOpened() {
     // Get the instance of the singleton to check the character states
 
@@ -592,7 +594,9 @@ public class CrimeSceneController implements Controller {
     onSceneOpened();
   }
 
-  // Check if all characters have been interacted with
+  /**
+   * Checks if all interactions have been completed.
+   */
   public void checkAllInteractions() {
     CharacterInteractionManager manager = CharacterInteractionManager.getInstance();
 
@@ -603,7 +607,9 @@ public class CrimeSceneController implements Controller {
     }
   }
 
-  // Example: Call this method to check if an interactable object has been clicked
+  /**
+   * Checks if the interactable object has been clicked.
+   */
   public void checkInteractable() {
     CharacterInteractionManager manager = CharacterInteractionManager.getInstance();
   }

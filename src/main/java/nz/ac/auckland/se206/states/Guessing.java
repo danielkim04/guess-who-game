@@ -50,6 +50,9 @@ public class Guessing implements GameState {
     throw new UnsupportedOperationException("Unimplemented method 'onGuessNow'");
   }
 
+  /**
+   * Handles the time out event
+   */
   public void handleTimeOut() {
     // if the time runs out but the player has entered some text, automatically send
     // explanation
@@ -71,6 +74,9 @@ public class Guessing implements GameState {
     }
   }
 
+  /**
+   * Changes the state to GameOverState
+   */
   public void nextState() {
     context.setState(context.getGameOverState());
     try {

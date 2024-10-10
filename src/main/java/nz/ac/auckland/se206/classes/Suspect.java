@@ -21,6 +21,9 @@ import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 import nz.ac.auckland.se206.speech.TextToSpeech;
 
+/**
+ * Class responsible for suspect values
+ */
 public class Suspect {
 
   private String name;
@@ -136,7 +139,11 @@ public class Suspect {
     return new String(Files.readAllBytes(Paths.get(resourceUrl.toURI())));
   }
 
-  // Returns chat message from suspect
+  /**
+   * Talk to the suspect
+   * @param msg
+   * @return
+   */
   public String talk(ChatMessage msg) {
     // not used in the current implementation
     if (msg == null) {
@@ -221,6 +228,12 @@ public class Suspect {
     return this.name;
   }
 
+  /**
+   * Get response from GPT
+   *
+   * @param message
+   * @param callback
+   */
   public void getResponse(String message, Consumer<String> callback) {
     // called by suspect room controllers to get response from GPT
     try {

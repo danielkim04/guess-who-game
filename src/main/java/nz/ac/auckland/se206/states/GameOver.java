@@ -51,6 +51,9 @@ public class GameOver implements GameState {
   public void onGuessNow() throws IOException {
   }
 
+  /**
+   * Handles the time out event.
+   */
   public void nextState() {
     App.resetAll();
     context = App.getContext();
