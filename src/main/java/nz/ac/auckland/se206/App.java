@@ -22,8 +22,7 @@ import nz.ac.auckland.se206.states.GameState;
 import nz.ac.auckland.se206.states.Investigating;
 
 /**
- * This is the entry point of the JavaFX application. This class initializes and
- * runs the JavaFX
+ * This is the entry point of the JavaFX application. This class initializes and runs the JavaFX
  * application.
  */
 public class App extends Application {
@@ -31,7 +30,8 @@ public class App extends Application {
   private static Scene scene;
   private static GameStateContext context = new GameStateContext();
   private static FXMLLoader fxmlHandler;
-  private static Map<String, Parent> sceneMap = new HashMap<>(); // stores the scenes that have been initialised
+  private static Map<String, Parent> sceneMap =
+      new HashMap<>(); // stores the scenes that have been initialised
   private static Map<String, FXMLLoader> fxmlLoaderMap = new HashMap<>(); // stores the FXML loaders
   private static Map<String, Suspect> suspectMap = new HashMap<>();
   private static Map<AnchorPane, String> locationMap = new HashMap<>();
@@ -86,8 +86,7 @@ public class App extends Application {
   }
 
   /**
-   * Loads the FXML file and returns the associated node. The method expects that
-   * the file is
+   * Loads the FXML file and returns the associated node. The method expects that the file is
    * located in "src/main/resources/fxml".
    *
    * @param fxml the name of the FXML file (without extension)
@@ -100,14 +99,25 @@ public class App extends Application {
     return (fxmlHandler.load());
   }
 
+  /**
+   * Returns the current game state context.
+   *
+   * @return the game state context
+   */
   public static GameStateContext getContext() {
     return (context);
   }
 
+  /**
+   * Sets the game state to the specified game state.
+   *
+   * @param gameState the game state to set
+   */
   public static void setGameState(GameState gameState) {
     context.setState(gameState);
   }
 
+  /** Resets the game state context and clears the scene map and FXML loader map. */
   public static void resetAll() {
     context = new GameStateContext();
     // reset maps that retain the scenes and FXML loaders
@@ -119,14 +129,30 @@ public class App extends Application {
     manager.reset(); // Call the reset method to clear all interactions
   }
 
+  /**
+   * Returns the current suspect.
+   *
+   * @return the current suspect
+   */
   public static Suspect getCurrentSuspect() {
     return (currentSuspect);
   }
 
+  /**
+   * Adds the location and scene to the location map.
+   *
+   * @param loc the location
+   * @param scene the scene
+   */
   public static void addToLocationMap(AnchorPane loc, String scene) {
     locationMap.put(loc, scene);
   }
 
+  /**
+   * Changes the scene map to the specified location.
+   *
+   * @param loc the location
+   */
   public static void changeSceneMap(AnchorPane loc) {
     try {
       setRoot(locationMap.get(loc));
@@ -136,14 +162,25 @@ public class App extends Application {
     }
   }
 
+  /**
+   * Returns the suspect map.
+   *
+   * @return the suspect map
+   */
   public static Collection<Suspect> getSuspects() {
     return (suspectMap.values());
   }
 
+  /**
+   * Returns the controller of the current scene.
+   *
+   * @return the controller of the current scene
+   */
   public static Controller getController() {
     return (fxmlHandler.getController());
   }
 
+  /** Initialises the suspect map with the suspects. */
   private static void initialiseSuspectMap() {
     suspectMap.put("SuspectOne", new Suspect("Mark", "Suspect", "Suspect1.txt"));
     suspectMap.put("SuspectTwo", new Suspect("Anthony", "Suspect", "Suspect2.txt"));
@@ -151,12 +188,10 @@ public class App extends Application {
   }
 
   /**
-   * This method is invoked when the application starts. It loads and shows the
-   * "room" scene.
+   * This method is invoked when the application starts. It loads and shows the "room" scene.
    *
    * @param stage the primary stage of the application
-   * @throws IOException if the "src/main/resources/fxml/room.fxml" file is not
-   *                     found
+   * @throws IOException if the "src/main/resources/fxml/room.fxml" file is not found
    */
   @Override
   public void start(final Stage stage) throws IOException {
@@ -170,6 +205,11 @@ public class App extends Application {
     root.requestFocus();
   }
 
+  /**
+   * Deallocates the synthesizer when the window is closed.
+   *
+   * @param event the window event
+   */
   private void handleWindowClose(WindowEvent event) {
     FreeTextToSpeech.deallocateSynthesizer();
   }

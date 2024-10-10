@@ -7,11 +7,12 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.util.Duration;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import javafx.scene.effect.DropShadow;
 import javafx.scene.control.MenuItem;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -19,7 +20,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import javafx.util.Duration;
 import javafx.scene.Cursor;
 import javafx.scene.ImageCursor;
 import javafx.scene.image.Image;
@@ -31,8 +31,7 @@ import nz.ac.auckland.se206.states.GameState;
 import nz.ac.auckland.se206.states.Investigating;
 
 /**
- * Controller class for the room view. Handles user interactions within the room
- * where the user can
+ * Controller class for the room view. Handles user interactions within the room where the user can
  * chat with customers and guess their profession.
  */
 public class CrimeSceneController implements Controller {
@@ -41,8 +40,6 @@ public class CrimeSceneController implements Controller {
   private Cursor customCursor;
 
   private int moneyCollected = 0;
-  private boolean hasClueBeenInspected = false;
-
   // Add these fields to the controller
   private Cursor dusterCursor;
   // Add these fields to the controller
@@ -202,6 +199,7 @@ public class CrimeSceneController implements Controller {
   private Label clueObjectiveLabel;
   @FXML
   private Label allClueObjectiveLabel;
+
   // Variables to store the initial mouse click position
   private double initialX;
   private double initialY;
@@ -220,8 +218,7 @@ public class CrimeSceneController implements Controller {
   private Image spiderGif2 = new Image(getClass().getResourceAsStream("/gif/spiderRight.gif"));
 
   /**
-   * Initializes the room view. If it's the first time initialization, it will
-   * provide instructions
+   * Initializes the room view. If it's the first time initialization, it will provide instructions
    * via text-to-speech.
    */
   @FXML
@@ -244,37 +241,43 @@ public class CrimeSceneController implements Controller {
     bagGlow.setVisible(false);
 
     // Set hover behavior for rectClueBag (show bagGlow and change cursor)
-    rectClueBag.setOnMouseEntered(event -> {
-      bagGlow.setVisible(true); // Show the glow
-      rectClueBag.setCursor(javafx.scene.Cursor.HAND); // Change cursor to hand
-    });
+    rectClueBag.setOnMouseEntered(
+        event -> {
+          bagGlow.setVisible(true); // Show the glow
+          rectClueBag.setCursor(Cursor.HAND); // Change cursor to hand
+        });
 
-    rectClueBag.setOnMouseExited(event -> {
-      bagGlow.setVisible(false); // Hide the glow
-      rectClueBag.setCursor(javafx.scene.Cursor.DEFAULT); // Revert cursor to default
-    });
+    rectClueBag.setOnMouseExited(
+        event -> {
+          bagGlow.setVisible(false); // Hide the glow
+          rectClueBag.setCursor(Cursor.DEFAULT); // Revert cursor to default
+        });
 
     // Set hover behavior for rectClueBook (show notebookGlow and change cursor)
-    rectClueBook.setOnMouseEntered(event -> {
-      notebookGlow.setVisible(true); // Show the glow for notebook
-      rectClueBook.setCursor(javafx.scene.Cursor.HAND); // Change cursor to hand
-    });
+    rectClueBook.setOnMouseEntered(
+        event -> {
+          notebookGlow.setVisible(true); // Show the glow for notebook
+          rectClueBook.setCursor(Cursor.HAND); // Change cursor to hand
+        });
 
-    rectClueBook.setOnMouseExited(event -> {
-      notebookGlow.setVisible(false); // Hide the glow for notebook
-      rectClueBook.setCursor(javafx.scene.Cursor.DEFAULT); // Revert cursor to default
-    });
+    rectClueBook.setOnMouseExited(
+        event -> {
+          notebookGlow.setVisible(false); // Hide the glow for notebook
+          rectClueBook.setCursor(Cursor.DEFAULT); // Revert cursor to default
+        });
 
     // Set hover behavior for rectClueNote (show noteGlow and change cursor)
-    rectClueNote.setOnMouseEntered(event -> {
-      noteGlow.setVisible(true); // Show the glow for note
-      rectClueNote.setCursor(javafx.scene.Cursor.HAND); // Change cursor to hand
-    });
+    rectClueNote.setOnMouseEntered(
+        event -> {
+          noteGlow.setVisible(true); // Show the glow for note
+          rectClueNote.setCursor(Cursor.HAND); // Change cursor to hand
+        });
 
-    rectClueNote.setOnMouseExited(event -> {
-      noteGlow.setVisible(false); // Hide the glow for note
-      rectClueNote.setCursor(javafx.scene.Cursor.DEFAULT); // Revert cursor to default
-    });
+    rectClueNote.setOnMouseExited(
+        event -> {
+          noteGlow.setVisible(false); // Hide the glow for note
+          rectClueNote.setCursor(Cursor.DEFAULT); // Revert cursor to default
+        });
 
     // Load the duster cursor image (ensure the path is correct)
     if (dusterCursor == null) {
@@ -300,8 +303,8 @@ public class CrimeSceneController implements Controller {
     fingerprintSamplePane.toFront();
 
     // Change cursor when hovering over fingerprint
-    fingerprint.setOnMouseEntered(event -> fingerprint.setCursor(javafx.scene.Cursor.HAND));
-    fingerprint.setOnMouseExited(event -> fingerprint.setCursor(javafx.scene.Cursor.DEFAULT));
+    fingerprint.setOnMouseEntered(event -> fingerprint.setCursor(Cursor.HAND));
+    fingerprint.setOnMouseExited(event -> fingerprint.setCursor(Cursor.DEFAULT));
 
     // Initialize money counter with zero
     updateMoneyCounter();
@@ -350,12 +353,18 @@ public class CrimeSceneController implements Controller {
     System.out.println("Key " + event.getCode() + " released");
   }
 
+  /** Handles the mouse clicked event. */
   @FXML
   private void onNotesTextChanged() {
     // Update the notes in NotesSyncManager when the user edits the TextArea
     NotesSyncManager.setNotesText(notesText.getText());
   }
 
+  /**
+   * Handles the mouse clicked event.
+   *
+   * @param event the mouse event
+   */
   @FXML
   private void onGuessNow(MouseEvent event) {
     try {
@@ -365,6 +374,11 @@ public class CrimeSceneController implements Controller {
     }
   }
 
+  /**
+   * Handles the mouse clicked event.
+   *
+   * @param event the mouse event
+   */
   @FXML
   private void onCheckBalance(ActionEvent event) {
     // Get the text from the balanceArea TextArea
@@ -382,18 +396,33 @@ public class CrimeSceneController implements Controller {
     }
   }
 
+  /**
+   * Handles the mouse clicked event.
+   *
+   * @param event the mouse event
+   */
   @FXML
   private void onHandleOpenButtonClick(MouseEvent event) throws IOException {
     System.out.println("Box opened");
     paneNoteWindow.setVisible(true);
   }
 
+  /**
+   * Handles the mouse clicked event.
+   *
+   * @param event the mouse event
+   */
   @FXML
   private void handleCloseButtonClick(MouseEvent event) throws IOException {
     System.out.println("Box Closed");
     paneNoteWindow.setVisible(false);
   }
 
+  /**
+   * Handles the mouse clicked event.
+   *
+   * @param event the mouse event
+   */
   @FXML
   private void handleBookClueClick(MouseEvent event) {
     // opens cash book clue
@@ -411,14 +440,23 @@ public class CrimeSceneController implements Controller {
       System.out.println("Not investigating");
     }
     System.out.println("Clue 1 opened");
-
   }
 
+  /**
+   * Handles the mouse clicked event.
+   *
+   * @param event the mouse event
+   */
   @FXML
   private void onBagExit(MouseEvent event) {
     bagInteractPane.setVisible(false);
   }
 
+  /**
+   * Handles the mouse clicked event.
+   *
+   * @param event the mouse event
+   */
   @FXML
   private void onNoteExit(MouseEvent event) {
     // Hide the note interaction pane
@@ -434,6 +472,11 @@ public class CrimeSceneController implements Controller {
     isLightToggled = false;
   }
 
+  /**
+   * Handles the mouse clicked event.
+   *
+   * @param event the mouse event
+   */
   @FXML
   private void onCashBookExit(ActionEvent event) {
     // Hide the pane
@@ -443,6 +486,11 @@ public class CrimeSceneController implements Controller {
     paneBase.setCursor(Cursor.DEFAULT);
   }
 
+  /**
+   * Handles the mouse clicked event.
+   *
+   * @param event the mouse event
+   */
   @FXML
   private void handleNoteClueClick(MouseEvent event) {
     // Show the noteInteractPane when rectClueNote is clicked
@@ -460,10 +508,13 @@ public class CrimeSceneController implements Controller {
       System.out.println("Not investigating");
     }
     System.out.println("clue 2 opened");
-
   }
 
-  // New method to handle clicks on rectClueBag
+  /**
+   * Handles the mouse clicked event.
+   *
+   * @param event the mouse event
+   */
   @FXML
   private void handleClueBagClick(MouseEvent event) {
     // Show the bagInteractPane when rectClueBag is clicked
@@ -481,9 +532,13 @@ public class CrimeSceneController implements Controller {
       System.out.println("Not investigating");
     }
     System.out.println("clue 3 opened");
-
   }
 
+  /**
+   * Handles the mouse clicked event.
+   *
+   * @param event the mouse event
+   */
   @FXML
   private void onToggleLight(MouseEvent event) {
     // Toggle the visibility of the lightPane
@@ -505,6 +560,11 @@ public class CrimeSceneController implements Controller {
     }
   }
 
+  /**
+   * Handles the mouse clicked event.
+   *
+   * @param event the mouse event
+   */
   @FXML
   private void onTestHair(MouseEvent event) {
     // Show the labPane
@@ -514,6 +574,11 @@ public class CrimeSceneController implements Controller {
     displayLabTextSlowly("Hair contains brown eumelanin and belongs to a male...");
   }
 
+  /**
+   * Handles the mouse clicked event.
+   *
+   * @param event the mouse event
+   */
   @FXML
   private void onFingerprintTestClick(MouseEvent event) {
     // Show the labPane
@@ -523,6 +588,7 @@ public class CrimeSceneController implements Controller {
     displayLabTextSlowly("The fingerprint tested likely belongs to Anthony...");
   }
 
+  /** Handles the mouse clicked event. */
   @FXML
   private void enableBothLightsToFollowCursor() {
     // Define the offset values for both blueLight and dark
@@ -548,6 +614,11 @@ public class CrimeSceneController implements Controller {
         });
   }
 
+  /**
+   * Handles the mouse clicked event.
+   *
+   * @param event the mouse event
+   */
   @FXML
   private void handleFingerprintClick(MouseEvent event) {
     // Print a message to the console when the fingerprint is clicked
@@ -562,6 +633,7 @@ public class CrimeSceneController implements Controller {
     displayFingerprintTextSlowly("Fingerprint Collected, Sample must be tested in the lab!");
   }
 
+  /** Handles the scene opened event. */
   // This method is called to show the spiders and play their animations
 public void showSpiders() {
   // Reload the GIF images to restart their animations
@@ -623,29 +695,40 @@ public void showSpiders() {
     updateLabels(manager);
   }
 
-  // Method to update the labels based on character interaction state
+  /**
+   * Handles the mouse clicked event.
+   *
+   * @param manager the character interaction manager
+   */
   private void updateLabels(CharacterInteractionManager manager) {
     // Update char1 (Mark)
     int numSuspects = 0;
     if (manager.isTalkedToCharacter1()) {
       numSuspects++;
-      markObjectiveLabel.getStylesheets().add(App.class.getResource("/css/Strikethrough.css").toExternalForm());
-
+      markObjectiveLabel
+          .getStylesheets()
+          .add(App.class.getResource("/css/Strikethrough.css").toExternalForm());
     }
     // Update char2 (Anthony)
     if (manager.isTalkedToCharacter2()) {
       numSuspects++;
-      anthonyObjectiveLabel.getStylesheets().add(App.class.getResource("/css/Strikethrough.css").toExternalForm());
+      anthonyObjectiveLabel
+          .getStylesheets()
+          .add(App.class.getResource("/css/Strikethrough.css").toExternalForm());
     }
     // Update char3 (Susan)
     if (manager.isTalkedToCharacter3()) {
       numSuspects++;
-      susanObjectiveLabel.getStylesheets().add(App.class.getResource("/css/Strikethrough.css").toExternalForm());
+      susanObjectiveLabel
+          .getStylesheets()
+          .add(App.class.getResource("/css/Strikethrough.css").toExternalForm());
     }
 
     suspectObjectiveLabel.setText(" - Speak to Suspects " + numSuspects + "/3");
     if (numSuspects >= 3) {
-      suspectObjectiveLabel.getStylesheets().add(App.class.getResource("/css/Strikethrough.css").toExternalForm());
+      suspectObjectiveLabel
+          .getStylesheets()
+          .add(App.class.getResource("/css/Strikethrough.css").toExternalForm());
     }
     // Update char4 (Interactable)
     int numClues = 0;
@@ -659,29 +742,31 @@ public void showSpiders() {
       numClues++;
     }
     if (numClues > 0) {
-      clueObjectiveLabel.getStylesheets().add(App.class.getResource("/css/Strikethrough.css").toExternalForm());
+      clueObjectiveLabel
+          .getStylesheets()
+          .add(App.class.getResource("/css/Strikethrough.css").toExternalForm());
       allClueObjectiveLabel.setText("- (optional) Find All Clues " + numClues + "/3");
       if (numClues >= 3) {
-        allClueObjectiveLabel.getStylesheets().add(App.class.getResource("/css/Strikethrough.css").toExternalForm());
+        allClueObjectiveLabel
+            .getStylesheets()
+            .add(App.class.getResource("/css/Strikethrough.css").toExternalForm());
       }
     }
   }
 
-  // Handle interaction with Interactable
+  /** Handles the mouse clicked event. */
   public void onInteractableClicked() {
-    CharacterInteractionManager manager = CharacterInteractionManager.getInstance();
-    // manager.setInteractableClicked(true);
     System.out.println("Interactable object clicked!");
     onSceneOpened();
   }
 
-  /**
-   * Checks if all interactions have been completed.
-   */
+  /** Checks if all interactions have been completed. */
   public void checkAllInteractions() {
     CharacterInteractionManager manager = CharacterInteractionManager.getInstance();
 
-    if (manager.isTalkedToCharacter1() && manager.isTalkedToCharacter2() && manager.isTalkedToCharacter3()) {
+    if (manager.isTalkedToCharacter1()
+        && manager.isTalkedToCharacter2()
+        && manager.isTalkedToCharacter3()) {
       System.out.println("All characters have been interacted with.");
     } else {
       System.out.println("Some characters have not been interacted with yet.");
@@ -689,13 +774,19 @@ public void showSpiders() {
   }
 
   /**
-   * Checks if the interactable object has been clicked.
+   * Handles the mouse clicked event.
+   *
+   * @param imageView the ImageView to make glow
    */
   public void checkInteractable() {
     CharacterInteractionManager manager = CharacterInteractionManager.getInstance();
   }
 
-  // Method to make ImageViews draggable with the custom cursor
+  /**
+   * Handles the mouse clicked event.
+   *
+   * @param imageView the ImageView to make glow
+   */
   private void makeImageViewDraggableWithCustomCursor(ImageView imageView) {
     imageView.setOnMousePressed(event -> {
       handleMousePressed(event, imageView);
@@ -724,6 +815,11 @@ public void showSpiders() {
     imageView.setOnMouseExited(event -> paneBase.setCursor(Cursor.DEFAULT));
   }
 
+  /**
+   * Handles the mouse clicked event.
+   *
+   * @param text the text to display
+   */
   // Check if all webs have been dragged and animation has not been played yet
   private void checkAllWebsDragged() {
     if (web1Dragged && web2Dragged && web3Dragged && !animationPlayed) {
@@ -743,12 +839,13 @@ public void showSpiders() {
     Timeline timeline = new Timeline();
     for (int i = 0; i < text.length(); i++) {
       final int index = i;
-      KeyFrame keyFrame = new KeyFrame(
-          Duration.millis(75 * index), // Delay each letter by 100ms
-          e -> {
-            displayedText.append(text.charAt(index)); // Append the current letter
-            printLabel.setText(displayedText.toString()); // Update the label with the new text
-          });
+      KeyFrame keyFrame =
+          new KeyFrame(
+              Duration.millis(75 * index), // Delay each letter by 100ms
+              e -> {
+                displayedText.append(text.charAt(index)); // Append the current letter
+                printLabel.setText(displayedText.toString()); // Update the label with the new text
+              });
       timeline.getKeyFrames().add(keyFrame);
     }
 
@@ -757,33 +854,40 @@ public void showSpiders() {
     timeline.play();
   }
 
-  // Method to hide the fingerCollectedPane after 2 seconds
+  /** Handles the mouse clicked event. */
   private void hideFingerprintPaneAfterDelay() {
-    Timeline hidePaneTimeline = new Timeline(
-        new KeyFrame(
-            Duration.seconds(2), // Wait for 2 seconds
-            ev -> fingerCollectedPane.setVisible(false) // Hide the pane
-        ));
+    Timeline hidePaneTimeline =
+        new Timeline(
+            new KeyFrame(
+                Duration.seconds(2), // Wait for 2 seconds
+                ev -> fingerCollectedPane.setVisible(false) // Hide the pane
+                ));
     hidePaneTimeline.play();
   }
 
-  // Method to make ImageViews draggable with the grab cursor
+  /**
+   * Handles the mouse clicked event.
+   *
+   * @param imageView the ImageView to make glow
+   */
   private void makeImageViewDraggable(ImageView imageView) {
     // Handle mouse press event (when user clicks on the ImageView)
-    imageView.setOnMousePressed(event -> {
-      handleMousePressed(event, imageView);
-      paneBase.setCursor(grabCursor); // Set the custom grab cursor when pressed
-    });
+    imageView.setOnMousePressed(
+        event -> {
+          handleMousePressed(event, imageView);
+          paneBase.setCursor(grabCursor); // Set the custom grab cursor when pressed
+        });
 
     // Handle mouse drag event (when user drags the ImageView)
     imageView.setOnMouseDragged(event -> handleMouseDragged(event, imageView));
 
     // Handle mouse release event (when user releases the ImageView)
-    imageView.setOnMouseReleased(event -> {
-      // Reset the cursor to default on release
-      paneBase.setCursor(Cursor.DEFAULT);
-      checkMoneyIntersectionAndHide(imageView);
-    });
+    imageView.setOnMouseReleased(
+        event -> {
+          // Reset the cursor to default on release
+          paneBase.setCursor(Cursor.DEFAULT);
+          checkMoneyIntersectionAndHide(imageView);
+        });
 
     // Handle mouse entered event to set custom cursor
     imageView.setOnMouseEntered(event -> paneBase.setCursor(grabCursor));
@@ -792,22 +896,35 @@ public void showSpiders() {
     imageView.setOnMouseExited(event -> paneBase.setCursor(Cursor.DEFAULT));
   }
 
-  // This method is triggered when the mouse is pressed on the ImageView
+  /**
+   * Handles the mouse clicked event.
+   *
+   * @param event the mouse event
+   * @param imageView the ImageView to make glow
+   */
   private void handleMousePressed(MouseEvent event, ImageView imageView) {
     // Save the initial mouse position relative to the ImageView
     initialX = event.getSceneX() - imageView.getLayoutX();
     initialY = event.getSceneY() - imageView.getLayoutY();
   }
 
-  // This method is triggered when the mouse is dragged
+  /**
+   * Handles the mouse clicked event.
+   *
+   * @param event the mouse event
+   * @param imageView the ImageView to make glow
+   */
   private void handleMouseDragged(MouseEvent event, ImageView imageView) {
     // Update the position of the ImageView to follow the mouse
     imageView.setLayoutX(event.getSceneX() - initialX);
     imageView.setLayoutY(event.getSceneY() - initialY);
   }
 
-  // Method to check if the currently dragged item is within the BagCollectionRect
-  // area and hide it
+  /**
+   * Handles the mouse clicked event.
+   *
+   * @param draggedItem the ImageView to check for intersection
+   */
   private void checkMoneyIntersectionAndHide(ImageView draggedItem) {
     // Check if the dragged item intersects with the BagCollectionRect
     if (draggedItem.getBoundsInParent().intersects(rectBagCollection.getBoundsInParent())) {
@@ -836,8 +953,11 @@ public void showSpiders() {
     }
   }
 
-  // Method to display the text letter by letter with a small delay and hide pane
-  // after 3 seconds
+  /**
+   * Handles the mouse clicked event.
+   *
+   * @param text the text to display
+   */
   private void displayTextSlowly(String text) {
     final StringBuilder displayedText = new StringBuilder();
     hairText.setText(""); // Clear the label initially
@@ -845,23 +965,25 @@ public void showSpiders() {
     Timeline timeline = new Timeline();
     for (int i = 0; i < text.length(); i++) {
       final int index = i;
-      KeyFrame keyFrame = new KeyFrame(
-          Duration.millis(75 * index), // Delay each letter by 100ms
-          e -> {
-            displayedText.append(text.charAt(index)); // Append the current letter
-            hairText.setText(displayedText.toString()); // Update the label with the new text
-          });
+      KeyFrame keyFrame =
+          new KeyFrame(
+              Duration.millis(75 * index), // Delay each letter by 100ms
+              e -> {
+                displayedText.append(text.charAt(index)); // Append the current letter
+                hairText.setText(displayedText.toString()); // Update the label with the new text
+              });
       timeline.getKeyFrames().add(keyFrame);
     }
 
     // After the text has been fully displayed, hide the pane after 2 seconds
     timeline.setOnFinished(
         e -> {
-          Timeline hidePaneTimeline = new Timeline(
-              new KeyFrame(
-                  Duration.seconds(2), // Wait for 2 seconds
-                  ev -> hairCollectedPane.setVisible(false) // Hide the pane
-          ));
+          Timeline hidePaneTimeline =
+              new Timeline(
+                  new KeyFrame(
+                      Duration.seconds(2), // Wait for 2 seconds
+                      ev -> hairCollectedPane.setVisible(false) // Hide the pane
+                      ));
           hidePaneTimeline.play();
         });
 
@@ -869,23 +991,32 @@ public void showSpiders() {
     timeline.play();
   }
 
-  // Method to update the MoneyCounter label
+  /** Handles the mouse clicked event. */
   private void updateMoneyCounter() {
     moneyCounter.setText("Money Collected: " + moneyCollected);
   }
 
+  /**
+   * Handles the mouse clicked event.
+   *
+   * @param chat the chat to display
+   */
   @Override
   public void onNewChat(String chat) {
     throw new UnsupportedOperationException("Unimplemented method 'onNewChat'");
   }
 
+  /**
+   * Handles the mouse clicked event.
+   *
+   * @param time the time to display
+   */
   @Override
   public void onTimerUpdate(String time) {
     labelTimer.setText(time);
   }
 
-  // Method to check for intersection between a smaller hitbox of blueLight and
-  // the fingerprint
+  /** Handles the mouse clicked event. */
   private void checkFingerprintIntersection() {
     // Define the smaller hitbox dimensions (adjust as needed)
     double hitboxWidth = blueLight.getFitWidth() * 0.3;
@@ -896,8 +1027,8 @@ public void showSpiders() {
     double hitboxY = blueLight.getLayoutY() + (blueLight.getFitHeight() - hitboxHeight) / 2;
 
     // Create a temporary rectangle representing the hitbox
-    javafx.geometry.Bounds blueLightHitbox = new javafx.geometry.BoundingBox(hitboxX, hitboxY, hitboxWidth,
-        hitboxHeight);
+    javafx.geometry.Bounds blueLightHitbox =
+        new javafx.geometry.BoundingBox(hitboxX, hitboxY, hitboxWidth, hitboxHeight);
 
     if (blueLightHitbox.intersects(fingerprint.getBoundsInParent())) {
       fingerprint.setOpacity(0.5); // Full opacity
@@ -906,7 +1037,11 @@ public void showSpiders() {
     }
   }
 
-  // Method to make the rectangle glow for 1 second
+  /**
+   * Handles the mouse clicked event.
+   *
+   * @param rect the rectangle to make glow
+   */
   private void makeRectangleGlow(ImageView rect) {
     DropShadow dropShadow = new DropShadow();
     dropShadow.setColor(Color.YELLOW); // Set the glow color (adjust as needed)
@@ -916,10 +1051,11 @@ public void showSpiders() {
     rect.setEffect(dropShadow);
 
     // Create a timeline to animate the glow for 1 second (pulsing effect)
-    Timeline glowTimeline = new Timeline(
-        new KeyFrame(Duration.seconds(0), e -> dropShadow.setRadius(10)),
-        new KeyFrame(Duration.seconds(0.5), e -> dropShadow.setRadius(20)),
-        new KeyFrame(Duration.seconds(1), e -> dropShadow.setRadius(10)));
+    Timeline glowTimeline =
+        new Timeline(
+            new KeyFrame(Duration.seconds(0), e -> dropShadow.setRadius(10)),
+            new KeyFrame(Duration.seconds(0.5), e -> dropShadow.setRadius(20)),
+            new KeyFrame(Duration.seconds(1), e -> dropShadow.setRadius(10)));
 
     // Ensure the timeline runs only once (for 1 second)
     glowTimeline.setCycleCount(1);
@@ -931,7 +1067,11 @@ public void showSpiders() {
     glowTimeline.play();
   }
 
-  // Method to display text in labLabel letter by letter
+  /**
+   * Handles the mouse clicked event.
+   *
+   * @param text the text to display
+   */
   private void displayLabTextSlowly(String text) {
     final StringBuilder displayedText = new StringBuilder();
     labLabel.setText(""); // Clear the label initially
@@ -939,12 +1079,13 @@ public void showSpiders() {
     Timeline timeline = new Timeline();
     for (int i = 0; i < text.length(); i++) {
       final int index = i;
-      KeyFrame keyFrame = new KeyFrame(
-          Duration.millis(75 * index), // Delay each letter by 100ms
-          e -> {
-            displayedText.append(text.charAt(index)); // Append the current letter
-            labLabel.setText(displayedText.toString()); // Update the label with the new text
-          });
+      KeyFrame keyFrame =
+          new KeyFrame(
+              Duration.millis(75 * index), // Delay each letter by 100ms
+              e -> {
+                displayedText.append(text.charAt(index)); // Append the current letter
+                labLabel.setText(displayedText.toString()); // Update the label with the new text
+              });
       timeline.getKeyFrames().add(keyFrame);
     }
 
@@ -953,31 +1094,52 @@ public void showSpiders() {
     timeline.play();
   }
 
-  // Method to hide the labPane after 2 seconds
+  /** Handles the mouse clicked event. */
   private void hideLabPaneAfterDelay() {
-    Timeline hidePaneTimeline = new Timeline(
-        new KeyFrame(
-            Duration.seconds(2), // Wait for 2 seconds
-            ev -> labPane.setVisible(false) // Hide the pane
-        ));
+    Timeline hidePaneTimeline =
+        new Timeline(
+            new KeyFrame(
+                Duration.seconds(2), // Wait for 2 seconds
+                ev -> labPane.setVisible(false) // Hide the pane
+                ));
     hidePaneTimeline.play();
   }
 
+  /**
+   * Handles the mouse clicked event.
+   *
+   * @param event the mouse event
+   */
   @FXML
   private void onSuspectOne(MouseEvent event) {
     changeSceneMap("SuspectOne");
   }
 
+  /**
+   * Handles the mouse clicked event.
+   *
+   * @param event the mouse event
+   */
   @FXML
   private void onSuspectTwo(MouseEvent event) {
     changeSceneMap("SuspectTwo");
   }
 
+  /**
+   * Handles the mouse clicked event.
+   *
+   * @param event the mouse event
+   */
   @FXML
   private void onSuspectThree(MouseEvent event) {
     changeSceneMap("SuspectThree");
   }
 
+  /**
+   * Handles the mouse clicked event.
+   *
+   * @param location the location to change to
+   */
   private void changeSceneMap(String location) {
     try {
       App.setRoot(location);
@@ -987,6 +1149,11 @@ public void showSpiders() {
     handleCloseMap();
   }
 
+  /**
+   * Handles the mouse clicked event.
+   *
+   * @param event the mouse event
+   */
   @FXML
   private void handleMapClick(MouseEvent event) {
     Boolean menuStatus = mapMenuAnchorPane.isVisible();
@@ -994,12 +1161,14 @@ public void showSpiders() {
     mapMenuAnchorPane.setVisible(!menuStatus);
   }
 
+  /** Handles the mouse clicked event. */
   @FXML
   private void handleCloseMap() {
     mapMenuAnchorPane.setDisable(true);
     mapMenuAnchorPane.setVisible(false);
   }
 
+  /** Handles the mouse clicked event. */
   @Override
   public void unlockGuessBtn() {
     imgGuessButton.setVisible(true);
@@ -1007,6 +1176,11 @@ public void showSpiders() {
     rectDisableButton.setVisible(false);
   }
 
+  /**
+   * Handles the mouse clicked event.
+   *
+   * @param event the mouse event
+   */
   @FXML
   public void handleCloseIntroClick(MouseEvent event) {
     paneCrimeSceneIntro.setVisible(false);

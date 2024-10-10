@@ -5,16 +5,18 @@ import java.util.List;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
-/**
- * Class responsible for playing audio
- */
+/** Class responsible for playing audio */
 public class AudioPlayer {
 
   private volatile List<Media> audioQueue = new ArrayList<Media>();
   private volatile MediaPlayer currentAudioPlayer;
   private Boolean playing = false;
 
-  // Adds media to queue
+  /**
+   * Add audio to queue
+   *
+   * @param sound audio to be added to queue
+   */
   public void addAudioToQueue(Media sound) {
 
     this.audioQueue.add(sound);
@@ -26,6 +28,7 @@ public class AudioPlayer {
     }
   }
 
+  /** Play audio from queue */
   private void playNextInQueue() {
     // Change item to currently be played
     if (audioQueue.size() > 0) {
@@ -44,38 +47,51 @@ public class AudioPlayer {
     }
   }
 
+  /**
+   * Set playing status
+   *
+   * @param playing status of playing
+   */
   private void setIsPlaying(Boolean playing) {
     this.playing = playing;
   }
 
+  /**
+   * Get playing status
+   *
+   * @return playing status
+   */
   private Boolean getIsPlaying() {
     return (this.playing);
   }
 
+  /** Play audio from queue */
   public synchronized void playAudioQueue() {
     // Start playing from queue
-    Thread audioStoppedThread = new Thread(
-        () -> {
-          playNextInQueue();
-        });
+    Thread audioStoppedThread =
+        new Thread(
+            () -> {
+              playNextInQueue();
+            });
 
-    Thread audioQueueThread = new Thread(
-        () -> {
-          if (currentAudioPlayer != null) {
-            // Stop current audio
-            currentAudioPlayer.stop();
-          }
-          Thread audioPlayThread = (new Thread(audioStoppedThread));
-          if (audioQueue.size() > 0) {
-            audioPlayThread.start();
-            try {
-              audioPlayThread.join();
-            } catch (InterruptedException e) {
-              e.printStackTrace();
-            }
-            currentAudioPlayer.setOnEndOfMedia(new Thread(audioStoppedThread));
-          }
-        });
+    Thread audioQueueThread =
+        new Thread(
+            () -> {
+              if (currentAudioPlayer != null) {
+                // Stop current audio
+                currentAudioPlayer.stop();
+              }
+              Thread audioPlayThread = (new Thread(audioStoppedThread));
+              if (audioQueue.size() > 0) {
+                audioPlayThread.start();
+                try {
+                  audioPlayThread.join();
+                } catch (InterruptedException e) {
+                  e.printStackTrace();
+                }
+                currentAudioPlayer.setOnEndOfMedia(new Thread(audioStoppedThread));
+              }
+            });
 
     audioQueueThread.start();
   }

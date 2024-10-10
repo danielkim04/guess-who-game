@@ -22,72 +22,39 @@ import nz.ac.auckland.se206.classes.Suspect;
 import nz.ac.auckland.se206.states.GameState;
 import nz.ac.auckland.se206.states.Investigating;
 
-/**
- * Controller for the Suspect scene
- */
+/** Controller for the Suspect scene. */
 public class SuspectController implements Controller {
-  @FXML
-  private Label labelTimer;
-  @FXML
-  private Label labelResponse;
-  @FXML
-  private Label char1;
-  @FXML
-  private Label char2;
-  @FXML
-  private Label char3;
-  @FXML
-  private Label char4; // Interactable 0/1
-  @FXML
-  private TextArea txtMessage;
-  @FXML
-  private Button btnSend;
-  @FXML
-  private MenuItem menuLobby;
-  @FXML
-  private MenuItem menuBar;
-  @FXML
-  private MenuItem menuTables;
-  @FXML
-  private MenuItem menuCrimeScene;
-  @FXML
-  private Button btnGuessNow;
-  @FXML
-  private Rectangle rectSendButton;
-  @FXML
-  private MenuButton menuButtonMap;
-  @FXML
-  private ImageView imgSuspect;
-  @FXML
-  private ImageView imgSuspectGif;
-  @FXML
-  private AnchorPane lobbyButtonAnchorPane;
-  @FXML
-  private AnchorPane crimeSceneButtonAnchorPane;
-  @FXML
-  private AnchorPane barButtonAnchorPane;
-  @FXML
-  private AnchorPane tablesButtonAnchorPane;
-  @FXML
-  private AnchorPane mapMenuAnchorPane;
-  @FXML
-  private Rectangle rectDisableButton;
-  @FXML
-  private ImageView imgGuessButton;
-  @FXML
-  private ImageView imgButtonNoColor;
-  @FXML
-  private Label markObjectiveLabel;
-  @FXML
-  private Label susanObjectiveLabel;
-  @FXML
-  private Label anthonyObjectiveLabel;
-  @FXML
-  private Label suspectObjectiveLabel;
-  @FXML
-  private Label clueObjectiveLabel;
-  @FXML
-  private Label allClueObjectiveLabel;
+  @FXML private Label labelTimer;
+  @FXML private Label labelResponse;
+  @FXML private Label char1;
+  @FXML private Label char2;
+  @FXML private Label char3;
+  @FXML private Label char4; // Interactable 0/1
+  @FXML private TextArea txtMessage;
+  @FXML private Button btnSend;
+  @FXML private MenuItem menuLobby;
+  @FXML private MenuItem menuBar;
+  @FXML private MenuItem menuTables;
+  @FXML private MenuItem menuCrimeScene;
+  @FXML private Button btnGuessNow;
+  @FXML private Rectangle rectSendButton;
+  @FXML private MenuButton menuButtonMap;
+  @FXML private ImageView imgSuspect;
+  @FXML private ImageView imgSuspectGif;
+  @FXML private AnchorPane lobbyButtonAnchorPane;
+  @FXML private AnchorPane crimeSceneButtonAnchorPane;
+  @FXML private AnchorPane barButtonAnchorPane;
+  @FXML private AnchorPane tablesButtonAnchorPane;
+  @FXML private AnchorPane mapMenuAnchorPane;
+  @FXML private Rectangle rectDisableButton;
+  @FXML private ImageView imgGuessButton;
+  @FXML private ImageView imgButtonNoColor;
+  @FXML private Label markObjectiveLabel;
+  @FXML private Label susanObjectiveLabel;
+  @FXML private Label anthonyObjectiveLabel;
+  @FXML private Label suspectObjectiveLabel;
+  @FXML private Label clueObjectiveLabel;
+  @FXML private Label allClueObjectiveLabel;
 
   private Suspect suspect;
   private Timeline timeline;
@@ -112,6 +79,7 @@ public class SuspectController implements Controller {
     onSceneOpened();
   }
 
+  /** Method to create the map. */
   private void createMap() {
     App.addToLocationMap(lobbyButtonAnchorPane, "SuspectOne");
     App.addToLocationMap(tablesButtonAnchorPane, "SuspectTwo");
@@ -119,9 +87,7 @@ public class SuspectController implements Controller {
     App.addToLocationMap(crimeSceneButtonAnchorPane, "CrimeScene");
   }
 
-  /**
-   * Method to update the labels based on the interaction status of the characters.
-   */
+  /** Method to update the labels based on the interaction status of the characters. */
   public void onSceneOpened() {
     // Get the instance of the singleton to check the character states
     CharacterInteractionManager manager = CharacterInteractionManager.getInstance();
@@ -131,30 +97,38 @@ public class SuspectController implements Controller {
 
   /**
    * Method to update the labels based on the interaction status of the characters.
-   * @param manager
+   *
+   * @param manager the character interaction manager
    */
   private void updateLabels(CharacterInteractionManager manager) {
     // Update char1 (Mark)
     int numSuspects = 0;
     if (manager.isTalkedToCharacter1()) {
       numSuspects++;
-      markObjectiveLabel.getStylesheets().add(App.class.getResource("/css/Strikethrough.css").toExternalForm());
-
+      markObjectiveLabel
+          .getStylesheets()
+          .add(App.class.getResource("/css/Strikethrough.css").toExternalForm());
     }
     // Update char2 (Anthony)
     if (manager.isTalkedToCharacter2()) {
       numSuspects++;
-      anthonyObjectiveLabel.getStylesheets().add(App.class.getResource("/css/Strikethrough.css").toExternalForm());
+      anthonyObjectiveLabel
+          .getStylesheets()
+          .add(App.class.getResource("/css/Strikethrough.css").toExternalForm());
     }
     // Update char3 (Susan)
     if (manager.isTalkedToCharacter3()) {
       numSuspects++;
-      susanObjectiveLabel.getStylesheets().add(App.class.getResource("/css/Strikethrough.css").toExternalForm());
+      susanObjectiveLabel
+          .getStylesheets()
+          .add(App.class.getResource("/css/Strikethrough.css").toExternalForm());
     }
 
     suspectObjectiveLabel.setText(" - Speak to Suspects " + numSuspects + "/3");
     if (numSuspects >= 3) {
-      suspectObjectiveLabel.getStylesheets().add(App.class.getResource("/css/Strikethrough.css").toExternalForm());
+      suspectObjectiveLabel
+          .getStylesheets()
+          .add(App.class.getResource("/css/Strikethrough.css").toExternalForm());
     }
     // Update char4 (Interactable)
     int numClues = 0;
@@ -168,17 +142,19 @@ public class SuspectController implements Controller {
       numClues++;
     }
     if (numClues > 0) {
-      clueObjectiveLabel.getStylesheets().add(App.class.getResource("/css/Strikethrough.css").toExternalForm());
+      clueObjectiveLabel
+          .getStylesheets()
+          .add(App.class.getResource("/css/Strikethrough.css").toExternalForm());
       allClueObjectiveLabel.setText("- (optional) Find All Clues " + numClues + "/3");
       if (numClues >= 3) {
-        allClueObjectiveLabel.getStylesheets().add(App.class.getResource("/css/Strikethrough.css").toExternalForm());
+        allClueObjectiveLabel
+            .getStylesheets()
+            .add(App.class.getResource("/css/Strikethrough.css").toExternalForm());
       }
     }
   }
 
-  /**
-   * Method to handle the interaction with character 1 (Mark).
-   */
+  /** Method to handle the interaction with character 1 (Mark). */
   public void onCharacter1Interaction() {
     CharacterInteractionManager manager = CharacterInteractionManager.getInstance();
     manager.setTalkedToCharacter1(true);
@@ -186,9 +162,7 @@ public class SuspectController implements Controller {
     onSceneOpened();
   }
 
-  /**
-   * Handle interaction with Character 2.
-   */
+  /** Handle interaction with Character 2. */
   public void onCharacter2Interaction() {
     CharacterInteractionManager manager = CharacterInteractionManager.getInstance();
     manager.setTalkedToCharacter2(true);
@@ -196,9 +170,7 @@ public class SuspectController implements Controller {
     onSceneOpened();
   }
 
-  /**
-   * Handle interaction with Character 3.
-   */
+  /** Handle interaction with Character 3. */
   public void onCharacter3Interaction() {
     CharacterInteractionManager manager = CharacterInteractionManager.getInstance();
     manager.setTalkedToCharacter3(true);
@@ -206,22 +178,20 @@ public class SuspectController implements Controller {
     onSceneOpened();
   }
 
-  /**
-   * Check if all characters have been interacted with.
-   */
+  /** Check if all characters have been interacted with. */
   public void checkAllInteractions() {
     CharacterInteractionManager manager = CharacterInteractionManager.getInstance();
 
-    if (manager.isTalkedToCharacter1() && manager.isTalkedToCharacter2() && manager.isTalkedToCharacter3()) {
+    if (manager.isTalkedToCharacter1()
+        && manager.isTalkedToCharacter2()
+        && manager.isTalkedToCharacter3()) {
       System.out.println("All characters have been interacted with.");
     } else {
       System.out.println("Some characters have not been interacted with yet.");
     }
   }
 
-  /**
-   * Check if the interactable object has been clicked.
-   */
+  /** Check if the interactable object has been clicked. */
   public void checkInteractable() {
     CharacterInteractionManager manager = CharacterInteractionManager.getInstance();
     if (manager.isInteractableClicked1()) {
@@ -231,9 +201,7 @@ public class SuspectController implements Controller {
     }
   }
 
-  /**
-   * Handle the send message button click event.
-   */
+  /** Handle the send message button click event. */
   @FXML
   private void onSendMessage() {
     String message = txtMessage.getText().trim();
@@ -267,6 +235,11 @@ public class SuspectController implements Controller {
         });
   }
 
+  /**
+   * Handle the map button click event.
+   *
+   * @param event the mouse event
+   */
   @FXML
   private void onChangeArea(MouseEvent event) {
     handleCloseMap();
@@ -275,6 +248,11 @@ public class SuspectController implements Controller {
     }
   }
 
+  /**
+   * Handle the map button click event.
+   *
+   * @param event the mouse event
+   */
   @FXML
   private void handleMapClick(MouseEvent event) {
     Boolean menuStatus = mapMenuAnchorPane.isVisible();
@@ -282,12 +260,18 @@ public class SuspectController implements Controller {
     mapMenuAnchorPane.setVisible(!menuStatus);
   }
 
+  /** Handle the close map button click event. */
   @FXML
   private void handleCloseMap() {
     mapMenuAnchorPane.setDisable(true);
     mapMenuAnchorPane.setVisible(false);
   }
 
+  /**
+   * Handle the guess now button click event.
+   *
+   * @param event the mouse event
+   */
   @FXML
   private void onGuessNow(MouseEvent event) {
     try {
@@ -297,6 +281,11 @@ public class SuspectController implements Controller {
     }
   }
 
+  /**
+   * Display the text slowly.
+   *
+   * @param text the text to display
+   */
   private void displayTextSlowly(String text) {
     final StringBuilder displayedText = new StringBuilder();
     labelResponse.setText(""); // Clear the label initially
@@ -305,13 +294,14 @@ public class SuspectController implements Controller {
     timeline = new Timeline();
     for (int i = 0; i < text.length(); i++) {
       final int index = i;
-      KeyFrame keyFrame = new KeyFrame(
-          Duration.millis(500 * index), // Delay each letter by 100ms
-          e -> {
-            displayedText.append(text.charAt(index)); // Append the current letter
-            labelResponse.setText(
-                displayedText.toString()); // Update the label with the new text
-          });
+      KeyFrame keyFrame =
+          new KeyFrame(
+              Duration.millis(500 * index), // Delay each letter by 100ms
+              e -> {
+                displayedText.append(text.charAt(index)); // Append the current letter
+                labelResponse.setText(
+                    displayedText.toString()); // Update the label with the new text
+              });
       timeline.getKeyFrames().add(keyFrame);
     }
 
@@ -319,9 +309,7 @@ public class SuspectController implements Controller {
     timeline.play();
   }
 
-  /**
-   * Load the gif of the suspect.
-   */
+  /** Load the gif of the suspect. */
   public void loadGif() {
     Image gif = null;
     switch (suspect.getName()) {
@@ -336,18 +324,19 @@ public class SuspectController implements Controller {
         break;
     }
     Image finalGif = gif;
-    Task<Void> loadGifTask = new Task<Void>() {
-      @Override
-      protected Void call() throws Exception {
-        // Update the ImageView on the JavaFX Application Thread
-        Platform.runLater(
-            () -> {
-              imgSuspectGif.setImage(finalGif);
-            });
+    Task<Void> loadGifTask =
+        new Task<Void>() {
+          @Override
+          protected Void call() throws Exception {
+            // Update the ImageView on the JavaFX Application Thread
+            Platform.runLater(
+                () -> {
+                  imgSuspectGif.setImage(finalGif);
+                });
 
-        return null;
-      }
-    };
+            return null;
+          }
+        };
 
     // Run the task in a background thread
     new Thread(loadGifTask).start();
@@ -359,8 +348,7 @@ public class SuspectController implements Controller {
    * @param event the key event
    */
   @FXML
-  public void onKeyPressed(KeyEvent event) {
-  }
+  public void onKeyPressed(KeyEvent event) {}
 
   /**
    * Handles the key released event.
@@ -375,14 +363,19 @@ public class SuspectController implements Controller {
   }
 
   @Override
-  public void onNewChat(String chat) {
-  }
+  public void onNewChat(String chat) {}
 
+  /**
+   * Handles the timer update event.
+   *
+   * @param time the current time
+   */
   @Override
   public void onTimerUpdate(String time) {
     labelTimer.setText(time);
   }
 
+  /** Lock the guess button. */
   @Override
   public void unlockGuessBtn() {
     // btnGuessNow.setDisable(false);

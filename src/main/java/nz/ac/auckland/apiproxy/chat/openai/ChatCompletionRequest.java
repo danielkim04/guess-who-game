@@ -104,8 +104,9 @@ public class ChatCompletionRequest {
                 .add("content", message.getContent()));
       }
 
-      JsonObjectBuilder jsonOverallBuilder = Json.createObjectBuilder() //
-          .add("messages", jsonMessages);
+      JsonObjectBuilder jsonOverallBuilder =
+          Json.createObjectBuilder() //
+              .add("messages", jsonMessages);
 
       jsonOverallBuilder.add("access_token", config.getApiKey()).add("email", config.getEmail());
 
@@ -136,11 +137,14 @@ public class ChatCompletionRequest {
       httpPost.setEntity(new StringEntity(value.toString()));
       ObjectMapper mapperApiMapper = new ObjectMapper();
 
-      responseChat = (ResponseChatCompletionViaProxy) client.execute(
-          httpPost,
-          httpResponse -> mapperApiMapper.readValue(
-              httpResponse.getEntity().getContent(),
-              ResponseChatCompletionViaProxy.class));
+      responseChat =
+          (ResponseChatCompletionViaProxy)
+              client.execute(
+                  httpPost,
+                  httpResponse ->
+                      mapperApiMapper.readValue(
+                          httpResponse.getEntity().getContent(),
+                          ResponseChatCompletionViaProxy.class));
 
       if (!responseChat.success && responseChat.code != 0) {
         throw new ApiProxyException("Problem calling API: " + responseChat.message);

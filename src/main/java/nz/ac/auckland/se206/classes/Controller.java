@@ -1,5 +1,6 @@
 package nz.ac.auckland.se206.classes;
 
+/** Interface for the controller. */
 public interface Controller {
 
   // Runs when ai message has been generated for chat box

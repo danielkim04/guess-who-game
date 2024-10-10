@@ -1,12 +1,22 @@
 package nz.ac.auckland.se206.classes;
 
-/**
- * Class responsible for managing the interactions with the characters in the game
- */
+/** Class responsible for managing the interactions with the characters in the game. */
 public class CharacterInteractionManager {
 
   // Singleton instance
   private static CharacterInteractionManager instance;
+
+  /**
+   * Returns the singleton instance of the CharacterInteractionManager.
+   *
+   * @return the singleton instance of the CharacterInteractionManager
+   */
+  public static CharacterInteractionManager getInstance() {
+    if (instance == null) {
+      instance = new CharacterInteractionManager();
+    }
+    return instance;
+  }
 
   // Booleans to track if a character has been talked to
   private boolean talkedToCharacter1;
@@ -18,26 +28,12 @@ public class CharacterInteractionManager {
   private boolean interactableClicked2;
   private boolean interactableClicked3;
 
-  // Private constructor to prevent instantiation
+  /** Constructor for the CharacterInteractionManager. */
   private CharacterInteractionManager() {
     reset(); // Initialize all values to false by default
   }
 
-  /**
-   * Returns the singleton instance of the CharacterInteractionManager
-   *
-   * @return the singleton instance of the CharacterInteractionManager
-   */
-  public static CharacterInteractionManager getInstance() {
-    if (instance == null) {
-      instance = new CharacterInteractionManager();
-    }
-    return instance;
-  }
-
-  /**
-   * Resets all the booleans to false
-   */
+  /** Resets all the booleans to false. */
   public void reset() {
     this.talkedToCharacter1 = false;
     this.talkedToCharacter2 = false;

@@ -14,8 +14,7 @@ public class ApiProxyConfig {
 
   private static ApiProxyConfig instance;
 
-  private ApiProxyConfig() {
-  }
+  private ApiProxyConfig() {}
 
   private ApiProxyConfig(String apiKey, String email) {
     this.apiKey = apiKey;
@@ -38,9 +37,10 @@ public class ApiProxyConfig {
         instance = objectMapper.readValue(file, ApiProxyConfig.class);
       } catch (Exception e) {
         e.printStackTrace();
-        String message = "Unable to read "
-            + file.getAbsolutePath()
-            + ". Please check the file exists and is valid.";
+        String message =
+            "Unable to read "
+                + file.getAbsolutePath()
+                + ". Please check the file exists and is valid.";
         throw new ApiProxyException(message);
       }
     }
