@@ -352,7 +352,7 @@
             <Label fx:id="labLabel" layoutX="255.0" layoutY="210.0" prefHeight="27.0" prefWidth="505.5" stylesheets="@../css/style.css" text="poopoo" wrapText="true" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="mapMenuAnchorPane" layoutX="660.0" layoutY="76.0" prefHeight="525.0" prefWidth="393.0">
+      <AnchorPane fx:id="mapMenuAnchorPane" layoutX="660.0" layoutY="76.0" prefHeight="525.0" prefWidth="393.0" visible="false">
          <children>
             <ImageView fitHeight="518.0" fitWidth="393.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                <image>
