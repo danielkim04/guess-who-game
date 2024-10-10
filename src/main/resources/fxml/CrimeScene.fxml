@@ -496,21 +496,41 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="paneCrimeSceneIntro" layoutX="210.0" layoutY="116.0" prefHeight="375.0" prefWidth="573.0" visible="false">
+      <AnchorPane fx:id="paneCrimeSceneIntro" layoutX="257.0" layoutY="135.0" prefHeight="407.0" prefWidth="571.0">
          <children>
-            <ImageView fitHeight="446.0" fitWidth="685.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="407.0" fitWidth="633.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/crime_scene_intro_window.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="imgCloseIntro" fitHeight="50.0" fitWidth="48.0" layoutX="557.0" layoutY="27.0" onMouseClicked="#handleCloseIntroClick" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+            <ImageView fx:id="imgCloseIntro" fitHeight="50.0" fitWidth="48.0" layoutX="506.0" layoutY="27.0" onMouseClicked="#handleCloseIntroClick" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                <image>
                   <Image url="@../images/close_button_2.png" />
                </image>
             </ImageView>
-            <Label alignment="CENTER" layoutX="78.0" layoutY="61.0" prefHeight="323.0" prefWidth="465.0" text="Explore the crime scene for hidden clues, interrogate three suspicious characters, and piece together the mystery before revealing the culprit!" wrapText="true">
+            <Label layoutX="72.0" layoutY="193.0" prefHeight="46.0" prefWidth="451.0" text=" - Interrogate the 3 suspicious characters" textAlignment="JUSTIFY" wrapText="true">
                <font>
-                  <Font size="32.0" />
+                  <Font name="Candara" size="26.0" />
+               </font>
+            </Label>
+            <Label contentDisplay="CENTER" layoutX="78.0" layoutY="145.0" prefHeight="48.0" prefWidth="474.0" text="- Find the 3 hidden clues in the crime scene" textAlignment="JUSTIFY" wrapText="true">
+               <font>
+                  <Font name="Candara" size="26.0" />
+               </font>
+            </Label>
+            <Label layoutX="24.0" layoutY="247.0" prefHeight="48.0" prefWidth="583.0" text="And piece together the mystery before revealing the culprit!" wrapText="true">
+               <font>
+                  <Font name="Candara" size="21.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="92.0" layoutY="50.0" prefHeight="48.0" prefWidth="411.0" text="Good Evening Detective" textAlignment="JUSTIFY" wrapText="true">
+               <font>
+                  <Font name="Candara" size="40.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="95.0" layoutY="98.0" prefHeight="48.0" prefWidth="411.0" text="Your tasks are as follows:" textAlignment="JUSTIFY" wrapText="true">
+               <font>
+                  <Font name="Candara Bold" size="30.0" />
                </font>
             </Label>
          </children>
