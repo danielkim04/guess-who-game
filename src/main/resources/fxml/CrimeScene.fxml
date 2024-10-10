@@ -280,6 +280,13 @@
                </items>
             </MenuButton>
             <Button fx:id="btnGuessNow" disable="true" layoutX="856.0" layoutY="28.0" mnemonicParsing="false" onAction="#onGuessNow" prefHeight="31.0" prefWidth="98.0" text="Guess Now" />
+            <AnchorPane layoutX="150.0" prefHeight="89.0" prefWidth="200.0">
+               <children>
+                  <Label fx:id="char1" stylesheets="@../css/styleRequirements.css" text="Mark 0/1" />
+                  <Label fx:id="char2" layoutY="25.0" stylesheets="@../css/styleRequirements.css" text="Anthony 0/1" />
+                  <Label fx:id="char3" layoutY="50.0" stylesheets="@../css/styleRequirements.css" text="Susan 0/1" />
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
 
