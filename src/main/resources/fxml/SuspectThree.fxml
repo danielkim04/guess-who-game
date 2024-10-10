@@ -24,51 +24,59 @@
       </ImageView>
         <AnchorPane prefHeight="79.0" prefWidth="700.0">
             <children>
-            <ImageView fitHeight="87.0" fitWidth="1056.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/banner_darker.png" />
-               </image>
-            </ImageView>
-                <Label alignment="CENTER" layoutX="450.0" layoutY="19.0" prefHeight="31.0" prefWidth="155.0" text="Bar" textFill="WHITE">
-                    <font>
-                        <Font name="Gill Sans MT Bold" size="35.0" />
-                    </font>
-                </Label>
-            <AnchorPane layoutX="972.0" layoutY="6.0" prefHeight="65.0" prefWidth="63.0">
-               <children>
-                  <Circle fill="#ffffff00" layoutX="31.0" layoutY="36.0" radius="31.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Label fx:id="labelTimer" layoutX="7.0" layoutY="20.0" text="X:XX" textFill="WHITE">
-                     <font>
-                        <Font name="Calibri" size="26.0" />
-                     </font>
+              <ImageView fitHeight="87.0" fitWidth="1056.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@../images/banner_darker.png" />
+                </image>
+              </ImageView>
+                  <Label alignment="CENTER" layoutX="450.0" layoutY="19.0" prefHeight="31.0" prefWidth="155.0" text="Bar" textFill="WHITE">
+                      <font>
+                          <Font name="Gill Sans MT Bold" size="35.0" />
+                      </font>
                   </Label>
-               </children>
-            </AnchorPane>
-            <AnchorPane layoutX="14.0" onMouseClicked="#handleMapClick" prefHeight="73.0" prefWidth="83.0">
-               <children>
-                  <ImageView fitHeight="81.0" fitWidth="76.0" layoutX="4.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
-                     <image>
-                        <Image url="@../images/mapicon2.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </AnchorPane>
-            <AnchorPane layoutX="835.0" layoutY="20.0" prefHeight="19.0" prefWidth="110.0" />
-            <AnchorPane layoutX="835.0" layoutY="21.0" prefHeight="19.0" prefWidth="110.0">
-               <children>
-                  <ImageView fx:id="imgButtonNoColor" fitHeight="40.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/guess_button_no_color.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="imgGuessButton" fitHeight="40.0" fitWidth="136.0" onMouseClicked="#onGuessNow" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" visible="false">
-                     <image>
-                        <Image url="@../images/Guess_button.png" />
-                     </image>
-                  </ImageView>
-                  <Rectangle fx:id="rectDisableButton" arcHeight="5.0" arcWidth="5.0" fill="#616161c3" height="40.0" stroke="TRANSPARENT" strokeType="INSIDE" width="120.0" />
-               </children>
-            </AnchorPane>
+              <AnchorPane layoutX="972.0" layoutY="6.0" prefHeight="65.0" prefWidth="63.0">
+                <children>
+                    <Circle fill="#ffffff00" layoutX="31.0" layoutY="36.0" radius="31.0" stroke="BLACK" strokeType="INSIDE" />
+                    <Label fx:id="labelTimer" layoutX="7.0" layoutY="20.0" text="X:XX" textFill="WHITE">
+                      <font>
+                          <Font name="Calibri" size="26.0" />
+                      </font>
+                    </Label>
+                </children>
+              </AnchorPane>
+              <AnchorPane layoutX="14.0" onMouseClicked="#handleMapClick" prefHeight="73.0" prefWidth="83.0">
+                <children>
+                    <ImageView fitHeight="81.0" fitWidth="76.0" layoutX="4.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                      <image>
+                          <Image url="@../images/mapicon2.png" />
+                      </image>
+                    </ImageView>
+                </children>
+              </AnchorPane>
+              <AnchorPane layoutX="150.0" prefHeight="85.0" prefWidth="200.0">
+                <children>
+                  <Label fx:id="char1" stylesheets="@../css/styleRequirements.css" text="Mark 0/1" />
+                  <Label fx:id="char2" layoutY="25.0" stylesheets="@../css/styleRequirements.css" text="Anthony 0/1" />
+                  <Label fx:id="char3" layoutY="50.0" stylesheets="@../css/styleRequirements.css" text="Susan 0/1" />
+                  <Label fx:id="char4" layoutY="75.0" stylesheets="@../css/styleRequirements.css" text="Interactable 0/1" />
+                </children>
+              </AnchorPane>
+              <AnchorPane layoutX="835.0" layoutY="20.0" prefHeight="19.0" prefWidth="110.0" />
+              <AnchorPane layoutX="835.0" layoutY="21.0" prefHeight="19.0" prefWidth="110.0">
+                <children>
+                    <ImageView fx:id="imgButtonNoColor" fitHeight="40.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                          <Image url="@../images/guess_button_no_color.png" />
+                      </image>
+                    </ImageView>
+                    <ImageView fx:id="imgGuessButton" fitHeight="40.0" fitWidth="136.0" onMouseClicked="#onGuessNow" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" visible="false">
+                      <image>
+                          <Image url="@../images/Guess_button.png" />
+                      </image>
+                    </ImageView>
+                    <Rectangle fx:id="rectDisableButton" arcHeight="5.0" arcWidth="5.0" fill="#616161c3" height="40.0" stroke="TRANSPARENT" strokeType="INSIDE" width="120.0" />
+                </children>
+              </AnchorPane>
             </children>
         </AnchorPane>
       <AnchorPane layoutX="9.0" layoutY="364.0" prefHeight="221.0" prefWidth="1031.0">

@@ -16,6 +16,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
+import nz.ac.auckland.se206.classes.CharacterInteractionManager;
 import nz.ac.auckland.se206.classes.Controller;
 import nz.ac.auckland.se206.classes.Suspect;
 import nz.ac.auckland.se206.states.GameState;
@@ -26,6 +27,14 @@ public class SuspectController implements Controller {
   private Label labelTimer;
   @FXML
   private Label labelResponse;
+  @FXML
+  private Label char1;
+  @FXML
+  private Label char2;
+  @FXML
+  private Label char3;
+  @FXML
+  private Label char4; // Interactable 0/1
   @FXML
   private TextArea txtMessage;
   @FXML
@@ -90,6 +99,87 @@ public class SuspectController implements Controller {
     App.addToLocationMap(crimeSceneButtonAnchorPane, "CrimeScene");
   }
 
+  // Method to update the labels when the scene is opened
+  public void onSceneOpened() {
+    // Get the instance of the singleton to check the character states
+    CharacterInteractionManager manager = CharacterInteractionManager.getInstance();
+    // Update the labels based on the interaction status of the characters
+    updateLabels(manager);
+  }
+
+  // Method to update the labels based on character interaction state
+  private void updateLabels(CharacterInteractionManager manager) {
+    // Update char1 (Mark)
+    if (manager.isTalkedToCharacter1()) {
+      char1.setText("Mark 1/1");
+    } else {
+      char1.setText("Mark 0/1");
+    }
+    // Update char2 (Anthony)
+    if (manager.isTalkedToCharacter2()) {
+      char2.setText("Anthony 1/1");
+    } else {
+      char2.setText("Anthony 0/1");
+    }
+    // Update char3 (Susan)
+    if (manager.isTalkedToCharacter3()) {
+      char3.setText("Susan 1/1");
+    } else {
+      char3.setText("Susan 0/1");
+    }
+    // Update char4 (Interactable)
+    if (manager.isInteractableClicked()) {
+      char4.setText("Interactable 1/1");
+    } else {
+      char4.setText("Interactable 0/1");
+    }
+  }
+
+  // Handle interaction with Character 1
+  public void onCharacter1Interaction() {
+    CharacterInteractionManager manager = CharacterInteractionManager.getInstance();
+    manager.setTalkedToCharacter1(true);
+    System.out.println("Talked to Character 1!");
+    onSceneOpened();
+  }
+
+  // Handle interaction with Character 2
+  public void onCharacter2Interaction() {
+    CharacterInteractionManager manager = CharacterInteractionManager.getInstance();
+    manager.setTalkedToCharacter2(true);
+    System.out.println("Talked to Character 2!");
+    onSceneOpened();
+  }
+
+  // Handle interaction with Character 3
+  public void onCharacter3Interaction() {
+    CharacterInteractionManager manager = CharacterInteractionManager.getInstance();
+    manager.setTalkedToCharacter3(true);
+    System.out.println("Talked to Character 3!");
+    onSceneOpened();
+  }
+
+  // Check if all characters have been interacted with
+  public void checkAllInteractions() {
+    CharacterInteractionManager manager = CharacterInteractionManager.getInstance();
+
+    if (manager.isTalkedToCharacter1() && manager.isTalkedToCharacter2() && manager.isTalkedToCharacter3()) {
+      System.out.println("All characters have been interacted with.");
+    } else {
+      System.out.println("Some characters have not been interacted with yet.");
+    }
+  }
+
+  // Example: Call this method to check if an interactable object has been clicked
+  public void checkInteractable() {
+    CharacterInteractionManager manager = CharacterInteractionManager.getInstance();
+    if (manager.isInteractableClicked()) {
+      System.out.println("The interactable object has been clicked.");
+    } else {
+      System.out.println("The interactable object has not been clicked yet.");
+    }
+  }
+
   @FXML
   private void onSendMessage() {
     String message = txtMessage.getText().trim();
@@ -99,6 +189,13 @@ public class SuspectController implements Controller {
 
     // update suspect engagement status
     this.suspect.interacted();
+    if (this.suspect.getName() == "Mark") {
+      onCharacter1Interaction();
+    } else if (this.suspect.getName() == "Anthony") {
+      onCharacter2Interaction();
+    } else {
+      onCharacter3Interaction();
+    }
     GameState curGameState = App.getContext().getState();
     if (curGameState instanceof Investigating) {
       ((Investigating) curGameState).sceneChange();

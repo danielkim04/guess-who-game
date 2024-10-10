@@ -94,7 +94,50 @@
                   </ImageView>
                </children>
             </AnchorPane>
+            <AnchorPane layoutX="150.0" prefHeight="84.0" prefWidth="200.0">
+               <children>
+                  <Label fx:id="char1" stylesheets="@../css/styleRequirements.css" text="Mark 0/1" />
+                  <Label fx:id="char2" layoutY="25.0" stylesheets="@../css/styleRequirements.css" text="Anthony 0/1" />
+                  <Label fx:id="char3" layoutY="50.0" stylesheets="@../css/styleRequirements.css" text="Susan 0/1" />
+                  <Label fx:id="char4" layoutY="75.0" stylesheets="@../css/styleRequirements.css" text="Interactable 0/1" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="9.0" layoutY="364.0" prefHeight="221.0" prefWidth="1031.0">
+         <children>
+            <ImageView fitHeight="221.0" fitWidth="865.0" layoutX="79.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/chatbox_darker.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="labelResponse" layoutX="91.0" layoutY="59.0" prefHeight="87.0" prefWidth="841.0" text="Label" wrapText="true">
+               <font>
+                  <Font size="19.0" />
+               </font></Label>
+            <Label alignment="CENTER" layoutX="80.0" layoutY="-2.0" prefHeight="52.0" prefWidth="199.0" text="Mark" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Rectangle fx:id="rectSendButton" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="31.0" layoutX="834.0" layoutY="164.0" onMouseClicked="#onSendMessage" opacity="0.0" stroke="BLACK" strokeType="INSIDE" style="-fx-cursor: hand;" width="98.0" />
+            <TextArea fx:id="txtMessage" layoutX="91.0" layoutY="163.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="35.0" prefWidth="727.0" promptText="Type here to chat" wrapText="true">
+               <font>
+                  <Font size="15.0" />
+               </font></TextArea>
+         </children>
+      </AnchorPane>
+      <ImageView fx:id="imgSuspectGif" fitHeight="306.0" fitWidth="415.0" layoutX="491.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true" />
+      <AnchorPane fx:id="mapMenuAnchorPane" layoutX="643.0" layoutY="78.0" prefHeight="519.0" prefWidth="390.0" visible="false">
+         <children>
+            <ImageView fitHeight="531.0" fitWidth="409.0" layoutX="6.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/map_lobby.png" />
+               </image>
+            </ImageView>
+            <AnchorPane layoutX="20.0" layoutY="21.0" onMouseClicked="#handleCloseMap" prefHeight="52.0" prefWidth="98.0">
             <AnchorPane layoutX="836.0" layoutY="20.0" prefHeight="19.0" prefWidth="110.0">
+
                <children>
                   <ImageView fx:id="imgButtonNoColor" fitHeight="40.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -109,6 +152,7 @@
                   <Rectangle fx:id="rectDisableButton" arcHeight="5.0" arcWidth="5.0" fill="#616161c3" height="40.0" stroke="TRANSPARENT" strokeType="INSIDE" width="120.0" />
                </children>
             </AnchorPane>
+          </AnchorPane>
          </children>
       </AnchorPane>
    </children>

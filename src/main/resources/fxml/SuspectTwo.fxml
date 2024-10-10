@@ -22,6 +22,40 @@
             <Image url="@../images/suspect1%20ver.1.png" />
          </image>
       </ImageView>
+        <AnchorPane prefHeight="79.0" prefWidth="700.0">
+            <children>
+            <ImageView fitHeight="87.0" fitWidth="1050.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/banner_darker.png" />
+               </image>
+            </ImageView>
+                <Label alignment="CENTER" layoutX="447.0" layoutY="21.0" prefHeight="31.0" prefWidth="155.0" text="Tables" textFill="WHITE">
+                    <font>
+                        <Font name="Algerian" size="35.0" />
+                    </font>
+                </Label>
+            <!-- <Button fx:id="btnGuessNow" disable="true" layoutX="870.0" layoutY="26.0" mnemonicParsing="false" onAction="#onGuessNow" text="Guess Now" /> -->
+            <AnchorPane layoutX="970.0" layoutY="6.0" prefHeight="65.0" prefWidth="65.0">
+               <children>
+                  <Circle fill="#ffffff00" layoutX="31.0" layoutY="36.0" radius="31.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Label fx:id="labelTimer" layoutX="7.0" layoutY="20.0" text="X:XX" textFill="WHITE">
+                     <font>
+                        <Font name="Calibri" size="26.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="14.0" onMouseClicked="#handleMapClick" prefHeight="73.0" prefWidth="83.0">
+               <children>
+                  <ImageView fitHeight="81.0" fitWidth="76.0" layoutX="4.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/mapicon2.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            </children>
+        </AnchorPane>
       <AnchorPane layoutX="9.0" layoutY="364.0" prefHeight="221.0" prefWidth="1031.0">
          <children>
             <ImageView fitHeight="221.0" fitWidth="865.0" layoutX="79.0" pickOnBounds="true" preserveRatio="true">
@@ -116,6 +150,14 @@
                      </image>
                   </ImageView>
                   <Rectangle fx:id="rectDisableButton" arcHeight="5.0" arcWidth="5.0" fill="#616161c3" height="40.0" stroke="TRANSPARENT" strokeType="INSIDE" width="120.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="150.0" prefHeight="84.0" prefWidth="200.0">
+               <children>
+                  <Label fx:id="char1" stylesheets="@../css/styleRequirements.css" text="Mark 0/1" />
+                  <Label fx:id="char2" layoutY="25.0" stylesheets="@../css/styleRequirements.css" text="Anthony 0/1" />
+                  <Label fx:id="char3" layoutY="50.0" stylesheets="@../css/styleRequirements.css" text="Susan 0/1" />
+                  <Label fx:id="char4" layoutY="75.0" stylesheets="@../css/styleRequirements.css" text="Interactable 0/1" />
                </children>
             </AnchorPane>
             </children>
