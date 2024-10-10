@@ -29,6 +29,12 @@ public class SuspectController implements Controller {
   @FXML
   private Label labelResponse;
   @FXML
+  private Label char1;
+  @FXML
+  private Label char2;
+  @FXML
+  private Label char3;
+  @FXML
   private TextArea txtMessage;
   @FXML
   private Button btnSend;
@@ -86,11 +92,42 @@ public class SuspectController implements Controller {
     App.addToLocationMap(crimeSceneButtonAnchorPane, "CrimeScene");
   }
 
+  // Method to update the labels when the scene is opened
+  public void onSceneOpened() {
+    // Get the instance of the singleton to check the character states
+    CharacterInteractionManager manager = CharacterInteractionManager.getInstance();
+    // Update the labels based on the interaction status of the characters
+    updateLabels(manager);
+  }
+
+  // Method to update the labels based on character interaction state
+  private void updateLabels(CharacterInteractionManager manager) {
+    // Update char1 (Mark)
+    if (manager.isTalkedToCharacter1()) {
+      char1.setText("Mark 1/1");
+    } else {
+      char1.setText("Mark 0/1");
+    }
+    // Update char2 (Anthony)
+    if (manager.isTalkedToCharacter2()) {
+      char2.setText("Anthony 1/1");
+    } else {
+      char2.setText("Anthony 0/1");
+    }
+    // Update char3 (Susan)
+    if (manager.isTalkedToCharacter3()) {
+      char3.setText("Susan 1/1");
+    } else {
+      char3.setText("Susan 0/1");
+    }
+  }
+
   // Handle interaction with Character 1
   public void onCharacter1Interaction() {
     CharacterInteractionManager manager = CharacterInteractionManager.getInstance();
     manager.setTalkedToCharacter1(true);
     System.out.println("Talked to Character 1!");
+    onSceneOpened();
   }
 
   // Handle interaction with Character 2
@@ -98,6 +135,7 @@ public class SuspectController implements Controller {
     CharacterInteractionManager manager = CharacterInteractionManager.getInstance();
     manager.setTalkedToCharacter2(true);
     System.out.println("Talked to Character 2!");
+    onSceneOpened();
   }
 
   // Handle interaction with Character 3
@@ -105,6 +143,7 @@ public class SuspectController implements Controller {
     CharacterInteractionManager manager = CharacterInteractionManager.getInstance();
     manager.setTalkedToCharacter3(true);
     System.out.println("Talked to Character 3!");
+    onSceneOpened();
   }
 
   // Check if all characters have been interacted with
@@ -139,7 +178,7 @@ public class SuspectController implements Controller {
     this.suspect.interacted();
     if (this.suspect.getName() == "Mark") {
       onCharacter1Interaction();
-    } else if (this.suspect.getName() == "Anthony"){
+    } else if (this.suspect.getName() == "Anthony") {
       onCharacter2Interaction();
     } else {
       onCharacter3Interaction();

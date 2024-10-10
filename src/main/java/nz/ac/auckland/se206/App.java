@@ -15,6 +15,7 @@ import javafx.stage.WindowEvent;
 import nz.ac.auckland.se206.classes.Controller;
 import nz.ac.auckland.se206.classes.Suspect;
 import nz.ac.auckland.se206.controllers.CrimeSceneController;
+import nz.ac.auckland.se206.controllers.SuspectController;
 import nz.ac.auckland.se206.speech.FreeTextToSpeech;
 import nz.ac.auckland.se206.states.GameState;
 import nz.ac.auckland.se206.states.Investigating;
@@ -52,28 +53,37 @@ public class App extends Application {
    */
   public static void setRoot(String fxml) throws IOException {
     currentSuspect = suspectMap.get(fxml);
+
     if (!sceneMap.containsKey(fxml)) {
-      // if scene has not been initialized, load the FXML file and store it in the map
-      Parent root = loadFxml(fxml);
-      sceneMap.put(fxml, root);
+        // If scene has not been initialized, load the FXML file and store it in the map
+        Parent root = loadFxml(fxml);
+        sceneMap.put(fxml, root);
     }
-    // retrieve the FXML loader from the map
+
+    // Retrieve the FXML loader from the map
     fxmlHandler = fxmlLoaderMap.get(fxml);
-    // retrieve the scene from the map and set it as the root
+
+    // Retrieve the scene from the map and set it as the root
     scene.setRoot(sceneMap.get(fxml));
 
     // Call sceneChange if in Investigating state
     if (context.getState() instanceof Investigating) {
-      ((Investigating) context.getState()).sceneChange();
+        ((Investigating) context.getState()).sceneChange();
     }
 
     // Check if the scene is the "Crime Scene" and call onSceneOpened
     if (fxml.equals("CrimeScene")) {
-      // Get the controller and call the method to update labels
-      CrimeSceneController controller = fxmlHandler.getController();
-      controller.onSceneOpened();
+        CrimeSceneController controller = fxmlHandler.getController();
+        controller.onSceneOpened();
     }
-  }
+
+    // Check if the scene is the "SuspectOne" scene and call onSceneOpened
+    if (fxml.equals("SuspectOne") || fxml.equals("SuspectTwo") || fxml.equals("SuspectThree")) {
+        SuspectController controller = fxmlHandler.getController();
+        controller.onSceneOpened();
+    }
+}
+
 
   /**
    * Loads the FXML file and returns the associated node. The method expects that
