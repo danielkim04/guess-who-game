@@ -152,6 +152,7 @@
                   <Rectangle fx:id="rectDisableButton" arcHeight="5.0" arcWidth="5.0" fill="#616161c3" height="40.0" stroke="TRANSPARENT" strokeType="INSIDE" width="120.0" />
                </children>
             </AnchorPane>
+          </AnchorPane>
          </children>
       </AnchorPane>
    </children>
