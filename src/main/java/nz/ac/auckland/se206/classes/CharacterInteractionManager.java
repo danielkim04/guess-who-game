@@ -15,50 +15,55 @@ public class CharacterInteractionManager {
 
   // Private constructor to prevent instantiation
   private CharacterInteractionManager() {
-      this.talkedToCharacter1 = false;
-      this.talkedToCharacter2 = false;
-      this.talkedToCharacter3 = false;
-      this.interactableClicked = false;
+    reset(); // Initialize all values to false by default
   }
 
   // Public method to get the singleton instance
   public static CharacterInteractionManager getInstance() {
-      if (instance == null) {
-          instance = new CharacterInteractionManager();
-      }
-      return instance;
+    if (instance == null) {
+      instance = new CharacterInteractionManager();
+    }
+    return instance;
+  }
+
+  // Method to reset all interaction states
+  public void reset() {
+    this.talkedToCharacter1 = false;
+    this.talkedToCharacter2 = false;
+    this.talkedToCharacter3 = false;
+    this.interactableClicked = false;
   }
 
   // Getters and setters for the booleans
   public boolean isTalkedToCharacter1() {
-      return talkedToCharacter1;
+    return talkedToCharacter1;
   }
 
   public void setTalkedToCharacter1(boolean talkedToCharacter1) {
-      this.talkedToCharacter1 = talkedToCharacter1;
+    this.talkedToCharacter1 = talkedToCharacter1;
   }
 
   public boolean isTalkedToCharacter2() {
-      return talkedToCharacter2;
+    return talkedToCharacter2;
   }
 
   public void setTalkedToCharacter2(boolean talkedToCharacter2) {
-      this.talkedToCharacter2 = talkedToCharacter2;
+    this.talkedToCharacter2 = talkedToCharacter2;
   }
 
   public boolean isTalkedToCharacter3() {
-      return talkedToCharacter3;
+    return talkedToCharacter3;
   }
 
   public void setTalkedToCharacter3(boolean talkedToCharacter3) {
-      this.talkedToCharacter3 = talkedToCharacter3;
+    this.talkedToCharacter3 = talkedToCharacter3;
   }
 
   public boolean isInteractableClicked() {
-      return interactableClicked;
+    return interactableClicked;
   }
 
   public void setInteractableClicked(boolean interactableClicked) {
-      this.interactableClicked = interactableClicked;
+    this.interactableClicked = interactableClicked;
   }
 }
