@@ -140,7 +140,7 @@
                   <Image url="@../images/note2.png" />
                </image>
             </ImageView>
-            <Label layoutX="483.0" layoutY="169.5" prefHeight="375.0" prefWidth="219.0" text="I saw him again tonight at the casino. There's something about the way he carries himself—always so confident, like he owns the place. People seem to gravitate toward him, and I don't know why it bothers me so much. Maybe it's how easily things come to him, or maybe it’s just the way he’s always at the center of attention." wrapText="true">
+            <Label layoutX="490.0" layoutY="156.0" prefHeight="389.0" prefWidth="231.0" text="I saw him again tonight at the casino. There's something about the way he carries himself—always so confident, like he owns the place. People seem to gravitate toward him, and I don't know why it bothers me so much. Maybe it's how easily things come to him, or maybe it’s just the way he’s always at the center of attention." wrapText="true">
                <font>
                   <Font name="Comic Sans MS" size="16.5" />
                </font></Label>
