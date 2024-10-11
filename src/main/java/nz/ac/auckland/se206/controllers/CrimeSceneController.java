@@ -15,6 +15,7 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.ImageCursor;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -272,7 +273,9 @@ public class CrimeSceneController implements Controller {
    */
   @FXML
   public void onKeyReleased(KeyEvent event) {
-    System.out.println("Key " + event.getCode() + " released");
+    if (event.getCode().equals(KeyCode.ENTER)) {
+      checkBalance();
+    }
   }
 
   /** This method handles the mouse pressed event. */
@@ -302,7 +305,15 @@ public class CrimeSceneController implements Controller {
    * @param event the mouse event
    */
   @FXML
-  private void onCheckBalance(ActionEvent event) {
+  private void onCheckBalance(MouseEvent event) {
+    checkBalance();
+  }
+
+  /**
+   * This method handles the click event on the money image. Logic has been moved here to allow
+   * enter key to send message
+   */
+  private void checkBalance() {
     // Get the text from the balanceArea TextArea
     String balanceText = balanceArea.getText();
 
@@ -311,10 +322,12 @@ public class CrimeSceneController implements Controller {
       // Action when balance is 18000, e.g., print a message
       System.out.println("Balance is exactly 18000!");
       correct.setVisible(true);
+      balanceArea.setText("18000");
     } else {
       // Action when balance is not 18000
       System.out.println("Balance is not 18000. Current balance: " + balanceText);
       correct.setVisible(false);
+      balanceArea.clear();
     }
   }
 
@@ -400,7 +413,7 @@ public class CrimeSceneController implements Controller {
    * @param event the mouse event
    */
   @FXML
-  private void onCashBookExit(ActionEvent event) {
+  private void onCashBookExit(MouseEvent event) {
     // Hide the pane
     cashbookPane.setVisible(false);
 
@@ -552,7 +565,8 @@ public class CrimeSceneController implements Controller {
     fingerprintSamplePane.setVisible(true);
 
     // Display "Fingerprint Collected!" slowly
-    displayFingerprintTextSlowly("Fingerprint Collected, Sample must be tested in the lab!");
+    displayFingerprintTextSlowly(
+        "Fingerprint Collected, Sample must be tested in the lab!\nOpen inventory to retrieve fingerprint sample.");
   }
 
   /** This method is responsible for managing spider animations. */
@@ -759,7 +773,7 @@ public class CrimeSceneController implements Controller {
       final int index = i;
       KeyFrame keyFrame =
           new KeyFrame(
-              Duration.millis(75 * index), // Delay each letter by 100ms
+              Duration.millis(50 * index), // Delay each letter by 100ms
               e -> {
                 displayedText.append(text.charAt(index)); // Append the current letter
                 printLabel.setText(displayedText.toString()); // Update the label with the new text
@@ -856,7 +870,8 @@ public class CrimeSceneController implements Controller {
         hairCollectedPane.setVisible(true); // Show hairCollectedPane
 
         // Display the hairText slowly, letter by letter
-        displayTextSlowly("Hair Collected, Sample must be tested in the lab!");
+        displayTextSlowly(
+            "Hair Collected, Sample must be tested in the lab!\nOpen inventory to retrieve hair sample.");
       } else {
         if (draggedItem != web1 && draggedItem != web2 && draggedItem != web3) {
           // For other items (like money), hide the item and collect money
@@ -885,7 +900,7 @@ public class CrimeSceneController implements Controller {
       final int index = i;
       KeyFrame keyFrame =
           new KeyFrame(
-              Duration.millis(75 * index), // Delay each letter by 100ms
+              Duration.millis(50 * index), // Delay each letter by 100ms
               e -> {
                 displayedText.append(text.charAt(index)); // Append the current letter
                 hairText.setText(displayedText.toString()); // Update the label with the new text

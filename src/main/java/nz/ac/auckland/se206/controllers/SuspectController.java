@@ -76,7 +76,7 @@ public class SuspectController implements Controller {
         response -> {
           timeline.stop();
           labelResponse.setText(response);
-          loadGif();
+          // add function call to loadGif here if gif works
         });
     onSceneOpened();
   }
@@ -215,9 +215,9 @@ public class SuspectController implements Controller {
 
     // update suspect engagement status
     this.suspect.interacted();
-    if (this.suspect.getName() == "Mark") {
+    if (this.suspect.getName().equals("Mark")) {
       onCharacter1Interaction();
-    } else if (this.suspect.getName() == "Anthony") {
+    } else if (this.suspect.getName().equals("Anthony")) {
       onCharacter2Interaction();
     } else {
       onCharacter3Interaction();
