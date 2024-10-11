@@ -269,7 +269,12 @@
                   </ImageView>
                   <ImageView fx:id="correct" fitHeight="36.0" fitWidth="41.0" layoutX="384.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/correct.png" />
+                        <Image url="@../images/correct1.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="incorrect" fitHeight="39.0" fitWidth="36.0" layoutX="384.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../images/incorrect1.png" />
                      </image>
                   </ImageView>
                   <TextArea fx:id="balanceArea" layoutX="14.0" layoutY="28.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyReleased="#onKeyReleased" prefHeight="30.0" prefWidth="197.0" stylesheets="@../css/noteClueStyle.css" />

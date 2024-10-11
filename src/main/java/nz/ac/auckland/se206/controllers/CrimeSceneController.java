@@ -122,6 +122,7 @@ public class CrimeSceneController implements Controller {
   @FXML private Label suspectObjectiveLabel;
   @FXML private Label clueObjectiveLabel;
   @FXML private Label allClueObjectiveLabel;
+  @FXML private ImageView incorrect;
 
   // Variables to store the initial mouse click position
   private double initialX;
@@ -322,12 +323,24 @@ public class CrimeSceneController implements Controller {
       // Action when balance is 18000, e.g., print a message
       System.out.println("Balance is exactly 18000!");
       correct.setVisible(true);
+      incorrect.setVisible(false);
       balanceArea.setText("18000");
     } else {
       // Action when balance is not 18000
       System.out.println("Balance is not 18000. Current balance: " + balanceText);
       correct.setVisible(false);
+      incorrect.setVisible(true);
       balanceArea.clear();
+
+      Timeline timeline = new Timeline(new KeyFrame(
+              Duration.seconds(3), // Set the delay to 3 seconds
+              event -> {
+                // Hide the incorrect label after the delay
+                incorrect.setVisible(false);
+              }
+      ));
+
+      timeline.play();
     }
   }
 
