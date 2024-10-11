@@ -42,6 +42,11 @@
                <font>
                   <Font name="Candara" size="18.0" />
                </font></TextArea>
+            <ImageView fitHeight="52.0" fitWidth="39.0" layoutX="899.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/coin_nb.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
       <ImageView fx:id="imgSuspectGif" fitHeight="306.0" fitWidth="415.0" layoutX="491.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true" />
@@ -52,7 +57,7 @@
                   <Image url="@../images/banner_darker.png" />
                </image>
             </ImageView>
-            <Label alignment="CENTER" layoutX="425.0" layoutY="20.0" prefHeight="31.0" prefWidth="155.0" text="Lobby" textFill="WHITE">
+            <Label alignment="CENTER" layoutX="447.0" layoutY="21.0" prefHeight="31.0" prefWidth="155.0" text="Lobby" textFill="WHITE">
                <font>
                   <Font name="Times New Roman" size="35.0" />
                </font>

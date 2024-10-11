@@ -26,7 +26,7 @@
             </ImageView>
             <Label alignment="CENTER" layoutX="447.0" layoutY="19.0" prefHeight="31.0" prefWidth="155.0" text="Outside" textAlignment="CENTER" textFill="WHITE">
                <font>
-                  <Font name="Gill Sans MT Bold" size="35.0" />
+                  <Font name="Times New Roman" size="35.0" />
                </font>
             </Label>
             <AnchorPane layoutX="972.0" layoutY="6.0" prefHeight="65.0" prefWidth="63.0">
@@ -43,6 +43,11 @@
       </AnchorPane>
       <AnchorPane layoutX="54.0" layoutY="179.0" prefHeight="334.0" prefWidth="509.0">
          <children>
+            <ImageView fitHeight="62.0" fitWidth="62.0" layoutX="876.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/dice_nb.png" />
+               </image>
+            </ImageView>
             <ImageView fitHeight="462.0" fitWidth="471.0" layoutX="428.0" layoutY="-116.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/Suspect_1.png" />
@@ -59,12 +64,12 @@
                         </ImageView>
                         <Label fx:id="labelDialogue" layoutX="21.0" layoutY="72.0" prefHeight="84.0" prefWidth="859.0" text="Label" wrapText="true">
                            <font>
-                              <Font name="Gill Sans MT" size="19.0" />
+                              <Font name="Candara Italic" size="18.0" />
                            </font>
                         </Label>
                         <Label alignment="CENTER" prefHeight="52.0" prefWidth="221.0" text="Mark" textAlignment="CENTER" textFill="WHITE">
                            <font>
-                              <Font name="Gill Sans MT Bold" size="20.0" />
+                              <Font name="Candara Bold" size="36.0" />
                            </font>
                         </Label>
                         <Polygon fill="#5a402e" layoutX="871.0" layoutY="116.0" points="58.00006103515625, 21.333343505859375, 31.33331298828125, 38.6666259765625, 31.33331298828125, 4.666656494140625" stroke="BLACK" strokeType="INSIDE" />

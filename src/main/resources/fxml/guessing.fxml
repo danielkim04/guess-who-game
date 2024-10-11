@@ -48,15 +48,11 @@
       </AnchorPane>
       <AnchorPane fx:id="paneExplanation" layoutX="-16.0" layoutY="-1.0" prefHeight="600.0" prefWidth="1068.0" visible="false">
          <children>
-            <ImageView fitHeight="623.0" fitWidth="1068.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/interrogationroom1.jpeg" />
-               </image>
-            </ImageView>
+            <ImageView fx:id="imgChosenSuspect" fitHeight="609.0" fitWidth="355.0" layoutX="716.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true" visible="false" />
             <AnchorPane layoutX="14.0" layoutY="79.0" prefHeight="335.0" prefWidth="391.0">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#383636f7" height="530.0" stroke="#ffffff00" strokeType="INSIDE" width="701.0" />
-                  <ImageView fitHeight="530.0" fitWidth="701.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="538.0" fitWidth="708.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/explanation_boarder.png" />
                      </image>
@@ -66,9 +62,9 @@
                         <Font name="Gill Sans MT" size="23.0" />
                      </font>
                   </TextArea>
-                  <AnchorPane layoutX="10.0" layoutY="467.0" onMouseClicked="#onSendExplanation" prefHeight="48.0" prefWidth="651.0" style="-fx-cursor: hand;">
+                  <AnchorPane layoutX="19.0" layoutY="469.0" onMouseClicked="#onSendExplanation" prefHeight="31.0" prefWidth="651.0" style="-fx-cursor: hand;">
                      <children>
-                        <ImageView fitHeight="46.0" fitWidth="662.0" layoutX="8.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="46.0" fitWidth="675.0" layoutX="8.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/submit_button_larger.png" />
                            </image>
@@ -86,7 +82,6 @@
                   </TabPane>
                </children>
             </AnchorPane>
-            <ImageView fx:id="imgChosenSuspect" fitHeight="609.0" fitWidth="355.0" layoutX="701.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
       <AnchorPane layoutY="-1.0" prefHeight="79.0" prefWidth="700.0">
@@ -98,7 +93,7 @@
             </ImageView>
             <Label fx:id="labelTitle" alignment="CENTER" layoutX="247.0" layoutY="20.0" prefHeight="40.0" prefWidth="555.0" text="Who is the thief?" textFill="WHITE">
                <font>
-                  <Font name="Gill Sans MT Bold" size="35.0" />
+                  <Font name="Times New Roman" size="35.0" />
                </font>
             </Label>
             <AnchorPane layoutX="972.0" layoutY="6.0" prefHeight="65.0" prefWidth="63.0">
@@ -111,6 +106,11 @@
                   </Label>
                </children>
             </AnchorPane>
+            <ImageView fitHeight="42.0" fitWidth="48.0" layoutX="648.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/mag_glass.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="paneOpenChat" layoutX="1031.0" layoutY="153.0" onMouseClicked="#handleOpenButtonClick" prefHeight="97.0" prefWidth="21.0" visible="false">
