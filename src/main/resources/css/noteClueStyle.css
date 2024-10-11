@@ -1,0 +1,40 @@
+#balanceArea {
+    -fx-background-color: #D6D6D6;
+    /* Outer background */
+    -fx-control-inner-background: #D6D6D6;
+    /* Inner content area */
+    -fx-border-color: #D6D6D6;
+    /* Border color */
+    -fx-border-width: 0;
+    /* Remove border */
+    -fx-focus-color: transparent;
+    /* Remove focus border (glow) */
+    -fx-faint-focus-color: transparent;
+    /* Remove faint focus color */
+    -fx-text-box-border: #D6D6D6;
+    /* Remove text box border */
+    -fx-prompt-text-fill: gray;
+    /* Prompt text color */
+    -fx-text-fill: black;
+    /* User-typed text color */
+    -fx-effect: none;
+    /* Ensure no additional effects */
+}
+
+#txtMessage .scroll-bar:vertical {
+    -fx-pref-width: 1;
+    -fx-opacity: 0;
+}
+
+#txtMessage .scroll-bar:horizontal {
+    -fx-pref-height: 1;
+    -fx-opacity: 0;
+}
+
+#balanceArea:focused {
+    -fx-background-color: #D6D6D6;
+    /* Keep everything transparent on focus */
+    -fx-control-inner-background: #D6D6D6;
+    -fx-effect: none;
+    /* Remove any default focus effects */
+}
