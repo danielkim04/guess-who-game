@@ -250,17 +250,36 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <TextArea fx:id="balanceArea" layoutX="540.0" layoutY="504.0" prefHeight="48.0" prefWidth="108.0" />
-            <Label layoutX="540.0" layoutY="478.5" prefHeight="24.0" prefWidth="187.5" text="Missing Balance?">
+            <Label alignment="CENTER" layoutX="285.0" layoutY="325.0" prefHeight="27.0" prefWidth="197.0" text="Total        24000">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <ImageView fx:id="correct" fitHeight="64.5" fitWidth="54.0" layoutX="750.0" layoutY="514.5" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/correct.png" />
-               </image>
-            </ImageView>
+            <AnchorPane layoutX="301.0" layoutY="481.0" prefHeight="87.0" prefWidth="436.0">
+               <children>
+                  <ImageView fitHeight="62.0" fitWidth="427.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/balance_checker.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="62.0" fitWidth="160.0" layoutX="224.0" layoutY="22.0" onMouseClicked="#onCheckBalance" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                     <image>
+                        <Image url="@../images/check_balance_button.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="correct" fitHeight="36.0" fitWidth="41.0" layoutX="384.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/correct.png" />
+                     </image>
+                  </ImageView>
+                  <TextArea fx:id="balanceArea" layoutX="14.0" layoutY="28.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyReleased="#onKeyReleased" prefHeight="30.0" prefWidth="197.0" stylesheets="@../css/noteClueStyle.css" />
+                  <Label layoutX="8.0" layoutY="-12.0" prefHeight="24.0" prefWidth="187.5" text="Missing Balance?">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
             <ImageView fx:id="spider1" fitHeight="300.0" fitWidth="500.0" layoutX="500.0" layoutY="250.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../gif/spiderRight.gif" />
@@ -286,8 +305,11 @@
                   <Image url="@../images/cobweb2.png" />
                </image>
             </ImageView>
-            <Button fx:id="checkBalance" layoutX="655.5" layoutY="514.5" mnemonicParsing="false" onAction="#onCheckBalance" stylesheets="@../css/styles.css" text="Check" />
-            <Button fx:id="cashbookExit" layoutX="279.0" layoutY="514.5" mnemonicParsing="false" onAction="#onCashBookExit" stylesheets="@../css/styles.css" text="Back" />
+            <ImageView fitHeight="53.0" fitWidth="54.0" layoutX="712.0" layoutY="157.0" onMouseClicked="#onCashBookExit" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+               <image>
+                  <Image url="@../images/close_button_2.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
       
@@ -514,7 +536,7 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="paneCrimeSceneIntro" layoutX="257.0" layoutY="135.0" prefHeight="407.0" prefWidth="571.0">
+      <AnchorPane fx:id="paneCrimeSceneIntro" layoutX="257.0" layoutY="135.0" prefHeight="407.0" prefWidth="571.0" visible="false">
          <children>
             <ImageView fitHeight="407.0" fitWidth="633.0" pickOnBounds="true" preserveRatio="true">
                <image>
