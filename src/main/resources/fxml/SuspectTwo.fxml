@@ -58,6 +58,11 @@
         </AnchorPane>
       <AnchorPane layoutX="9.0" layoutY="364.0" prefHeight="221.0" prefWidth="1031.0">
          <children>
+            <ImageView fitHeight="73.0" fitWidth="608.0" layoutX="286.0" layoutY="-13.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/cards_nb.PNG" />
+               </image>
+            </ImageView>
             <ImageView fitHeight="221.0" fitWidth="865.0" layoutX="79.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/chatbox_darker.png" />

@@ -98,7 +98,7 @@
             </ImageView>
             <Label fx:id="labelTitle" alignment="CENTER" layoutX="247.0" layoutY="20.0" prefHeight="40.0" prefWidth="555.0" text="Who is the thief?" textFill="WHITE">
                <font>
-                  <Font name="Gill Sans MT Bold" size="35.0" />
+                  <Font name="Times New Roman" size="35.0" />
                </font>
             </Label>
             <AnchorPane layoutX="972.0" layoutY="6.0" prefHeight="65.0" prefWidth="63.0">
@@ -111,6 +111,11 @@
                   </Label>
                </children>
             </AnchorPane>
+            <ImageView fitHeight="42.0" fitWidth="48.0" layoutX="669.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/mag_glass.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="paneOpenChat" layoutX="1031.0" layoutY="153.0" onMouseClicked="#handleOpenButtonClick" prefHeight="97.0" prefWidth="21.0" visible="false">

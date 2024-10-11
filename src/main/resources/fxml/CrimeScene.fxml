@@ -117,9 +117,15 @@
                   <Label fx:id="hairText" layoutX="255.0" layoutY="210.0" stylesheets="@../css/style.css" text="Label" />
                </children>
             </AnchorPane>
-            <Label fx:id="moneyCounter" layoutX="23.0" layoutY="135.0" prefHeight="151.0" prefWidth="144.0" stylesheets="@../css/style.css" text="Money Collected: XXXXX " textFill="#910000" wrapText="true" />
+            <Label fx:id="moneyCounter" layoutX="23.0" layoutY="135.0" prefHeight="151.0" prefWidth="144.0" text="Money Collected: XXXXX " textFill="#910000" wrapText="true">
+               <font>
+                  <Font name="Candara Bold" size="18.0" />
+               </font></Label>
             <Button fx:id="bagExit" layoutX="15.0" layoutY="540.0" mnemonicParsing="false" onAction="#onBagExit" stylesheets="@../css/styles.css" text="Exit Bag" visible="false" />
-            <Label layoutX="22.0" layoutY="327.0" prefHeight="132.0" prefWidth="146.0" stylesheets="@../css/style.css" text="Drag items here to collect " wrapText="true" />
+            <Label layoutX="22.0" layoutY="327.0" prefHeight="132.0" prefWidth="146.0" text="Drag items here to collect " wrapText="true">
+               <font>
+                  <Font name="Candara Bold" size="18.0" />
+               </font></Label>
             <ImageView fitHeight="68.0" fitWidth="69.0" layoutX="971.0" layoutY="99.0" onMouseClicked="#onBagExit" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                <image>
                   <Image url="@../images/close_button_2.png" />
@@ -185,7 +191,10 @@
                   <Image url="@../images/close_button_2.png" />
                </image>
             </ImageView>
-            <Label layoutX="20.0" layoutY="173.0" prefHeight="132.0" prefWidth="146.0" stylesheets="@../css/style.css" text="Use UV light to look for a fingerprint!" wrapText="true" />
+            <Label layoutX="20.0" layoutY="173.0" prefHeight="132.0" prefWidth="146.0" text="Use UV light to look for a fingerprint!" wrapText="true">
+               <font>
+                  <Font name="Candara Bold" size="18.0" />
+               </font></Label>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="cashbookPane" prefHeight="600.0" prefWidth="1014.0" visible="false">
@@ -312,9 +321,9 @@
                               <Image url="@../images/fingerprintInv1.png" />
                            </image>
                         </ImageView>
-                        <Label layoutX="165.0" layoutY="30.0" prefHeight="24.0" prefWidth="97.0" stylesheets="@../css/style.css" text="Hair Sample">
+                        <Label layoutX="165.0" layoutY="30.0" prefHeight="24.0" prefWidth="139.0" text="Hair Sample">
                            <font>
-                              <Font name="Dubai Bold" size="27.0" />
+                              <Font name="Candara Bold" size="18.0" />
                            </font>
                         </Label>
                         <Button fx:id="hairTest" layoutX="165.0" layoutY="82.5" mnemonicParsing="false" onAction="#onTestHair" stylesheets="@../css/styles.css" text="Test Sample" visible="false" />
@@ -332,9 +341,9 @@
                               <Image url="@../images/fingerprintInv2.png" />
                            </image>
                         </ImageView>
-                        <Label layoutX="165.0" layoutY="21.0" prefHeight="27.0" prefWidth="90.0" stylesheets="@../css/style.css" text="Fingerprint">
+                        <Label layoutX="165.0" layoutY="21.0" prefHeight="27.0" prefWidth="131.0" text="Fingerprint">
                            <font>
-                              <Font name="Dubai Bold" size="27.0" />
+                              <Font name="Candara Bold" size="18.0" />
                            </font>
                         </Label>
                         <Button fx:id="fingerprintTest" layoutX="165.0" layoutY="75.0" mnemonicParsing="false" onAction="#onFingerprintTestClick" stylesheets="@../css/styles.css" text="Test Sample" visible="false" />
@@ -352,9 +361,9 @@
                               <Image url="@../images/cashInv.png" />
                            </image>
                         </ImageView>
-                        <Label layoutX="166.0" layoutY="309.0" prefHeight="22.0" prefWidth="77.0" stylesheets="@../css/style.css" text="Money">
+                        <Label layoutX="166.0" layoutY="309.0" prefHeight="31.0" prefWidth="120.0" text="Money">
                            <font>
-                              <Font name="Dubai Bold" size="27.0" />
+                              <Font name="Candara Bold" size="18.0" />
                            </font>
                         </Label>
                      </children>
@@ -363,7 +372,7 @@
             </AnchorPane>
             <Label layoutX="44.0" layoutY="36.0" text="Inventory">
                <font>
-                  <Font size="39.0" />
+                  <Font name="Candara" size="39.0" />
                </font>
             </Label>
             <ImageView fitHeight="50.0" fitWidth="48.0" layoutX="320.0" layoutY="41.0" onMouseClicked="#handleCloseButtonClick" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
